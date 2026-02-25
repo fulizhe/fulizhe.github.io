@@ -1,0 +1,317 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Cursor白嫖续杯战法 | 夫礼者Home</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=2.1.13"><!-- inject head--><link rel="canonical" href="http://example.com/2025/02/21/tip-cursor-refill-for-free/"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><!-- Open Graph--><meta name="description" content="概述本教程将指导您如何使用cursor-auto-free工具实现Cursor的自动续期。整个过程需要用到 Cloudflare 和 阿里云 服务。 所需工具 阿里云账号。用于购买域名。 Cloudflare账号。用于解析绑定好邮件转发路由。 GITHUB - cursor-auto-free工具。"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="夫礼者Home"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(' %c Solitude %c ' + '2.1.13' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script src="https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSE7WE78H9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZSE7WE78H9');
+</script>    
+<script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+          },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":false,"path":"/search.xml"},
+    runtime: '2023-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。","loading":"搜索中..."}},
+    aside: {
+        sayhello: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        sayhello2: [],
+        sayhello3: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><!-- background img--><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img nolazyload" src="/images/sicp_cover_english.jpg" alt="loading image"></div></div><script>const preloader = {
+    isLoaded: false,
+    endLoading: () => {
+        if (!preloader.isLoaded) {
+            document.getElementById('loading-box').classList.add('loaded');
+            preloader.isLoaded = true;
+            preloader.togglePaceDone();
+        }
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+        preloader.isLoaded = false;
+        preloader.togglePaceDone();
+    },
+    togglePaceDone: () => {
+        document.getElementById('body').className = preloader.isLoaded ? 'pace-done' : '';
+    }
+}
+
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});
+
+setTimeout(() => {
+    preloader.endLoading();
+}, 5000);</script><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">41</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fa-solid fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结<sup>1</sup></a><a href="/tags/2024/">2024<sup>1</sup></a><a href="/tags/%E5%8F%8D%E6%80%9D/">反思<sup>4</sup></a><a href="/tags/thirty-five/">thirty-five<sup>5</sup></a><a href="/tags/AI%E6%B6%A6%E8%89%B2/">AI润色<sup>3</sup></a><a href="/tags/Technical-team/">Technical team<sup>3</sup></a><a href="/tags/devops/">devops<sup>7</sup></a><a href="/tags/%E9%98%85%E8%AF%BB/">阅读<sup>4</sup></a><a href="/tags/AI/">AI<sup>5</sup></a><a href="/tags/Cursor/">Cursor<sup>2</sup></a><a href="/tags/%E8%80%83%E8%AF%95/">考试<sup>2</sup></a><a href="/tags/%E6%8A%80%E8%83%BD/">技能<sup>1</sup></a><a href="/tags/%E7%90%86%E8%B4%A2/">理财<sup>1</sup></a></div></div></div></div><!-- keyboard--><!-- righhtside--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon solitude fas fa-bars-progress"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页"><span class="title">夫礼者小屋</span><i class="solitude fa-solid fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">Cursor白嫖续杯战法</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude fa-solid fa-magnifying-glass"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fa-solid fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fa-solid fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/2025/02/21/tip-cursor-refill-for-free/cover.png" alt="Cursor白嫖续杯战法"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/Cursor/">Cursor</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Cursor/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>Cursor</span></a></div></div></div></div><h1 class="post-title">Cursor白嫖续杯战法</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2025-02-21 14:59:40"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2025-02-21T06:59:40.000Z">2025-02-21T06:59:40.000Z</time></span><span class="post-meta-date" title="最后更新于 2026-02-25 22:38:38"><i class="post-meta-icon solitude fa-solid fa-arrows-rotate"></i><time datetime="2026-02-25T14:38:38.518Z">2026-02-25T14:38:38.518Z</time></span><span class="post-meta-position" title="作者IP归属地为China"><i class="post-meta-icon solitude fas fa-location-dot"></i><span>China</span></span><a class="post-meta-pv" href="/2025/02/21/tip-cursor-refill-for-free/" title="文章热度"><i class="post-meta-icon solitude fa-solid fa-fire-flame-curved"></i></a></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>本教程将指导您如何使用<code>cursor-auto-free</code>工具实现Cursor的自动续期。整个过程需要用到 <code>Cloudflare</code> 和 <code>阿里云</code> 服务。</p>
+<h2 id="所需工具"><a href="#所需工具" class="headerlink" title="所需工具"></a>所需工具</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://dc.console.aliyun.com/next/index">阿里云账号</a>。用于购买域名。</li>
+<li><a target="_blank" rel="noopener" href="https://www.cloudflare.com/zh-cn/">Cloudflare账号</a>。用于解析绑定好邮件转发路由。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chengazhen/cursor-auto-free">GITHUB - cursor-auto-free工具</a>。前面的准备操作都是为了正常使用它。</li>
+</ul>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><div class="mermaid">
+graph TD
+
+A[开始] --&gt; B[阿里云购买域名]
+B --&gt; C[将域名托管到Cloudflare]
+C --&gt; D[配置Cloudflare邮件转发路由]
+D --&gt; E[配置并运行该cursor-auto-free自动注册工具。期间**双手离开键盘**。]
+E --&gt; G[获得新的Cursor试用账号]
+G --&gt; H[结束]
+</div>
+
+<ol>
+<li>整个流程其实是机器模拟cursor的注册流程，注册出新的cursor试用账户，进而实现对于cursor的持续试用。  </li>
+<li>操作大概是：<br> 2.1 在阿里云注册一个域名，<br> 2.2 然后在cf里解析绑定好邮件转发路由，<br> 2.3 之后使用 cursor-auto-free工具进行自动化的账号注册。</li>
+<li>这个”cf邮件转发”就是用来接受cursor官方发来的注册验证码的。因为在cursor注册时的邮箱地址是机器自动生成的，前半部分直接就是乱码，所以我们需要将<code>xxxx@fulizhe.xyz</code>这样的邮件地址让cf全部转发给我们自己的邮箱里（例如<code>xxx@gmail.com</code>）,方便cursor-auto-free程序抓取之后自动执行下一步。</li>
+</ol>
+<h3 id="阿里云中注册域名"><a href="#阿里云中注册域名" class="headerlink" title="阿里云中注册域名"></a>阿里云中注册域名</h3><ul>
+<li><p>进入<a target="_blank" rel="noopener" href="https://wanwang.aliyun.com/">域名注册页面</a>, 选择并购买心仪的域名（建议选择便宜的域名即可）</p>
+  <img src="/2025/02/21/tip-cursor-refill-for-free/aliyun-buy-domain-name.png" class="" title="aliyun-buy-domain-name">
+</li>
+<li><p>完成实名认证.</p>
+  <img src="/2025/02/21/tip-cursor-refill-for-free/aliyun-domain-name-realname.png" class="" title="aliyun-domain-name-realname"></li>
+</ul>
+<h3 id="域名解析托管到cloudflare"><a href="#域名解析托管到cloudflare" class="headerlink" title="域名解析托管到cloudflare"></a>域名解析托管到cloudflare</h3><ul>
+<li><p>进入<a target="_blank" rel="noopener" href="https://www.cloudflare.com/zh-cn/">Cloudflare账号</a>。</p>
+</li>
+<li><p>域名解析托管到cloudflare。参见下面的两个链接。</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1802093268126551274">详细图文手把手教你阿里云注册域名如何托管到CloudFlare DNS服务</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1XjzZYRESH/">B站视频 -【完整教程】如何将阿里云域名迁移到Cloudflare DNS管理</a></li>
+</ol>
+</li>
+</ul>
+<h3 id="在cf解析绑定好邮件转发路由"><a href="#在cf解析绑定好邮件转发路由" class="headerlink" title="在cf解析绑定好邮件转发路由"></a>在cf解析绑定好邮件转发路由</h3><p>参考 <a target="_blank" rel="noopener" href="https://cursor-auto-free-doc.vercel.app/quick-start.html#configuration">Cloudflare Email routing rules</a></p>
+<h3 id="按提示配置好-env-文件信息"><a href="#按提示配置好-env-文件信息" class="headerlink" title="按提示配置好 .env 文件信息"></a>按提示配置好 .env 文件信息</h3><p>参考 <a target="_blank" rel="noopener" href="https://cursor-auto-free-doc.vercel.app/quick-start.html#environment-configuration">Environment Configuration</a></p>
+<p>这里给出我自己试验成功的.env文件范例（gmail邮箱）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">你的CF路由填写的域名</span></span><br><span class="line">DOMAIN=fulizhe.xyz</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">邮件服务地址</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">注册临时邮件服务 https://tempmail.plus</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 设置为null禁用临时邮箱</span></span><br><span class="line">TEMP_MAIL=null</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置的PIN码</span></span><br><span class="line">TEMP_MAIL_EPIN=xxxxxx</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用的后缀</span></span><br><span class="line">TEMP_MAIL_EXT=@mailto.plus</span><br><span class="line">BROWSER_USER_AGENT=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.6723.92 Safari/537.36</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">代理</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">BROWSER_PROXY=<span class="string">&#x27;http://127.0.0.1:7897&#x27;</span></span> </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">无头模式 默认开启</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">BROWSER_HEADLESS=<span class="string">&#x27;True&#x27;</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">IMAP Server Configuration。这里我采用的是IMAP协议</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 这里我设置使用的是gmail.com邮箱</span></span><br><span class="line">IMAP_SERVER=imap.gmail.com  # e.g., QQ Mail, Gmail</span><br><span class="line">IMAP_PORT=993               #  993</span><br><span class="line">IMAP_USER=xxxx@gmail.com    # Receiving email address </span><br><span class="line">IMAP_PASS=xxxxx             # 16位的密码. 注意这里需要使用app password.（获取方式参见下方专门小节） </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">IMAP_DIR=                  <span class="comment"># [Optional] Default is inbox</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="管理员权限下运行cursor-auto-free工具"><a href="#管理员权限下运行cursor-auto-free工具" class="headerlink" title="管理员权限下运行cursor-auto-free工具"></a>管理员权限下运行cursor-auto-free工具</h3><p>双手离开键盘，让程序自动运行。</p>
+<img src="/2025/02/21/tip-cursor-refill-for-free/cursor-auto-free-running.png" class="" title="cursor-auto-free-running">
+
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><h3 id="获取gmail的app-password"><a href="#获取gmail的app-password" class="headerlink" title="获取gmail的app password"></a>获取gmail的app password</h3><ol>
+<li>登录<a target="_blank" rel="noopener" href="https://myaccount.google.com/apppasswords">Google-应用专用密码</a> <img src="/2025/02/21/tip-cursor-refill-for-free/google-app-password.png" class="" title="google-app-password"></li>
+<li>输入描述，点击“继续” </li>
+<li>复制生成的16位密码，粘贴到.env文件的IMAP_PASS字段中。（注意Google提供的原始密码是包含空格的，你需要手动删除他们）</li>
+</ol>
+<h3 id="AI时代，有问题第一反应是？"><a href="#AI时代，有问题第一反应是？" class="headerlink" title="AI时代，有问题第一反应是？"></a>AI时代，有问题第一反应是？</h3><p>期间遇到不懂的问题，注意咨询AI。</p>
+<p>比如”如何在cf里配置gmail相关的email理由规则”，”如何设置.env文件里的IMAP_XXX等配置项”，我就是问AI完成。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/chengazhen/cursor-auto-free">GITHUB - cursor-auto-free</a></li>
+<li><a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid-live-editor/">mermaid预览</a></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.png"></a><div class="post-copyright__author_name">夫礼者Home</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward"><div class="reward-button" title="赞赏作者" onclick="AddRewardMask()"><i class="solitude fa-solid fa-heart"></i>赞赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢您的赞赏</span><ul class="reward-group"><li class="reward-item"><a href="/images/wxpay.jpg"><img class="post-qr-code-img nolazyload" src="/images/wxpay.jpg" alt="微信" style="border-color: var(--efu-green)"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.jpg"><img class="post-qr-code-img nolazyload" src="/images/alipay.jpg" alt="支付宝" style="border-color: var(--efu-blue)"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/"><div class="reward-text">赞赏名单</div><div class="reward-dec">由于您的支持，我才能够实现写作的价值。</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">夫礼者Home</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Cursor/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>Cursor<span class="tagsPageCount">2</span></span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/02/22/35-how-to-check-if-someone-is-worth-following/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">应对35危机 - 找到自己的&quot;贵人&quot;</div></div></a></div><div class="next-post pull-right"><a href="/2025/02/12/ai-The-double-edged-sword-of-creative-equality/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">【AI创作】AI时代-创作平权的双刃剑</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-bg-top"><div class="is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div></div><a class="card-info-avatar" href="/about/" title="头像"><div class="avatar-img"><img src="/images/sicp_cover_english.jpg" alt="头像"></div></a><div class="card-info__desc_group"><div class="author-info__name">夫礼者</div><div class="author-info__desc"></div><div class="card-info__data is-center"><a href="/archives/" title="累计文章数:41"><div class="length-num">41</div><div class="headline">文章</div></a><a href="/tags/" title="标签总数:13"><div class="length-num">13</div><div class="headline">标签</div></a><a href="/categories/" title="分类总数:13"><div class="length-num">13</div><div class="headline">分类</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/fulizhe" title="Github"><i class="solitude  fab fa-github"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://gitee.com/lqzkcx3" title="Gitee"><i class="solitude  fab fa-git"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.zhihu.com/people/tao-luo-73" title="Zhihu"><i class="solitude  fab fa-zhihu"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://blog.csdn.net/lqzkcx3" title="CSDN"><i class="solitude  fab fa-bilibili"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.jianshu.com/u/cd3dd432fd00" title="jianshu"><i class="solitude  fab fa-node-js"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://fulizhe.github.io/curriculumVitae" title="aboutMe"><i class="solitude  fas fa-address-card"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fa-solid fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%80%E9%9C%80%E5%B7%A5%E5%85%B7"><span class="toc-text">所需工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-text">实现步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%AD%E6%B3%A8%E5%86%8C%E5%9F%9F%E5%90%8D"><span class="toc-text">阿里云中注册域名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E6%89%98%E7%AE%A1%E5%88%B0cloudflare"><span class="toc-text">域名解析托管到cloudflare</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8cf%E8%A7%A3%E6%9E%90%E7%BB%91%E5%AE%9A%E5%A5%BD%E9%82%AE%E4%BB%B6%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1"><span class="toc-text">在cf解析绑定好邮件转发路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E6%8F%90%E7%A4%BA%E9%85%8D%E7%BD%AE%E5%A5%BD-env-%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="toc-text">按提示配置好 .env 文件信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90%E4%B8%8B%E8%BF%90%E8%A1%8Ccursor-auto-free%E5%B7%A5%E5%85%B7"><span class="toc-text">管理员权限下运行cursor-auto-free工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="toc-text">补充说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96gmail%E7%9A%84app-password"><span class="toc-text">获取gmail的app password</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AI%E6%97%B6%E4%BB%A3%EF%BC%8C%E6%9C%89%E9%97%AE%E9%A2%98%E7%AC%AC%E4%B8%80%E5%8F%8D%E5%BA%94%E6%98%AF%EF%BC%9F"><span class="toc-text">AI时代，有问题第一反应是？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fa-solid fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/2026/01/18/book-why-donot-student-like-school/" title="读后感 - 《为什么学生不喜欢上学？》"><div class="thumbnail"><img alt="读后感 - 《为什么学生不喜欢上学？》" src="/2026/01/18/book-why-donot-student-like-school/cover.png"></div><div class="content"><span class="title" href="/2026/01/18/book-why-donot-student-like-school/" title="读后感 - 《为什么学生不喜欢上学？》">读后感 - 《为什么学生不喜欢上学？》</span></div></a><a class="aside-list-item" href="/2026/01/07/devops-bottom-up-recognize-reality-2/" title="自下而上的团队改进 - 认清现实2"><div class="thumbnail"><img alt="自下而上的团队改进 - 认清现实2" src="/2026/01/07/devops-bottom-up-recognize-reality-2/cover.png"></div><div class="content"><span class="title" href="/2026/01/07/devops-bottom-up-recognize-reality-2/" title="自下而上的团队改进 - 认清现实2">自下而上的团队改进 - 认清现实2</span></div></a><a class="aside-list-item" href="/2025/11/10/ruankao-xtfxs2/" title="软考202505-系统分析师-Again"><div class="thumbnail"><img alt="软考202505-系统分析师-Again" src="/2025/11/10/ruankao-xtfxs2/cover.png"></div><div class="content"><span class="title" href="/2025/11/10/ruankao-xtfxs2/" title="软考202505-系统分析师-Again">软考202505-系统分析师-Again</span></div></a><a class="aside-list-item" href="/2025/10/01/think-the-essence-of-implement-ultimate-idea/" title="本源思考 - 财富的意义"><div class="thumbnail"><img alt="本源思考 - 财富的意义" src="/2025/10/01/think-the-essence-of-implement-ultimate-idea/cover.png"></div><div class="content"><span class="title" href="/2025/10/01/think-the-essence-of-implement-ultimate-idea/" title="本源思考 - 财富的意义">本源思考 - 财富的意义</span></div></a><a class="aside-list-item" href="/2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/" title="AI改造公司的研发流程-快速原型"><div class="thumbnail"><img alt="AI改造公司的研发流程-快速原型" src="/2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/cover.png"></div><div class="content"><span class="title" href="/2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/" title="AI改造公司的研发流程-快速原型">AI改造公司的研发流程-快速原型</span><span class="article-recent_post_categories" href="/2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/">AI润色</span></div></a></div></div></div></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2026 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src="/img/pwa/favicon.png">夫礼者</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude" alt="Theme">Theme</a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=2.1.13"></script><script src="/js/main.js?v=2.1.13"></script><script src="/js/third_party/waterfall.min.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="https://fastly.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js"></script><script src="/js/tw_cn.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="js-pjax"><script>mermaid.run();</script></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude fa-solid fa-xmark"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=2.1.13"></script><!-- Tianli-Talk--><!-- music--></body></html>
+        <script>
+            const posts = ["2026/01/18/book-why-donot-student-like-school/","2026/01/07/devops-bottom-up-recognize-reality-2/","2025/11/10/ruankao-xtfxs2/","2025/10/01/think-the-essence-of-implement-ultimate-idea/","2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/","2025/08/17/35-grap-the-initiative-of-life/","2025/08/15/devops-promote-the-progress-of-docker/","2025/08/09/devops-impove-development-process-team-reform/","2025/08/04/think-why-still-working-hard/","2025/08/04/think-how-to-find-your-career/","2025/07/31/devops-why-we-need-focusing-on-observability/","2025/06/22/book-ting-habits/","2025/06/20/think-value-anchor-point/","2025/06/04/devops-observability/","2025/06/03/devops-operation-upgrade/","2025/06/01/book-nexus/","2025/05/31/devops-bottom-up-recognize-reality/","2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/","2025/05/27/ruankao-xtfxs/","2025/03/21/35-why-do-i-firmly-believe-i-will-succeed/","2025/03/14/Technical-team-face-to-Technical-Debt/","2025/03/05/35-basic/","2025/03/03/tsitt-The-Road-to-Breaking-through-Operations-and-Maintenance/","2025/03/02/ai-the-benefit-of-meta-knowledge/","2025/02/27/how-to-break-in-the-era-of-ai-for-company/","2025/02/24/35-I-was-too-extreme/","2025/02/22/35-how-to-check-if-someone-is-worth-following/","2025/02/21/tip-cursor-refill-for-free/","2025/02/12/ai-The-double-edged-sword-of-creative-equality/","2025/02/12/ai-human-win/","2025/02/07/what-mean-when-we-say-ai-assisted-process-transformation/","2025/02/04/deepseek-r1-i-observe-to/","2025/01/17/social-experiment-by-ai/","2025/01/12/think-in-ai-era/","2025/01/09/the-skill-need-to-pratice-in-ai-era-as-programmer/","2025/01/07/cursor-i-think-to/","2025/01/05/2024-year-end-summary/","2024/12/12/《一本小小的红色写作书》读后感/","2024/12/12/《自学是门手艺》读后感/","2024/12/12/典型小散的投资生涯总结2018-2024/","2024/11/10/hello-world/"];
+            function toRandomPost() {
+                const randomPost = posts[Math.floor(Math.random() * posts.length)];
+                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
+            }
+        </script>

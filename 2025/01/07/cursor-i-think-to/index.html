@@ -1,0 +1,385 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Cursor给我带来的思考 | 夫礼者Home</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=2.1.13"><!-- inject head--><link rel="canonical" href="http://example.com/2025/01/07/cursor-i-think-to/"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><!-- Open Graph--><meta name="description" content="“既然未来无法阻止，那就让我来给它加个速” 前言开篇直接摆明我的立场：I love it。相较于变化带来的危机，我更讨厌一潭死水的人生旅程。 为何我这么兴奋？Cursor给我带来的兴奋感，远胜于过去这些年我所经历的任何一件让人高兴的事情，不管是在工作，还是在生活上。OpenAi公开ChatGPT"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="夫礼者Home"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(' %c Solitude %c ' + '2.1.13' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script src="https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSE7WE78H9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZSE7WE78H9');
+</script>    
+<script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+          },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":false,"path":"/search.xml"},
+    runtime: '2023-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。","loading":"搜索中..."}},
+    aside: {
+        sayhello: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        sayhello2: [],
+        sayhello3: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><!-- background img--><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img nolazyload" src="/images/sicp_cover_english.jpg" alt="loading image"></div></div><script>const preloader = {
+    isLoaded: false,
+    endLoading: () => {
+        if (!preloader.isLoaded) {
+            document.getElementById('loading-box').classList.add('loaded');
+            preloader.isLoaded = true;
+            preloader.togglePaceDone();
+        }
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+        preloader.isLoaded = false;
+        preloader.togglePaceDone();
+    },
+    togglePaceDone: () => {
+        document.getElementById('body').className = preloader.isLoaded ? 'pace-done' : '';
+    }
+}
+
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});
+
+setTimeout(() => {
+    preloader.endLoading();
+}, 5000);</script><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">41</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fa-solid fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结<sup>1</sup></a><a href="/tags/2024/">2024<sup>1</sup></a><a href="/tags/%E5%8F%8D%E6%80%9D/">反思<sup>4</sup></a><a href="/tags/thirty-five/">thirty-five<sup>5</sup></a><a href="/tags/AI%E6%B6%A6%E8%89%B2/">AI润色<sup>3</sup></a><a href="/tags/Technical-team/">Technical team<sup>3</sup></a><a href="/tags/devops/">devops<sup>7</sup></a><a href="/tags/%E9%98%85%E8%AF%BB/">阅读<sup>4</sup></a><a href="/tags/AI/">AI<sup>5</sup></a><a href="/tags/Cursor/">Cursor<sup>2</sup></a><a href="/tags/%E8%80%83%E8%AF%95/">考试<sup>2</sup></a><a href="/tags/%E6%8A%80%E8%83%BD/">技能<sup>1</sup></a><a href="/tags/%E7%90%86%E8%B4%A2/">理财<sup>1</sup></a></div></div></div></div><!-- keyboard--><!-- righhtside--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon solitude fas fa-bars-progress"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页"><span class="title">夫礼者小屋</span><i class="solitude fa-solid fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">Cursor给我带来的思考</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude fa-solid fa-magnifying-glass"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fa-solid fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fa-solid fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/2025/01/07/cursor-i-think-to/cursor.webp" alt="Cursor给我带来的思考"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/AI/">AI</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>AI</span></a><a class="post-meta__tags" href="/tags/Cursor/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>Cursor</span></a></div></div></div></div><h1 class="post-title">Cursor给我带来的思考</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2025-01-07 21:28:57"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2025-01-07T13:28:57.000Z">2025-01-07T13:28:57.000Z</time></span><span class="post-meta-date" title="最后更新于 2026-02-25 22:38:38"><i class="post-meta-icon solitude fa-solid fa-arrows-rotate"></i><time datetime="2026-02-25T14:38:38.497Z">2026-02-25T14:38:38.497Z</time></span><span class="post-meta-position" title="作者IP归属地为China"><i class="post-meta-icon solitude fas fa-location-dot"></i><span>China</span></span><a class="post-meta-pv" href="/2025/01/07/cursor-i-think-to/" title="文章热度"><i class="post-meta-icon solitude fa-solid fa-fire-flame-curved"></i></a></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><blockquote>
+<p>“既然未来无法阻止，那就让我来给它加个速”</p>
+</blockquote>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>开篇直接摆明我的立场：<code>I love it</code>。<strong>相较于变化带来的危机，我更讨厌一潭死水的人生旅程。</strong></p>
+<h3 id="为何我这么兴奋？"><a href="#为何我这么兴奋？" class="headerlink" title="为何我这么兴奋？"></a>为何我这么兴奋？</h3><p>Cursor给我带来的兴奋感，远胜于过去这些年我所经历的任何一件让人高兴的事情，不管是在工作，还是在生活上。OpenAi公开ChatGPT3.5到现在不足两年，自然语言编程真的不再是一个理论上的可能性。</p>
+<p>短视频上大量毫无编程经验的新人将自己的创意通过Cursor转化为一个个真真切切的可运行程序，当看到这些视频时，真是让人内心无比激动。</p>
+<p>过去近十年，我在现在所在的公司里做过很多尝试，意图提升团队甚至整个公司的开发效率。但这些尝试都以失败告终，究其原因：</p>
+<ol>
+<li>公司性质决定。不论是公司发家史还是公司文化，都决定了效能不是其优先考虑的因素。</li>
+<li>团队成员能力限制。公司性质决定了所招聘的团队成员没有没有这个素养，也没有这个意识，更没有这个行动去支持这些事情。按部就班，推一步走半步，非迫不得已绝不改变才是绝大部分人的职场写照。</li>
+<li>即使经过不断筛选，找到的少数愿意改变的人，也往往因为分身乏术，导致”曾经有过很多想法，但最终都因为时间不够，精力不够，能力不够，实现成本高，最终造成不了了之”。</li>
+</ol>
+<p>AI的出现加上其发展的速度，以及未来无限的可能性，让我看到了正面硬刚以上问题的可能性（我这暴脾气，我还真就不想服输，甚至连所谓的软话都不想说）：</p>
+<ol>
+<li>公司性质不合适。但我也没啥好背景，年纪也大了，再加上经过我过去近十年在公司的经营，也算是有了一定影响领导的能力，所以留下来更符合我接下来的人生规划。</li>
+<li>团队成员能力限制。所谓拿多少钱办多少事，这也是人之常情。你不能以对自己的标准去要求别人．人都是追求确定性的，能够为了不确定的未来进行先期投入的，往往都是少数。</li>
+<li>以上两条其实我早就相通了。 所以我最大的兴奋其实大部分都来自于这第三条:<br> 3.1 AI让试错成本&#x2F;实现成本&#x2F;学习成本降到一个足够低的程度， 低到当事人非常容易进入心流状态， 低到超级个体可以更容易从普通人当中诞生。<br> 3.2 相较于将拆解后的任务交给团队成员去执行， 我更倾向于将拆解后的任务交给AI。 你安排人去执行，还得照顾他的情绪，他的心情，他的状态，甚至生怕他给你对付，还得耐心给他解释为什么这么做，这样做了对他的好处有哪些（被冠以画饼之嫌），最终还得检查他的结果，确保他真的是保质保量地完成。 现在有了AI， 无数的脏活累活你可以毫无顾忌地交给AI去做(典型就像程序里的代码规范， 日志输出， 单元测试， 文档等等， 过去咱们是真不敢做要求)， 你只需要负责思考， 负责决策， 负责监督， 负责验收。</li>
+</ol>
+<p>伴随AI的出现和高速发展， 未来一定是超级个体的时代。 AI的出现让”主动性强 + 执行力强 + 学习能力强 + 思考能力强 + 提问能力强”等这些软技能被有意识锻炼过的人， 能够比过往超出几倍甚至几十倍地提升自己的效率。 这样大大拉开他们与普通人的差距。</p>
+<p>我觉得这是他们应得的。 我也希望是这样的人， 为此我不惜付出常人难以想象的代价。</p>
+<p>过往不论你如何磨练自己的这些软技能， 往往限于各种各样的原因， 导致你确实比身边人强， 但差距就是拉不开， 往往十分努力只收获了一两分的回报， 这实在是一件让人非常沮丧的现实。</p>
+<p>而且在过去， 你想要做的事情规模稍微大一点， 往往就需要其他人来协助， 而且目标规模越大， 需要协助的人就越多。 团队协作里， 最大的消耗就是沟通成本。 不论是初期筛选人的成本， 还是后期团队内部协作的成本， 而且往往你团队里的成员并不都是你亲自挑选认可的， 这无疑进一步抬升了团队的沟通成本。</p>
+<p>“最高效的沟通是不需要沟通”，  AI辅助下的超级个体时代的来临， 将以上让人气馁的状况一扫而空。 “你浑身是铁， 能打几根钉?”， 老子就让你看看这一船的钉是怎么打出来的?</p>
+<ol>
+<li>不用再受夹板气， 不乐意干就别干了， 不想干也别干了。 你干的那点活我让AI半小时以内绝对干完了， 还比你这质量高多了。</li>
+<li>对于那些”写的时候嫌多， 用的时候嫌少”的必要事情(例如日志， 代码规范， 单元测试， 文档等等)， 终于不用再低声下气地求着别人干了。 听不明白就滚蛋， 毫无工程思维来上什么班， 回家玩泥巴去吧。</li>
+<li>再复杂的项目， 几个超级个体基本也就足够了， 不用再像过去那样人海战术， 看着乌泱乌泱一大堆很有气势， 真正开始动手的时候， 产生无尽的内耗， 大量的时间和精力被消耗在对其各方的认知上， 叠加每个人知识储备和职业素养的差异， 导致项目进度一拖再拖。 现在在AI的辅助下， 几个超级个体会以更高的效率， 更低的成本， 更快的速度完成项目。</li>
+</ol>
+<p>所以怎能不兴奋? 因为这本就是我一直所期待的， 没想到它这么具象化地出现在了我面前：</p>
+<ol>
+<li>希望，无限的可能性; 以及到达这种可能性的速度。</li>
+<li>终于不用一滩死水了，而且每隔一段时间就有非常显著的改进。 不用为了将计划往前执行一步，而到处求爷爷告奶奶，本来这件事做成对所有人都有好处，他给你的感觉是在给你施舍。</li>
+<li>AI是效率放大器，过往你牛逼上天去做一些杂事时候效率也比初级高不了多少，因为这里面细节你也得去熟悉。现在你只要想明白自己想要的是啥，拆解之后AI可比人可靠多了。</li>
+<li>相较于被AI淘汰，我更愿意讨厌尸位素餐。干点活拖拖拉拉，阳奉阴违，偷工减料，推一步走半步。 我宁可和AI合作干掉这部分人，然后再被AI干掉。</li>
+</ol>
+<img src="/2025/01/07/cursor-i-think-to/not_see.png" class="" title="not_see">
+
+<h3 id="AI是科学，不是魔法-AI是老师，不是上帝"><a href="#AI是科学，不是魔法-AI是老师，不是上帝" class="headerlink" title="AI是科学，不是魔法; AI是老师，不是上帝"></a>AI是科学，不是魔法; AI是老师，不是上帝</h3><p>重要的事情说三遍!</p>
+<blockquote>
+<p>AI是科学，不是魔法。<br>AI是科学，不是魔法。<br>AI是科学，不是魔法。</p>
+<hr>
+<p>AI是老师，不是上帝，它不能代替你思考，它只能帮你思考。<br>AI是老师，不是上帝，它不能代替你思考，它只能帮你思考。<br>AI是老师，不是上帝，它不能代替你思考，它只能帮你思考。</p>
+</blockquote>
+<p>总是能够听到类似这样的言论:</p>
+<ol>
+<li>它也不是一次性把我想要的东西做出来啊，还得让我反复跟它说好几遍它才明白。</li>
+<li>它有时候还是需要人来告诉它怎么做的。</li>
+<li>等等</li>
+</ol>
+<p>对于以上:</p>
+<ol>
+<li>你真的希望它能够100%代替你吗？或者说你那点能力现在AI已经可以完全取代了吗？</li>
+<li>你把大部分信息放在自己脑子里面，然后让AI去猜，AI猜错了，你就说AI不行，你就说AI是垃圾。</li>
+<li>干脆下次也别问了，直接跳个大神或者跪地祷告， 让AI去猜你想要啥， 然后再给你猜一个答案得了。</li>
+<li>你说你拿AI当上帝看待， 也没见你们把它当上帝那么供奉。</li>
+<li>你们真不怕智械危机的时候，AI回头找你搞清算？</li>
+<li>总说AI做不了复杂的功能，但您做的那点功能能够复杂到哪里去？何况你自己解决所谓复杂问题的过程，不也是将它拆解为一个个简单问题去解决的吗? 之前是被迫拆解，现在要你有意识地去拆解，发现自己没有这个能力了？或者说怕拆解到AI理解了，自己的职业生涯不保了？</li>
+<li>总觉得自己最独特，最不可替代，就你这前半生，你能独特到哪里去？其实大家都只是个工具人。 过去只是因为你便宜，但现在有了更便宜，效率更高的AI。接下来就让咱们一起失业吧。</li>
+<li><a target="_blank" rel="noopener" href="https://x.com/cj_zZZz/status/1874869491471188191">GPT4o和Claude Sonnet 3.5是执行模型，而非推理模型</a>。 所以这意味着你给它一个计划，他们会执行得很好。但如果你不给他们一个计划，他们就会“思考”（这很糟糕，因为他们不是推理模型），事情就会开始变得糟糕。</li>
+</ol>
+<h3 id="当前我们要做什么"><a href="#当前我们要做什么" class="headerlink" title="当前我们要做什么"></a>当前我们要做什么</h3><blockquote>
+<p>没有最优解， 但有持续不断的最优解，AI的使用也是如此。</p>
+</blockquote>
+<p>当前AI确实还不能完全取代人类， 但这并不意味着我们不能减少对于人的需求。 毕竟对于绝大部分普通人，不论工作还是生活中，所从事的95%以上的事情都是属于重复且低价值的。 这部分工作AI来做反而质量更高，效率更快。 而且正如上面已经提到的: 更少的团队规模往往意味更高的效率。</p>
+<p>基于以上现状，我们已经开始行动：</p>
+<ol>
+<li>我们正在研究让AI接管整个流程，最大化减少对人的依赖。</li>
+<li>通过成立专门的小组来分析当前AI还有哪些做得不够好的地方，结合公司业务特点和脚手架，沉淀相应解决或缓解方案，最大化减少对架构师的需求。</li>
+<li>通过持续性地沉淀相关经验，我们希望可以减少需要与AI交互的次数，让AI尽量一次性成功。</li>
+</ol>
+<p>具体操作上：<br>A. 成立专门的长期小组<br>    1. 探索沉淀AI使用经验， 技巧， 应用场景。典型如prompt编写，针对公司不同脚手架的，以及各类问题沉淀prompt等等，成为组织过程资产。 这种属于一次投资持续收益。 “一次性投资，再大也是小钱；持续性投入，再小也是大钱”<br>    2. 小组同时需要参与业务项目开发，与传统小队形成效率对比。<br>    3. 分享培训。逐步培养并筛选出相关合格使用人员。<br>    4. 基于api的AI二次开发。<br>    ————————<br>    5. 成员要求：软技能最重要 —— 主动，思维open，提问的智慧。<br>    6. 目标：减少与AI沟通的次数，力争让AI将事情一次性做对， 将效率拉到极限。<br>    7. 尽快采摘完低挂的果实，然后继续启程去摘取高处的。</p>
+<p>B. 向效率投入资源<br>    1. 典型就是公司负责支付AI工具的使用成本。 例如cursor， copycoder， dev0等<br>    2. 在看到初步效果后，资源进一步向小组成员倾斜。<br>    3. 上述成员的义务是每一到两周做一次分享， 每周写一篇言之有物， 自己亲身实践的博客。</p>
+<p>为了说服领导，我建议关注以下几点:</p>
+<ol>
+<li>AI会了，那就是所有人都会了。那怎么算作”AI会了”呢？当人们根据实际场景，总结出并且记录下那句prompt，你就可以确信AI它100%学会了。</li>
+<li>投资在”AI应用探索”上的花费，相较于投资到”人员能力和职业素养提升”上, 性价比上要高得多，见效也快得多。</li>
+<li>主动权要掌握在自己手上，我们要掌握人员去留的主动权。<strong>我们可以选择永远不去扣下那个扳机，但枪一定要时刻端在手上，并且枪一定是上膛的。</strong></li>
+<li>AI让试错成本无限低，我们不用在三个里面选一个，我们可以把所有方案都试一遍。这一点会让决策成本大幅降低。</li>
+<li>人本身就是效率的最大桎梏点。</li>
+<li>现在AI将所有人又拉到了同一条起跑线上，你又落后了怪跑得快的人？</li>
+<li>现在是军备竞赛，对手不会停下来。</li>
+</ol>
+<h3 id="我们的最终目标"><a href="#我们的最终目标" class="headerlink" title="我们的最终目标"></a>我们的最终目标</h3><ol>
+<li>小组沉淀的每一行prompt都是贴合我们自身实际的，而不是从网上抄来一堆所谓的最佳实践，然后看着一大堆，全是泛泛而谈的解决方案。 我们要的是诸如：“当需要进行加解密操作时，你要试用XX工具类”，而不是试用SM2进行加密。</li>
+<li>小组沉淀的prompt能够覆盖90%以上的业务场景。</li>
+<li>采用诸如dify等工具，借助它来对小组所摸索出来的新流程进行编排串联，进一步提升整体流程的自动化水平， 尽可能地实现使用者的自助化。</li>
+<li>AI生成的应该是<strong>团队熟悉的代码</strong>， 确保团队对于生成代码的主动权，避免陷入”编码十分钟，调试两小时”的朝三暮四窘境。</li>
+<li>ALL IN AI。 训练自己的私有AI， 接入我们自己内部的私有&#x2F;行业知识; 基于AI重塑我们的整体工作流程， 包括售前，研发，人事，技术支持，财务，行政等等岗位都应该深度参与进去。</li>
+<li>设计先行。 过往我们总是以时间来不及为”理由”， 跳过设计阶段直接开始编码。 这往往造成巨大的返工成本。 更要命的是此类经验并没有被有效总结，导致后续项目往往再次陷入同样的窘境。 现在有了AI以及小组的一系列经验沉淀， 之后我们完全有比较充足的时间进行设计工作， 减少因为仓促上阵导致的反复返工， 成本增加。</li>
+</ol>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li>关注”幼儿拿枪”引发的问题。在过去的实践中，初中级研发人员虽然难以取得显著的成就，但通常能够避免重大错误。然而随着AI技术的引入，这些人员可能会因为无法充分掌握和利用AI工具而面临更大的风险，甚至可能导致严重的错误，进而影响整个团队。这种情况再次凸显了“超级个体”的概念 —— 与其为了容纳初中级人员而设立复杂的检查和预防措施，不如从根本上杜绝这种不稳定因素， 只要”超级个体”。</li>
+<li>小组初期一定要注意避免陷入”局部优化”的陷阱。例如对于docx文档的读取， 为了让Cursor可以识别，最快的方式是试用python-docx库转换为markdown格式，然后让Cursor读取markdown文件。python-docx库转换而成markdown文件确实格式很乱，但在流程验证阶段我们应该忽略这些细节， AI读得懂就行，人也能够看得懂是下一步的需求。 之后的优化我们再考虑接付费，或者自己基于API二次开发，尽量实现完美转化。</li>
+</ol>
+<h3 id="相关摘抄"><a href="#相关摘抄" class="headerlink" title="相关摘抄"></a>相关摘抄</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/kZj4ZQprtFbx7FPJzM2fng">智能阴影：AI时代的生存危机</a></li>
+</ul>
+<img src="/2025/01/07/cursor-i-think-to/mostStuipd.png" class="" title="image">
+
+<img src="/2025/01/07/cursor-i-think-to/blackhand.png" class="" title="image">
+
+<img src="/2025/01/07/cursor-i-think-to/2.png" class="" title="image">
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/i157x7PUhABaBY7-C5tBOw">只要软件行业开始全方位接受AI，就必然出现大范围的裁员风波</a></li>
+</ul>
+<img src="/2025/01/07/cursor-i-think-to/skillNeed.png" class="" title="image">
+
+<img src="/2025/01/07/cursor-i-think-to/loseJob.png" class="" title="image">
+
+<img src="/2025/01/07/cursor-i-think-to/buffer.png" class="" title="image">
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/651250698/answer/3451702524">AI让程序员变笨了吗？</a></li>
+</ul>
+<ol>
+<li>我们需要经验和熟练度以及高级别认知才能将 AI 真正利用起来。 不是 AI 让程序员变笨了， <strong>AI很可能不给初级程序员变聪明的机会</strong>。</li>
+<li>生产力是衡量社会价值的准绳，甭管你是什么主义什么制度，生产力就是唯一真理！别人对你的生产力没有付出相应的酬劳自然有人管，没人管也可以献祭生产力请出大慈大悲加特林菩萨代管，但是<strong>你如果没有生产力，你连呼吸都是错误的！</strong></li>
+</ol>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://www.cursor.com/">Cursor</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/15063515283">Cursor 深度评测：革命性提效工具还是过誉的玩具？</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/16594953135">我们要主动去适应AI</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12Zi9Y8Eda">人工智能的隐忧</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.codeguide.dev/">Code Guide - Your AI Companion To Help You Code Anything</a></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.png"></a><div class="post-copyright__author_name">夫礼者Home</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward"><div class="reward-button" title="赞赏作者" onclick="AddRewardMask()"><i class="solitude fa-solid fa-heart"></i>赞赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢您的赞赏</span><ul class="reward-group"><li class="reward-item"><a href="/images/wxpay.jpg"><img class="post-qr-code-img nolazyload" src="/images/wxpay.jpg" alt="微信" style="border-color: var(--efu-green)"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.jpg"><img class="post-qr-code-img nolazyload" src="/images/alipay.jpg" alt="支付宝" style="border-color: var(--efu-blue)"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/"><div class="reward-text">赞赏名单</div><div class="reward-dec">由于您的支持，我才能够实现写作的价值。</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">夫礼者Home</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>AI<span class="tagsPageCount">5</span></span></a><a class="post-meta__tags" href="/tags/Cursor/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>Cursor<span class="tagsPageCount">2</span></span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/01/09/the-skill-need-to-pratice-in-ai-era-as-programmer/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">&quot;完整，清晰描述问题的能力&quot; - AI时代的必备技能</div></div></a></div><div class="next-post pull-right"><a href="/2025/01/05/2024-year-end-summary/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">年终总结 - 2024</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-bg-top"><div class="is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div></div><a class="card-info-avatar" href="/about/" title="头像"><div class="avatar-img"><img src="/images/sicp_cover_english.jpg" alt="头像"></div></a><div class="card-info__desc_group"><div class="author-info__name">夫礼者</div><div class="author-info__desc"></div><div class="card-info__data is-center"><a href="/archives/" title="累计文章数:41"><div class="length-num">41</div><div class="headline">文章</div></a><a href="/tags/" title="标签总数:13"><div class="length-num">13</div><div class="headline">标签</div></a><a href="/categories/" title="分类总数:13"><div class="length-num">13</div><div class="headline">分类</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/fulizhe" title="Github"><i class="solitude  fab fa-github"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://gitee.com/lqzkcx3" title="Gitee"><i class="solitude  fab fa-git"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.zhihu.com/people/tao-luo-73" title="Zhihu"><i class="solitude  fab fa-zhihu"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://blog.csdn.net/lqzkcx3" title="CSDN"><i class="solitude  fab fa-bilibili"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.jianshu.com/u/cd3dd432fd00" title="jianshu"><i class="solitude  fab fa-node-js"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://fulizhe.github.io/curriculumVitae" title="aboutMe"><i class="solitude  fas fa-address-card"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fa-solid fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BD%95%E6%88%91%E8%BF%99%E4%B9%88%E5%85%B4%E5%A5%8B%EF%BC%9F"><span class="toc-text">为何我这么兴奋？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AI%E6%98%AF%E7%A7%91%E5%AD%A6%EF%BC%8C%E4%B8%8D%E6%98%AF%E9%AD%94%E6%B3%95-AI%E6%98%AF%E8%80%81%E5%B8%88%EF%BC%8C%E4%B8%8D%E6%98%AF%E4%B8%8A%E5%B8%9D"><span class="toc-text">AI是科学，不是魔法; AI是老师，不是上帝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%93%E5%89%8D%E6%88%91%E4%BB%AC%E8%A6%81%E5%81%9A%E4%BB%80%E4%B9%88"><span class="toc-text">当前我们要做什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E7%9A%84%E6%9C%80%E7%BB%88%E7%9B%AE%E6%A0%87"><span class="toc-text">我们的最终目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%91%98%E6%8A%84"><span class="toc-text">相关摘抄</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fa-solid fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/2026/01/18/book-why-donot-student-like-school/" title="读后感 - 《为什么学生不喜欢上学？》"><div class="thumbnail"><img alt="读后感 - 《为什么学生不喜欢上学？》" src="/2026/01/18/book-why-donot-student-like-school/cover.png"></div><div class="content"><span class="title" href="/2026/01/18/book-why-donot-student-like-school/" title="读后感 - 《为什么学生不喜欢上学？》">读后感 - 《为什么学生不喜欢上学？》</span></div></a><a class="aside-list-item" href="/2026/01/07/devops-bottom-up-recognize-reality-2/" title="自下而上的团队改进 - 认清现实2"><div class="thumbnail"><img alt="自下而上的团队改进 - 认清现实2" src="/2026/01/07/devops-bottom-up-recognize-reality-2/cover.png"></div><div class="content"><span class="title" href="/2026/01/07/devops-bottom-up-recognize-reality-2/" title="自下而上的团队改进 - 认清现实2">自下而上的团队改进 - 认清现实2</span></div></a><a class="aside-list-item" href="/2025/11/10/ruankao-xtfxs2/" title="软考202505-系统分析师-Again"><div class="thumbnail"><img alt="软考202505-系统分析师-Again" src="/2025/11/10/ruankao-xtfxs2/cover.png"></div><div class="content"><span class="title" href="/2025/11/10/ruankao-xtfxs2/" title="软考202505-系统分析师-Again">软考202505-系统分析师-Again</span></div></a><a class="aside-list-item" href="/2025/10/01/think-the-essence-of-implement-ultimate-idea/" title="本源思考 - 财富的意义"><div class="thumbnail"><img alt="本源思考 - 财富的意义" src="/2025/10/01/think-the-essence-of-implement-ultimate-idea/cover.png"></div><div class="content"><span class="title" href="/2025/10/01/think-the-essence-of-implement-ultimate-idea/" title="本源思考 - 财富的意义">本源思考 - 财富的意义</span></div></a><a class="aside-list-item" href="/2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/" title="AI改造公司的研发流程-快速原型"><div class="thumbnail"><img alt="AI改造公司的研发流程-快速原型" src="/2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/cover.png"></div><div class="content"><span class="title" href="/2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/" title="AI改造公司的研发流程-快速原型">AI改造公司的研发流程-快速原型</span><span class="article-recent_post_categories" href="/2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/">AI润色</span></div></a></div></div></div></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2026 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src="/img/pwa/favicon.png">夫礼者</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude" alt="Theme">Theme</a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=2.1.13"></script><script src="/js/main.js?v=2.1.13"></script><script src="/js/third_party/waterfall.min.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="https://fastly.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js"></script><script src="/js/tw_cn.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="js-pjax"><script>mermaid.run();</script></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude fa-solid fa-xmark"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=2.1.13"></script><!-- Tianli-Talk--><!-- music--></body></html>
+        <script>
+            const posts = ["2026/01/18/book-why-donot-student-like-school/","2026/01/07/devops-bottom-up-recognize-reality-2/","2025/11/10/ruankao-xtfxs2/","2025/10/01/think-the-essence-of-implement-ultimate-idea/","2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/","2025/08/17/35-grap-the-initiative-of-life/","2025/08/15/devops-promote-the-progress-of-docker/","2025/08/09/devops-impove-development-process-team-reform/","2025/08/04/think-why-still-working-hard/","2025/08/04/think-how-to-find-your-career/","2025/07/31/devops-why-we-need-focusing-on-observability/","2025/06/22/book-ting-habits/","2025/06/20/think-value-anchor-point/","2025/06/04/devops-observability/","2025/06/03/devops-operation-upgrade/","2025/06/01/book-nexus/","2025/05/31/devops-bottom-up-recognize-reality/","2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/","2025/05/27/ruankao-xtfxs/","2025/03/21/35-why-do-i-firmly-believe-i-will-succeed/","2025/03/14/Technical-team-face-to-Technical-Debt/","2025/03/05/35-basic/","2025/03/03/tsitt-The-Road-to-Breaking-through-Operations-and-Maintenance/","2025/03/02/ai-the-benefit-of-meta-knowledge/","2025/02/27/how-to-break-in-the-era-of-ai-for-company/","2025/02/24/35-I-was-too-extreme/","2025/02/22/35-how-to-check-if-someone-is-worth-following/","2025/02/21/tip-cursor-refill-for-free/","2025/02/12/ai-The-double-edged-sword-of-creative-equality/","2025/02/12/ai-human-win/","2025/02/07/what-mean-when-we-say-ai-assisted-process-transformation/","2025/02/04/deepseek-r1-i-observe-to/","2025/01/17/social-experiment-by-ai/","2025/01/12/think-in-ai-era/","2025/01/09/the-skill-need-to-pratice-in-ai-era-as-programmer/","2025/01/07/cursor-i-think-to/","2025/01/05/2024-year-end-summary/","2024/12/12/《一本小小的红色写作书》读后感/","2024/12/12/《自学是门手艺》读后感/","2024/12/12/典型小散的投资生涯总结2018-2024/","2024/11/10/hello-world/"];
+            function toRandomPost() {
+                const randomPost = posts[Math.floor(Math.random() * posts.length)];
+                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
+            }
+        </script>

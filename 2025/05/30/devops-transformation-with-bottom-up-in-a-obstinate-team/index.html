@@ -1,0 +1,397 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>自下而上实现不换人式的团队改进【史诗巨制】 | 夫礼者Home</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=2.1.13"><!-- inject head--><link rel="canonical" href="http://example.com/2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><!-- Open Graph--><meta name="description" content="认清现实现在这种情况是正常、必然的，感到惊讶和不可思议反而不正常。 一次性通过P1的版本一个月出不了几个，是这帮货能力的真实展现。 这个部门过往表现各方有目共睹，这种能力和职业素养表现下交出这样的答卷并没有什么值得惊讶的。 只是质控团队的进化和禅道流程的推进将这种表现较为清晰、全面、真实地呈现在所"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="夫礼者Home"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(' %c Solitude %c ' + '2.1.13' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script src="https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSE7WE78H9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZSE7WE78H9');
+</script>    
+<script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+          },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":false,"path":"/search.xml"},
+    runtime: '2023-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。","loading":"搜索中..."}},
+    aside: {
+        sayhello: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        sayhello2: [],
+        sayhello3: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><!-- background img--><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img nolazyload" src="/images/sicp_cover_english.jpg" alt="loading image"></div></div><script>const preloader = {
+    isLoaded: false,
+    endLoading: () => {
+        if (!preloader.isLoaded) {
+            document.getElementById('loading-box').classList.add('loaded');
+            preloader.isLoaded = true;
+            preloader.togglePaceDone();
+        }
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+        preloader.isLoaded = false;
+        preloader.togglePaceDone();
+    },
+    togglePaceDone: () => {
+        document.getElementById('body').className = preloader.isLoaded ? 'pace-done' : '';
+    }
+}
+
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});
+
+setTimeout(() => {
+    preloader.endLoading();
+}, 5000);</script><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">41</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fa-solid fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结<sup>1</sup></a><a href="/tags/2024/">2024<sup>1</sup></a><a href="/tags/%E5%8F%8D%E6%80%9D/">反思<sup>4</sup></a><a href="/tags/thirty-five/">thirty-five<sup>5</sup></a><a href="/tags/AI%E6%B6%A6%E8%89%B2/">AI润色<sup>3</sup></a><a href="/tags/Technical-team/">Technical team<sup>3</sup></a><a href="/tags/devops/">devops<sup>7</sup></a><a href="/tags/%E9%98%85%E8%AF%BB/">阅读<sup>4</sup></a><a href="/tags/AI/">AI<sup>5</sup></a><a href="/tags/Cursor/">Cursor<sup>2</sup></a><a href="/tags/%E8%80%83%E8%AF%95/">考试<sup>2</sup></a><a href="/tags/%E6%8A%80%E8%83%BD/">技能<sup>1</sup></a><a href="/tags/%E7%90%86%E8%B4%A2/">理财<sup>1</sup></a></div></div></div></div><!-- keyboard--><!-- righhtside--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon solitude fas fa-bars-progress"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页"><span class="title">夫礼者小屋</span><i class="solitude fa-solid fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">自下而上实现不换人式的团队改进【史诗巨制】</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude fa-solid fa-magnifying-glass"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fa-solid fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fa-solid fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/cover.png" alt="自下而上实现不换人式的团队改进【史诗巨制】"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/devops/">devops</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Technical-team/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>Technical team</span></a><a class="post-meta__tags" href="/tags/devops/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>devops</span></a></div></div></div></div><h1 class="post-title">自下而上实现不换人式的团队改进【史诗巨制】</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2025-05-30 12:03:23"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2025-05-30T04:03:23.000Z">2025-05-30T04:03:23.000Z</time></span><span class="post-meta-date" title="最后更新于 2026-02-25 22:38:38"><i class="post-meta-icon solitude fa-solid fa-arrows-rotate"></i><time datetime="2026-02-25T14:38:38.506Z">2026-02-25T14:38:38.506Z</time></span><span class="post-meta-position" title="作者IP归属地为China"><i class="post-meta-icon solitude fas fa-location-dot"></i><span>China</span></span><a class="post-meta-pv" href="/2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/" title="文章热度"><i class="post-meta-icon solitude fa-solid fa-fire-flame-curved"></i></a></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><h2 id="认清现实"><a href="#认清现实" class="headerlink" title="认清现实"></a>认清现实</h2><p><strong>现在这种情况是正常、必然的，感到惊讶和不可思议反而不正常</strong>。</p>
+<ol>
+<li>一次性通过P1的版本一个月出不了几个，是这帮货能力的真实展现。</li>
+<li>这个部门过往表现各方有目共睹，这种能力和职业素养表现下交出这样的答卷并没有什么值得惊讶的。</li>
+<li>只是质控团队的进化和禅道流程的推进将这种表现较为清晰、全面、真实地呈现在所有人面前。他们需要开始找新的”理由”。</li>
+<li><strong>如果不继续精进禅道和测试，等他们找出新的理由，那就是进入又一轮循环而已</strong>。</li>
+<li>他们要是交出满足各方要求的答卷，那踏马才不正常，</li>
+</ol>
+<p>别再喊啥”超越超图”了，能够看到别人背景已经很不容易了。只要这帮货还在这里，不可能，因为在维护现有这堆屎之外，这帮货在源源不断产生新的屎。</p>
+<h2 id="团队特点"><a href="#团队特点" class="headerlink" title="团队特点"></a>团队特点</h2><ol>
+<li><strong>特别擅长推卸责任</strong>。比如被辞退人的工作，你踏马要”自己的事情自己抱走”而不是让别人接，需求之后的设计就是你怎么说我怎么做，这踏马跟哄小孩吗？<strong>还没断奶吗？要不要爸爸抱一下？</strong></li>
+<li><strong>没有迭代和沉淀</strong>。不要再奢望这种东西，十几年来都没做到的事情，还指望突然之间转性了？他们就是MBA课程经典案例&lt;爱若和布若&gt;中的布若。</li>
+<li><strong>缺乏羞耻感</strong>。这么多年各方反感之下还自我感觉良好。”哎呀现在已经进步很多了”? 这踏马是你拿着资深的工资混这么多年还沾沾自喜？更会反过来拿捏领导，领导所谓的强调”错误不要再犯”，对他们来说真的就是不痛不痒 —— 你领导能拿我怎么样？这么多次都没干掉我。</li>
+<li>这帮丫最擅长<strong>通过”不干活，将任务往外推”来实现不出问题</strong>。属于是<strong>制造困难也得上</strong>。就跟印度最近坠毁的光辉战机一样，我不飞那我的坠毁记录不就少了吗？</li>
+<li>真的很擅长把<strong>简单的问题复杂化</strong>。本来通过简单的操作指引就能解决的问题，非要不问研发都不知道怎么使用；这也是为什么质控部门不敢深入测试。这帮人又一次胜利了。</li>
+<li><strong>自己做的东西自己不用</strong>。自己做的系统流程自己不会操作，导致各种奇葩设计和用户操作频出。”吃自己的狗粮”</li>
+</ol>
+<p>这就踏马一个<strong>做项目的团队</strong>，就这么个能力。得过且过、鼠目寸光对于他们是纪实片，而不是文艺片。这帮货的能力和表现，一辈子在行业部门做着几个月一个的项目，以初级研发身份干到死。要不忍，要不滚。</p>
+<p>这帮货跟动物一样，不吃打，只能靠死亡淘汰劣质基因。</p>
+<p>让他们能在平台部门待了十几年就是<strong>领导失职</strong>。</p>
+<h2 id="典型问题"><a href="#典型问题" class="headerlink" title="典型问题"></a>典型问题</h2><p>这打包冲突能够延续到10.0，我把话放在这里。</p>
+<p>部署花费一整天，搞什么事后复盘没意义，信不信下次还会发生，然后继续事后复盘，而且这复盘还是您苏经理发起的。而且还表功：为了XXX，我们还加班了呢？</p>
+<p>我是真希望这帮货是坏，而不是蠢。至少我不用怀疑他们的能力。</p>
+<p>完全不带脑子，一点高级的能力都没有。<strong>让提需求的人知难而退，这样他们就不会有问题了</strong>, 从根源上解决问题。拿典型的日志监控为例，就我接触的几个需求，每个都能搞好几个月，彭老师就<strong>完全没动过脑子</strong> —— 这些需求的受众是谁？最后还踏马破罐子破摔”你怎么说我怎么做”? 那劳资花费几万一个月的工资把你放这的目的是什么？ 缺爹供着？</p>
+<p><a target="_blank" rel="noopener" href="http://113.57.110.41:2521/zentao/bug-view-77377.html">http://113.57.110.41:2521/zentao/bug-view-77377.html</a>  底层提出除了分析结论，最好写入一些关键分析过程的信息。。。结果GO那边情绪激动：”我都分析出来了”，这种涉及基本职业素养的东西，本应该是门槛，现在成了奢望.</p>
+<p>只有V9.x的代码库存在了，他才能理解V9.x的打包流程要单独存在？？？ 这踏马初级都不如啊</p>
+<p>代码分支的使用。所有的需求和逻辑全部干在主分支上，就是你看着这帮货有种面对人机的强烈感觉。</p>
+<h2 id="指标"><a href="#指标" class="headerlink" title="指标"></a>指标</h2><ol>
+<li>工作饱和度，比如苏经理自己发现的那个禅道任务，一天八小时做一个保存配置项的接口。领导自己都看出来不对劲，这踏马你告诉劳资？</li>
+<li>工作质量。也就是所完成工作的质量，产品脆弱性、返工率等等。</li>
+</ol>
+<p>然后还有什么“这算我的问题行不行，是我没理解到位”？ 这跟踏马SB一样，犯这种低级错误这踏马不需要付出代价吗？就一个轻飘飘的”似认错实不服”就完了？之前也是踏马不做备份，又是一句”这算我的问题”，这就完了？都踏马没断奶吗？</p>
+<h2 id="改进思路"><a href="#改进思路" class="headerlink" title="改进思路"></a>改进思路</h2><p>两条线</p>
+<ol>
+<li>换人。</li>
+<li>不换人。做好<strong>长期手把手指导</strong>的心理准备。 认清现实：这就是一帮<strong>还没断奶，完全没有相应职业素养，只适合做短期项目，在完全业务压力下才能做成点眼前事情</strong>的货，只是因为公司多年不作为，导致在这个不属于他们的位置上靠整个团队吊着坑了十几年的货色。既然选择不换人，领导们和其它上下游团队就做好改造自身的心理准备吧。你们这么长时间的容忍已经让这个团队内部早已自适应出<strong>一整套自洽的思维流程</strong>。</li>
+</ol>
+<p><strong>不要幻想着解决问题</strong>。拆分为”定位问题”和”解决问题”吧。能够做到前者已经烧高香了，既然做不到换人，那就老老实实以禅道为唯一信息源，持续增加评估指标，逼着这帮货<strong>承认自己就是个废物</strong>。这就是过往一切症结的根源。他们踏马但凡有点自知之明，事情不会发展成今天这个B样。这也是各方包容的结果，受着吧。</p>
+<h2 id="改进措施"><a href="#改进措施" class="headerlink" title="改进措施"></a>改进措施</h2><p>这帮货的改进别指望了，上下游团队以及领导层的改进吧。</p>
+<ol>
+<li>只告诉他们目标。不要跟他们讨论实现。否则就是你要求这么做的。要求也不能太高，稍微高一点那就变成你的活了 —— 要求这么多，那你怎么说我怎么做。</li>
+<li>不要再给他们提额外的需求，否则那就是因为你要求的，所以年终目标没时间做。虽然你这些额外的需求他们做的也稀烂，忙活一个月然后整个推了重新来。</li>
+<li>监控相关的功能和设计不要让这帮货插手了。其它的功能也是通过实践如此操作。</li>
+<li>审查禅道需求。</li>
+<li>持续迭代禅道流程和自动化测试流程。不断勒紧防护网 —— 禅道构建的<strong>人效检测网</strong>和测试构建的<strong>产品质量网</strong>。他们能够这么多年毫无长进，你觉得他们会认为自己存在问题？</li>
+<li>吃自己的狗粮，从彭老师开始。自己做的东西自己不用，否则优化无从谈起，而且净搞出一些离奇优化。</li>
+</ol>
+<h2 id="额外补充"><a href="#额外补充" class="headerlink" title="额外补充"></a>额外补充</h2><blockquote>
+<p>据我的观察，一般表达能力不好的人，特别容易在以下两点上表现出来。<br>第一，他会将一个事物在他自己脑子里是怎么理解的、思考的，原封不动的陈述出来。简单来说就是自己想到哪说到哪，会让听的人很明显的感觉到有点乱……毕竟，大脑的思路跳跃起来是飞快的，这可比飙车的时候紧跟着前车难得多。<br>第二，过于面面俱到。这部分小伙伴生怕自己漏讲了什么，会把所有他能想到的相关信息啪啦啪啦全部“倒”给你。的确，沟通很充分，信息量很大。但是站在听者的角度来说，信息的接收和消化就困难了。<br>FROM <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Nx6HzFaCZaNWSSQgugWxLQ">人在职场，表达似水</a><br>沟通交流的目的是减少不确定性，但你在和他们沟通过程中，不知道是不是天赋发力，他们能够不断增加不确定性。</p>
+</blockquote>
+<blockquote>
+<p>爱若和布若同时受雇于一家超市，开始时拿同样的薪水。可是几个月后，爱若步步高升，布若却停滞不前。布若觉得不公平，便向总经理提出辞呈，并抱怨公司不重用他这样的人。<br>总经理没有直接回答，而是让布若去集市看看今天早上有什么卖的。布若很快回来汇报：”只有一个农民拉了一车土豆在卖。”<br>“有多少袋？”总经理问。布若又跑回去，然后回报：”有10袋。”<br>“价格多少？”布若再次跑到集市上问来了价格。<br>总经理看着气喘吁吁的布若，叫来爱若，布置了同样的任务。爱若很快从集市回来，汇报说：”到现在为止只有一个农民在卖土豆，一共10袋，价格适中，质量不错。”他还带回了几个土豆让经理看。更关键的是，他了解到这个农民下午还会送来几筐西红柿，考虑到超市可能需要，他已经把那个农民也带来了。<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20649611/answer/1978035806468850291">经典的MBA故事“爱若和布若”</a>.</p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://oa.kqgeo.com:1890/pages/viewpage.action?pageId=77758695">一旦功能放在外页，将会牵扯进来更多的人</a>， 而如果功能被放在外页，</p>
+<ol>
+<li>牵扯的人越多，需要同步的信息也就越多，你也就越无法把控这个需求的进度。他就有了更大空间跟你周旋。</li>
+<li>相关功能会按照完整的产品质量进行要求，最典型的就是<a target="_blank" rel="noopener" href="https://www.processon.com/mindmap/680cdde71780bd6627e8b809">非功能性指标诸如性能、安全、兼容性、界面一致性、易用性、用户体验、稳定性等这些要求</a>就会被作为显式要求。但过往很多提到的监控和配置修改可视化这类耗费了大量人力物力的功能，仔细想想需要做到这个层面吗？</li>
+<li>所以你要是让他偷鸡成功，当你要求他完成年度计划时候，他拿这些东西来作为”理由”，你有那么多时间和精力陪他掰扯吗？</li>
+<li>你们让他加了这么多监控功能，哪次解决问题时候用上了？ 价值为零啊. 这等于领导自己送武器给对方来对付自己。</li>
+<li>FROM [<a target="_blank" rel="noopener" href="https://www.processon.com/view/link/691a8d134673296a3ae9c6fa]">https://www.processon.com/view/link/691a8d134673296a3ae9c6fa]</a>(产品受众 - 内外有别)</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>他会通过频繁打断，东扯西拉等方式把你的智商拉到跟他一个水平，把你拉到他的主场，然后用他多年当**的丰富经验打败你.</p>
+<ol>
+<li>他们不是解决问题，大量精力被用在跟你东扯西拉。而你是没有那么多精力陪它玩的。</li>
+<li>你大量宝贵时间和精力被砸在和他们的内耗上，你是承担不起这些消耗的。</li>
+<li>而且特别会抱团取暖、自我宽慰，事后还怪你态度不好、当初需求没说清楚等进行内部认知共建。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>这就是一个只能做项目的团队</p>
+<ol>
+<li>产品型软件要求相关从业者有持续迭代优化、做决策时候进行长远、通盘考虑的职业素养，这需要相关人员过往经历过长时间的培训和自我训练。但很明显这帮货是不具备这些能力的。</li>
+<li>项目型软件的特点就是生命周期短，几个月一个，每一轮都是全新的开始，这使得在项目中累积的错误决策绝大部分都还没来得及发挥威力，项目就结束了。这很适合当前团队这种短视，应付差事的行为作风。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>这是一个没有团队概念，硬凑出来的施工队。更重要的是团队领导层也没有进行团队建设的意识和觉悟，这使得这个所谓团队长期处于松散状态，人浮于事，各自为战。<br>他们没有所谓团队的概念，更不用谈士气这种东西。出现在公司的原因是下个月有房贷要还。<br>既然成员和领导没有所谓团队、士气的概念，那就很难理解为什么要对团队内部流程做持续优化，上下游衔接操作中要尽量减少注意事项的情况，减少人员沟通中的摩擦成本等等这种事情的重要性和必要性。</p>
+<ol>
+<li>当团队成员切身体会到团队内部的效率在稳步提升，工作节奏上掌控感越来越强，其对于团队的归属感和为成为团队的一员而感到骄傲，自然会驱使TA去思考如何将状况变得更好，这也就是所谓的”上心”。而这种自我驱动的改变是要比依赖强制行政命令的方式要有效得多，也长远得多）。</li>
+<li>另外一点就是这类持续性的小规模优化会在潜移默化中增强团队成员对于团队领袖的信服，这使得团队内部的效率和对于规范的执行度有质的变化，这也是相较于行政命令所带来的遵从所不可同日而语的。</li>
+<li>所谓调动主观能动性，齐心协力，这些东西这帮人很可能一辈子都意识不到，更不可能去主动建设。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>团队成员短视，应付差事的行为作风</p>
+<ol>
+<li>所谓在日常的决策中，总是偏向选择出力最少，能够把眼前应付过去的解决方案。而这些决策最大的特点就是极大概率<strong>后患无穷</strong>。举例：V8.5和V9.0这两套打包流程，有些流程彼此之间是相互冲突的，也就是一个在执行时候另外一个就不能执行，否则都报错。这样产生的原因就是流程实现人员的怠惰，应付了事（团队风格）。这导致的问题是打包流程的参与方都会被迫去了解这些所谓的tips，而在实际的执行过程中，这个被迫理解绝大部分时候就是流程报错的时候。这等于在对于团队效能和士气进行<strong>持续放血</strong> —— 每加入一个新人，甚至时间长了以后的遗忘，以及报错之后必然发生的多人沟通摩擦，加上记忆这些彼此冲突的流程所耗费的心力，这些除了对团队效能持续性的消耗外，也会给士气本身带来持续性的潜在打击。 —— 这一点都做不好，其它的有毛病也就很正常，很自然就延申出”团队就这么个能力，有各种各样的问题很正常”，进而陷入习得性无助 —— 为了完成一个任务，一步一个坎，被迫频繁退出心流模式；”问题是无穷无尽的，我们解决不完，也解决不了”。</li>
+<li>持续放血状态下，使用他们做的东西，时刻都在消耗你对这些东西的信心和耐心，最后自然是能不用就不用，更不可能去期待它能够变好，自然不会提意见， 其他人对其的态度都是避之不及。</li>
+<li>会到上面的”后患无穷”，为了兼容这种冲突，减少相关人员的记忆负担，我们采取的一种优化是进行程序扩展，让程序去预警这种冲突，但由此增加的逻辑对程序稳定性的影响，以及提示信息的培训等等，这都是原本不应该存在的成本。</li>
+<li>上面V8.5和V9.0冲突，我去询问的时候，给出的理由是打包占用资源太多，没有服务器。所谓我们认为这个团队不换人难以改变也就是在于此，你有那么多精力跟他去掰扯这各种各样所谓的”理由”吗？</li>
+</ol>
+</blockquote>
+<blockquote>
+<p><strong>心智负担</strong>。</p>
+<ol>
+<li>“心智负担”（Cognitive Load）是一个源自认知心理学和人因工程学的重要概念，用于描述<strong>人在处理信息、完成任务或做出决策时，大脑所承受的思维负荷或精神压力</strong>。</li>
+<li><strong>在使用他们的产品和流程时候，每走一步都如履薄冰，需要反复思考确认有哪些tips要注意，大量的摩擦成本和心智损害，徒手拆炸弹的既视感</strong>。最终使用者的选择出奇一致 —— 不用了，放过彼此。</li>
+<li>我是真不想解释这个概念，因为如果对方对这个概念没啥认知的话，沟通基本没必要进行。一叶知秋, 这基本意味着这人在认知的全面缺失，缺乏对应的沟通层级，双方都会非常痛苦。属于鸡同鸭讲话 —— 你得从 1+1&#x3D;2开始解释，他才能理解3+4&#x3D;7.</li>
+<li>三种类型的心智负担（Sweller 的认知负荷理论）</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+<th>是否可优化</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>内在负荷（Intrinsic）</strong></td>
+<td>由任务本身复杂度决定（如学微积分 vs 背乘法表）</td>
+<td>❌ 无法消除，但可拆解</td>
+</tr>
+<tr>
+<td><strong>外在负荷（Extraneous）</strong></td>
+<td>由信息呈现方式或交互设计不当造成（如糟糕的 UI、冗余步骤）</td>
+<td>✅ <strong>可通过设计大幅降低</strong></td>
+</tr>
+<tr>
+<td><strong>相关负荷（Germane）</strong></td>
+<td>用于构建长期记忆、理解深层结构的“有益”负荷</td>
+<td>✅ 应鼓励和引导</td>
+</tr>
+</tbody></table>
+<ol start="5">
+<li>他们在盛产&lt;外在负荷&gt;上非常有天赋。</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>给予领导更多的证据让TA可以去说服其它利益方。<br>最大的成本是沟通成本, 而不是那点所谓的技术实现。</p>
+</blockquote>
+<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><ol>
+<li><a href="/2025/03/14/Technical-team-face-to-Technical-Debt/">【Technical team】「技术债务与团队态度」</a></li>
+<li><a href="/2025/08/09/devops-impove-development-process-team-reform/">研发流程改造之”团队基础SOP的建立”和”思维误区矫正”</a></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.png"></a><div class="post-copyright__author_name">夫礼者Home</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward"><div class="reward-button" title="赞赏作者" onclick="AddRewardMask()"><i class="solitude fa-solid fa-heart"></i>赞赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢您的赞赏</span><ul class="reward-group"><li class="reward-item"><a href="/images/wxpay.jpg"><img class="post-qr-code-img nolazyload" src="/images/wxpay.jpg" alt="微信" style="border-color: var(--efu-green)"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.jpg"><img class="post-qr-code-img nolazyload" src="/images/alipay.jpg" alt="支付宝" style="border-color: var(--efu-blue)"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/"><div class="reward-text">赞赏名单</div><div class="reward-dec">由于您的支持，我才能够实现写作的价值。</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">夫礼者Home</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Technical-team/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>Technical team<span class="tagsPageCount">3</span></span></a><a class="post-meta__tags" href="/tags/devops/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>devops<span class="tagsPageCount">7</span></span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/05/31/devops-bottom-up-recognize-reality/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">自下而上的团队改进 - 认清现实</div></div></a></div><div class="next-post pull-right"><a href="/2025/05/27/ruankao-xtfxs/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">软考202505-系统分析师</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-bg-top"><div class="is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div></div><a class="card-info-avatar" href="/about/" title="头像"><div class="avatar-img"><img src="/images/sicp_cover_english.jpg" alt="头像"></div></a><div class="card-info__desc_group"><div class="author-info__name">夫礼者</div><div class="author-info__desc"></div><div class="card-info__data is-center"><a href="/archives/" title="累计文章数:41"><div class="length-num">41</div><div class="headline">文章</div></a><a href="/tags/" title="标签总数:13"><div class="length-num">13</div><div class="headline">标签</div></a><a href="/categories/" title="分类总数:13"><div class="length-num">13</div><div class="headline">分类</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/fulizhe" title="Github"><i class="solitude  fab fa-github"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://gitee.com/lqzkcx3" title="Gitee"><i class="solitude  fab fa-git"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.zhihu.com/people/tao-luo-73" title="Zhihu"><i class="solitude  fab fa-zhihu"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://blog.csdn.net/lqzkcx3" title="CSDN"><i class="solitude  fab fa-bilibili"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.jianshu.com/u/cd3dd432fd00" title="jianshu"><i class="solitude  fab fa-node-js"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://fulizhe.github.io/curriculumVitae" title="aboutMe"><i class="solitude  fas fa-address-card"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fa-solid fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A4%E6%B8%85%E7%8E%B0%E5%AE%9E"><span class="toc-text">认清现实</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%A2%E9%98%9F%E7%89%B9%E7%82%B9"><span class="toc-text">团队特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E9%97%AE%E9%A2%98"><span class="toc-text">典型问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E6%A0%87"><span class="toc-text">指标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B%E6%80%9D%E8%B7%AF"><span class="toc-text">改进思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B%E6%8E%AA%E6%96%BD"><span class="toc-text">改进措施</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%9D%E5%A4%96%E8%A1%A5%E5%85%85"><span class="toc-text">额外补充</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3"><span class="toc-text">相关</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fa-solid fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/2026/01/18/book-why-donot-student-like-school/" title="读后感 - 《为什么学生不喜欢上学？》"><div class="thumbnail"><img alt="读后感 - 《为什么学生不喜欢上学？》" src="/2026/01/18/book-why-donot-student-like-school/cover.png"></div><div class="content"><span class="title" href="/2026/01/18/book-why-donot-student-like-school/" title="读后感 - 《为什么学生不喜欢上学？》">读后感 - 《为什么学生不喜欢上学？》</span></div></a><a class="aside-list-item" href="/2026/01/07/devops-bottom-up-recognize-reality-2/" title="自下而上的团队改进 - 认清现实2"><div class="thumbnail"><img alt="自下而上的团队改进 - 认清现实2" src="/2026/01/07/devops-bottom-up-recognize-reality-2/cover.png"></div><div class="content"><span class="title" href="/2026/01/07/devops-bottom-up-recognize-reality-2/" title="自下而上的团队改进 - 认清现实2">自下而上的团队改进 - 认清现实2</span></div></a><a class="aside-list-item" href="/2025/11/10/ruankao-xtfxs2/" title="软考202505-系统分析师-Again"><div class="thumbnail"><img alt="软考202505-系统分析师-Again" src="/2025/11/10/ruankao-xtfxs2/cover.png"></div><div class="content"><span class="title" href="/2025/11/10/ruankao-xtfxs2/" title="软考202505-系统分析师-Again">软考202505-系统分析师-Again</span></div></a><a class="aside-list-item" href="/2025/10/01/think-the-essence-of-implement-ultimate-idea/" title="本源思考 - 财富的意义"><div class="thumbnail"><img alt="本源思考 - 财富的意义" src="/2025/10/01/think-the-essence-of-implement-ultimate-idea/cover.png"></div><div class="content"><span class="title" href="/2025/10/01/think-the-essence-of-implement-ultimate-idea/" title="本源思考 - 财富的意义">本源思考 - 财富的意义</span></div></a><a class="aside-list-item" href="/2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/" title="AI改造公司的研发流程-快速原型"><div class="thumbnail"><img alt="AI改造公司的研发流程-快速原型" src="/2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/cover.png"></div><div class="content"><span class="title" href="/2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/" title="AI改造公司的研发流程-快速原型">AI改造公司的研发流程-快速原型</span><span class="article-recent_post_categories" href="/2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/">AI润色</span></div></a></div></div></div></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2026 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src="/img/pwa/favicon.png">夫礼者</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude" alt="Theme">Theme</a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=2.1.13"></script><script src="/js/main.js?v=2.1.13"></script><script src="/js/third_party/waterfall.min.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="https://fastly.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js"></script><script src="/js/tw_cn.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="js-pjax"><script>mermaid.run();</script></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude fa-solid fa-xmark"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=2.1.13"></script><!-- Tianli-Talk--><!-- music--></body></html>
+        <script>
+            const posts = ["2026/01/18/book-why-donot-student-like-school/","2026/01/07/devops-bottom-up-recognize-reality-2/","2025/11/10/ruankao-xtfxs2/","2025/10/01/think-the-essence-of-implement-ultimate-idea/","2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/","2025/08/17/35-grap-the-initiative-of-life/","2025/08/15/devops-promote-the-progress-of-docker/","2025/08/09/devops-impove-development-process-team-reform/","2025/08/04/think-why-still-working-hard/","2025/08/04/think-how-to-find-your-career/","2025/07/31/devops-why-we-need-focusing-on-observability/","2025/06/22/book-ting-habits/","2025/06/20/think-value-anchor-point/","2025/06/04/devops-observability/","2025/06/03/devops-operation-upgrade/","2025/06/01/book-nexus/","2025/05/31/devops-bottom-up-recognize-reality/","2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/","2025/05/27/ruankao-xtfxs/","2025/03/21/35-why-do-i-firmly-believe-i-will-succeed/","2025/03/14/Technical-team-face-to-Technical-Debt/","2025/03/05/35-basic/","2025/03/03/tsitt-The-Road-to-Breaking-through-Operations-and-Maintenance/","2025/03/02/ai-the-benefit-of-meta-knowledge/","2025/02/27/how-to-break-in-the-era-of-ai-for-company/","2025/02/24/35-I-was-too-extreme/","2025/02/22/35-how-to-check-if-someone-is-worth-following/","2025/02/21/tip-cursor-refill-for-free/","2025/02/12/ai-The-double-edged-sword-of-creative-equality/","2025/02/12/ai-human-win/","2025/02/07/what-mean-when-we-say-ai-assisted-process-transformation/","2025/02/04/deepseek-r1-i-observe-to/","2025/01/17/social-experiment-by-ai/","2025/01/12/think-in-ai-era/","2025/01/09/the-skill-need-to-pratice-in-ai-era-as-programmer/","2025/01/07/cursor-i-think-to/","2025/01/05/2024-year-end-summary/","2024/12/12/《一本小小的红色写作书》读后感/","2024/12/12/《自学是门手艺》读后感/","2024/12/12/典型小散的投资生涯总结2018-2024/","2024/11/10/hello-world/"];
+            function toRandomPost() {
+                const randomPost = posts[Math.floor(Math.random() * posts.length)];
+                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
+            }
+        </script>
