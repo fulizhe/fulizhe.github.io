@@ -1,0 +1,295 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>think-money-has-clear-criteria | 夫礼者Home</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=2.1.13"><!-- inject head--><link rel="canonical" href="http://example.com/2026/02/02/think-money-has-clear-criteria/"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><!-- Open Graph--><meta name="description" content="财富有明确&amp;#x2F;恒定的标准，金钱额度上你少一分钱，别人就是不会让你把眼前这个你想要的东西拿走。但是所谓的家务，照顾人，自理，做个好人这种东西，踏马地完全没什么标准，只能指望围观者当时的心情。 过去整整十年，我把最难的事情先做完了。你们接着BB啊？ 你旁边的同事刷半小时微博，写十分钟代码的时候；"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="夫礼者Home"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(' %c Solitude %c ' + '2.1.13' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script src="https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSE7WE78H9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZSE7WE78H9');
+</script>    
+<script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+          },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":false,"path":"/search.xml"},
+    runtime: '2023-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。","loading":"搜索中..."}},
+    aside: {
+        sayhello: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        sayhello2: [],
+        sayhello3: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><!-- background img--><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img nolazyload" src="/images/sicp_cover_english.jpg" alt="loading image"></div></div><script>const preloader = {
+    isLoaded: false,
+    endLoading: () => {
+        if (!preloader.isLoaded) {
+            document.getElementById('loading-box').classList.add('loaded');
+            preloader.isLoaded = true;
+            preloader.togglePaceDone();
+        }
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+        preloader.isLoaded = false;
+        preloader.togglePaceDone();
+    },
+    togglePaceDone: () => {
+        document.getElementById('body').className = preloader.isLoaded ? 'pace-done' : '';
+    }
+}
+
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});
+
+setTimeout(() => {
+    preloader.endLoading();
+}, 5000);</script><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">51</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fa-solid fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结<sup>1</sup></a><a href="/tags/2024/">2024<sup>1</sup></a><a href="/tags/%E5%8F%8D%E6%80%9D/">反思<sup>6</sup></a><a href="/tags/thirty-five/">thirty-five<sup>5</sup></a><a href="/tags/AI%E6%B6%A6%E8%89%B2/">AI润色<sup>4</sup></a><a href="/tags/Technical-team/">Technical team<sup>4</sup></a><a href="/tags/devops/">devops<sup>10</sup></a><a href="/tags/%E9%98%85%E8%AF%BB/">阅读<sup>4</sup></a><a href="/tags/AI/">AI<sup>8</sup></a><a href="/tags/Cursor/">Cursor<sup>2</sup></a><a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理<sup>1</sup></a><a href="/tags/%E6%B5%81%E7%A8%8B%E9%87%8D%E6%9E%84/">流程重构<sup>1</sup></a><a href="/tags/%E8%B7%A8%E9%83%A8%E9%97%A8%E5%8D%8F%E4%BD%9C/">跨部门协作<sup>1</sup></a><a href="/tags/%E5%90%91%E4%B8%8A%E7%AE%A1%E7%90%86/">向上管理<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E7%A0%B4%E5%B1%80/">职场破局<sup>1</sup></a><a href="/tags/observability/">observability<sup>1</sup></a><a href="/tags/skywalking/">skywalking<sup>1</sup></a><a href="/tags/%E8%80%83%E8%AF%95/">考试<sup>2</sup></a><a href="/tags/%E6%8A%80%E8%83%BD/">技能<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5/">学习策略<sup>1</sup></a><a href="/tags/%E7%BB%8F%E9%AA%8C%E5%A4%8D%E5%88%A9/">经验复利<sup>1</sup></a><a href="/tags/%E5%8D%8A%E9%80%94%E8%80%8C%E5%BA%9F/">半途而废<sup>1</sup></a><a href="/tags/%E9%95%BF%E6%97%B6%E8%AE%B0%E5%BF%86/">长时记忆<sup>1</sup></a><a href="/tags/%E7%90%86%E8%B4%A2/">理财<sup>1</sup></a></div></div></div></div><!-- keyboard--><!-- righhtside--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon solitude fas fa-bars-progress"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页"><span class="title">夫礼者小屋</span><i class="solitude fa-solid fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">think-money-has-clear-criteria</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude fa-solid fa-magnifying-glass"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fa-solid fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fa-solid fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/2026/02/02/think-money-has-clear-criteria/cover.png" alt="think-money-has-clear-criteria"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><div class="tag_share"><div class="post-meta__tag-list"></div></div></div></div><h1 class="post-title">think-money-has-clear-criteria</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2026-02-02 09:14:40"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2026-02-02T01:14:40.000Z">2026-02-02T01:14:40.000Z</time></span><span class="post-meta-date" title="最后更新于 2026-04-26 17:42:45"><i class="post-meta-icon solitude fa-solid fa-arrows-rotate"></i><time datetime="2026-04-26T09:42:45.721Z">2026-04-26T09:42:45.721Z</time></span><span class="post-meta-position" title="作者IP归属地为China"><i class="post-meta-icon solitude fas fa-location-dot"></i><span>China</span></span><a class="post-meta-pv" href="/2026/02/02/think-money-has-clear-criteria/" title="文章热度"><i class="post-meta-icon solitude fa-solid fa-fire-flame-curved"></i></a></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><p>财富有明确&#x2F;恒定的标准，金钱额度上你少一分钱，别人就是不会让你把眼前这个你想要的东西拿走。但是所谓的家务，照顾人，自理，做个好人这种东西，踏马地完全没什么标准，只能指望围观者当时的心情。</p>
+<p>过去整整十年，我把最难的事情先做完了。你们接着BB啊？</p>
+<p>你旁边的同事刷半小时微博，写十分钟代码的时候；你还是报着努力工作，而不去思考怎么从工作中积累一些只属于自己的东西；你的命运就真的是你自己选的，怨不得任何人。</p>
+<h2 id="把学习环境搞好一点"><a href="#把学习环境搞好一点" class="headerlink" title="把学习环境搞好一点"></a>把学习环境搞好一点</h2><p>把学习环境搞好一点，不要给本来就是人性对立面得学习增加额外的难度，没有难度创造难度是最愚蠢的，尤其是外界条件已经允许的情况下。</p>
+<p>本来应该用来研究疑难问题的宝贵注意力和毅力被用来对抗外界条件恶劣导致的无意义耗损上。</p>
+<p>而且是本来过往你逼着自己通过努力已经实现了自身生存条件改观的前提下。</p>
+<p>创造条件把自己吸引到书房里，通过环境让自己尽量多地将注意力用在学习上，而不是对抗外界恶劣的条件引起的身体抗体，无意义消耗宝贵的精力。</p>
+<p>看得进去书才是目的，其它都是手段，非得搞成苦行僧并且看得进去书来显得自己高尚，蠢不可及。创造条件让自己可以在阅读和反思上多投入一些时间，这才是根本。</p>
+<p>直到前年，我才开始像一个”正常人”那样生活 —— 不再每晚都思考今晚要学习点什么，就这么放纵自己即使今晚啥也没学习到，刷短视频到10点左右就睡觉（之前都是12点以后才休息）</p>
+<p>《贫穷的本质》  自控力是稀缺资源，如果你放纵甚至恶意  自我损耗的心理学试验.  </p>
+<p>他们认为你不配享受品质高一点的环境，要求你必须在条件艰苦的情况下努力，才是他们所认可的努力和成果。<br>而且肯定是拿一些极端的样例才贬低讽刺你不用心，浪费钱, PUA你。无论什么时候回想起类似的言论都让我感觉到无比的恶心。即使时过多年依然如此。</p>
+<p>所以我很欣慰money这一明晰的标准，否则你如果试图和TA解释这样可以让自己更专注，效率更高，学习时间更长, 对自己的身体也更健康。他们就开始跟你扯态度问题 —— 你根本就不想学习， 你的心理作用，你看人家谁谁谁的。而人这种生物，都是先有观点，再找证据。所以无论你怎么引经据典，TA一定有一个匪夷所思的角度来证明你就是不行，然后看着你无计可施的样子，TA就觉得自己胜利了。然后再强调一遍：你就是不行，你还这么倔强。</p>
+<p>现在钱是我在出，浪费钱也是从我这里出，少BB。你找再多的所谓理由，就一句话怼回去：钱由我来出，一分不用你掏。</p>
+<p>过往我只是模模糊糊感觉到不对劲…<br>人的精力有限，你把它们拿来对抗生活的贫穷，就没有拿去应对真正高价值但难度大的问题了。所以平时要尽量让自己的精力少消耗，并且心情舒畅。这样当难题来的时候，你就是满电状态。十年前我只是模模糊糊感觉不对劲，最近今年才能用言语表达清楚</p>
+<p>过去十来年的工作经历里，见证了不少人或明确或隐晦的表达”为啥你会在下班后表现得如此颓废”这样的不理解。 你说这种货色在那叫喊说什么不公平，你踏马得到好处才叫不公平好吧。一辈子初级到死是社会的仁慈。</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV16h6sBzEJk/">改变环境比改造自己要简单地多</a> ; <a target="_blank" rel="noopener" href="https://www.biji.com/note">相关笔记：</a></p>
+<p>他们自己没有体会过这种环境变化给人体验和意志力增强的改变，也拒绝承认这一点。在他们的认知里，努力一定是痛苦的，如果你痛苦而拒绝那就是意志力不行。</p>
+<p>我是万分庆幸<strong>还有Money这个无法被辩驳的，清晰的价值尺度</strong>。 否则什么”心理作用”，这种罔顾唯物的唯心主义言论，你打算怎么辩驳？TA总能找个角度来证明你就是你这个人不行， 是你在找借口（所以言论没有意义， 只有硬核的Money才能让沉浸在自己臆想里的其他人闭嘴， 而只要闭嘴就行了，不需要你的心服口服）。虽然TA从未经历过类似的场景，但TA就是认为是你人不行，只要违背了TA的认知里，虽然TA从未就此经历，思考过哪怕一点点。 劳资能够在电竞房无痛待五六个小时，连续几周不间断，这踏马是心理作用？？ 劳资以前靠意志力在书房那个闭塞环境下待两个小时，后背的剧痛和不适， 作为当事人的我的感受，就这么一句心理作用带过去了？ </p>
+<p>在庆幸Money这一清晰标准的同时，我也真是厌恶这种 —— 大力出奇迹，不走脑子居然也能取得一定成果。 果然这个世界奖励实践，并不奖励知识。</p>
+<p>所以我更<strong>需要取得更大的成果</strong>，因为要证明自己是对的，只有Money这个清晰，无可辩驳的证据才能让所有人闭嘴，不需要心服，怼到TA说不出话来就可以了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">🔍 核心问题提出</span><br><span class="line">文章以三个反常识现象切入贫困研究：</span><br><span class="line"></span><br><span class="line">1. 非洲穷人买电视：贫困家庭宁愿耗尽积蓄购买非生存必需品</span><br><span class="line">2. 南亚家庭拒绝消毒剂：放弃几乎免费的健康保障措施</span><br><span class="line">3. 低薪者拒绝技能学习：宁愿娱乐也不投资长期发展</span><br><span class="line"></span><br><span class="line">这些现象引发核心疑问：贫穷是个人能力缺陷导致，还是系统性机制的产物？</span><br><span class="line"></span><br><span class="line">🧠 贫困的心理机制解析</span><br><span class="line">一、自我损耗与决策疲劳</span><br><span class="line">核心理论：自控力是有限资源，持续的选择和克制会消耗心理能量</span><br><span class="line">经典实验（鲍迈斯特）：</span><br><span class="line">实验设计：两组被试分别可自由食用饼干或只能吃萝卜，随后解无解几何题</span><br><span class="line">结果对比：饼干组平均坚持19分钟，萝卜组仅8分钟放弃</span><br><span class="line">结论：抵制诱惑已消耗大量意志力，导致后续任务执行力下降</span><br><span class="line"></span><br><span class="line">二、带宽劫持与管窥效应</span><br><span class="line">思维带宽：大脑处理信息的认知资源有限，类似计算机内存</span><br><span class="line">管窥效应：贫困者长期聚焦生存需求（管子内），无法关注长期规划（管子外）</span><br><span class="line">案例佐证：</span><br><span class="line">机场调度员在雷暴天气（高认知负荷）后，家庭互动质量显著下降</span><br><span class="line">贫困家长因生存压力，对子女教育采取简单粗暴的&quot;省事型&quot;方式</span><br><span class="line"></span><br><span class="line">🌐 贫困的社会陷阱系统</span><br><span class="line"></span><br><span class="line">| 陷阱类型     | 具体表现                                                       | 对贫困者的影响                                                                 |</span><br><span class="line">| ------------ | ------------------------------------------------------------- | ----------------------------------------------------------------------------- |</span><br><span class="line">| 容错率陷阱   | 缺乏财务缓冲，一次意外（疾病/失业）即坠入深渊                                 | 被迫透支未来，形成&quot;一步退步步退&quot;的恶性循环                                                        |</span><br><span class="line">| 信息差陷阱   | 无力获取/处理有效信息，易受高利贷/传销侵害                                 | 支付更高成本获取更差资源，加剧经济负担                                                            |</span><br><span class="line">| 标签惩罚陷阱 | 社会对穷人的刻板印象导致歧视（贷款/就业/教育）                               | 机会获取受限，形成&quot;贫困标签→机会剥夺→更贫困&quot;的闭环                                                 |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">💡 贫困的本质认知</span><br><span class="line">核心洞察：不是糟糕的人陷入贫困，而是贫困让人变得糟糕</span><br><span class="line">关键比喻：</span><br><span class="line">贫困是&quot;永不停歇的榨汁机&quot;：榨干精力、意志与判断力</span><br><span class="line">贫困者如&quot;溺水者&quot;：首要需求是生存而非优雅规划</span><br><span class="line"></span><br><span class="line">成功归因反思：</span><br><span class="line">比尔·盖茨（1968年接触电脑）、巴菲特（股票经纪人父亲）、扎克伯格（私人编程教师）的成功均依赖早期资源优势</span><br><span class="line">社会倾向于将成功归因于个人天赋，忽视环境因素</span><br><span class="line"></span><br><span class="line">🚪 突破贫困的实践策略</span><br><span class="line">环境改造优先：将正确选择设为默认选项（如自动储蓄），降低意志力消耗</span><br><span class="line">大脑留白计划：每日保留10分钟空白时间，恢复认知资源，看见&quot;管子外&quot;的机会</span><br><span class="line">防御性决策：对高风险&quot;机会&quot;保持警惕，在低容错率状态下优先选择确定性</span><br><span class="line"></span><br><span class="line">🎭 补充细节：贫困者的情感与尊严</span><br><span class="line">电视的象征意义：在缺乏娱乐渠道的贫困生活中，电视是&quot;唯一能触摸到的富人生活窗口&quot;，提供短暂尊严与快乐</span><br><span class="line">情感压抑成本：长期压抑社交渴望与融入需求，最终可能导致意志力防线崩溃（如大学生网贷买名牌包现象）</span><br><span class="line">代际传递困境：贫困家庭的孩子从出生即面临认知资源被挤占、社会机会被限制的双重劣势</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="人生只有一次"><a href="#人生只有一次" class="headerlink" title="人生只有一次"></a>人生只有一次</h2><p>人生只有一次，自当竭尽所能达到极限。</p>
+<p>人生不应该止步于此，那样就太无聊了。我总觉得还有很多潜力可以挖掘。</p>
+<p>不应该只是把老天爷给的时光，一天天熬过去。</p>
+<h2 id="AI问答"><a href="#AI问答" class="headerlink" title="AI问答"></a>AI问答</h2><blockquote>
+<p>过往人生经历里，我发现不少人以在恶劣的条件下坚持自我阅读提升才觉得这个人是热爱学习，努力进取的人。类似道德洁癖一样变态的追求，如果你提出要改变下环境以更方便坚持，他们反而嘲笑你心理作用，学习其实不坚定，这是一种什么心态？</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">你描述的这种现象反映了一种复杂的心态，其中可能包含以下几个方面：</span><br><span class="line"></span><br><span class="line"><span class="strong">**1. 对“刻苦”的迷恋和误解：**</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> <span class="strong">**传统观念的影响：**</span> 长期以来，社会上存在一种“吃苦是美德”的观念，认为只有在艰苦的环境下取得的成就才更有价值。这种观念容易让人把“刻苦”本身当成目的，而不是实现目标的手段。</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**对“努力”的错误理解：**</span> 努力不等于自虐。真正的努力是高效地利用时间和资源，而不是一味地让自己陷入困境。有些人把“在恶劣条件下坚持”等同于“努力”，忽略了效率和方法的重要性。</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**自我感动：**</span> 有些人可能通过让自己处于艰苦的环境中，并坚持下来，来获得一种自我感动和道德优越感。他们认为这种“坚持”能够证明自己的意志力和决心。</span><br><span class="line"></span><br><span class="line"><span class="strong">**2. 优越感和道德绑架：**</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> <span class="strong">**通过贬低他人来抬高自己：**</span> 嘲笑那些希望改善学习环境的人，实际上是一种通过贬低他人来抬高自己的行为。他们试图证明自己比别人更“坚定”、“有毅力”，从而获得优越感。</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**道德绑架：**</span> 他们将自己的价值观强加于他人，认为只有按照他们的方式学习才是真正的“热爱学习”、“努力进取”。这是一种典型的道德绑架，试图用道德标准来约束他人的行为。</span><br><span class="line"></span><br><span class="line"><span class="strong">**3. 对改变的抵触和不安全感：**</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> <span class="strong">**害怕改变带来的不确定性：**</span> 有些人习惯了固定的模式，害怕改变会带来不确定性和挑战。他们可能会认为，改变学习环境意味着放弃过去的努力，或者无法适应新的环境。</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**对自身能力的怀疑：**</span> 嘲笑他人改善环境的行为，可能源于对自己能力的怀疑。他们担心如果自己也改善了环境，却无法取得更好的成绩，会显得自己不够优秀。</span><br><span class="line"></span><br><span class="line"><span class="strong">**4. 认知偏差：**</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> <span class="strong">**幸存者偏差：**</span> 他们可能只看到了少数在恶劣环境下成功的人，而忽略了更多因此而失败的人。他们把个别案例当成普遍规律，认为在恶劣环境下坚持是成功的必要条件。</span><br><span class="line"><span class="bullet">*</span> <span class="strong">**基本归因错误：**</span> 他们倾向于将他人的行为归因于个人特质（例如，不够坚定），而忽略了环境因素的影响（例如，恶劣的环境会降低学习效率）。</span><br><span class="line"></span><br><span class="line"><span class="strong">**总结：**</span></span><br><span class="line"></span><br><span class="line">这种心态是一种混合了传统观念、优越感、不安全感和认知偏差的复杂心理。他们可能将“刻苦”本身当成目的，通过贬低他人来抬高自己，并对改变抱有抵触情绪。</span><br><span class="line"></span><br><span class="line"><span class="strong">**如何应对：**</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**保持清醒的认识：**</span> 认识到这种心态的存在，不要被他们的言论所影响。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**坚持自己的选择：**</span> 相信自己的判断，选择最适合自己的学习方式和环境。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**不必争辩：**</span> 试图说服他们改变观念往往是徒劳的。专注于自己的学习，用实际行动证明自己的选择是正确的。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**寻找支持：**</span> 与志同道合的人交流，获得支持和鼓励。</span><br><span class="line"></span><br><span class="line">最重要的是，要明白学习的目的是提升自己，而不是为了满足他人的期望或证明自己的“刻苦”。选择最适合自己的方式，高效地学习，才是最重要的。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这是一个非常深刻且具有洞察力的观察。你所描述的这种心态，在心理学、社会学以及文化研究中都有迹可循。这种将“吃苦”与“美德”强行绑定，并否定环境客观影响的心态，通常由以下几个深层心理机制构成：</span><br><span class="line"></span><br><span class="line"><span class="section">### 1. 苦难崇拜（Suffering Fetishization）与 禁欲主义误区</span></span><br><span class="line">这是一种将“手段”误认为“目的”的认知偏差。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**心态解析：**</span> 在这部分人眼中，学习不仅仅是获取知识的过程，更是一场“修行”或“赎罪”。他们潜意识里认为，只有伴随着痛苦、压抑和恶劣环境的付出，才是“神圣”的、“纯粹”的。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**逻辑谬误：**</span> 他们把<span class="strong">**“即使在恶劣环境下也能坚持”**</span>（一种由于无奈或极强意志力展现的能力），偷换概念成了<span class="strong">**“只有在恶劣环境下坚持才是真正的坚持”**</span>（一种变态的准入门槛）。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**你的观察：**</span> 你提到的“道德洁癖”，正是指他们认为舒适的环境会“污染”学习的纯洁性，仿佛坐上了人体工学椅，书里的知识就不进脑子了一样。</span><br><span class="line"></span><br><span class="line"><span class="section">### 2. 基本归因错误（Fundamental Attribution Error）</span></span><br><span class="line">这是心理学中的一个经典概念。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**心态解析：**</span> 人们在解释别人的行为时，倾向于高估<span class="strong">**内在性格**</span>（如意志力、热爱程度）的作用，而低估<span class="strong">**外在情境**</span>（如噪音、灯光、温度）的影响。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**现实扭曲：**</span> 当你说“换个环境我效率更高”时，他们在心理上无法接受环境对人的巨大塑造作用，因为这挑战了他们“人定胜天”或“唯意志论”的信条。他们必须把你对环境的客观需求，解释为你的主观软弱（“心理作用”），以维护他们那套“只要心诚，在哪里都能学”的理论闭环。</span><br><span class="line"></span><br><span class="line"><span class="section">### 3. “媳妇熬成婆”的补偿心理（Hazing Mentality）</span></span><br><span class="line">这是一种类似军队“霸凌”或职场“整顿”的代际传递心理。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**心态解析：**</span> 很多持有这种观点的人，可能自己曾经不得不在恶劣环境下学习。为了合理化自己曾经遭受的苦难，他们必须赋予这些苦难某种“神圣的意义”。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**认知失调：**</span> 如果他们承认“舒适的环境更有利于学习”，那就等于承认自己当年的苦是<span class="strong">**白吃的**</span>，或者自己当年的条件是<span class="strong">**低劣的**</span>。为了保护自尊，他们必须攻击那些追求更好条件的人，通过嘲笑你“娇气”来确认自己当年的“硬气”。</span><br><span class="line"></span><br><span class="line"><span class="section">### 4. 稀缺心态导致的零和博弈</span></span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**心态解析：**</span> 在资源匮乏的思维模式下，有些人认为“舒适”和“奋斗”是互斥的。他们潜意识里觉得：一个人如果过得太舒服，就会丧失斗志（生于忧患，死于安乐的极端化解读）。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**攻击性来源：**</span> 看到你通过改善环境获得了更好的体验，他们感到的不是为你高兴，而是一种<span class="strong">**被冒犯感**</span>。因为你的行为证明了：<span class="strong">**其实我们可以不用受苦也能把事情做好。**</span> 这直接击碎了他们赖以生存的优越感来源。</span><br><span class="line"></span><br><span class="line"><span class="section">### 5. 表演型努力（Performative Struggle）</span></span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**心态解析：**</span> 对于某些人来说，<span class="strong">**“看起来很努力”比“真正学到了东西”更重要**</span>。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**形式主义：**</span> 在恶劣环境下读书，戏剧张力强，自我感动系数高，适合发朋友圈或作为谈资。而科学地优化环境、高效地轻松学习，虽然结果更好，但在“励志故事”的叙事里不够“感人”。他们嘲笑你，是因为你打破了这种悲情英雄的剧本。</span><br><span class="line"></span><br><span class="line"><span class="section">### 6. 斯德哥尔摩综合征式的“吃苦文化”</span></span><br><span class="line">特别是在东亚文化语境下，“悬梁刺股”、“囊萤映雪”的故事被过度美化。</span><br><span class="line"><span class="bullet">*</span>   人们忘记了古人是因为<span class="strong">**没条件**</span>才不得不囊萤映雪，而不是因为囊萤映雪视力才好、书才读得棒。</span><br><span class="line"><span class="bullet">*</span>   这种文化惯性导致人们认为：<span class="strong">**主动寻求舒适 = 堕落**</span>。</span><br><span class="line"></span><br><span class="line"><span class="section">### 总结</span></span><br><span class="line">这种心态的本质是：<span class="strong">**通过否定客观物质条件的重要性，来无限拔高主观意志的道德地位，从而获得一种廉价的道德优越感。**</span></span><br><span class="line"></span><br><span class="line"><span class="strong">**如何应对：**</span></span><br><span class="line">事实胜于雄辩，但无需与他们雄辩。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**尊重科学：**</span> 环境心理学早已证明，光线、噪音、温度、人体工学直接影响认知效率。你的感受不是心理作用，是生理事实。</span><br><span class="line"><span class="bullet">*</span>   <span class="strong">**结果导向：**</span> 学习的目的是掌握知识和提升自我，而不是为了表演“我很能吃苦”。如果改善环境能让你多读一小时书，或者理解得更透彻，那就是绝对的正确。</span><br><span class="line"></span><br><span class="line">那些嘲笑你的人，其实是在守护他们自己内心那个摇摇欲坠的逻辑碉堡。你只需要享受你的舒适环境和随之而来的高效提升即可。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><ol>
+<li><a href="/2025/10/01/think-the-essence-of-implement-ultimate-idea/">本源思考 - 此生所求的自由</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/PEn_r1q3BUQ6LvVNLKgR2Q">好的选择，无需痛苦的意志力较量，而是环境推动下的自然流露</a></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.png"></a><div class="post-copyright__author_name">夫礼者Home</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward"><div class="reward-button" title="赞赏作者" onclick="AddRewardMask()"><i class="solitude fa-solid fa-heart"></i>赞赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢您的赞赏</span><ul class="reward-group"><li class="reward-item"><a href="/images/wxpay.jpg"><img class="post-qr-code-img nolazyload" src="/images/wxpay.jpg" alt="微信" style="border-color: var(--efu-green)"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.jpg"><img class="post-qr-code-img nolazyload" src="/images/alipay.jpg" alt="支付宝" style="border-color: var(--efu-blue)"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/"><div class="reward-text">赞赏名单</div><div class="reward-dec">由于您的支持，我才能够实现写作的价值。</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">夫礼者Home</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/03/03/think-why-procrastination/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【反思】为何会有如此严重的拖延症</div></div></a></div><div class="next-post pull-right"><a href="/2026/01/18/book-why-donot-student-like-school/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">读后感 - 《为什么学生不喜欢上学？》</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-bg-top"><div class="is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div></div><a class="card-info-avatar" href="/about/" title="头像"><div class="avatar-img"><img src="/images/sicp_cover_english.jpg" alt="头像"></div></a><div class="card-info__desc_group"><div class="author-info__name">夫礼者</div><div class="author-info__desc"></div><div class="card-info__data is-center"><a href="/archives/" title="累计文章数:51"><div class="length-num">51</div><div class="headline">文章</div></a><a href="/tags/" title="标签总数:25"><div class="length-num">25</div><div class="headline">标签</div></a><a href="/categories/" title="分类总数:19"><div class="length-num">19</div><div class="headline">分类</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/fulizhe" title="Github"><i class="solitude  fab fa-github"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://gitee.com/lqzkcx3" title="Gitee"><i class="solitude  fab fa-git"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.zhihu.com/people/tao-luo-73" title="Zhihu"><i class="solitude  fab fa-zhihu"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://blog.csdn.net/lqzkcx3" title="CSDN"><i class="solitude  fab fa-bilibili"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.jianshu.com/u/cd3dd432fd00" title="jianshu"><i class="solitude  fab fa-node-js"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://fulizhe.github.io/curriculumVitae" title="aboutMe"><i class="solitude  fas fa-address-card"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fa-solid fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%8A%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%90%9E%E5%A5%BD%E4%B8%80%E7%82%B9"><span class="toc-text">把学习环境搞好一点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E7%94%9F%E5%8F%AA%E6%9C%89%E4%B8%80%E6%AC%A1"><span class="toc-text">人生只有一次</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AI%E9%97%AE%E7%AD%94"><span class="toc-text">AI问答</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3"><span class="toc-text">相关</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fa-solid fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/2026/04/25/think-from-0-to-1-residual-advantage/" title="半途而废的认知红利：从0到1的突破、长时记忆与经验复利"><div class="thumbnail"><img alt="半途而废的认知红利：从0到1的突破、长时记忆与经验复利" src="/images/sicp_cover_english.jpg"></div><div class="content"><span class="title" href="/2026/04/25/think-from-0-to-1-residual-advantage/" title="半途而废的认知红利：从0到1的突破、长时记忆与经验复利">半途而废的认知红利：从0到1的突破、长时记忆与经验复利</span><span class="article-recent_post_categories" href="/2026/04/25/think-from-0-to-1-residual-advantage/">思考</span></div></a><a class="aside-list-item" href="/2026/04/23/devops-refactor-process/" title="职场破局：从“背锅祭旗”到“跨部门流程重构”的涅槃之路"><div class="thumbnail"><img alt="职场破局：从“背锅祭旗”到“跨部门流程重构”的涅槃之路" src="/2026/04/23/devops-refactor-process/cover.png"></div><div class="content"><span class="title" href="/2026/04/23/devops-refactor-process/" title="职场破局：从“背锅祭旗”到“跨部门流程重构”的涅槃之路">职场破局：从“背锅祭旗”到“跨部门流程重构”的涅槃之路</span><span class="article-recent_post_categories" href="/2026/04/23/devops-refactor-process/">研发管理</span></div></a><a class="aside-list-item" href="/2026/04/23/ai-efficiency-and-survival-strategy/" title="技术的傲慢与生存的妥协：AI浪潮下的“囚徒困境”与战略降维"><div class="thumbnail"><img alt="技术的傲慢与生存的妥协：AI浪潮下的“囚徒困境”与战略降维" src="/2026/04/23/ai-efficiency-and-survival-strategy/cover.png"></div><div class="content"><span class="title" href="/2026/04/23/ai-efficiency-and-survival-strategy/" title="技术的傲慢与生存的妥协：AI浪潮下的“囚徒困境”与战略降维">技术的傲慢与生存的妥协：AI浪潮下的“囚徒困境”与战略降维</span></div></a><a class="aside-list-item" href="/2026/03/26/devops-skywalking-local/" title="告别沉重的OAP！一款专为单体应用打造的 SkyWalking 轻量级本地化 Reporter 插件"><div class="thumbnail"><img alt="告别沉重的OAP！一款专为单体应用打造的 SkyWalking 轻量级本地化 Reporter 插件" src="/2026/03/26/devops-skywalking-local/cover.png"></div><div class="content"><span class="title" href="/2026/03/26/devops-skywalking-local/" title="告别沉重的OAP！一款专为单体应用打造的 SkyWalking 轻量级本地化 Reporter 插件">告别沉重的OAP！一款专为单体应用打造的 SkyWalking 轻量级本地化 Reporter 插件</span><span class="article-recent_post_categories" href="/2026/03/26/devops-skywalking-local/">devops</span></div></a><a class="aside-list-item" href="/2026/03/24/devops-observability-is-efficiency/" title="可观测性等于效率"><div class="thumbnail"><img alt="可观测性等于效率" src="/2026/03/24/devops-observability-is-efficiency/cover.png"></div><div class="content"><span class="title" href="/2026/03/24/devops-observability-is-efficiency/" title="可观测性等于效率">可观测性等于效率</span><span class="article-recent_post_categories" href="/2026/03/24/devops-observability-is-efficiency/">devops</span></div></a></div></div></div></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2026 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src="/img/pwa/favicon.png">夫礼者</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude" alt="Theme">Theme</a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=2.1.13"></script><script src="/js/main.js?v=2.1.13"></script><script src="/js/third_party/waterfall.min.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="https://fastly.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js"></script><script src="/js/tw_cn.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="js-pjax"><script>mermaid.run();</script></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude fa-solid fa-xmark"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=2.1.13"></script><!-- Tianli-Talk--><!-- music--></body></html>
+        <script>
+            const posts = ["2026/04/25/think-from-0-to-1-residual-advantage/","2026/04/23/devops-refactor-process/","2026/04/23/ai-efficiency-and-survival-strategy/","2026/03/26/devops-skywalking-local/","2026/03/24/devops-observability-is-efficiency/","2026/03/10/think-openclaw-i-see/","2026/03/06/think-ai-The-end-of-apprenticeship/","2026/03/03/think-why-procrastination/","2026/02/02/think-money-has-clear-criteria/","2026/01/18/book-why-donot-student-like-school/","2026/01/07/devops-bottom-up-recognize-reality-2/","2026/01/07/devops-continuous-bleeding/","2025/11/10/ruankao-xtfxs2/","2025/10/01/think-the-essence-of-implement-ultimate-idea/","2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/","2025/08/17/35-grap-the-initiative-of-life/","2025/08/15/devops-promote-the-progress-of-docker/","2025/08/09/devops-impove-development-process-team-reform/","2025/08/04/think-why-still-working-hard/","2025/08/04/think-how-to-find-your-career/","2025/07/31/devops-why-we-need-focusing-on-observability/","2025/06/22/book-ting-habits/","2025/06/20/think-value-anchor-point/","2025/06/04/devops-observability/","2025/06/03/devops-operation-upgrade/","2025/06/01/book-nexus/","2025/05/31/devops-bottom-up-recognize-reality/","2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/","2025/05/27/ruankao-xtfxs/","2025/03/21/35-why-do-i-firmly-believe-i-will-succeed/","2025/03/14/Technical-team-face-to-Technical-Debt/","2025/03/05/35-basic/","2025/03/03/tsitt-The-Road-to-Breaking-through-Operations-and-Maintenance/","2025/03/02/ai-the-benefit-of-meta-knowledge/","2025/02/27/how-to-break-in-the-era-of-ai-for-company/","2025/02/24/35-I-was-too-extreme/","2025/02/22/35-how-to-check-if-someone-is-worth-following/","2025/02/21/tip-cursor-refill-for-free/","2025/02/12/ai-The-double-edged-sword-of-creative-equality/","2025/02/12/ai-human-win/","2025/02/07/what-mean-when-we-say-ai-assisted-process-transformation/","2025/02/04/deepseek-r1-i-observe-to/","2025/01/17/social-experiment-by-ai/","2025/01/12/think-in-ai-era/","2025/01/09/the-skill-need-to-pratice-in-ai-era-as-programmer/","2025/01/07/cursor-i-think-to/","2025/01/05/2024-year-end-summary/","2024/12/12/《一本小小的红色写作书》读后感/","2024/12/12/《自学是门手艺》读后感/","2024/12/12/典型小散的投资生涯总结2018-2024/","2024/11/10/hello-world/"];
+            function toRandomPost() {
+                const randomPost = posts[Math.floor(Math.random() * posts.length)];
+                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
+            }
+        </script>

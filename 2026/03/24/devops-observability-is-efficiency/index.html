@@ -1,0 +1,304 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>可观测性等于效率 | 夫礼者Home</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=2.1.13"><!-- inject head--><link rel="canonical" href="http://example.com/2026/03/24/devops-observability-is-efficiency/"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><!-- Open Graph--><meta name="description" content="AI进行扩充和润色（AI）背景引入：效率的伪命题与工程的残酷现实在软件工程中，我们常常将“效率”狭隘地定义为“代码产出的速度”或“需求交付的吞吐量”。然而，当系统被部署到错综复杂的生产环境后，这种温室里的效率便会瞬间崩塌。真正的工程效率，不是看你写代码有多快，而是看你在系统崩溃、客户咆哮的至暗时刻，"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="夫礼者Home"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(' %c Solitude %c ' + '2.1.13' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script src="https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSE7WE78H9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZSE7WE78H9');
+</script>    
+<script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+          },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":false,"path":"/search.xml"},
+    runtime: '2023-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。","loading":"搜索中..."}},
+    aside: {
+        sayhello: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        sayhello2: [],
+        sayhello3: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><!-- background img--><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img nolazyload" src="/images/sicp_cover_english.jpg" alt="loading image"></div></div><script>const preloader = {
+    isLoaded: false,
+    endLoading: () => {
+        if (!preloader.isLoaded) {
+            document.getElementById('loading-box').classList.add('loaded');
+            preloader.isLoaded = true;
+            preloader.togglePaceDone();
+        }
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+        preloader.isLoaded = false;
+        preloader.togglePaceDone();
+    },
+    togglePaceDone: () => {
+        document.getElementById('body').className = preloader.isLoaded ? 'pace-done' : '';
+    }
+}
+
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});
+
+setTimeout(() => {
+    preloader.endLoading();
+}, 5000);</script><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">51</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fa-solid fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结<sup>1</sup></a><a href="/tags/2024/">2024<sup>1</sup></a><a href="/tags/%E5%8F%8D%E6%80%9D/">反思<sup>6</sup></a><a href="/tags/thirty-five/">thirty-five<sup>5</sup></a><a href="/tags/AI%E6%B6%A6%E8%89%B2/">AI润色<sup>4</sup></a><a href="/tags/Technical-team/">Technical team<sup>4</sup></a><a href="/tags/devops/">devops<sup>10</sup></a><a href="/tags/%E9%98%85%E8%AF%BB/">阅读<sup>4</sup></a><a href="/tags/AI/">AI<sup>8</sup></a><a href="/tags/Cursor/">Cursor<sup>2</sup></a><a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理<sup>1</sup></a><a href="/tags/%E6%B5%81%E7%A8%8B%E9%87%8D%E6%9E%84/">流程重构<sup>1</sup></a><a href="/tags/%E8%B7%A8%E9%83%A8%E9%97%A8%E5%8D%8F%E4%BD%9C/">跨部门协作<sup>1</sup></a><a href="/tags/%E5%90%91%E4%B8%8A%E7%AE%A1%E7%90%86/">向上管理<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E7%A0%B4%E5%B1%80/">职场破局<sup>1</sup></a><a href="/tags/observability/">observability<sup>1</sup></a><a href="/tags/skywalking/">skywalking<sup>1</sup></a><a href="/tags/%E8%80%83%E8%AF%95/">考试<sup>2</sup></a><a href="/tags/%E6%8A%80%E8%83%BD/">技能<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5/">学习策略<sup>1</sup></a><a href="/tags/%E7%BB%8F%E9%AA%8C%E5%A4%8D%E5%88%A9/">经验复利<sup>1</sup></a><a href="/tags/%E5%8D%8A%E9%80%94%E8%80%8C%E5%BA%9F/">半途而废<sup>1</sup></a><a href="/tags/%E9%95%BF%E6%97%B6%E8%AE%B0%E5%BF%86/">长时记忆<sup>1</sup></a><a href="/tags/%E7%90%86%E8%B4%A2/">理财<sup>1</sup></a></div></div></div></div><!-- keyboard--><!-- righhtside--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon solitude fas fa-bars-progress"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页"><span class="title">夫礼者小屋</span><i class="solitude fa-solid fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">可观测性等于效率</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude fa-solid fa-magnifying-glass"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fa-solid fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fa-solid fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/2026/03/24/devops-observability-is-efficiency/cover.png" alt="可观测性等于效率"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/devops/">devops</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/devops/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>devops</span></a></div></div></div></div><h1 class="post-title">可观测性等于效率</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2026-03-24 20:16:09"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2026-03-24T12:16:09.000Z">2026-03-24T12:16:09.000Z</time></span><span class="post-meta-date" title="最后更新于 2026-04-26 17:42:45"><i class="post-meta-icon solitude fa-solid fa-arrows-rotate"></i><time datetime="2026-04-26T09:42:45.707Z">2026-04-26T09:42:45.707Z</time></span><span class="post-meta-position" title="作者IP归属地为China"><i class="post-meta-icon solitude fas fa-location-dot"></i><span>China</span></span><a class="post-meta-pv" href="/2026/03/24/devops-observability-is-efficiency/" title="文章热度"><i class="post-meta-icon solitude fa-solid fa-fire-flame-curved"></i></a></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><h2 id="AI进行扩充和润色（AI）"><a href="#AI进行扩充和润色（AI）" class="headerlink" title="AI进行扩充和润色（AI）"></a>AI进行扩充和润色（AI）</h2><h3 id="背景引入：效率的伪命题与工程的残酷现实"><a href="#背景引入：效率的伪命题与工程的残酷现实" class="headerlink" title="背景引入：效率的伪命题与工程的残酷现实"></a>背景引入：效率的伪命题与工程的残酷现实</h3><p>在软件工程中，我们常常将“效率”狭隘地定义为“代码产出的速度”或“需求交付的吞吐量”。然而，当系统被部署到错综复杂的生产环境后，这种温室里的效率便会瞬间崩塌。真正的工程效率，不是看你写代码有多快，而是看你在系统崩溃、客户咆哮的至暗时刻，<strong>排查并解决问题有多快（MTTR）</strong>。</p>
+<p>如何打破研发团队对效率的虚假认知？如何终结微服务架构下无休止的推诿扯皮？答案隐藏在残酷的项目现场，更凝聚在一个现代工程的核心理念中——<strong>可观测性（Observability）等于效率。</strong></p>
+<h3 id="一、-痛苦是效率的催化剂：用现场高压击碎“岁月静好”"><a href="#一、-痛苦是效率的催化剂：用现场高压击碎“岁月静好”" class="headerlink" title="一、 痛苦是效率的催化剂：用现场高压击碎“岁月静好”"></a>一、 痛苦是效率的催化剂：用现场高压击碎“岁月静好”</h3><p>在企业级交付中，让研发直接驻场（特别是处理紧急&#x2F;高价值任务），表面上看是极高的人力成本消耗，但在长期工程效能的账本上，这却是ROI（投资回报率）最为惊人的一笔投资。</p>
+<p>为什么？因为在传统的组织架构中，研发人员被厚厚的“三重隔离层”（现场实施、技术支持、测试人员）所保护。这种隔离造就了研发“只要代码提交就万事大吉”的日子人心态 —— 研发只负责抛出代码，将排错的泥沼留给下游。<strong>缺乏痛感，就不会有对效率的敬畏</strong>。</p>
+<p>只有把研发直接扔进项目现场，让他们直面甲方如同狂风骤雨般的高压, 在焦头烂额中<strong>切身、持续地感受到无法快速定位问题的“窒息级痛苦”</strong>，才能彻底唤醒他们对“效率”的重新审视。痛感是最好的老师, 当排错的压力直接转化为生存的压力时，他们才会被迫走出代码的温室，开始从架构设计的第一天起，就将日志规范、链路追踪、异常抛出等“排查效率方案”纳入核心考量。<strong>只有切肤之痛，才能倒逼系统级的效率跃迁</strong>。</p>
+<h3 id="二、-黑盒是效率的死敌：推诿扯皮背后的工程耻辱"><a href="#二、-黑盒是效率的死敌：推诿扯皮背后的工程耻辱" class="headerlink" title="二、 黑盒是效率的死敌：推诿扯皮背后的工程耻辱"></a>二、 黑盒是效率的死敌：推诿扯皮背后的工程耻辱</h3><p>在当下的职场生态中，一种致命的“免责文化”正在吞噬团队的整体效率：各方的最高标准沦为了“只要问题别落在我头上就行”。至于业务链路是否跑通、客户问题是否解决，似乎成了无人认领的荒地。</p>
+<p>生产环境的每一次故障，本应是系统暴露短板、推动架构精进的绝佳契机。但由于缺乏可观测性，整个微服务链路变成了一个巨大的“黑盒”。于是，排查问题退化成了“薛定谔的定责”：A、B、C、D各个模块的负责人全凭一张嘴进行逻辑推理甚至诡辩，把测试和其他配合小组当成验证自己无端猜想的“人肉跑腿工”, 没有链路实证，只有主观臆断, 排查问题彻底沦为了一场“掷骰子”的押宝游戏。各种天马行空的猜测满天飞，能不能查出根因全凭玄学与“运气排错”。这种盲人摸象般的做派，毫无高级研发应有的技术体面与工程底蕴。这种毫无数据支撑的内耗，不仅让修复效率趋近于零，更是现代软件工程的耻辱。躲在温室里靠嘴输出的团队，一旦直面真实的复杂环境，无异于见光死。</p>
+<h3 id="三、-怠惰的代价：低效排错拖垮整个研发交付周期"><a href="#三、-怠惰的代价：低效排错拖垮整个研发交付周期" class="headerlink" title="三、 怠惰的代价：低效排错拖垮整个研发交付周期"></a>三、 怠惰的代价：低效排错拖垮整个研发交付周期</h3><p>很多研发团队整天抱怨“事情多、无休止地加班”，但剥开表象，这恰恰是由于对“效率问题”缺乏深度思考所遭到的反噬。</p>
+<p>如果一个问题需要耗费三天去复现，再耗费两天去翻找残缺的日志，整个排错循环体系就会被无限拉长，进而严重拖累新需求的交付。这种“忙碌”并非因为业务量大，而是因为<strong>排查工具原始、系统缺乏自证能力</strong>。这种由自身“认知怠惰”和技术债导致的低效，不仅让排错循环体系持续陷入泥潭，也剥夺了研发人员抱怨的资格。解决慢，本身就是技术债的具象化体现。</p>
+<h3 id="四、-ToB场景的真相：技术的尽头是“快速定位”"><a href="#四、-ToB场景的真相：技术的尽头是“快速定位”" class="headerlink" title="四、 ToB场景的真相：技术的尽头是“快速定位”"></a>四、 ToB场景的真相：技术的尽头是“快速定位”</h3><p>在我们所面对的复杂企业级ToB业务中，99%所谓的“技术难题”，其本质根本不是什么底层算法或高并发实现的难度，而是<strong>“难以定位”</strong>。</p>
+<p>“代码都上生产环境了，你还跟我空谈底层技术有多牛？”——这个老生常谈的笑话，每天都在无情嘲弄着那些只重开发不重运维的团队。在动辄几十个节点流转的分布式系统里，难定位的绝对克星只有一个，那就是<strong>可观测性</strong>。可观测性不是可选项，它是解决复杂系统“盲人摸象”的唯一视力。</p>
+<h3 id="五、-分钟级定责的“铁桶防御”：可观测性的降维打击"><a href="#五、-分钟级定责的“铁桶防御”：可观测性的降维打击" class="headerlink" title="五、 分钟级定责的“铁桶防御”：可观测性的降维打击"></a>五、 分钟级定责的“铁桶防御”：可观测性的降维打击</h3><p>当我们将“可观测性等于效率”这一理念贯彻到底后，量变终于引发了质变。通过持续完善Metrics（指标）、Logs（日志）和Traces（链路追踪），现在整体产品体系下，我们的Java后端侧已经被打造成了“铁桶一块”。</p>
+<p>在这里，全链路的每一滴流量、每一次异常抛出都无所遁形，任何人企图靠“甩锅”来碰瓷都是徒劳的。极致的可观测性赋予了我们降维打击般的底气与效率：</p>
+<ul>
+<li><strong>如果是我们的问题</strong>：我们可以在分钟级别内，通过告警和完整堆栈上下文精准定位故障点，实现极速止血。</li>
+<li><strong>如果不是我们的问题</strong>：我们同样可以在分钟级别内，提取出带有时间戳、Trace ID以及确凿请求&#x2F;响应报文的完整证据链，将无可辩驳的事实摆在所有人面前。</li>
+</ul>
+<p>这不仅极大地提升了排障效率，更用技术手段强制终结了跨部门沟通的内耗。</p>
+<h3 id="六、-“战时发慌”的次生灾害：用刻意沉淀铸就“稳坐中军帐”的底气"><a href="#六、-“战时发慌”的次生灾害：用刻意沉淀铸就“稳坐中军帐”的底气" class="headerlink" title="六、 “战时发慌”的次生灾害：用刻意沉淀铸就“稳坐中军帐”的底气"></a>六、 “战时发慌”的次生灾害：用刻意沉淀铸就“稳坐中军帐”的底气</h3><p><strong>平时不烧香，真到了P0级故障爆发的紧急时刻，人性的弱点就会彻底暴露。</strong></p>
+<p>真正的效率，源自“平时烧香”的日积月累。这里的“烧香”，<strong>是指在日常开发中持续不断地沉淀可观测性手段和排障兵器库</strong>。大到将常见的异常场景固化为监控面板上的查询模板，小到将诸如复杂的多管线 <code>grep</code>、<code>awk</code> 等高频日志检索命令整理成册并烂熟于心。</p>
+<p>只有在风平浪静的日子里，刻意去完善这些排查手段，深入剖析系统所采用的底层架构，才能在危机降临时免疫恐慌。当你手中的排查利器早已打磨锋利，你才能在狂风暴雨中做到“稳坐中军台”，像处理一个普通的星期二早晨一样，精准且从容地调取证据，将故障一击毙命。</p>
+<h3 id="七、-系统的生存底线：不配拥有“全盘劣势”的存活特权"><a href="#七、-系统的生存底线：不配拥有“全盘劣势”的存活特权" class="headerlink" title="七、 系统的生存底线：不配拥有“全盘劣势”的存活特权"></a>七、 系统的生存底线：不配拥有“全盘劣势”的存活特权</h3><p>在残酷的商业交付中，技术团队的生存矩阵是有严格底线的：</p>
+<ul>
+<li>你要么<strong>“做得慢，但质量极高，问题极少”</strong>（牺牲时间换取正确率的效率）。</li>
+<li>你要么<strong>“问题多，但解决极快”</strong>（通过可观测性实现敏捷修复的效率）。</li>
+</ul>
+<p>但你绝不能既<strong>“做得慢”</strong>，又<strong>“问题频发且解决极慢”</strong>。世界上不存在“一眼望去全是劣势、毫无效率可言”的团队还能长久生存的逻辑。如果一个团队同时占据了低产出、高故障和慢响应三大致命弱点，那它之所以还没有倒闭，纯粹是上天有好生之德。</p>
+<h3 id="收尾总结：可观测性重塑研发秩序"><a href="#收尾总结：可观测性重塑研发秩序" class="headerlink" title="收尾总结：可观测性重塑研发秩序"></a>收尾总结：可观测性重塑研发秩序</h3><p><strong>可观测性不仅仅是一堆监控仪表盘，它是系统运转的“行车记录仪”，是打破团队推诿扯皮的“契约”，更是衡量现代工程效能的唯一标尺。</strong></p>
+<p>当研发人员不再依靠猜想去排查问题，而是依靠确凿的数据去丈量系统的边界；当团队不再把时间浪费在证明“不是我的错”，而是能在分钟级定位并解决问题时，真正的效率才得以诞生。</p>
+<h3 id="感悟：从“被动修锅”到“掌控全局”的认知跃迁"><a href="#感悟：从“被动修锅”到“掌控全局”的认知跃迁" class="headerlink" title="感悟：从“被动修锅”到“掌控全局”的认知跃迁"></a>感悟：从“被动修锅”到“掌控全局”的认知跃迁</h3><p>回头审视，现场的压迫感是刺破“虚假繁荣”的利刃，而可观测性则是我们重建工程尊严的基石。<strong>我们不惧怕系统出问题，我们只惧怕面对问题时的无能为力。</strong> 只有将可观测性深深植入系统的基因中，我们才能从满地找牙的“救火队员”，蜕变为运筹帷幄的“系统掌控者”。记住，在生产环境中，没有可观测性的代码，就是给未来的自己挖下的坟墓；而可观测性，就是那把通向极致效率的唯一钥匙。</p>
+<hr>
+<h2 id="原始素材和基础语料（人工）"><a href="#原始素材和基础语料（人工）" class="headerlink" title="原始素材和基础语料（人工）"></a>原始素材和基础语料（人工）</h2><ol>
+<li>研发驻场，尤其是紧急&#x2F;高价值任务，短期成本高，长期看则是性价比非常高的一个方案。只有实际感受项目现场的压力，才能让研发切身理解”效率”的意义 —— 不是有个活干着就完事了，而是在尽最快速度把问题解决。只要实际感受到现场甲方的高压力，让这帮研发感受到切身的痛苦，才会倒逼他们去思考效率的问题。否则永远藏在项目现场实施，技术支持，测试人员这样的三重隔离层之下，研发人员永远是一副岁月静好的日子人心态。只有<strong>切身、持续地感受到强大的现场压力</strong>，这样的痛苦才能逼着这帮研发去思考各类增加问题排查效率的方案， 从最开始的架构设计到之后的实现，以及之后的优化都纳入计划。</li>
+<li>当前形势下，肉眼可见各方的最高标准就是只要不来找我就行，至于事情最终是否得到解决，这又不是我关心的事情。问题发生本来应该系统进一步精进的机会， 而实际情况是放眼望去互相推诿，全链路都是黑盒， 拿测试和其它小组当小工，A,B,C,D可能怀疑一堆，全凭一张嘴在那里BB。躲在温室里的花朵永远只能当作摆设，直面现实就等于死亡。</li>
+<li>抱怨事情多，但恰恰是对于效率问题思考的缺乏，导致解决问题慢，整个排错循环体系持续被拖累，这是自身怠惰的认知导致的，没有资格抱怨。</li>
+<li>我们这样的企业业务常见之下所谓的难题，99%情况下都是难定位，而不是什么技术实现上的难度。都上生产环境了，你跟我谈技术，这个笑话你讲了多少年了？ 而难定位的克星就是可观测性。</li>
+<li>通过持续完善可观测性，现在整体产品体系下，Java侧已经被我们打造成铁桶一块，谁也别想来我们这边碰瓷。如果是我们的问题，我们可以保证在分钟内定位，如果不是我们的问题，我们也可以在分钟内将无可辩驳的证据摆在所有人面前。</li>
+<li>平时不烧香，真到了这种紧急时刻，人的操作肯定诸多变形，这种误操作引发进一步误操作的行为让排错进一步恶化。只有平时把遇到的场景排查方式进行刻意的沉淀，深入了解系统所采用的架构，才能在危机来临时做到稳坐中军台。</li>
+<li>要不”做得慢，问题少”，要不”问题多，解决快”，你不能”做得慢，解决地也慢”。没有”一眼望去全是劣势”的说法，这种团队能够活着还真是上天有好生之德。</li>
+<li>在缺乏这些观测性手段的情况下，坚持这么多年，完全不思进取。 你这出工是在表演吗？</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="/2025/07/31/devops-why-we-need-focusing-on-observability/">为什么持续强调可观测性</a></li>
+<li><a href="/2025/06/04/devops-observability/">可观测性概述</a></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.png"></a><div class="post-copyright__author_name">夫礼者Home</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward"><div class="reward-button" title="赞赏作者" onclick="AddRewardMask()"><i class="solitude fa-solid fa-heart"></i>赞赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢您的赞赏</span><ul class="reward-group"><li class="reward-item"><a href="/images/wxpay.jpg"><img class="post-qr-code-img nolazyload" src="/images/wxpay.jpg" alt="微信" style="border-color: var(--efu-green)"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.jpg"><img class="post-qr-code-img nolazyload" src="/images/alipay.jpg" alt="支付宝" style="border-color: var(--efu-blue)"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/"><div class="reward-text">赞赏名单</div><div class="reward-dec">由于您的支持，我才能够实现写作的价值。</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">夫礼者Home</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/devops/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>devops<span class="tagsPageCount">10</span></span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/03/26/devops-skywalking-local/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">告别沉重的OAP！一款专为单体应用打造的 SkyWalking 轻量级本地化 Reporter 插件</div></div></a></div><div class="next-post pull-right"><a href="/2026/03/10/think-openclaw-i-see/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">openclaw之我见</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-bg-top"><div class="is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div></div><a class="card-info-avatar" href="/about/" title="头像"><div class="avatar-img"><img src="/images/sicp_cover_english.jpg" alt="头像"></div></a><div class="card-info__desc_group"><div class="author-info__name">夫礼者</div><div class="author-info__desc"></div><div class="card-info__data is-center"><a href="/archives/" title="累计文章数:51"><div class="length-num">51</div><div class="headline">文章</div></a><a href="/tags/" title="标签总数:25"><div class="length-num">25</div><div class="headline">标签</div></a><a href="/categories/" title="分类总数:19"><div class="length-num">19</div><div class="headline">分类</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/fulizhe" title="Github"><i class="solitude  fab fa-github"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://gitee.com/lqzkcx3" title="Gitee"><i class="solitude  fab fa-git"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.zhihu.com/people/tao-luo-73" title="Zhihu"><i class="solitude  fab fa-zhihu"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://blog.csdn.net/lqzkcx3" title="CSDN"><i class="solitude  fab fa-bilibili"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.jianshu.com/u/cd3dd432fd00" title="jianshu"><i class="solitude  fab fa-node-js"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://fulizhe.github.io/curriculumVitae" title="aboutMe"><i class="solitude  fas fa-address-card"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fa-solid fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#AI%E8%BF%9B%E8%A1%8C%E6%89%A9%E5%85%85%E5%92%8C%E6%B6%A6%E8%89%B2%EF%BC%88AI%EF%BC%89"><span class="toc-text">AI进行扩充和润色（AI）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E5%BC%95%E5%85%A5%EF%BC%9A%E6%95%88%E7%8E%87%E7%9A%84%E4%BC%AA%E5%91%BD%E9%A2%98%E4%B8%8E%E5%B7%A5%E7%A8%8B%E7%9A%84%E6%AE%8B%E9%85%B7%E7%8E%B0%E5%AE%9E"><span class="toc-text">背景引入：效率的伪命题与工程的残酷现实</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E7%97%9B%E8%8B%A6%E6%98%AF%E6%95%88%E7%8E%87%E7%9A%84%E5%82%AC%E5%8C%96%E5%89%82%EF%BC%9A%E7%94%A8%E7%8E%B0%E5%9C%BA%E9%AB%98%E5%8E%8B%E5%87%BB%E7%A2%8E%E2%80%9C%E5%B2%81%E6%9C%88%E9%9D%99%E5%A5%BD%E2%80%9D"><span class="toc-text">一、 痛苦是效率的催化剂：用现场高压击碎“岁月静好”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-%E9%BB%91%E7%9B%92%E6%98%AF%E6%95%88%E7%8E%87%E7%9A%84%E6%AD%BB%E6%95%8C%EF%BC%9A%E6%8E%A8%E8%AF%BF%E6%89%AF%E7%9A%AE%E8%83%8C%E5%90%8E%E7%9A%84%E5%B7%A5%E7%A8%8B%E8%80%BB%E8%BE%B1"><span class="toc-text">二、 黑盒是效率的死敌：推诿扯皮背后的工程耻辱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81-%E6%80%A0%E6%83%B0%E7%9A%84%E4%BB%A3%E4%BB%B7%EF%BC%9A%E4%BD%8E%E6%95%88%E6%8E%92%E9%94%99%E6%8B%96%E5%9E%AE%E6%95%B4%E4%B8%AA%E7%A0%94%E5%8F%91%E4%BA%A4%E4%BB%98%E5%91%A8%E6%9C%9F"><span class="toc-text">三、 怠惰的代价：低效排错拖垮整个研发交付周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81-ToB%E5%9C%BA%E6%99%AF%E7%9A%84%E7%9C%9F%E7%9B%B8%EF%BC%9A%E6%8A%80%E6%9C%AF%E7%9A%84%E5%B0%BD%E5%A4%B4%E6%98%AF%E2%80%9C%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8D%E2%80%9D"><span class="toc-text">四、 ToB场景的真相：技术的尽头是“快速定位”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81-%E5%88%86%E9%92%9F%E7%BA%A7%E5%AE%9A%E8%B4%A3%E7%9A%84%E2%80%9C%E9%93%81%E6%A1%B6%E9%98%B2%E5%BE%A1%E2%80%9D%EF%BC%9A%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7%E7%9A%84%E9%99%8D%E7%BB%B4%E6%89%93%E5%87%BB"><span class="toc-text">五、 分钟级定责的“铁桶防御”：可观测性的降维打击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81-%E2%80%9C%E6%88%98%E6%97%B6%E5%8F%91%E6%85%8C%E2%80%9D%E7%9A%84%E6%AC%A1%E7%94%9F%E7%81%BE%E5%AE%B3%EF%BC%9A%E7%94%A8%E5%88%BB%E6%84%8F%E6%B2%89%E6%B7%80%E9%93%B8%E5%B0%B1%E2%80%9C%E7%A8%B3%E5%9D%90%E4%B8%AD%E5%86%9B%E5%B8%90%E2%80%9D%E7%9A%84%E5%BA%95%E6%B0%94"><span class="toc-text">六、 “战时发慌”的次生灾害：用刻意沉淀铸就“稳坐中军帐”的底气</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81-%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%94%9F%E5%AD%98%E5%BA%95%E7%BA%BF%EF%BC%9A%E4%B8%8D%E9%85%8D%E6%8B%A5%E6%9C%89%E2%80%9C%E5%85%A8%E7%9B%98%E5%8A%A3%E5%8A%BF%E2%80%9D%E7%9A%84%E5%AD%98%E6%B4%BB%E7%89%B9%E6%9D%83"><span class="toc-text">七、 系统的生存底线：不配拥有“全盘劣势”的存活特权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B6%E5%B0%BE%E6%80%BB%E7%BB%93%EF%BC%9A%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7%E9%87%8D%E5%A1%91%E7%A0%94%E5%8F%91%E7%A7%A9%E5%BA%8F"><span class="toc-text">收尾总结：可观测性重塑研发秩序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%84%9F%E6%82%9F%EF%BC%9A%E4%BB%8E%E2%80%9C%E8%A2%AB%E5%8A%A8%E4%BF%AE%E9%94%85%E2%80%9D%E5%88%B0%E2%80%9C%E6%8E%8C%E6%8E%A7%E5%85%A8%E5%B1%80%E2%80%9D%E7%9A%84%E8%AE%A4%E7%9F%A5%E8%B7%83%E8%BF%81"><span class="toc-text">感悟：从“被动修锅”到“掌控全局”的认知跃迁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E7%B4%A0%E6%9D%90%E5%92%8C%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%96%99%EF%BC%88%E4%BA%BA%E5%B7%A5%EF%BC%89"><span class="toc-text">原始素材和基础语料（人工）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fa-solid fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/2026/04/25/think-from-0-to-1-residual-advantage/" title="半途而废的认知红利：从0到1的突破、长时记忆与经验复利"><div class="thumbnail"><img alt="半途而废的认知红利：从0到1的突破、长时记忆与经验复利" src="/images/sicp_cover_english.jpg"></div><div class="content"><span class="title" href="/2026/04/25/think-from-0-to-1-residual-advantage/" title="半途而废的认知红利：从0到1的突破、长时记忆与经验复利">半途而废的认知红利：从0到1的突破、长时记忆与经验复利</span><span class="article-recent_post_categories" href="/2026/04/25/think-from-0-to-1-residual-advantage/">思考</span></div></a><a class="aside-list-item" href="/2026/04/23/devops-refactor-process/" title="职场破局：从“背锅祭旗”到“跨部门流程重构”的涅槃之路"><div class="thumbnail"><img alt="职场破局：从“背锅祭旗”到“跨部门流程重构”的涅槃之路" src="/2026/04/23/devops-refactor-process/cover.png"></div><div class="content"><span class="title" href="/2026/04/23/devops-refactor-process/" title="职场破局：从“背锅祭旗”到“跨部门流程重构”的涅槃之路">职场破局：从“背锅祭旗”到“跨部门流程重构”的涅槃之路</span><span class="article-recent_post_categories" href="/2026/04/23/devops-refactor-process/">研发管理</span></div></a><a class="aside-list-item" href="/2026/04/23/ai-efficiency-and-survival-strategy/" title="技术的傲慢与生存的妥协：AI浪潮下的“囚徒困境”与战略降维"><div class="thumbnail"><img alt="技术的傲慢与生存的妥协：AI浪潮下的“囚徒困境”与战略降维" src="/2026/04/23/ai-efficiency-and-survival-strategy/cover.png"></div><div class="content"><span class="title" href="/2026/04/23/ai-efficiency-and-survival-strategy/" title="技术的傲慢与生存的妥协：AI浪潮下的“囚徒困境”与战略降维">技术的傲慢与生存的妥协：AI浪潮下的“囚徒困境”与战略降维</span></div></a><a class="aside-list-item" href="/2026/03/26/devops-skywalking-local/" title="告别沉重的OAP！一款专为单体应用打造的 SkyWalking 轻量级本地化 Reporter 插件"><div class="thumbnail"><img alt="告别沉重的OAP！一款专为单体应用打造的 SkyWalking 轻量级本地化 Reporter 插件" src="/2026/03/26/devops-skywalking-local/cover.png"></div><div class="content"><span class="title" href="/2026/03/26/devops-skywalking-local/" title="告别沉重的OAP！一款专为单体应用打造的 SkyWalking 轻量级本地化 Reporter 插件">告别沉重的OAP！一款专为单体应用打造的 SkyWalking 轻量级本地化 Reporter 插件</span><span class="article-recent_post_categories" href="/2026/03/26/devops-skywalking-local/">devops</span></div></a><a class="aside-list-item" href="/2026/03/24/devops-observability-is-efficiency/" title="可观测性等于效率"><div class="thumbnail"><img alt="可观测性等于效率" src="/2026/03/24/devops-observability-is-efficiency/cover.png"></div><div class="content"><span class="title" href="/2026/03/24/devops-observability-is-efficiency/" title="可观测性等于效率">可观测性等于效率</span><span class="article-recent_post_categories" href="/2026/03/24/devops-observability-is-efficiency/">devops</span></div></a></div></div></div></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2026 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src="/img/pwa/favicon.png">夫礼者</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude" alt="Theme">Theme</a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=2.1.13"></script><script src="/js/main.js?v=2.1.13"></script><script src="/js/third_party/waterfall.min.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="https://fastly.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js"></script><script src="/js/tw_cn.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="js-pjax"><script>mermaid.run();</script></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude fa-solid fa-xmark"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=2.1.13"></script><!-- Tianli-Talk--><!-- music--></body></html>
+        <script>
+            const posts = ["2026/04/25/think-from-0-to-1-residual-advantage/","2026/04/23/devops-refactor-process/","2026/04/23/ai-efficiency-and-survival-strategy/","2026/03/26/devops-skywalking-local/","2026/03/24/devops-observability-is-efficiency/","2026/03/10/think-openclaw-i-see/","2026/03/06/think-ai-The-end-of-apprenticeship/","2026/03/03/think-why-procrastination/","2026/02/02/think-money-has-clear-criteria/","2026/01/18/book-why-donot-student-like-school/","2026/01/07/devops-bottom-up-recognize-reality-2/","2026/01/07/devops-continuous-bleeding/","2025/11/10/ruankao-xtfxs2/","2025/10/01/think-the-essence-of-implement-ultimate-idea/","2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/","2025/08/17/35-grap-the-initiative-of-life/","2025/08/15/devops-promote-the-progress-of-docker/","2025/08/09/devops-impove-development-process-team-reform/","2025/08/04/think-why-still-working-hard/","2025/08/04/think-how-to-find-your-career/","2025/07/31/devops-why-we-need-focusing-on-observability/","2025/06/22/book-ting-habits/","2025/06/20/think-value-anchor-point/","2025/06/04/devops-observability/","2025/06/03/devops-operation-upgrade/","2025/06/01/book-nexus/","2025/05/31/devops-bottom-up-recognize-reality/","2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/","2025/05/27/ruankao-xtfxs/","2025/03/21/35-why-do-i-firmly-believe-i-will-succeed/","2025/03/14/Technical-team-face-to-Technical-Debt/","2025/03/05/35-basic/","2025/03/03/tsitt-The-Road-to-Breaking-through-Operations-and-Maintenance/","2025/03/02/ai-the-benefit-of-meta-knowledge/","2025/02/27/how-to-break-in-the-era-of-ai-for-company/","2025/02/24/35-I-was-too-extreme/","2025/02/22/35-how-to-check-if-someone-is-worth-following/","2025/02/21/tip-cursor-refill-for-free/","2025/02/12/ai-The-double-edged-sword-of-creative-equality/","2025/02/12/ai-human-win/","2025/02/07/what-mean-when-we-say-ai-assisted-process-transformation/","2025/02/04/deepseek-r1-i-observe-to/","2025/01/17/social-experiment-by-ai/","2025/01/12/think-in-ai-era/","2025/01/09/the-skill-need-to-pratice-in-ai-era-as-programmer/","2025/01/07/cursor-i-think-to/","2025/01/05/2024-year-end-summary/","2024/12/12/《一本小小的红色写作书》读后感/","2024/12/12/《自学是门手艺》读后感/","2024/12/12/典型小散的投资生涯总结2018-2024/","2024/11/10/hello-world/"];
+            function toRandomPost() {
+                const randomPost = posts[Math.floor(Math.random() * posts.length)];
+                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
+            }
+        </script>
