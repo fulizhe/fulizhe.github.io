@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>半途而废的认知红利：从0到1的突破、长时记忆与经验复利 | 夫礼者Home</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=2.1.13"><!-- inject head--><link rel="canonical" href="http://example.com/2026/04/25/think-from-0-to-1-residual-advantage/"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><!-- Open Graph--><meta name="description" content="前言在许多组织文化与社会叙事中，“坚持到底”被无条件地奉为美德，而“半途而废”则几乎等同于失败的同义词。然而，如果我们将视野从道德评判转向认知科学与决策经济学的透镜，就会发现：适度的、策略性的“半途而废”不但不应被污名化，反而可能是一种极其理性的长期认知投资。它帮助人在复杂不确定的环境中，以较低的沉"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="夫礼者Home"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(' %c Solitude %c ' + '2.1.13' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script src="https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSE7WE78H9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZSE7WE78H9');
+</script>    
+<script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+          },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":false,"path":"/search.xml"},
+    runtime: '2023-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。","loading":"搜索中..."}},
+    aside: {
+        sayhello: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        sayhello2: [],
+        sayhello3: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><!-- background img--><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img nolazyload" src="/images/sicp_cover_english.jpg" alt="loading image"></div></div><script>const preloader = {
+    isLoaded: false,
+    endLoading: () => {
+        if (!preloader.isLoaded) {
+            document.getElementById('loading-box').classList.add('loaded');
+            preloader.isLoaded = true;
+            preloader.togglePaceDone();
+        }
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+        preloader.isLoaded = false;
+        preloader.togglePaceDone();
+    },
+    togglePaceDone: () => {
+        document.getElementById('body').className = preloader.isLoaded ? 'pace-done' : '';
+    }
+}
+
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});
+
+setTimeout(() => {
+    preloader.endLoading();
+}, 5000);</script><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">63</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">54</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fa-solid fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结<sup>1</sup></a><a href="/tags/2024/">2024<sup>1</sup></a><a href="/tags/%E5%8F%8D%E6%80%9D/">反思<sup>6</sup></a><a href="/tags/thirty-five/">thirty-five<sup>5</sup></a><a href="/tags/AI%E6%B6%A6%E8%89%B2/">AI润色<sup>4</sup></a><a href="/tags/Technical-team/">Technical team<sup>4</sup></a><a href="/tags/devops/">devops<sup>11</sup></a><a href="/tags/%E9%98%85%E8%AF%BB/">阅读<sup>4</sup></a><a href="/tags/AI/">AI<sup>8</sup></a><a href="/tags/Cursor/">Cursor<sup>2</sup></a><a href="/tags/%E5%BC%80%E5%8F%91%E8%80%85%E4%BD%93%E9%AA%8C-DevEx/">开发者体验 (DevEx)<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E8%B4%9F%E8%8D%B7/">认知负荷<sup>1</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E6%80%9D%E8%80%83/">系统思考<sup>1</sup></a><a href="/tags/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD/">研发效能<sup>1</sup></a><a href="/tags/%E7%A0%94%E5%8F%91%E7%AE%A1%E7%90%86/">研发管理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%96%87%E5%8C%96/">工程师文化<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%80%9D%E8%80%83/">职场思考<sup>1</sup></a><a href="/tags/%E6%95%88%E8%83%BD%E4%BC%98%E5%8C%96/">效能优化<sup>1</sup></a><a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理<sup>1</sup></a><a href="/tags/%E6%B5%81%E7%A8%8B%E9%87%8D%E6%9E%84/">流程重构<sup>1</sup></a><a href="/tags/%E8%B7%A8%E9%83%A8%E9%97%A8%E5%8D%8F%E4%BD%9C/">跨部门协作<sup>1</sup></a><a href="/tags/%E5%90%91%E4%B8%8A%E7%AE%A1%E7%90%86/">向上管理<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E7%A0%B4%E5%B1%80/">职场破局<sup>1</sup></a><a href="/tags/observability/">observability<sup>1</sup></a><a href="/tags/skywalking/">skywalking<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E6%96%87%E5%8C%96/">工程文化<sup>1</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86/">团队管理<sup>1</sup></a><a href="/tags/%E4%BB%B7%E5%80%BC%E4%BA%A4%E4%BB%98/">价值交付<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%80%9D%E7%BB%B4/">工程师思维<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/">技术管理<sup>1</sup></a><a href="/tags/DevOps/">DevOps<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E5%AD%A6/">组织行为学<sup>1</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E6%95%88%E8%83%BD/">团队效能<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%8D%E6%80%9D/">个人反思<sup>1</sup></a><a href="/tags/%E8%80%83%E8%AF%95/">考试<sup>2</sup></a><a href="/tags/%E6%8A%80%E8%83%BD/">技能<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E8%A7%89%E9%86%92/">认知觉醒<sup>2</sup></a><a href="/tags/%E7%A0%B4%E5%B1%80%E6%80%9D%E7%BB%B4/">破局思维<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5/">学习策略<sup>1</sup></a><a href="/tags/%E7%BB%8F%E9%AA%8C%E5%A4%8D%E5%88%A9/">经验复利<sup>1</sup></a><a href="/tags/%E5%8D%8A%E9%80%94%E8%80%8C%E5%BA%9F/">半途而废<sup>1</sup></a><a href="/tags/%E9%95%BF%E6%97%B6%E8%AE%B0%E5%BF%86/">长时记忆<sup>1</sup></a><a href="/tags/think/">think<sup>1</sup></a><a href="/tags/%E8%B4%A2%E5%AF%8C%E9%80%BB%E8%BE%91/">财富逻辑<sup>1</sup></a><a href="/tags/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学<sup>1</sup></a><a href="/tags/%E7%8E%AF%E5%A2%83%E9%87%8D%E5%A1%91/">环境重塑<sup>1</sup></a><a href="/tags/%E7%A8%80%E7%BC%BA%E5%BF%83%E6%80%81/">稀缺心态<sup>1</sup></a><a href="/tags/%E8%A1%8C%E4%B8%BA%E5%BF%83%E7%90%86%E5%AD%A6/">行为心理学<sup>1</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计<sup>1</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB%E5%93%B2%E5%AD%A6/">生活哲学<sup>1</sup></a><a href="/tags/B-MAP/">B=MAP<sup>1</sup></a><a href="/tags/%E7%90%86%E8%B4%A2/">理财<sup>1</sup></a></div></div></div></div><!-- keyboard--><!-- righhtside--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon solitude fas fa-bars-progress"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页"><span class="title">夫礼者小屋</span><i class="solitude fa-solid fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">半途而废的认知红利：从0到1的突破、长时记忆与经验复利</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude fa-solid fa-magnifying-glass"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fa-solid fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fa-solid fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/images/sicp_cover_english.jpg" alt="半途而废的认知红利：从0到1的突破、长时记忆与经验复利"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/%E6%80%9D%E8%80%83/">思考</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>AI</span></a><a class="post-meta__tags" href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>认知科学</span></a><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>学习策略</span></a><a class="post-meta__tags" href="/tags/%E7%BB%8F%E9%AA%8C%E5%A4%8D%E5%88%A9/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>经验复利</span></a><a class="post-meta__tags" href="/tags/%E5%8D%8A%E9%80%94%E8%80%8C%E5%BA%9F/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>半途而废</span></a><a class="post-meta__tags" href="/tags/%E9%95%BF%E6%97%B6%E8%AE%B0%E5%BF%86/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>长时记忆</span></a></div></div></div></div><h1 class="post-title">半途而废的认知红利：从0到1的突破、长时记忆与经验复利</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2026-04-25 16:30:00"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2026-04-25T08:30:00.000Z">2026-04-25T08:30:00.000Z</time></span><span class="post-meta-date" title="最后更新于 2026-05-13 21:10:56"><i class="post-meta-icon solitude fa-solid fa-arrows-rotate"></i><time datetime="2026-05-13T13:10:56.745Z">2026-05-13T13:10:56.745Z</time></span><span class="post-meta-position" title="作者IP归属地为China"><i class="post-meta-icon solitude fas fa-location-dot"></i><span>China</span></span><a class="post-meta-pv" href="/2026/04/25/think-from-0-to-1-residual-advantage/" title="文章热度"><i class="post-meta-icon solitude fa-solid fa-fire-flame-curved"></i></a></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在许多组织文化与社会叙事中，“坚持到底”被无条件地奉为美德，而“半途而废”则几乎等同于失败的同义词。然而，如果我们将视野从道德评判转向认知科学与决策经济学的透镜，就会发现：<strong>适度的、策略性的“半途而废”不但不应被污名化，反而可能是一种极其理性的长期认知投资</strong>。它帮助人<strong>在复杂不确定的环境中，以较低的沉没成本换取宝贵的初始经验，从而在更长生命周期里积累起难以被AI取代的隐性知识优势</strong>。</p>
+<p>以下从三个维度对这一命题展开论述。</p>
+<h2 id="一、从0到1的断裂式跨越，远比从1到n困难"><a href="#一、从0到1的断裂式跨越，远比从1到n困难" class="headerlink" title="一、从0到1的断裂式跨越，远比从1到n困难"></a>一、从0到1的断裂式跨越，远比从1到n困难</h2><p>任何创造性工作或技能习得，都存在一道陡峭的启动能量壁垒。从完全未知到建立起可识别的心智模型，这一“0到1”的过程要求个体在缺乏有效反馈的迷雾中配置大量注意力，忍受高得惊人的认知负载。而一旦突破了最初的概念建构期，大脑便会围绕新领域搭建起基本的认知基模，后续的“从1到n”增量学习便更多地依赖既有回路的强化与自动化。换句话说，对于有一定上进心的人而言，从1到n往往伴随着自我驱动的正反馈循环：微小的进步就能产生可见的成就感，进而顺水推舟般地推动持续投入。因此，即使一个人在学习或项目的半途停步，只要他已经完成了0到1的突破，就已然获得了这个过程中最艰难、也最稀缺的认知资产。鼓励人们敢于迈出这第一步，哪怕中途夭折，也是对“启动价值”的认可——它比在舒适区内按部就班地执行“1到n”更具长期意义。</p>
+<h2 id="二、允许“半途而废”，是克服启动恐惧的认知杠杆"><a href="#二、允许“半途而废”，是克服启动恐惧的认知杠杆" class="headerlink" title="二、允许“半途而废”，是克服启动恐惧的认知杠杆"></a>二、允许“半途而废”，是克服启动恐惧的认知杠杆</h2><p>我们往往忽略了一个更前置的陷阱：对“有始有终”的执着追求本身，就可能直接扼杀“开始”。当一个目标被预想为必须完整、完美地抵达终点时，其感知到的难度和压力会被人为放大。畏惧失败、担忧沉没成本的心理，会让个体在迈出第一步之前就选择放弃。而“允许半途而废”则提供了一种宝贵的心理安全网。它把“开始”从“庄严承诺”降维为“低成本试探”，极大地降低了行动的门槛。这种心态的转换，让我们更大概率触发行动，哪怕最终在途中停下，也已经实现了从0到1的宝贵跨越，为未来的“经验复利”种下了一颗种子。正是这种宽容，为后文所述的长期记忆和经验复利，提供了发生的初始可能。</p>
+<h2 id="三、远期记忆中留存的决策骨架，才是人类真正的不可替代性"><a href="#三、远期记忆中留存的决策骨架，才是人类真正的不可替代性" class="headerlink" title="三、远期记忆中留存的决策骨架，才是人类真正的不可替代性"></a>三、远期记忆中留存的决策骨架，才是人类真正的不可替代性</h2><p>当下围绕AI与人类差异的公共讨论，常聚焦于历史项目经验的独特价值。这背后有一个深刻的记忆机制在起作用。人类的长时程记忆并非对细节的精准刻录，而更接近一种“模糊但保形”的关键节点提取器。你可能会忘记几年前某个项目的完整推导过程和具体数据，但你能记住“当时我们做过这样一个尝试”、“那个方向被证明是致命的”、“在某个节点上我们曾踩过一个坑”。这种从具体细节中抽象出来的经验残余，恰是人类对抗纯粹信息检索式AI的核心壁垒。AI可以穷举所有操作日志，却难以在缺少明确检索指令时，自发唤醒那段曾经压力的体感、团队的微妙博弈以及决策时的不确定性直觉。半途而废的项目同样会在大脑中留下这类模式印记，日后遇到相似情景时，大脑能迅速触发“似曾相识”的警觉，而无需从零开始扫描全局解空间。这就是多数有经验者所谓不可替代性的神经基础，也是“哪怕未完成，经历过就有残留优势”的学理支撑。</p>
+<h2 id="四、半途而废获得的「半成品认知」，让重拾的边际成本大幅降低"><a href="#四、半途而废获得的「半成品认知」，让重拾的边际成本大幅降低" class="headerlink" title="四、半途而废获得的「半成品认知」，让重拾的边际成本大幅降低"></a>四、半途而废获得的「半成品认知」，让重拾的边际成本大幅降低</h2><p>任何一个领域，第二次进入都远比第一次容易。这不只是因为神经突触尚有残余印迹，更因为已经完成了对基础规则和常见陷阱的预筛。一个人若曾半途涉足过某编程语言、某个运动项目或某类创业计划，即使多年后遗忘大半，他在重新拾起时所需要支付的认知成本要远低于完全的“白板新手”。原因有三：第一，过往经历提供了内隐的熟悉度与信心，有效削弱了面对新领域时常见的防御性焦虑；第二，他已经知晓了该领域中最基础的注意事项和入门级坑洞，可以把稀缺的注意力带宽更早地聚焦于中高阶问题，形成对零经验者天然的效率护城河；第三，这种残留经验自带路径线索，易于激活原有脑区，使得重拾速度呈指数级恢复，而非线性从零积累。正因如此，民间才流传着“没有白走的路”这样的朴素智慧，而年轻人常被忠告“趁着年轻多经历”，其本质就是鼓励在生命早期低成本地积累大量半途经验，以换取未来生涯中无数次快速重拾的复利效应。相比之下，那些因为恐惧“半途而废”的标签而迟迟不敢行动的人，反而陷入永远停留在0门口的陷阱。</p>
+<h2 id="五、生活中的微观印证：正反例"><a href="#五、生活中的微观印证：正反例" class="headerlink" title="五、生活中的微观印证：正反例"></a>五、生活中的微观印证：正反例</h2><h3 id="反例：警惕“过度设计”：当强行收尾毁掉半成品资产"><a href="#反例：警惕“过度设计”：当强行收尾毁掉半成品资产" class="headerlink" title="反例：警惕“过度设计”：当强行收尾毁掉半成品资产"></a>反例：<strong>警惕“过度设计”：当强行收尾毁掉半成品资产</strong></h3><p>容许“半途而废”，不仅是为了降低启动门槛，更是对自身精力边界的诚实面对。这里我想起遥远的初中时期，一个截然相反的教训。</p>
+<p>当时老师布置了一项任务：制作26个英文字母的认读卡片。这本是一个简单的任务，但我却陷入了自我发挥的“过度设计”中。我找来一副扑克牌，花费了大量精力去撕掉表面的覆膜，再精细地贴上全新的空白图层。截至这一步，这堪称一件完美的艺术品底板。</p>
+<p>然而，我的“精力槽”和时间工期在这浩大的前期工程中已被彻底耗光。面对即将到来的交付死线，我在手写英文字母这个真正的“核心需求”上，只能拖着疲惫的躯体胡乱涂鸦。最终交付的结果，甚至还不如那些随便找张破纸写上字母的平庸作业。</p>
+<p>回头看，那是多么痛的领悟：我在“从0到1”的基础建设上倾注了所有，却在“1到n”的核心交付时因为精力枯竭而导致全盘崩坏。因为外部工期的压迫，我不被允许在这个“完美的底板”处停下，无法将其转化为“半成品资产”等待精力恢复，而是用一次糟糕的强行收尾，毁掉了前期所有的努力。</p>
+<h3 id="正例：一个货架的启示"><a href="#正例：一个货架的启示" class="headerlink" title="正例：一个货架的启示"></a>正例：<strong>一个货架的启示</strong></h3><p>不妨以生活中一个微观场景为例：前阵子我买了一个货架。单单是挑选款式、比对尺寸以及最终组装，就已经耗光了我在“整理房间”这个方向上的全部精力。如果我的潜意识里设定了一个完美主义的苛求——“既然买了货架，就必须一鼓作气将所有东西完美规整到位”，面对如此庞大的认知与体力负荷，我很可能会直接放弃购买，继续向我的既有习惯妥协。</p>
+<p>现在一个多月过去了，我依然只是将东西胡乱往货架上堆砌，这看起来是个典型的“半途而废”。但我并未因此焦虑，因为我深知自己已经拥有了这个“半成品资产”。我相信在未来某一天，待我精力恢复、注意力回归之后，我会自然而然地开始下一步。正是因为我允许自己在此刻“半途而废”，我才真正迈出了改变的第一步，而那个已经立在房间里的货架，实质上已将未来进一步整理的启动成本降到了极低。</p>
+<h2 id="总结与感悟"><a href="#总结与感悟" class="headerlink" title="总结与感悟"></a>总结与感悟</h2><p>半途而废不该被简单视作意志薄弱的象征，它可以是一种在高度不确定环境下的认知套利策略。从0到1的启动价值、远期中记忆里留下的决策模式，以及重拾时的成本优势，三者共同构成了一种专属于人类的“经验复利”。这一视角转变，给我们最大的启示或许是：对这个时代弥漫的完成主义焦虑保持清醒。不必因每一段未竟的探索而苛责自己，更不必因为害怕无法坚持到底而拒绝启程。对于个体而言，只要在某个方向上真实地完成了从0到1的认知突破，哪怕就此搁置，这段旅程已经永久性地改变了你在未来面对该方向时的竞争位势。承认并鼓励这样的“半途资本”，或许能让我们在终身学习的漫长道路上，更勇敢、也更智慧地迈出下一个第一步。</p>
+<h2 id="原始素材和基础语料（人工）"><a href="#原始素材和基础语料（人工）" class="headerlink" title="原始素材和基础语料（人工）"></a>原始素材和基础语料（人工）</h2><blockquote>
+<ol>
+<li>万事开头难，对于人这个物种来说，最难从0到1，反而对于从1到n,人是有自驱力来完成的；稍微有点进取心的人，从1到n几乎是顺水推舟。</li>
+<li>人的远期记忆力，这里不是说对于细节的把握，现阶段我们对于AI的优势为啥都说是在历史项目里，就是因为人类对于自己切身经历事情的长期记忆能力。几年前经历的决策过程，也许会忘记细节，但至少有没有，关键节点是可以有残余的。 其实这就是绝大部分人所谓的<strong>职场不可替代性</strong>。</li>
+<li>哪怕半途而废，之后捡起来也比完全没经历过要快得多，而且在面对该事物时，过往经历会带来认知优势和信心。 以及已经知晓了基础注意事项之后，也能将精力集中在更关键的地方。相较之下，其它的白板小孩处处都是注意项，天然存在竞争劣势。所以为啥会有”没有白走的路”这种说法。 这也是为啥年轻人经常得到的一句忠告是”趁着年轻多经历”。</li>
+<li>半途而废也是值得鼓励的。这个鼓励指代的是作为分支项开始了之后的半途而废，而非你的主职，例如学生的学业，职场人士的工作等，这些半途而废不在本文探讨的范围里。</li>
+</ol>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.png"></a><div class="post-copyright__author_name">夫礼者Home</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward"><div class="reward-button" title="赞赏作者" onclick="AddRewardMask()"><i class="solitude fa-solid fa-heart"></i>赞赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢您的赞赏</span><ul class="reward-group"><li class="reward-item"><a href="/images/wxpay.jpg"><img class="post-qr-code-img nolazyload" src="/images/wxpay.jpg" alt="微信" style="border-color: var(--efu-green)"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.jpg"><img class="post-qr-code-img nolazyload" src="/images/alipay.jpg" alt="支付宝" style="border-color: var(--efu-blue)"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/"><div class="reward-text">赞赏名单</div><div class="reward-dec">由于您的支持，我才能够实现写作的价值。</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">夫礼者Home</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>AI<span class="tagsPageCount">8</span></span></a><a class="post-meta__tags" href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>认知科学<span class="tagsPageCount">1</span></span></a><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>学习策略<span class="tagsPageCount">1</span></span></a><a class="post-meta__tags" href="/tags/%E7%BB%8F%E9%AA%8C%E5%A4%8D%E5%88%A9/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>经验复利<span class="tagsPageCount">1</span></span></a><a class="post-meta__tags" href="/tags/%E5%8D%8A%E9%80%94%E8%80%8C%E5%BA%9F/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>半途而废<span class="tagsPageCount">1</span></span></a><a class="post-meta__tags" href="/tags/%E9%95%BF%E6%97%B6%E8%AE%B0%E5%BF%86/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>长时记忆<span class="tagsPageCount">1</span></span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/04/27/devops-optimization-startup/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">启动速度优化背后的工程博弈：当我们在追求“快”时，到底在妥协什么？</div></div></a></div><div class="next-post pull-right"><a href="/2026/04/23/devops-refactor-process/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">职场破局：从“背锅祭旗”到“跨部门流程重构”的涅槃之路</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-bg-top"><div class="is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div></div><a class="card-info-avatar" href="/about/" title="头像"><div class="avatar-img"><img src="/images/sicp_cover_english.jpg" alt="头像"></div></a><div class="card-info__desc_group"><div class="author-info__name">夫礼者</div><div class="author-info__desc"></div><div class="card-info__data is-center"><a href="/archives/" title="累计文章数:63"><div class="length-num">63</div><div class="headline">文章</div></a><a href="/tags/" title="标签总数:54"><div class="length-num">54</div><div class="headline">标签</div></a><a href="/categories/" title="分类总数:25"><div class="length-num">25</div><div class="headline">分类</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/fulizhe" title="Github"><i class="solitude  fab fa-github"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://gitee.com/lqzkcx3" title="Gitee"><i class="solitude  fab fa-git"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.zhihu.com/people/tao-luo-73" title="Zhihu"><i class="solitude  fab fa-zhihu"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://blog.csdn.net/lqzkcx3" title="CSDN"><i class="solitude  fab fa-bilibili"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.jianshu.com/u/cd3dd432fd00" title="jianshu"><i class="solitude  fab fa-node-js"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://fulizhe.github.io/curriculumVitae" title="aboutMe"><i class="solitude  fas fa-address-card"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fa-solid fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%8E0%E5%88%B01%E7%9A%84%E6%96%AD%E8%A3%82%E5%BC%8F%E8%B7%A8%E8%B6%8A%EF%BC%8C%E8%BF%9C%E6%AF%94%E4%BB%8E1%E5%88%B0n%E5%9B%B0%E9%9A%BE"><span class="toc-text">一、从0到1的断裂式跨越，远比从1到n困难</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%85%81%E8%AE%B8%E2%80%9C%E5%8D%8A%E9%80%94%E8%80%8C%E5%BA%9F%E2%80%9D%EF%BC%8C%E6%98%AF%E5%85%8B%E6%9C%8D%E5%90%AF%E5%8A%A8%E6%81%90%E6%83%A7%E7%9A%84%E8%AE%A4%E7%9F%A5%E6%9D%A0%E6%9D%86"><span class="toc-text">二、允许“半途而废”，是克服启动恐惧的认知杠杆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%BF%9C%E6%9C%9F%E8%AE%B0%E5%BF%86%E4%B8%AD%E7%95%99%E5%AD%98%E7%9A%84%E5%86%B3%E7%AD%96%E9%AA%A8%E6%9E%B6%EF%BC%8C%E6%89%8D%E6%98%AF%E4%BA%BA%E7%B1%BB%E7%9C%9F%E6%AD%A3%E7%9A%84%E4%B8%8D%E5%8F%AF%E6%9B%BF%E4%BB%A3%E6%80%A7"><span class="toc-text">三、远期记忆中留存的决策骨架，才是人类真正的不可替代性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%8D%8A%E9%80%94%E8%80%8C%E5%BA%9F%E8%8E%B7%E5%BE%97%E7%9A%84%E3%80%8C%E5%8D%8A%E6%88%90%E5%93%81%E8%AE%A4%E7%9F%A5%E3%80%8D%EF%BC%8C%E8%AE%A9%E9%87%8D%E6%8B%BE%E7%9A%84%E8%BE%B9%E9%99%85%E6%88%90%E6%9C%AC%E5%A4%A7%E5%B9%85%E9%99%8D%E4%BD%8E"><span class="toc-text">四、半途而废获得的「半成品认知」，让重拾的边际成本大幅降低</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%94%9F%E6%B4%BB%E4%B8%AD%E7%9A%84%E5%BE%AE%E8%A7%82%E5%8D%B0%E8%AF%81%EF%BC%9A%E6%AD%A3%E5%8F%8D%E4%BE%8B"><span class="toc-text">五、生活中的微观印证：正反例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E4%BE%8B%EF%BC%9A%E8%AD%A6%E6%83%95%E2%80%9C%E8%BF%87%E5%BA%A6%E8%AE%BE%E8%AE%A1%E2%80%9D%EF%BC%9A%E5%BD%93%E5%BC%BA%E8%A1%8C%E6%94%B6%E5%B0%BE%E6%AF%81%E6%8E%89%E5%8D%8A%E6%88%90%E5%93%81%E8%B5%84%E4%BA%A7"><span class="toc-text">反例：警惕“过度设计”：当强行收尾毁掉半成品资产</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E4%BE%8B%EF%BC%9A%E4%B8%80%E4%B8%AA%E8%B4%A7%E6%9E%B6%E7%9A%84%E5%90%AF%E7%A4%BA"><span class="toc-text">正例：一个货架的启示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E4%B8%8E%E6%84%9F%E6%82%9F"><span class="toc-text">总结与感悟</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E7%B4%A0%E6%9D%90%E5%92%8C%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%96%99%EF%BC%88%E4%BA%BA%E5%B7%A5%EF%BC%89"><span class="toc-text">原始素材和基础语料（人工）</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fa-solid fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/2026/05/13/devops-hidden-costs-of-kpi-driven/" title="效率的诅咒与“信任税”：中小企业研发效能的隐性耗损与破局思考"><div class="thumbnail"><img alt="效率的诅咒与“信任税”：中小企业研发效能的隐性耗损与破局思考" src="/images/sicp_cover_english.jpg"></div><div class="content"><span class="title" href="/2026/05/13/devops-hidden-costs-of-kpi-driven/" title="效率的诅咒与“信任税”：中小企业研发效能的隐性耗损与破局思考">效率的诅咒与“信任税”：中小企业研发效能的隐性耗损与破局思考</span><span class="article-recent_post_categories" href="/2026/05/13/devops-hidden-costs-of-kpi-driven/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/05/11/devops-the-illusion-of-tech-management/" title="最终也没能力挽狂澜：当DevOps的精妙设计，撞上“老好人”团队的现实"><div class="thumbnail"><img alt="最终也没能力挽狂澜：当DevOps的精妙设计，撞上“老好人”团队的现实" src="/images/sicp_cover_english.jpg"></div><div class="content"><span class="title" href="/2026/05/11/devops-the-illusion-of-tech-management/" title="最终也没能力挽狂澜：当DevOps的精妙设计，撞上“老好人”团队的现实">最终也没能力挽狂澜：当DevOps的精妙设计，撞上“老好人”团队的现实</span><span class="article-recent_post_categories" href="/2026/05/11/devops-the-illusion-of-tech-management/">管理反思</span></div></a><a class="aside-list-item" href="/2026/05/11/think-defy-the-destiny/" title="拒绝降维与价值觉醒：论“憋屈感”作为破局的原始燃料"><div class="thumbnail"><img alt="拒绝降维与价值觉醒：论“憋屈感”作为破局的原始燃料" src="/images/sicp_cover_english.jpg"></div><div class="content"><span class="title" href="/2026/05/11/think-defy-the-destiny/" title="拒绝降维与价值觉醒：论“憋屈感”作为破局的原始燃料">拒绝降维与价值觉醒：论“憋屈感”作为破局的原始燃料</span><span class="article-recent_post_categories" href="/2026/05/11/think-defy-the-destiny/">思考与洞察</span></div></a><a class="aside-list-item" href="/2026/05/08/devops-trust-and-glue-work-in-management/" title="关于管理流程中的差异化对待"><div class="thumbnail"><img alt="关于管理流程中的差异化对待" src="/2026/05/08/devops-trust-and-glue-work-in-management/cover.png"></div><div class="content"><span class="title" href="/2026/05/08/devops-trust-and-glue-work-in-management/" title="关于管理流程中的差异化对待">关于管理流程中的差异化对待</span></div></a><a class="aside-list-item" href="/2026/05/08/think-money-has-clear-criteria2/" title="跨越十年的认知觉醒：财富的绝对标尺与反“苦难崇拜”的环境重塑"><div class="thumbnail"><img alt="跨越十年的认知觉醒：财富的绝对标尺与反“苦难崇拜”的环境重塑" src="/images/sicp_cover_english.jpg"></div><div class="content"><span class="title" href="/2026/05/08/think-money-has-clear-criteria2/" title="跨越十年的认知觉醒：财富的绝对标尺与反“苦难崇拜”的环境重塑">跨越十年的认知觉醒：财富的绝对标尺与反“苦难崇拜”的环境重塑</span><span class="article-recent_post_categories" href="/2026/05/08/think-money-has-clear-criteria2/">深度思考</span></div></a></div></div></div></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2026 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src="/img/pwa/favicon.png">夫礼者</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude" alt="Theme">Theme</a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=2.1.13"></script><script src="/js/main.js?v=2.1.13"></script><script src="/js/third_party/waterfall.min.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="https://fastly.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js"></script><script src="/js/tw_cn.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="js-pjax"><script>mermaid.run();</script></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude fa-solid fa-xmark"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=2.1.13"></script><!-- Tianli-Talk--><!-- music--></body></html>
+        <script>
+            const posts = ["2026/05/13/devops-hidden-costs-of-kpi-driven/","2026/05/11/devops-the-illusion-of-tech-management/","2026/05/11/think-defy-the-destiny/","2026/05/08/devops-trust-and-glue-work-in-management/","2026/05/08/think-money-has-clear-criteria2/","2026/05/04/think-mastering-the-right-of-interpretation/","2026/05/01/devops-Criteria-for-technical-decision-making/","2026/04/29/devops-cognitive-load-and-feedback-loops/","2026/04/29/devops-reject-works-on-my-machine/","2026/04/28/devops-from-heroism-to-system-observability/","2026/04/27/think-redundancy-design-in-daily-life/","2026/04/27/devops-optimization-startup/","2026/04/25/think-from-0-to-1-residual-advantage/","2026/04/23/devops-refactor-process/","2026/04/23/ai-efficiency-and-survival-strategy/","2026/03/26/devops-skywalking-local/","2026/03/24/devops-observability-is-efficiency/","2026/03/10/think-openclaw-i-see/","2026/03/06/think-ai-The-end-of-apprenticeship/","2026/03/03/think-why-procrastination/","2026/02/02/think-money-has-clear-criteria/","2026/01/18/book-why-donot-student-like-school/","2026/01/07/devops-bottom-up-recognize-reality-2/","2026/01/07/devops-continuous-bleeding/","2025/11/10/ruankao-xtfxs2/","2025/10/01/think-the-essence-of-implement-ultimate-idea/","2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/","2025/08/17/35-grap-the-initiative-of-life/","2025/08/15/devops-promote-the-progress-of-docker/","2025/08/09/devops-impove-development-process-team-reform/","2025/08/04/think-why-still-working-hard/","2025/08/04/think-how-to-find-your-career/","2025/07/31/devops-why-we-need-focusing-on-observability/","2025/06/22/book-ting-habits/","2025/06/20/think-value-anchor-point/","2025/06/04/devops-observability/","2025/06/03/devops-operation-upgrade/","2025/06/01/book-nexus/","2025/05/31/devops-bottom-up-recognize-reality/","2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/","2025/05/27/ruankao-xtfxs/","2025/03/21/35-why-do-i-firmly-believe-i-will-succeed/","2025/03/14/Technical-team-face-to-Technical-Debt/","2025/03/05/35-basic/","2025/03/03/tsitt-The-Road-to-Breaking-through-Operations-and-Maintenance/","2025/03/02/ai-the-benefit-of-meta-knowledge/","2025/02/27/how-to-break-in-the-era-of-ai-for-company/","2025/02/24/35-I-was-too-extreme/","2025/02/22/35-how-to-check-if-someone-is-worth-following/","2025/02/21/tip-cursor-refill-for-free/","2025/02/12/ai-human-win/","2025/02/12/ai-The-double-edged-sword-of-creative-equality/","2025/02/07/what-mean-when-we-say-ai-assisted-process-transformation/","2025/02/04/deepseek-r1-i-observe-to/","2025/01/17/social-experiment-by-ai/","2025/01/12/think-in-ai-era/","2025/01/09/the-skill-need-to-pratice-in-ai-era-as-programmer/","2025/01/07/cursor-i-think-to/","2025/01/05/2024-year-end-summary/","2024/12/12/《一本小小的红色写作书》读后感/","2024/12/12/《自学是门手艺》读后感/","2024/12/12/典型小散的投资生涯总结2018-2024/","2024/11/10/hello-world/"];
+            function toRandomPost() {
+                const randomPost = posts[Math.floor(Math.random() * posts.length)];
+                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
+            }
+        </script>
