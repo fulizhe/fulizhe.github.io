@@ -1,0 +1,312 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>黑盒之殇：知识囚笼与职场&quot;守门人&quot;的虚假不可替代性 | 夫礼者Home</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=2.1.13"><!-- inject head--><link rel="canonical" href="http://example.com/2026/06/10/devops-knowledge-sink-vs-individual-blackbox/"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"><!-- Open Graph--><meta name="description" content="背景：办公室里的”人形密钥”在每个技术团队里，几乎都供奉着一尊或几尊这样的”神”： 每次发布上线，必须等 TA 到场。安全扫描出了告警，只有 TA 知道那个诡异的配置项藏在哪个犄角旮旯。某个古老的打包脚本报错了，全组人只能眼巴巴地盯着 TA 的电脑屏幕，看着 TA 行云流水地敲下几行没人看得懂的魔法"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="夫礼者Home"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(' %c Solitude %c ' + '2.1.13' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script src="https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSE7WE78H9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZSE7WE78H9');
+</script>    
+<script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+          },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":false,"path":"/search.xml"},
+    runtime: '2023-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。","loading":"搜索中..."}},
+    aside: {
+        sayhello: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        sayhello2: [],
+        sayhello3: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><!-- background img--><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img nolazyload" src="/images/sicp_cover_english.jpg" alt="loading image"></div></div><script>const preloader = {
+    isLoaded: false,
+    endLoading: () => {
+        if (!preloader.isLoaded) {
+            document.getElementById('loading-box').classList.add('loaded');
+            preloader.isLoaded = true;
+            preloader.togglePaceDone();
+        }
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+        preloader.isLoaded = false;
+        preloader.togglePaceDone();
+    },
+    togglePaceDone: () => {
+        document.getElementById('body').className = preloader.isLoaded ? 'pace-done' : '';
+    }
+}
+
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});
+
+setTimeout(() => {
+    preloader.endLoading();
+}, 5000);</script><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">103</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">27</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">100</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fa-solid fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结<sup>1</sup></a><a href="/tags/2024/">2024<sup>1</sup></a><a href="/tags/thirty-five/">thirty-five<sup>5</sup></a><a href="/tags/%E5%8F%8D%E6%80%9D/">反思<sup>6</sup></a><a href="/tags/AI%E6%B6%A6%E8%89%B2/">AI润色<sup>4</sup></a><a href="/tags/Technical-team/">Technical team<sup>5</sup></a><a href="/tags/devops/">devops<sup>12</sup></a><a href="/tags/AI%E6%97%B6%E4%BB%A3/">AI时代<sup>2</sup></a><a href="/tags/%E4%B8%BB%E8%A7%82%E8%83%BD%E5%8A%A8%E6%80%A7/">主观能动性<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E8%A7%82%E5%AF%9F/">职场观察<sup>8</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/">个人成长<sup>5</sup></a><a href="/tags/AI/">AI<sup>10</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%80%A0%E6%83%B0/">认知怠惰<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%B9%B3%E6%9D%83/">技术平权<sup>1</sup></a><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程<sup>9</sup></a><a href="/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/">行业观察<sup>2</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%B1%82%E7%94%9F/">职场求生<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%80%9D%E8%80%83/">职场思考<sup>2</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E8%A7%89%E9%86%92/">认知觉醒<sup>3</sup></a><a href="/tags/%E9%98%85%E8%AF%BB/">阅读<sup>4</sup></a><a href="/tags/Cursor/">Cursor<sup>2</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86/">团队管理<sup>15</sup></a><a href="/tags/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD/">研发效能<sup>20</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E5%AD%A6/">组织行为学<sup>13</sup></a><a href="/tags/%E5%BC%80%E5%8F%91%E8%80%85%E4%BD%93%E9%AA%8C-DevEx/">开发者体验 (DevEx)<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E8%B4%9F%E8%8D%B7/">认知负荷<sup>2</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E6%80%9D%E8%80%83/">系统思考<sup>1</sup></a><a href="/tags/CI-CD/">CI/CD<sup>3</sup></a><a href="/tags/%E7%A0%94%E5%8F%91%E7%AE%A1%E7%90%86/">研发管理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%96%87%E5%8C%96/">工程师文化<sup>1</sup></a><a href="/tags/%E6%95%88%E8%83%BD%E4%BC%98%E5%8C%96/">效能优化<sup>1</sup></a><a href="/tags/%E6%95%91%E4%B8%96%E4%B8%BB%E6%83%85%E8%8A%82/">救世主情节<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E7%97%85%E7%90%86%E5%AD%A6/">组织病理学<sup>2</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%96%AD%E5%A5%B6/">认知断奶<sup>1</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E9%9A%94%E7%A6%BB/">系统隔离<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E5%BF%83%E7%90%86/">职场心理<sup>1</sup></a><a href="/tags/DevOps/">DevOps<sup>5</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E6%B2%BB%E7%90%86/">团队治理<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%83%B0%E6%80%A7/">认知惰性<sup>1</sup></a><a href="/tags/%E8%BE%BE%E5%85%8B%E6%95%88%E5%BA%94/">达克效应<sup>1</sup></a><a href="/tags/%E5%BD%BC%E5%BE%97%E5%8E%9F%E7%90%86/">彼得原理<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E6%9E%B6%E6%9E%84/">组织架构<sup>1</sup></a><a href="/tags/%E5%90%90%E6%A7%BD/">吐槽<sup>1</sup></a><a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/">敏捷开发<sup>1</sup></a><a href="/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/">知识管理<sup>1</sup></a><a href="/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/">可观测性<sup>1</sup></a><a href="/tags/%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98/">性能调优<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84%E6%80%9D%E8%80%83/">架构思考<sup>2</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%80%BA/">技术债<sup>2</sup></a><a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理<sup>1</sup></a><a href="/tags/%E6%B5%81%E7%A8%8B%E9%87%8D%E6%9E%84/">流程重构<sup>1</sup></a><a href="/tags/%E8%B7%A8%E9%83%A8%E9%97%A8%E5%8D%8F%E4%BD%9C/">跨部门协作<sup>3</sup></a><a href="/tags/%E5%90%91%E4%B8%8A%E7%AE%A1%E7%90%86/">向上管理<sup>4</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E7%A0%B4%E5%B1%80/">职场破局<sup>1</sup></a><a href="/tags/%E5%8F%98%E9%9D%A9%E7%AE%A1%E7%90%86/">变革管理<sup>3</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E6%96%87%E5%8C%96/">工程文化<sup>1</sup></a><a href="/tags/%E4%BB%B7%E5%80%BC%E4%BA%A4%E4%BB%98/">价值交付<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%80%9D%E7%BB%B4/">工程师思维<sup>1</sup></a><a href="/tags/%E6%B5%8B%E8%AF%95%E5%B7%A6%E7%A7%BB/">测试左移<sup>2</sup></a><a href="/tags/observability/">observability<sup>1</sup></a><a href="/tags/skywalking/">skywalking<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔<sup>4</sup></a><a href="/tags/%E4%BC%81%E4%B8%9A%E6%96%87%E5%8C%96/">企业文化<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">架构设计<sup>3</sup></a><a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/">技术管理<sup>2</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E6%95%88%E8%83%BD/">团队效能<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%8D%E6%80%9D/">个人反思<sup>2</sup></a><a href="/tags/%E8%80%83%E8%AF%95/">考试<sup>3</sup></a><a href="/tags/%E5%86%B7%E5%90%AF%E5%8A%A8/">冷启动<sup>1</sup></a><a href="/tags/%E5%BF%83%E7%90%86%E4%BB%A3%E5%81%BF/">心理代偿<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%95%88%E8%83%BD/">个人效能<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E9%87%8D%E6%9E%84/">认知重构<sup>1</sup></a><a href="/tags/%E5%AD%98%E5%9C%A8%E4%B8%BB%E4%B9%89/">存在主义<sup>1</sup></a><a href="/tags/%E6%8A%80%E8%83%BD/">技能<sup>1</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/">深度思考<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E5%8D%87%E7%BA%A7/">认知升级<sup>2</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学<sup>2</sup></a><a href="/tags/%E5%88%9B%E9%80%A0%E5%8A%9B/">创造力<sup>1</sup></a><a href="/tags/%E7%A0%B4%E5%B1%80%E6%80%9D%E7%BB%B4/">破局思维<sup>1</sup></a><a href="/tags/AI%E4%B8%8E%E6%9C%AA%E6%9D%A5/">AI与未来<sup>1</sup></a><a href="/tags/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/">职业规划<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5/">学习策略<sup>1</sup></a><a href="/tags/%E7%BB%8F%E9%AA%8C%E5%A4%8D%E5%88%A9/">经验复利<sup>1</sup></a><a href="/tags/%E5%8D%8A%E9%80%94%E8%80%8C%E5%BA%9F/">半途而废<sup>1</sup></a><a href="/tags/%E9%95%BF%E6%97%B6%E8%AE%B0%E5%BF%86/">长时记忆<sup>1</sup></a><a href="/tags/%E6%80%9D%E8%80%83/">思考<sup>1</sup></a><a href="/tags/think/">think<sup>1</sup></a><a href="/tags/%E8%B4%A2%E5%AF%8C%E9%80%BB%E8%BE%91/">财富逻辑<sup>1</sup></a><a href="/tags/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学<sup>1</sup></a><a href="/tags/%E7%8E%AF%E5%A2%83%E9%87%8D%E5%A1%91/">环境重塑<sup>1</sup></a><a href="/tags/%E7%A8%80%E7%BC%BA%E5%BF%83%E6%80%81/">稀缺心态<sup>1</sup></a><a href="/tags/%E9%98%85%E8%AF%BB%E6%84%8F%E4%B9%89/">阅读意义<sup>1</sup></a><a href="/tags/%E7%8B%AC%E7%AB%8B%E6%8E%A2%E7%B4%A2/">独立探索<sup>1</sup></a><a href="/tags/%E8%A1%8C%E4%B8%BA%E5%BF%83%E7%90%86%E5%AD%A6/">行为心理学<sup>1</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计<sup>1</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB%E5%93%B2%E5%AD%A6/">生活哲学<sup>1</sup></a><a href="/tags/B-MAP/">B=MAP<sup>1</sup></a><a href="/tags/%E7%90%86%E8%B4%A2/">理财<sup>1</sup></a></div></div></div></div><!-- keyboard--><!-- righhtside--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon solitude fas fa-bars-progress"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页"><span class="title">夫礼者小屋</span><i class="solitude fa-solid fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">黑盒之殇：知识囚笼与职场&quot;守门人&quot;的虚假不可替代性</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude fa-solid fa-magnifying-glass"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fa-solid fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fa-solid fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/2026/06/10/devops-knowledge-sink-vs-individual-blackbox/cover.jpg" alt="黑盒之殇：知识囚笼与职场&quot;守门人&quot;的虚假不可替代性"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/%E7%AE%A1%E7%90%86%E6%89%8B%E8%AE%B0/">管理手记</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>团队管理</span></a><a class="post-meta__tags" href="/tags/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>研发效能</span></a><a class="post-meta__tags" href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E5%AD%A6/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>组织行为学</span></a><a class="post-meta__tags" href="/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>知识管理</span></a></div></div></div></div><h1 class="post-title">黑盒之殇：知识囚笼与职场&quot;守门人&quot;的虚假不可替代性</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2026-06-10 10:00:00"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2026-06-10T02:00:00.000Z">2026-06-10T02:00:00.000Z</time></span><span class="post-meta-date" title="最后更新于 2026-07-01 21:43:34"><i class="post-meta-icon solitude fa-solid fa-arrows-rotate"></i><time datetime="2026-07-01T13:43:34.638Z">2026-07-01T13:43:34.638Z</time></span><span class="post-meta-position" title="作者IP归属地为China"><i class="post-meta-icon solitude fas fa-location-dot"></i><span>China</span></span><a class="post-meta-pv" href="/2026/06/10/devops-knowledge-sink-vs-individual-blackbox/" title="文章热度"><i class="post-meta-icon solitude fa-solid fa-fire-flame-curved"></i></a></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><h2 id="背景：办公室里的”人形密钥”"><a href="#背景：办公室里的”人形密钥”" class="headerlink" title="背景：办公室里的”人形密钥”"></a>背景：办公室里的”人形密钥”</h2><p>在每个技术团队里，几乎都供奉着一尊或几尊这样的”神”：</p>
+<p>每次发布上线，必须等 TA 到场。安全扫描出了告警，只有 TA 知道那个诡异的配置项藏在哪个犄角旮旯。某个古老的打包脚本报错了，全组人只能眼巴巴地盯着 TA 的电脑屏幕，看着 TA 行云流水地敲下几行没人看得懂的魔法咒语，系统就神奇地恢复了。</p>
+<p>当你试图让 TA 把流程文档化时，TA 会一脸真诚地表示：”这东西太复杂了，写不清楚，而且情况多变，到时候还是得我来看。”</p>
+<p>这套说辞完美得无可反驳。但你总觉得哪里不对——<strong>这到底是系统真的很复杂，还是 TA 刻意维持着这种复杂，来确保自己的不可或缺？</strong></p>
+<h2 id="拆解”黑盒守门人”：以组织熵增为代价的个人护城河"><a href="#拆解”黑盒守门人”：以组织熵增为代价的个人护城河" class="headerlink" title="拆解”黑盒守门人”：以组织熵增为代价的个人护城河"></a>拆解”黑盒守门人”：以组织熵增为代价的个人护城河</h2><h3 id="1-“不可替代性”的幻觉与现实"><a href="#1-“不可替代性”的幻觉与现实" class="headerlink" title="1. “不可替代性”的幻觉与现实"></a>1. “不可替代性”的幻觉与现实</h3><p>这种人的存在，对 TA 自己而言是最大的安全垫。公司不敢动 TA，因为一旦 TA 走了，那堆只有 TA 能维护的打包脚本、安全策略、环境配置，就会立刻变成一座无人能够接管的数字废墟。</p>
+<p>但对组织而言，这恰恰是最危险的定时炸弹。</p>
+<p><strong>一个人的不可替代性，如果建立在”只有我知道”的信息垄断之上，那么这种不可替代性就是组织的一级风险。</strong></p>
+<p>我们太容易把”消息闭塞”误认为是”地位稳固”。那些被奉为”大神”的守门人，实际上不是在守护系统，而是在守护自己的信息租金。他们把团队的知识变成了自己的私产，将公共的工程能力，精心包装成了”独门暗器”。</p>
+<h3 id="2-个人护城河-vs-组织反脆弱"><a href="#2-个人护城河-vs-组织反脆弱" class="headerlink" title="2. 个人护城河 vs 组织反脆弱"></a>2. 个人护城河 vs 组织反脆弱</h3><p>让我们做一个残酷的思想实验：</p>
+<blockquote>
+<p>明天这个人突然被车撞了（或者只是单纯地休了个长假），你的系统还能正常发布吗？安全告警还能被处理吗？打包流程还能跑通吗？</p>
+</blockquote>
+<p>如果答案是否定的，那么恭喜你——你的团队没有在运行系统，而是在运行一个以人为载体的<strong>单点故障集群</strong>。</p>
+<p>在工程学中，一个系统的反脆弱性，取决于它是否能在不依赖”超人”的情况下稳定运行。真正的成熟团队，应该是一台即使换掉任何一个齿轮，依然能继续运转的机器。而那些被神化的”黑盒守门人”，恰恰是在反方向上做功——他们把系统打造得越来越依赖于某个特定的大脑回路。</p>
+<h3 id="3-“占坑式黑盒”的隐性成本"><a href="#3-“占坑式黑盒”的隐性成本" class="headerlink" title="3. “占坑式黑盒”的隐性成本"></a>3. “占坑式黑盒”的隐性成本</h3><p>这种知识垄断带来的代价，远比表面上看起来要沉重得多：</p>
+<ul>
+<li><strong>瓶颈效应</strong>：所有的变更都必须经过这尊”神”的点头。TA 成了流程中最窄的咽喉，所有人的效率都被 TA 的档期所限制。今天的发布要等到 TA 下午有空才能搞，明天的安全补丁要等 TA 明天出差回来才能打。</li>
+<li><strong>知识断层</strong>：年轻工程师在这种环境下，根本没有机会接触到核心流程。他们长期被当作”提线木偶”，只会写业务代码，对工程基建一窍不通。几年下来，除了 TA 越来越”神”了，整个团队的工程素养在原地踏步，甚至倒退。</li>
+<li><strong>人才锁定</strong>：因为流程被锁死在了特定个人的大脑里，外面再厉害的人才进来也无法快速上手。团队失去了人员流动的灵活性，变成了一潭死水。</li>
+</ul>
+<p>而最讽刺的是：<strong>那些建立在信息差之上的”不可替代”，在 AI 和自动化工具面前正在变得不堪一击。</strong> 一个能写清楚文档、能设计自动化流水线的人，其价值远高于一个靠死记硬背配置路径来维持存在感的人。</p>
+<h2 id="破局之道：让知识从大脑流向系统"><a href="#破局之道：让知识从大脑流向系统" class="headerlink" title="破局之道：让知识从大脑流向系统"></a>破局之道：让知识从大脑流向系统</h2><h3 id="1-信息透明化：黑盒变白盒的第一刀"><a href="#1-信息透明化：黑盒变白盒的第一刀" class="headerlink" title="1. 信息透明化：黑盒变白盒的第一刀"></a>1. 信息透明化：黑盒变白盒的第一刀</h3><p>从今天起，建立一条铁律：<strong>任何必须由特定个人手动执行才能完成的流程操作，都视为工程缺陷。</strong></p>
+<p>安全扫描的修复步骤，写成 Runbook 放在团队 Wiki 里。打包部署的环境依赖，写进 Dockerfile 和自动化脚本，而不是刻在某人的备忘录里。那些”只有 TA 才知道”的特殊配置项，加上详细注释提交到代码仓库，而不是留在 TA 的本地环境变量里。</p>
+<p><strong>不能文档化的流程，就是不可复现的流程；不可复现的流程，就是不合格的流程。</strong></p>
+<h3 id="2-自动化兜底：用系统取代”超人”"><a href="#2-自动化兜底：用系统取代”超人”" class="headerlink" title="2. 自动化兜底：用系统取代”超人”"></a>2. 自动化兜底：用系统取代”超人”</h3><p>每一个被发现的”黑盒操作”，都应该被视为一个自动化机会。</p>
+<ul>
+<li>安全检测应集成到 CI&#x2F;CD 流水线中自动触发，自动拦截高危漏洞，而不是等人来”人工看一遍”</li>
+<li>打包流程应该做到一键触发、自动完成，而不是等人来”手动执行那三步”</li>
+<li>环境配置应该做到基础设施即代码（IaC），而不是等人来”登录服务器改一下”</li>
+</ul>
+<p><strong>当你把流程做成一个按钮时，任何人都能成为”专家”；当你把流程锁在脑子里时，你就成了唯一的瓶颈。</strong></p>
+<h3 id="3-重新定义”不可替代性”"><a href="#3-重新定义”不可替代性”" class="headerlink" title="3. 重新定义”不可替代性”"></a>3. 重新定义”不可替代性”</h3><p>我们需要勇敢地跟团队传达一个可能会令人不适的观点：</p>
+<blockquote>
+<p>真正的不可替代性，不是”这件事只有我会做”，而是”即使我教会了所有人做这件事，我依然能做更有价值的事”。</p>
+</blockquote>
+<p>一个人的职场护城河，绝不应该是信息差带来的”占坑优势”，而应该是面对不确定性时的快速应变能力——是对新问题的洞察力，是对复杂局面的判断力，是从零到一搭建新系统的创造力。</p>
+<p><strong>占坑式的不可替代，是一道越守越窄的堑壕；潜力型的不可替代，是一片越走越宽的旷野。</strong></p>
+<h2 id="总结与感悟：把”人治”还给”法治”"><a href="#总结与感悟：把”人治”还给”法治”" class="headerlink" title="总结与感悟：把”人治”还给”法治”"></a>总结与感悟：把”人治”还给”法治”</h2><p>中国传统管理智慧中说：”人治”靠能人，”法治”靠体系。</p>
+<p>在技术团队中，那种依赖”黑盒大神”的运作模式，本质上是一种极度落后的人治。它的短期效率看起来很高——因为大神闭着眼睛就能搞定一切，不需要写文档、不需要走流程。但长期来看，它把整个团队的命运系于一人，脆弱得令人发指。</p>
+<p><strong>一个成熟的技术管理者，应该追求的至高荣誉不是”没有我你们就转不了”，而是”即使没有我，这台机器依然运转如飞”。</strong></p>
+<p>把你脑子里的东西写出来、自动化、教给别人。这不会让你贬值，只会让你从”一个操作工”升维成”一个架构师”。真正的安全感，从来不来自于藏私，而是来自于你即使两手空空，也能快速建起一座新大厦的能力。</p>
+<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><ol>
+<li><a href="/2026/05/02/think-illusion-of-experience-and-future-value">经验的幻象与未来价值</a></li>
+<li><a href="/2026/05/27/ai-driven-dev-and-code-devaluation"> AI主导研发前夕的局内人观察：代码资产大贬值与工程范式重构</a></li>
+<li><a href="/2026/01/07/devops-continuous-bleeding/">困境 - 持续流血的团队状态</a></li>
+<li><a href="/2026/06/07/devops-software-engineering-and-shit-mountain/">世界是个草台班子：交付幻觉、技术债与软件工程的真实底色</a></li>
+<li><a href="/2026/06/03/devops-illusion-of-tech-moat-and-non-management/">ToG企业效能观察：技术壁垒的幻象与“不管理”的组织生态</a></li>
+</ol>
+<h2 id="原始素材和基础语料（人工）"><a href="#原始素材和基础语料（人工）" class="headerlink" title="原始素材和基础语料（人工）"></a>原始素材和基础语料（人工）</h2><blockquote>
+<p>最近在思考”知识沉淀”和”不可替代性”的关系。我发现团队里总有人把自己的”不可替代”建立在”只有我知道”的信息垄断上——安全检测怎么修、打包脚本怎么配、哪个老系统有什么奇怪的坑。看起来是在守护系统，实际上是在守护自己的信息租金。</p>
+<p>但问题是，AI 时代来了，你那点靠死记硬背路径搞出来的”不可替代”，在自动化工具面前就是个笑话。一个有潜力的人，应该是在教会别人之后，自己去搞更难的事。��坑式的不可替代，只会让你越来越不值钱。</p>
+<p>真正的不可替代性，是面对未来的快速应变，不是守着一个破流程当宝贝。</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.png"></a><div class="post-copyright__author_name">夫礼者Home</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward"><div class="reward-button" title="赞赏作者" onclick="AddRewardMask()"><i class="solitude fa-solid fa-heart"></i>赞赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢您的赞赏</span><ul class="reward-group"><li class="reward-item"><a href="/images/wxpay.jpg"><img class="post-qr-code-img nolazyload" src="/images/wxpay.jpg" alt="微信" style="border-color: var(--efu-green)"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.jpg"><img class="post-qr-code-img nolazyload" src="/images/alipay.jpg" alt="支付宝" style="border-color: var(--efu-blue)"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/"><div class="reward-text">赞赏名单</div><div class="reward-dec">由于您的支持，我才能够实现写作的价值。</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">夫礼者Home</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>团队管理<span class="tagsPageCount">15</span></span></a><a class="post-meta__tags" href="/tags/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>研发效能<span class="tagsPageCount">20</span></span></a><a class="post-meta__tags" href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E5%AD%A6/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>组织行为学<span class="tagsPageCount">13</span></span></a><a class="post-meta__tags" href="/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>知识管理<span class="tagsPageCount">1</span></span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/06/10/devops-fake-automation-and-human-api/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">医者不自医：IT团队的“人肉API”与伪自动化的形式主义</div></div></a></div><div class="next-post pull-right"><a href="/2026/06/10/devops-reform-without-firing-and-malicious-compliance/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">组织改良的深水区：破解“恶意服从”与领导者的信心重塑</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-bg-top"><div class="is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div></div><a class="card-info-avatar" href="/about/" title="头像"><div class="avatar-img"><img src="/images/sicp_cover_english.jpg" alt="头像"></div></a><div class="card-info__desc_group"><div class="author-info__name">夫礼者</div><div class="author-info__desc"></div><div class="card-info__data is-center"><a href="/archives/" title="累计文章数:103"><div class="length-num">103</div><div class="headline">文章</div></a><a href="/tags/" title="标签总数:100"><div class="length-num">100</div><div class="headline">标签</div></a><a href="/categories/" title="分类总数:35"><div class="length-num">35</div><div class="headline">分类</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/fulizhe" title="Github"><i class="solitude  fab fa-github"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://gitee.com/lqzkcx3" title="Gitee"><i class="solitude  fab fa-git"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.zhihu.com/people/tao-luo-73" title="Zhihu"><i class="solitude  fab fa-zhihu"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://blog.csdn.net/lqzkcx3" title="CSDN"><i class="solitude  fab fa-bilibili"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.jianshu.com/u/cd3dd432fd00" title="jianshu"><i class="solitude  fab fa-node-js"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://fulizhe.github.io/curriculumVitae" title="aboutMe"><i class="solitude  fas fa-address-card"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fa-solid fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%EF%BC%9A%E5%8A%9E%E5%85%AC%E5%AE%A4%E9%87%8C%E7%9A%84%E2%80%9D%E4%BA%BA%E5%BD%A2%E5%AF%86%E9%92%A5%E2%80%9D"><span class="toc-text">背景：办公室里的”人形密钥”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%86%E8%A7%A3%E2%80%9D%E9%BB%91%E7%9B%92%E5%AE%88%E9%97%A8%E4%BA%BA%E2%80%9D%EF%BC%9A%E4%BB%A5%E7%BB%84%E7%BB%87%E7%86%B5%E5%A2%9E%E4%B8%BA%E4%BB%A3%E4%BB%B7%E7%9A%84%E4%B8%AA%E4%BA%BA%E6%8A%A4%E5%9F%8E%E6%B2%B3"><span class="toc-text">拆解”黑盒守门人”：以组织熵增为代价的个人护城河</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E2%80%9C%E4%B8%8D%E5%8F%AF%E6%9B%BF%E4%BB%A3%E6%80%A7%E2%80%9D%E7%9A%84%E5%B9%BB%E8%A7%89%E4%B8%8E%E7%8E%B0%E5%AE%9E"><span class="toc-text">1. “不可替代性”的幻觉与现实</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%AA%E4%BA%BA%E6%8A%A4%E5%9F%8E%E6%B2%B3-vs-%E7%BB%84%E7%BB%87%E5%8F%8D%E8%84%86%E5%BC%B1"><span class="toc-text">2. 个人护城河 vs 组织反脆弱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E2%80%9C%E5%8D%A0%E5%9D%91%E5%BC%8F%E9%BB%91%E7%9B%92%E2%80%9D%E7%9A%84%E9%9A%90%E6%80%A7%E6%88%90%E6%9C%AC"><span class="toc-text">3. “占坑式黑盒”的隐性成本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A0%B4%E5%B1%80%E4%B9%8B%E9%81%93%EF%BC%9A%E8%AE%A9%E7%9F%A5%E8%AF%86%E4%BB%8E%E5%A4%A7%E8%84%91%E6%B5%81%E5%90%91%E7%B3%BB%E7%BB%9F"><span class="toc-text">破局之道：让知识从大脑流向系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BF%A1%E6%81%AF%E9%80%8F%E6%98%8E%E5%8C%96%EF%BC%9A%E9%BB%91%E7%9B%92%E5%8F%98%E7%99%BD%E7%9B%92%E7%9A%84%E7%AC%AC%E4%B8%80%E5%88%80"><span class="toc-text">1. 信息透明化：黑盒变白盒的第一刀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%87%AA%E5%8A%A8%E5%8C%96%E5%85%9C%E5%BA%95%EF%BC%9A%E7%94%A8%E7%B3%BB%E7%BB%9F%E5%8F%96%E4%BB%A3%E2%80%9D%E8%B6%85%E4%BA%BA%E2%80%9D"><span class="toc-text">2. 自动化兜底：用系统取代”超人”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%87%8D%E6%96%B0%E5%AE%9A%E4%B9%89%E2%80%9D%E4%B8%8D%E5%8F%AF%E6%9B%BF%E4%BB%A3%E6%80%A7%E2%80%9D"><span class="toc-text">3. 重新定义”不可替代性”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E4%B8%8E%E6%84%9F%E6%82%9F%EF%BC%9A%E6%8A%8A%E2%80%9D%E4%BA%BA%E6%B2%BB%E2%80%9D%E8%BF%98%E7%BB%99%E2%80%9D%E6%B3%95%E6%B2%BB%E2%80%9D"><span class="toc-text">总结与感悟：把”人治”还给”法治”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3"><span class="toc-text">相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E7%B4%A0%E6%9D%90%E5%92%8C%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%96%99%EF%BC%88%E4%BA%BA%E5%B7%A5%EF%BC%89"><span class="toc-text">原始素材和基础语料（人工）</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fa-solid fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/2026/07/01/devops-top-down-reform-and-multiplicative-quality-model/" title="自上而下的效能革命：打碎大锅饭的“质量乘法”与硬约束"><div class="thumbnail"><img alt="自上而下的效能革命：打碎大锅饭的“质量乘法”与硬约束" src="/2026/07/01/devops-top-down-reform-and-multiplicative-quality-model/cover.jpg"></div><div class="content"><span class="title" href="/2026/07/01/devops-top-down-reform-and-multiplicative-quality-model/" title="自上而下的效能革命：打碎大锅饭的“质量乘法”与硬约束">自上而下的效能革命：打碎大锅饭的“质量乘法”与硬约束</span><span class="article-recent_post_categories" href="/2026/07/01/devops-top-down-reform-and-multiplicative-quality-model/">管理手记</span></div></a><a class="aside-list-item" href="/2026/06/30/think-ai-making-us-shallow/" title="AI时代，我们失去了深度思考"><div class="thumbnail"><img alt="AI时代，我们失去了深度思考" src="/2026/06/30/think-ai-making-us-shallow/cover.png"></div><div class="content"><span class="title" href="/2026/06/30/think-ai-making-us-shallow/" title="AI时代，我们失去了深度思考">AI时代，我们失去了深度思考</span><span class="article-recent_post_categories" href="/2026/06/30/think-ai-making-us-shallow/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/06/28/ai-agency-filtering-in-ai-era/" title="AI时代的主动性筛选：完成任务的人被淘汰，解决问题的人被解放"><div class="thumbnail"><img alt="AI时代的主动性筛选：完成任务的人被淘汰，解决问题的人被解放" src="/2026/06/28/ai-agency-filtering-in-ai-era/cover.png"></div><div class="content"><span class="title" href="/2026/06/28/ai-agency-filtering-in-ai-era/" title="AI时代的主动性筛选：完成任务的人被淘汰，解决问题的人被解放">AI时代的主动性筛选：完成任务的人被淘汰，解决问题的人被解放</span><span class="article-recent_post_categories" href="/2026/06/28/ai-agency-filtering-in-ai-era/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/06/24/devops-solving-problems-as-close-to-the-source-as-possible/" title="拒绝“人肉消音器”：为什么低价值的构建误报与测试失败绝不能蔓延到测试？"><div class="thumbnail"><img alt="拒绝“人肉消音器”：为什么低价值的构建误报与测试失败绝不能蔓延到测试？" src="/2026/06/24/devops-solving-problems-as-close-to-the-source-as-possible/cover.png"></div><div class="content"><span class="title" href="/2026/06/24/devops-solving-problems-as-close-to-the-source-as-possible/" title="拒绝“人肉消音器”：为什么低价值的构建误报与测试失败绝不能蔓延到测试？">拒绝“人肉消音器”：为什么低价值的构建误报与测试失败绝不能蔓延到测试？</span><span class="article-recent_post_categories" href="/2026/06/24/devops-solving-problems-as-close-to-the-source-as-possible/">管理手记</span></div></a><a class="aside-list-item" href="/2026/06/23/devops-the-illusion-of-done-in-local-build/" title="“在我机器上是好的”：本地打包与研发的“温室巨婴”幻觉"><div class="thumbnail"><img alt="“在我机器上是好的”：本地打包与研发的“温室巨婴”幻觉" src="/2026/06/23/devops-the-illusion-of-done-in-local-build/cover.png"></div><div class="content"><span class="title" href="/2026/06/23/devops-the-illusion-of-done-in-local-build/" title="“在我机器上是好的”：本地打包与研发的“温室巨婴”幻觉">“在我机器上是好的”：本地打包与研发的“温室巨婴”幻觉</span><span class="article-recent_post_categories" href="/2026/06/23/devops-the-illusion-of-done-in-local-build/">管理手记</span></div></a></div></div></div></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2026 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src="/img/pwa/favicon.png">夫礼者</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude" alt="Theme">Theme</a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=2.1.13"></script><script src="/js/main.js?v=2.1.13"></script><script src="/js/third_party/waterfall.min.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="https://fastly.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js"></script><script src="/js/tw_cn.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="js-pjax"><script>mermaid.run();</script></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude fa-solid fa-xmark"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=2.1.13"></script><!-- Tianli-Talk--><!-- music--></body></html>
+        <script>
+            const posts = ["2026/07/01/devops-top-down-reform-and-multiplicative-quality-model/","2026/06/30/think-ai-making-us-shallow/","2026/06/28/ai-agency-filtering-in-ai-era/","2026/06/24/devops-solving-problems-as-close-to-the-source-as-possible/","2026/06/23/devops-the-illusion-of-done-in-local-build/","2026/06/22/devops-how-to-implement-p1-test-gates-in-multi-language-teams/","2026/06/22/think-the-fragility-of-success-and-upward-management/","2026/06/21/devops-how-to-survive-in-a-highly-mediocre-organization/","2026/06/21/devops-how-to-deal-with-incompetent-teams-at-work/","2026/06/19/devops-performance-tuning-as-a-guessing-game/","2026/06/19/ai-jevons-paradox-in-ai-era/","2026/06/17/devops-instant-karma-of-high-frequency-testing/","2026/06/17/think-why-we-still-have-jobs-in-ai-era/","2026/06/17/devops-responsibility-diffusion-in-cross-team-dev/","2026/06/16/think-feedback-loop-and-monopoly-of-interpretation/","2026/06/15/think-workplace-attribution-bias/","2026/06/14/ai-ai-mirror-and-cognitive-laziness/","2026/06/12/devops-the-auditor-role-in-software-architecture/","2026/06/11/think-illusion-of-persuasion/","2026/06/11/devops-technical-bureaucracy-and-benefactor-illusion/","2026/06/11/devops-shift-left-testing-and-quality-gates/","2026/06/11/devops-strategic-patience-in-refactoring/","2026/06/11/think-constraints-and-creativity/","2026/06/10/devops-fake-automation-and-human-api/","2026/06/10/devops-knowledge-sink-vs-individual-blackbox/","2026/06/10/devops-reform-without-firing-and-malicious-compliance/","2026/06/10/devops-yak-shaving-and-pseudo-extensibility/","2026/06/09/devops-illusion-of-hard-work-in-management/","2026/06/09/devops-solve-the-person-who-raised-the-problem/","2026/06/08/devops-reject-technical-giant-baby/","2026/06/07/devops-product-vs-project-mindset/","2026/06/07/devops-breaking-developer-arrogance/","2026/06/07/devops-software-engineering-and-shit-mountain/","2026/06/06/think-reading-as-an-anchor/","2026/06/06/think-career-antifragility/","2026/06/03/devops-illusion-of-tech-moat-and-non-management/","2026/05/27/ai-driven-dev-and-code-devaluation/","2026/05/23/ruankao-xtjls/","2026/05/21/ai-evolution-in-ai-era/","2026/05/13/devops-hidden-costs-of-kpi-driven/","2026/05/11/devops-the-illusion-of-tech-management/","2026/05/11/think-defy-the-destiny/","2026/05/08/devops-trust-and-glue-work-in-management/","2026/05/08/think-money-has-clear-criteria2/","2026/05/04/think-mastering-the-right-of-interpretation/","2026/05/01/devops-Criteria-for-technical-decision-making/","2026/04/29/devops-cognitive-load-and-feedback-loops/","2026/04/29/devops-reject-works-on-my-machine/","2026/04/28/devops-from-heroism-to-system-observability/","2026/04/27/think-redundancy-design-in-daily-life/","2026/04/27/devops-optimization-startup/","2026/04/25/think-from-0-to-1-residual-advantage/","2026/04/23/devops-refactor-process/","2026/04/23/ai-efficiency-and-survival-strategy/","2026/03/26/devops-skywalking-local/","2026/03/24/devops-observability-is-efficiency/","2026/03/10/think-openclaw-i-see/","2026/03/06/think-ai-The-end-of-apprenticeship/","2026/03/03/think-why-procrastination/","2026/02/02/think-money-has-clear-criteria/","2026/01/18/book-why-donot-student-like-school/","2026/01/07/devops-bottom-up-recognize-reality-2/","2026/01/07/devops-continuous-bleeding/","2025/11/10/ruankao-xtfxs2/","2025/10/01/think-the-essence-of-implement-ultimate-idea/","2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/","2025/08/17/35-grap-the-initiative-of-life/","2025/08/15/devops-promote-the-progress-of-docker/","2025/08/09/devops-impove-development-process-team-reform/","2025/08/04/think-why-still-working-hard/","2025/08/04/think-how-to-find-your-career/","2025/07/31/devops-why-we-need-focusing-on-observability/","2025/06/22/book-ting-habits/","2025/06/20/think-value-anchor-point/","2025/06/04/devops-observability/","2025/06/03/devops-operation-upgrade/","2025/06/01/book-nexus/","2025/05/31/devops-bottom-up-recognize-reality/","2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/","2025/05/27/ruankao-xtfxs/","2025/03/21/35-why-do-i-firmly-believe-i-will-succeed/","2025/03/14/Technical-team-face-to-Technical-Debt/","2025/03/05/35-basic/","2025/03/03/tsitt-The-Road-to-Breaking-through-Operations-and-Maintenance/","2025/03/02/ai-the-benefit-of-meta-knowledge/","2025/02/27/how-to-break-in-the-era-of-ai-for-company/","2025/02/24/35-I-was-too-extreme/","2025/02/22/35-how-to-check-if-someone-is-worth-following/","2025/02/21/tip-cursor-refill-for-free/","2025/02/12/ai-The-double-edged-sword-of-creative-equality/","2025/02/12/ai-human-win/","2025/02/07/what-mean-when-we-say-ai-assisted-process-transformation/","2025/02/04/deepseek-r1-i-observe-to/","2025/01/17/social-experiment-by-ai/","2025/01/12/think-in-ai-era/","2025/01/09/the-skill-need-to-pratice-in-ai-era-as-programmer/","2025/01/07/cursor-i-think-to/","2025/01/05/2024-year-end-summary/","2024/12/12/《一本小小的红色写作书》读后感/","2024/12/12/《自学是门手艺》读后感/","2024/12/12/典型小散的投资生涯总结2018-2024/","2024/11/10/hello-world/","2024/03/20/self_past_twentyYears/"];
+            function toRandomPost() {
+                const randomPost = posts[Math.floor(Math.random() * posts.length)];
+                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
+            }
+        </script>

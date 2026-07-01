@@ -1,0 +1,327 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>高负载系统的代偿性生存：拆解“生存冷启动”与“暴力堆砌”的心理底层架构 | 夫礼者Home</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=2.1.13"><!-- inject head--><link rel="canonical" href="http://example.com/2024/03/20/self_past_twentyYears/"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"><!-- Open Graph--><meta name="description" content="背景 我想要和你讨论下我的一种行为状态。 我在高三时候因为玩游戏，只去了个二本。 那是2004年； 大学期间依然玩游戏，更为疯狂。导致延迟毕业了一年 2009年毕业 出了大学被社会毒打多年，终于认清现实 —— 没有人会来帮助你，也没有外面的助力，只能靠自己 于是从26岁开始持续看书，最后到29才确"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="夫礼者Home"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(' %c Solitude %c ' + '2.1.13' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script src="https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSE7WE78H9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZSE7WE78H9');
+</script>    
+<script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+          },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":false,"path":"/search.xml"},
+    runtime: '2023-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。","loading":"搜索中..."}},
+    aside: {
+        sayhello: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        sayhello2: [],
+        sayhello3: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><!-- background img--><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img nolazyload" src="/images/sicp_cover_english.jpg" alt="loading image"></div></div><script>const preloader = {
+    isLoaded: false,
+    endLoading: () => {
+        if (!preloader.isLoaded) {
+            document.getElementById('loading-box').classList.add('loaded');
+            preloader.isLoaded = true;
+            preloader.togglePaceDone();
+        }
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+        preloader.isLoaded = false;
+        preloader.togglePaceDone();
+    },
+    togglePaceDone: () => {
+        document.getElementById('body').className = preloader.isLoaded ? 'pace-done' : '';
+    }
+}
+
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});
+
+setTimeout(() => {
+    preloader.endLoading();
+}, 5000);</script><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">103</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">27</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">100</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fa-solid fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结<sup>1</sup></a><a href="/tags/2024/">2024<sup>1</sup></a><a href="/tags/thirty-five/">thirty-five<sup>5</sup></a><a href="/tags/%E5%8F%8D%E6%80%9D/">反思<sup>6</sup></a><a href="/tags/AI%E6%B6%A6%E8%89%B2/">AI润色<sup>4</sup></a><a href="/tags/Technical-team/">Technical team<sup>5</sup></a><a href="/tags/devops/">devops<sup>12</sup></a><a href="/tags/AI%E6%97%B6%E4%BB%A3/">AI时代<sup>2</sup></a><a href="/tags/%E4%B8%BB%E8%A7%82%E8%83%BD%E5%8A%A8%E6%80%A7/">主观能动性<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E8%A7%82%E5%AF%9F/">职场观察<sup>8</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/">个人成长<sup>5</sup></a><a href="/tags/AI/">AI<sup>10</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%80%A0%E6%83%B0/">认知怠惰<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%B9%B3%E6%9D%83/">技术平权<sup>1</sup></a><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程<sup>9</sup></a><a href="/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/">行业观察<sup>2</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%B1%82%E7%94%9F/">职场求生<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%80%9D%E8%80%83/">职场思考<sup>2</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E8%A7%89%E9%86%92/">认知觉醒<sup>3</sup></a><a href="/tags/%E9%98%85%E8%AF%BB/">阅读<sup>4</sup></a><a href="/tags/Cursor/">Cursor<sup>2</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86/">团队管理<sup>15</sup></a><a href="/tags/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD/">研发效能<sup>20</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E5%AD%A6/">组织行为学<sup>13</sup></a><a href="/tags/%E5%BC%80%E5%8F%91%E8%80%85%E4%BD%93%E9%AA%8C-DevEx/">开发者体验 (DevEx)<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E8%B4%9F%E8%8D%B7/">认知负荷<sup>2</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E6%80%9D%E8%80%83/">系统思考<sup>1</sup></a><a href="/tags/CI-CD/">CI/CD<sup>3</sup></a><a href="/tags/%E7%A0%94%E5%8F%91%E7%AE%A1%E7%90%86/">研发管理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%96%87%E5%8C%96/">工程师文化<sup>1</sup></a><a href="/tags/%E6%95%88%E8%83%BD%E4%BC%98%E5%8C%96/">效能优化<sup>1</sup></a><a href="/tags/%E6%95%91%E4%B8%96%E4%B8%BB%E6%83%85%E8%8A%82/">救世主情节<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E7%97%85%E7%90%86%E5%AD%A6/">组织病理学<sup>2</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%96%AD%E5%A5%B6/">认知断奶<sup>1</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E9%9A%94%E7%A6%BB/">系统隔离<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E5%BF%83%E7%90%86/">职场心理<sup>1</sup></a><a href="/tags/DevOps/">DevOps<sup>5</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E6%B2%BB%E7%90%86/">团队治理<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%83%B0%E6%80%A7/">认知惰性<sup>1</sup></a><a href="/tags/%E8%BE%BE%E5%85%8B%E6%95%88%E5%BA%94/">达克效应<sup>1</sup></a><a href="/tags/%E5%BD%BC%E5%BE%97%E5%8E%9F%E7%90%86/">彼得原理<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E6%9E%B6%E6%9E%84/">组织架构<sup>1</sup></a><a href="/tags/%E5%90%90%E6%A7%BD/">吐槽<sup>1</sup></a><a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/">敏捷开发<sup>1</sup></a><a href="/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/">知识管理<sup>1</sup></a><a href="/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/">可观测性<sup>1</sup></a><a href="/tags/%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98/">性能调优<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84%E6%80%9D%E8%80%83/">架构思考<sup>2</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%80%BA/">技术债<sup>2</sup></a><a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理<sup>1</sup></a><a href="/tags/%E6%B5%81%E7%A8%8B%E9%87%8D%E6%9E%84/">流程重构<sup>1</sup></a><a href="/tags/%E8%B7%A8%E9%83%A8%E9%97%A8%E5%8D%8F%E4%BD%9C/">跨部门协作<sup>3</sup></a><a href="/tags/%E5%90%91%E4%B8%8A%E7%AE%A1%E7%90%86/">向上管理<sup>4</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E7%A0%B4%E5%B1%80/">职场破局<sup>1</sup></a><a href="/tags/%E5%8F%98%E9%9D%A9%E7%AE%A1%E7%90%86/">变革管理<sup>3</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E6%96%87%E5%8C%96/">工程文化<sup>1</sup></a><a href="/tags/%E4%BB%B7%E5%80%BC%E4%BA%A4%E4%BB%98/">价值交付<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%80%9D%E7%BB%B4/">工程师思维<sup>1</sup></a><a href="/tags/%E6%B5%8B%E8%AF%95%E5%B7%A6%E7%A7%BB/">测试左移<sup>2</sup></a><a href="/tags/observability/">observability<sup>1</sup></a><a href="/tags/skywalking/">skywalking<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔<sup>4</sup></a><a href="/tags/%E4%BC%81%E4%B8%9A%E6%96%87%E5%8C%96/">企业文化<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">架构设计<sup>3</sup></a><a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/">技术管理<sup>2</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E6%95%88%E8%83%BD/">团队效能<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%8D%E6%80%9D/">个人反思<sup>2</sup></a><a href="/tags/%E8%80%83%E8%AF%95/">考试<sup>3</sup></a><a href="/tags/%E5%86%B7%E5%90%AF%E5%8A%A8/">冷启动<sup>1</sup></a><a href="/tags/%E5%BF%83%E7%90%86%E4%BB%A3%E5%81%BF/">心理代偿<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%95%88%E8%83%BD/">个人效能<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E9%87%8D%E6%9E%84/">认知重构<sup>1</sup></a><a href="/tags/%E5%AD%98%E5%9C%A8%E4%B8%BB%E4%B9%89/">存在主义<sup>1</sup></a><a href="/tags/%E6%8A%80%E8%83%BD/">技能<sup>1</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/">深度思考<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E5%8D%87%E7%BA%A7/">认知升级<sup>2</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学<sup>2</sup></a><a href="/tags/%E5%88%9B%E9%80%A0%E5%8A%9B/">创造力<sup>1</sup></a><a href="/tags/%E7%A0%B4%E5%B1%80%E6%80%9D%E7%BB%B4/">破局思维<sup>1</sup></a><a href="/tags/AI%E4%B8%8E%E6%9C%AA%E6%9D%A5/">AI与未来<sup>1</sup></a><a href="/tags/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/">职业规划<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5/">学习策略<sup>1</sup></a><a href="/tags/%E7%BB%8F%E9%AA%8C%E5%A4%8D%E5%88%A9/">经验复利<sup>1</sup></a><a href="/tags/%E5%8D%8A%E9%80%94%E8%80%8C%E5%BA%9F/">半途而废<sup>1</sup></a><a href="/tags/%E9%95%BF%E6%97%B6%E8%AE%B0%E5%BF%86/">长时记忆<sup>1</sup></a><a href="/tags/%E6%80%9D%E8%80%83/">思考<sup>1</sup></a><a href="/tags/think/">think<sup>1</sup></a><a href="/tags/%E8%B4%A2%E5%AF%8C%E9%80%BB%E8%BE%91/">财富逻辑<sup>1</sup></a><a href="/tags/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学<sup>1</sup></a><a href="/tags/%E7%8E%AF%E5%A2%83%E9%87%8D%E5%A1%91/">环境重塑<sup>1</sup></a><a href="/tags/%E7%A8%80%E7%BC%BA%E5%BF%83%E6%80%81/">稀缺心态<sup>1</sup></a><a href="/tags/%E9%98%85%E8%AF%BB%E6%84%8F%E4%B9%89/">阅读意义<sup>1</sup></a><a href="/tags/%E7%8B%AC%E7%AB%8B%E6%8E%A2%E7%B4%A2/">独立探索<sup>1</sup></a><a href="/tags/%E8%A1%8C%E4%B8%BA%E5%BF%83%E7%90%86%E5%AD%A6/">行为心理学<sup>1</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计<sup>1</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB%E5%93%B2%E5%AD%A6/">生活哲学<sup>1</sup></a><a href="/tags/B-MAP/">B=MAP<sup>1</sup></a><a href="/tags/%E7%90%86%E8%B4%A2/">理财<sup>1</sup></a></div></div></div></div><!-- keyboard--><!-- righhtside--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon solitude fas fa-bars-progress"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页"><span class="title">夫礼者小屋</span><i class="solitude fa-solid fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">高负载系统的代偿性生存：拆解“生存冷启动”与“暴力堆砌”的心理底层架构</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude fa-solid fa-magnifying-glass"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fa-solid fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fa-solid fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/2024/03/20/self_past_twentyYears/cover.jpg" alt="高负载系统的代偿性生存：拆解“生存冷启动”与“暴力堆砌”的心理底层架构"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/%E7%B3%BB%E7%BB%9F%E9%87%8D%E6%9E%84/">系统重构</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%86%B7%E5%90%AF%E5%8A%A8/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>冷启动</span></a><a class="post-meta__tags" href="/tags/%E5%BF%83%E7%90%86%E4%BB%A3%E5%81%BF/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>心理代偿</span></a><a class="post-meta__tags" href="/tags/%E4%B8%AA%E4%BA%BA%E6%95%88%E8%83%BD/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>个人效能</span></a><a class="post-meta__tags" href="/tags/%E8%AE%A4%E7%9F%A5%E9%87%8D%E6%9E%84/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>认知重构</span></a><a class="post-meta__tags" href="/tags/%E5%AD%98%E5%9C%A8%E4%B8%BB%E4%B9%89/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>存在主义</span></a></div></div></div></div><h1 class="post-title">高负载系统的代偿性生存：拆解“生存冷启动”与“暴力堆砌”的心理底层架构</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2024-03-20 20:15:00"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2024-03-20T12:15:00.000Z">2024-03-20T12:15:00.000Z</time></span><span class="post-meta-date" title="最后更新于 2026-07-01 21:43:34"><i class="post-meta-icon solitude fa-solid fa-arrows-rotate"></i><time datetime="2026-07-01T13:43:34.755Z">2026-07-01T13:43:34.755Z</time></span><span class="post-meta-position" title="作者IP归属地为China"><i class="post-meta-icon solitude fas fa-location-dot"></i><span>China</span></span><a class="post-meta-pv" href="/2024/03/20/self_past_twentyYears/" title="文章热度"><i class="post-meta-icon solitude fa-solid fa-fire-flame-curved"></i></a></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><blockquote>
+<p>我想要和你讨论下我的一种行为状态。</p>
+<ol>
+<li>我在高三时候因为玩游戏，只去了个二本。 那是2004年；</li>
+<li>大学期间依然玩游戏，更为疯狂。导致延迟毕业了一年 2009年毕业</li>
+<li>出了大学被社会毒打多年，终于认清现实 —— 没有人会来帮助你，也没有外面的助力，只能靠自己</li>
+<li>于是从26岁开始持续看书，最后到29才确定自己的三观和行为模式</li>
+<li>但是在26开始看书， 也是一边玩游戏，一遍看书。  直到现在都是</li>
+<li>26-29岁之间其实只是靠一口气：老子拼这一条命跟你赌，赌不赢我宁愿死也不这么窝囊过一生，那个时候选择看书是实在不知道前途在哪里，既然从小到大都说读书是对的，那就选这一条，不知道这本书是干啥的，那只要时网络多处推荐的经典，就去看，一开始一遍看不懂，后来发现其它地方都是反复推荐，那就再看，一本书看三遍。</li>
+</ol>
+<p>但只看书会觉得很无聊，甚至有一种亏了的心态 —— 为啥上完班了还得继续努力，为啥我看着其他人下班了就是各种娱乐？ 所以玩游戏来平衡下<br>但是又深知无依无靠，敢停下来搞不好就被淘汰，危机感；所以这种纠结的心态下，效率一直都非常低，十来年了。。<br>最后爬出来主要靠的是巨量投入， 这样即使效率再低，也会有一个看着多的产出。但是自己心理清楚耽误了很多其它事情。<br>我想要你站在多年心理医生，以及相关研究观察人员的经验，来帮我分析下我这个心态。</p>
+</blockquote>
+<h2 id="一、-病理切片：从“被动沉沦”到“赌命自救”的二十年变迁"><a href="#一、-病理切片：从“被动沉沦”到“赌命自救”的二十年变迁" class="headerlink" title="一、 病理切片：从“被动沉沦”到“赌命自救”的二十年变迁"></a>一、 病理切片：从“被动沉沦”到“赌命自救”的二十年变迁</h2><p>纵观你从 2004 年高考失利、2009 年延迟毕业，再到如今长达十余年的“看书-游戏”拉锯战，这是一幅极其罕见且典型的“<strong>系统代偿性生存（Systemic Compensatory Survival）</strong>”画像。</p>
+<p>在心理学与系统动力学视角下，你的系统演进可以精准地切片为三个极具张力的阶段：</p>
+<ol>
+<li><strong>无意识的系统瘫痪（2004 - 2011）</strong><br>在遭遇社会毒打之前，游戏扮演的是你逃避现实压力的“低成本避难所”。系统在面临外部高标准（如高考、毕业）时，由于缺乏掌控感，主动选择了<strong>主动性防御撤退（Active Defensive Retreat）</strong>，用长期的虚拟多巴胺对冲现实挫败感。</li>
+<li><strong>拿命去赌的“生存冷启动”（26岁 - 29岁）</strong><br>这是你整个人生底色的分水岭。出了大学被社会毒打多年后，你认清了无依无靠的现实。此时你体内的安全边界彻底崩溃，激发了极端的<strong>创伤后自救机制</strong>。<br>你当时只有一口气：“老子拼这一条命跟你赌，赌不赢我宁愿死也不这么窝囊过一生。”<br>这是一种<strong>自毁式的强行冷启动（Destructive Cold Boot）</strong>。在没有前途能见度、不知道书有什么用的情况下，你退无可退，只能将社会公认的“读书是对的”作为系统的<strong>先验公理（Axiom）</strong>去强行执行。你生啃那些网络推荐的经典，看不懂就看三遍——这是<strong>用最原始的物理性摩擦，硬生生在冰封的认知荒原上钻木取火</strong>。</li>
+<li><strong>高耗能的“双轨代偿期”（29岁至今）</strong><br>29 岁确立三观后，你进入了漫长的“和平发展期”。然而，“战时体制”留下的创伤并未完全消解。你一方面深知无依无靠、敢停下就会被淘汰，怀揣着强烈的生存危机感；另一方面，你每天都在经历“为啥上完班还得继续努力”的委屈感。<br>于是你建立了一个极其拧巴的“<strong>游戏-学习双轨代偿系统</strong>”：左手用游戏止痛，右手用看书续命，效率极低，全靠<strong>耗费巨量时间的“暴力穷举”来换取微弱的产出</strong>。</li>
+</ol>
+<hr>
+<h2 id="二、-本质拆解：维系这套高耗能系统的三个核心机制"><a href="#二、-本质拆解：维系这套高耗能系统的三个核心机制" class="headerlink" title="二、 本质拆解：维系这套高耗能系统的三个核心机制"></a>二、 本质拆解：维系这套高耗能系统的三个核心机制</h2><p>为什么这种低效状态能维持十多年，且让你深感痛苦却无法摆脱？我们需要扒开皮肉，看看你大脑里运行的底层代码：</p>
+<h3 id="1-精神层面的“帕斯卡生存赌注”（Pascal’s-Wager-in-Existential-Survival）"><a href="#1-精神层面的“帕斯卡生存赌注”（Pascal’s-Wager-in-Existential-Survival）" class="headerlink" title="1. 精神层面的“帕斯卡生存赌注”（Pascal’s Wager in Existential Survival）"></a>1. 精神层面的“帕斯卡生存赌注”（Pascal’s Wager in Existential Survival）</h3><p>在 26-29 岁时，你面临的是<strong>信息极度匮乏与未来极度不确定</strong>的双重夹击。寻找“最正确的路”需要耗费巨大的时间成本，而你已经没有筹码了。</p>
+<p>你选择“读书”并“一本书看三遍”，在决策学上被称为“<strong>帕斯卡赌注</strong>”的生存变体：在不知道哪条路对的时候，选择社会共识度最高、最不可能出错的单一路径，并把所有筹码（命）押上去。你不再去论证“读书有没有用”，而是将其无条件执行。这种“降维决策”帮你省去了所有无谓的犹疑和内耗。</p>
+<h3 id="2-认知白盒的“三遍编译机制”（Three-Pass-Compilation-Algorithm）"><a href="#2-认知白盒的“三遍编译机制”（Three-Pass-Compilation-Algorithm）" class="headerlink" title="2. 认知白盒的“三遍编译机制”（Three-Pass Compilation Algorithm）"></a>2. 认知白盒的“三遍编译机制”（Three-Pass Compilation Algorithm）</h3><p>“一本书看三遍”，这在计算机领域是一个经典的“<strong>盲目编译</strong>”与“<strong>信息过采样（Over-sampling）</strong>”过程：</p>
+<ul>
+<li><strong>第一遍：语法解析（Syntax Parsing）。</strong> 你的脑回路里还没有这些经典书目的概念，第一遍阅读就像编译器在解析一行行从未见过的代码。你看不懂，是因为你脑中缺乏容纳这些概念的“语义槽”（Semantic Slot）。</li>
+<li><strong>第二遍：依赖重构（Dependency Reconstruction）。</strong> 当你在其他地方反复看到这本书的推荐时，社会共识强化了你的信心。你开始重新阅读，这一次你开始在那些原本孤立的概念之间建立链接。</li>
+<li><strong>第三遍：链接与运行（Linking &amp; Execution）。</strong> 到了第三遍，你的大脑终于完成了对这本书的“本地编译”，将其转化为了你可以随时调用的基础库（Libraries）。</li>
+</ul>
+<p>这种<strong>靠暴力重复来生啃经典</strong>的做法，虽然极其消耗带宽，但它在你的大脑里打下了最坚实的物理底层。</p>
+<h3 id="3-心理账簿中的“损失厌恶”与“情绪退税”（Loss-Aversion-Emotional-Tax-Refund）"><a href="#3-心理账簿中的“损失厌恶”与“情绪退税”（Loss-Aversion-Emotional-Tax-Refund）" class="headerlink" title="3. 心理账簿中的“损失厌恶”与“情绪退税”（Loss Aversion &amp; Emotional Tax Refund）"></a>3. 心理账簿中的“损失厌恶”与“情绪退税”（Loss Aversion &amp; Emotional Tax Refund）</h3><p>为什么 29 岁之后，你一边看书一边玩游戏，只看书就会觉得“亏了”？</p>
+<p>在行为经济学中，这源于<strong>心理账簿（Mental Accounting）</strong>。你将“上班&#x2F;生存”视作一种“价值输出&#x2F;被剥削”的过程。当一天结束时，你的大脑会计算盈亏：</p>
+<ul>
+<li>“我已经出卖了 8 小时的劳动力给社会，如果我剩下的时间还要用来‘看书&#x2F;提升’，这意味着我一天 24 小时都在为生存而战，我没有一秒钟属于自己。”</li>
+<li>此时，大脑的<strong>损失厌恶（Loss Aversion）</strong>机制被激活——你无法容忍自己成为一个彻头彻尾的“生存机器”，必须通过游戏来“赚回”属于你主权的时间。游戏不是为了好玩，而是你向生活索要的“<strong>情绪退税</strong>”。</li>
+</ul>
+<hr>
+<h2 id="三、-破局之道：如何让“战时系统”安全降频并精益迭代？"><a href="#三、-破局之道：如何让“战时系统”安全降频并精益迭代？" class="headerlink" title="三、 破局之道：如何让“战时系统”安全降频并精益迭代？"></a>三、 破局之道：如何让“战时系统”安全降频并精益迭代？</h2><p>你已经靠这套低效但坚韧的系统生存了十几年，说明你的系统具有极强的<strong>抗脆弱性（Antifragility）</strong>。我们不需要彻底推翻它（强行戒掉游戏只会让你因为焦虑而崩溃），而是要对它进行<strong>精益化重构（Refactoring）</strong>。</p>
+<h3 id="1-宣告-26-岁生存战争的正式结束（De-escalation-of-War-footing）"><a href="#1-宣告-26-岁生存战争的正式结束（De-escalation-of-War-footing）" class="headerlink" title="1. 宣告 26 岁生存战争的正式结束（De-escalation of War-footing）"></a>1. 宣告 26 岁生存战争的正式结束（De-escalation of War-footing）</h3><p>你需要举行一场精神上的仪式，明确地告诉自己的潜意识：“<strong>26 岁那场关乎生死的豪赌，我已经赌赢了</strong>。”</p>
+<p>你没有窝囊地死掉，你已经活了下来，并完成了底层的认知重构。你现在已经有了自主选择权和基本的抵抗风险能力。你不再需要靠“拼命、赌命”这种自残式的超频方式来强迫自己阅读。<strong>看书不再是求生的唯一稻草，而是你扩宽人生边界的工具</strong>。当你放下“不拼命就会死”的应激反应，看书时的紧绷感就会消失。</p>
+<h3 id="2-从“盲目编译”转向“API定向调用”（From-Blind-Compilation-to-Targeted-API-Calls）"><a href="#2-从“盲目编译”转向“API定向调用”（From-Blind-Compilation-to-Targeted-API-Calls）" class="headerlink" title="2. 从“盲目编译”转向“API定向调用”（From Blind Compilation to Targeted API Calls）"></a>2. 从“盲目编译”转向“API定向调用”（From Blind Compilation to Targeted API Calls）</h3><p>在冷启动时期，你需要生啃宏大叙事的经典来重置三观。但现在，你的认知框架已经稳固。</p>
+<ul>
+<li><strong>重构策略：</strong> 停止那种“把一本书盲目看三遍”的重度编译模式。转向<strong>问题驱动式学习（Problem-Driven Learning）</strong>。</li>
+<li><strong>具体做法：</strong> 带着具体的现实问题、工作痛点或职业瓶颈去阅读。读完一章，立刻在实际环境中应用。用“<strong>快速小步迭代</strong>”代替“宏大叙事的肉搏”。</li>
+</ul>
+<h3 id="3-建立“安全沙盒”消除负罪感（Sandbox-Isolation-Mechanism）"><a href="#3-建立“安全沙盒”消除负罪感（Sandbox-Isolation-Mechanism）" class="headerlink" title="3. 建立“安全沙盒”消除负罪感（Sandbox Isolation Mechanism）"></a>3. 建立“安全沙盒”消除负罪感（Sandbox Isolation Mechanism）</h3><p>不要再试图在同一时间段内“一边看书一边玩游戏”。这种混合状态对大脑的毒害最大，由于频繁的<strong>上下文切换成本（Context Switching Cost）</strong>，这会极大地降低你的脑效能。</p>
+<ul>
+<li><strong>策略：</strong> 实施严格的<strong>时分复用（Time-Division Multiplexing）</strong>。</li>
+<li><strong>做法：</strong> 每天设立一个绝对干净的“沙盒时间”（哪怕只有 45 分钟）。在这个时间段内，物理隔离手机和游戏，只进行深度的、高专注度的阅读。一旦沙盒时间结束，立刻转换进入“无罪游戏时间”。</li>
+<li>允许自己去玩，但必须是“<strong>心安理得、高质量地玩</strong>”。消解掉游戏过程中的道德负罪感，才能降低由于焦虑引起的心理内耗。</li>
+</ul>
+<hr>
+<h2 id="四、-总结与感悟"><a href="#四、-总结与感悟" class="headerlink" title="四、 总结与感悟"></a>四、 总结与感悟</h2><p>26 岁到 29 岁那三年，是你人生中的“<strong>创世纪</strong>”。<br>那是你在最黑暗的深渊里，手里没有任何工具，仅仅凭着一股“不甘窝囊”的孤勇，用牙齿、用指甲生生在绝壁上抠出来的上升阶梯。一本书看三遍，看不懂硬看，这是最笨的办法，也是最伟大的办法。它代表了一个底层青年在面对命运倾轧时，所能展现出的最高尊严。</p>
+<p>你当年的“暴力算法”，不仅编译（compile）了那些书，更编译（重构）了你整个人生的底层代码。</p>
+<p>如今你已经安全上岸，请试着把那个一直在你脑子里紧绷着、准备随时“拿命去赌”的 26 岁青年拉到椅子上，拍拍他的肩膀，告诉他：<br><strong>“兄弟，我们活下来了。接下来的路，我们可以走得稍微体面、高效且轻松一点了。”</strong></p>
+<hr>
+<h2 id="关于封面Prompt"><a href="#关于封面Prompt" class="headerlink" title="关于封面Prompt"></a>关于封面Prompt</h2><blockquote>
+<p>A highly aesthetic Japanese anime style illustration of a young girl in her room at night, representing a desperate struggle and self-redemption. The scene is illuminated by dramatic dual-colored lighting: warm golden light from a classic desk lamp on the left, and a soft cyan-magenta neon glow from a computer screen on the right.<br>The girl, with beautifully detailed hair and a deeply focused, determined expression, is sitting at a desk. She is intensely reading a thick, antique-style book. On her lap lies a glowing retro-futuristic video game controller, symbolizing a compensatory escape. Stacks of thick, classic books are piled on her desk.<br>In the background, her computer screen faintly displays green terminal code with a loading progress bar that reads ‘COLD_BOOT_73.4%’. The room is cluttered yet cozy, with soft glowing dust particles floating in the air. Beautiful, emotional, cinematic light, Kyoto Animation and Makoto Shinkai anime aesthetic, highly detailed, masterpieces, 16:9 aspect ratio.</p>
+</blockquote>
+<blockquote>
+<p>这段 Prompt 在 Nano Banana 中会生成如下视觉画面：</p>
+<ol>
+<li>角色（日漫少女）： 一位眼神极其专注、带着一丝疲惫但绝不服输的少女（对应你 26-29 岁时“赌命自救”的倔强）。</li>
+<li>核心冲突（代偿双轨）：<br> 2.1 她手里正在死磕一本书，书页被暖黄色的台灯照亮（象征知识与白天的自救）；<br> 2.2 她的膝盖上放着一个散发微光的电玩手柄（象征夜晚用来止痛、平衡的情绪代偿）；</li>
+<li>光影唯美（双色光源对撞）：左侧是暖金色的台灯光，右侧是赛博霓虹蓝紫色的屏幕光。这两种冷暖光的交织对撞，是日漫（类似新海诚、京都动画）中表现主角内心矛盾和唯美氛围的经典技法。</li>
+<li>背景细节（冷启动字样）：借助 Nano Banana 强大的文字渲染能力，背景中朦胧的电脑屏幕上会隐约出现 COLD_BOOT_73.4% 的绿字终端进度条，暗示着系统重构正在暴力编译中。</li>
+</ol>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.png"></a><div class="post-copyright__author_name">夫礼者Home</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward"><div class="reward-button" title="赞赏作者" onclick="AddRewardMask()"><i class="solitude fa-solid fa-heart"></i>赞赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢您的赞赏</span><ul class="reward-group"><li class="reward-item"><a href="/images/wxpay.jpg"><img class="post-qr-code-img nolazyload" src="/images/wxpay.jpg" alt="微信" style="border-color: var(--efu-green)"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.jpg"><img class="post-qr-code-img nolazyload" src="/images/alipay.jpg" alt="支付宝" style="border-color: var(--efu-blue)"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/"><div class="reward-text">赞赏名单</div><div class="reward-dec">由于您的支持，我才能够实现写作的价值。</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">夫礼者Home</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%86%B7%E5%90%AF%E5%8A%A8/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>冷启动<span class="tagsPageCount">1</span></span></a><a class="post-meta__tags" href="/tags/%E5%BF%83%E7%90%86%E4%BB%A3%E5%81%BF/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>心理代偿<span class="tagsPageCount">1</span></span></a><a class="post-meta__tags" href="/tags/%E4%B8%AA%E4%BA%BA%E6%95%88%E8%83%BD/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>个人效能<span class="tagsPageCount">1</span></span></a><a class="post-meta__tags" href="/tags/%E8%AE%A4%E7%9F%A5%E9%87%8D%E6%9E%84/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>认知重构<span class="tagsPageCount">1</span></span></a><a class="post-meta__tags" href="/tags/%E5%AD%98%E5%9C%A8%E4%B8%BB%E4%B9%89/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>存在主义<span class="tagsPageCount">1</span></span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2024/11/10/hello-world/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Hello World</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-bg-top"><div class="is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div></div><a class="card-info-avatar" href="/about/" title="头像"><div class="avatar-img"><img src="/images/sicp_cover_english.jpg" alt="头像"></div></a><div class="card-info__desc_group"><div class="author-info__name">夫礼者</div><div class="author-info__desc"></div><div class="card-info__data is-center"><a href="/archives/" title="累计文章数:103"><div class="length-num">103</div><div class="headline">文章</div></a><a href="/tags/" title="标签总数:100"><div class="length-num">100</div><div class="headline">标签</div></a><a href="/categories/" title="分类总数:35"><div class="length-num">35</div><div class="headline">分类</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/fulizhe" title="Github"><i class="solitude  fab fa-github"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://gitee.com/lqzkcx3" title="Gitee"><i class="solitude  fab fa-git"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.zhihu.com/people/tao-luo-73" title="Zhihu"><i class="solitude  fab fa-zhihu"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://blog.csdn.net/lqzkcx3" title="CSDN"><i class="solitude  fab fa-bilibili"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.jianshu.com/u/cd3dd432fd00" title="jianshu"><i class="solitude  fab fa-node-js"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://fulizhe.github.io/curriculumVitae" title="aboutMe"><i class="solitude  fas fa-address-card"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fa-solid fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E7%97%85%E7%90%86%E5%88%87%E7%89%87%EF%BC%9A%E4%BB%8E%E2%80%9C%E8%A2%AB%E5%8A%A8%E6%B2%89%E6%B2%A6%E2%80%9D%E5%88%B0%E2%80%9C%E8%B5%8C%E5%91%BD%E8%87%AA%E6%95%91%E2%80%9D%E7%9A%84%E4%BA%8C%E5%8D%81%E5%B9%B4%E5%8F%98%E8%BF%81"><span class="toc-text">一、 病理切片：从“被动沉沦”到“赌命自救”的二十年变迁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-%E6%9C%AC%E8%B4%A8%E6%8B%86%E8%A7%A3%EF%BC%9A%E7%BB%B4%E7%B3%BB%E8%BF%99%E5%A5%97%E9%AB%98%E8%80%97%E8%83%BD%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%89%E4%B8%AA%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6"><span class="toc-text">二、 本质拆解：维系这套高耗能系统的三个核心机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%B2%BE%E7%A5%9E%E5%B1%82%E9%9D%A2%E7%9A%84%E2%80%9C%E5%B8%95%E6%96%AF%E5%8D%A1%E7%94%9F%E5%AD%98%E8%B5%8C%E6%B3%A8%E2%80%9D%EF%BC%88Pascal%E2%80%99s-Wager-in-Existential-Survival%EF%BC%89"><span class="toc-text">1. 精神层面的“帕斯卡生存赌注”（Pascal’s Wager in Existential Survival）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%A4%E7%9F%A5%E7%99%BD%E7%9B%92%E7%9A%84%E2%80%9C%E4%B8%89%E9%81%8D%E7%BC%96%E8%AF%91%E6%9C%BA%E5%88%B6%E2%80%9D%EF%BC%88Three-Pass-Compilation-Algorithm%EF%BC%89"><span class="toc-text">2. 认知白盒的“三遍编译机制”（Three-Pass Compilation Algorithm）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%BF%83%E7%90%86%E8%B4%A6%E7%B0%BF%E4%B8%AD%E7%9A%84%E2%80%9C%E6%8D%9F%E5%A4%B1%E5%8E%8C%E6%81%B6%E2%80%9D%E4%B8%8E%E2%80%9C%E6%83%85%E7%BB%AA%E9%80%80%E7%A8%8E%E2%80%9D%EF%BC%88Loss-Aversion-Emotional-Tax-Refund%EF%BC%89"><span class="toc-text">3. 心理账簿中的“损失厌恶”与“情绪退税”（Loss Aversion &amp; Emotional Tax Refund）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81-%E7%A0%B4%E5%B1%80%E4%B9%8B%E9%81%93%EF%BC%9A%E5%A6%82%E4%BD%95%E8%AE%A9%E2%80%9C%E6%88%98%E6%97%B6%E7%B3%BB%E7%BB%9F%E2%80%9D%E5%AE%89%E5%85%A8%E9%99%8D%E9%A2%91%E5%B9%B6%E7%B2%BE%E7%9B%8A%E8%BF%AD%E4%BB%A3%EF%BC%9F"><span class="toc-text">三、 破局之道：如何让“战时系统”安全降频并精益迭代？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%A3%E5%91%8A-26-%E5%B2%81%E7%94%9F%E5%AD%98%E6%88%98%E4%BA%89%E7%9A%84%E6%AD%A3%E5%BC%8F%E7%BB%93%E6%9D%9F%EF%BC%88De-escalation-of-War-footing%EF%BC%89"><span class="toc-text">1. 宣告 26 岁生存战争的正式结束（De-escalation of War-footing）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BB%8E%E2%80%9C%E7%9B%B2%E7%9B%AE%E7%BC%96%E8%AF%91%E2%80%9D%E8%BD%AC%E5%90%91%E2%80%9CAPI%E5%AE%9A%E5%90%91%E8%B0%83%E7%94%A8%E2%80%9D%EF%BC%88From-Blind-Compilation-to-Targeted-API-Calls%EF%BC%89"><span class="toc-text">2. 从“盲目编译”转向“API定向调用”（From Blind Compilation to Targeted API Calls）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%BB%BA%E7%AB%8B%E2%80%9C%E5%AE%89%E5%85%A8%E6%B2%99%E7%9B%92%E2%80%9D%E6%B6%88%E9%99%A4%E8%B4%9F%E7%BD%AA%E6%84%9F%EF%BC%88Sandbox-Isolation-Mechanism%EF%BC%89"><span class="toc-text">3. 建立“安全沙盒”消除负罪感（Sandbox Isolation Mechanism）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81-%E6%80%BB%E7%BB%93%E4%B8%8E%E6%84%9F%E6%82%9F"><span class="toc-text">四、 总结与感悟</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%B0%81%E9%9D%A2Prompt"><span class="toc-text">关于封面Prompt</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fa-solid fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/2026/07/01/devops-top-down-reform-and-multiplicative-quality-model/" title="自上而下的效能革命：打碎大锅饭的“质量乘法”与硬约束"><div class="thumbnail"><img alt="自上而下的效能革命：打碎大锅饭的“质量乘法”与硬约束" src="/2026/07/01/devops-top-down-reform-and-multiplicative-quality-model/cover.jpg"></div><div class="content"><span class="title" href="/2026/07/01/devops-top-down-reform-and-multiplicative-quality-model/" title="自上而下的效能革命：打碎大锅饭的“质量乘法”与硬约束">自上而下的效能革命：打碎大锅饭的“质量乘法”与硬约束</span><span class="article-recent_post_categories" href="/2026/07/01/devops-top-down-reform-and-multiplicative-quality-model/">管理手记</span></div></a><a class="aside-list-item" href="/2026/06/30/think-ai-making-us-shallow/" title="AI时代，我们失去了深度思考"><div class="thumbnail"><img alt="AI时代，我们失去了深度思考" src="/2026/06/30/think-ai-making-us-shallow/cover.png"></div><div class="content"><span class="title" href="/2026/06/30/think-ai-making-us-shallow/" title="AI时代，我们失去了深度思考">AI时代，我们失去了深度思考</span><span class="article-recent_post_categories" href="/2026/06/30/think-ai-making-us-shallow/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/06/28/ai-agency-filtering-in-ai-era/" title="AI时代的主动性筛选：完成任务的人被淘汰，解决问题的人被解放"><div class="thumbnail"><img alt="AI时代的主动性筛选：完成任务的人被淘汰，解决问题的人被解放" src="/2026/06/28/ai-agency-filtering-in-ai-era/cover.png"></div><div class="content"><span class="title" href="/2026/06/28/ai-agency-filtering-in-ai-era/" title="AI时代的主动性筛选：完成任务的人被淘汰，解决问题的人被解放">AI时代的主动性筛选：完成任务的人被淘汰，解决问题的人被解放</span><span class="article-recent_post_categories" href="/2026/06/28/ai-agency-filtering-in-ai-era/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/06/24/devops-solving-problems-as-close-to-the-source-as-possible/" title="拒绝“人肉消音器”：为什么低价值的构建误报与测试失败绝不能蔓延到测试？"><div class="thumbnail"><img alt="拒绝“人肉消音器”：为什么低价值的构建误报与测试失败绝不能蔓延到测试？" src="/2026/06/24/devops-solving-problems-as-close-to-the-source-as-possible/cover.png"></div><div class="content"><span class="title" href="/2026/06/24/devops-solving-problems-as-close-to-the-source-as-possible/" title="拒绝“人肉消音器”：为什么低价值的构建误报与测试失败绝不能蔓延到测试？">拒绝“人肉消音器”：为什么低价值的构建误报与测试失败绝不能蔓延到测试？</span><span class="article-recent_post_categories" href="/2026/06/24/devops-solving-problems-as-close-to-the-source-as-possible/">管理手记</span></div></a><a class="aside-list-item" href="/2026/06/23/devops-the-illusion-of-done-in-local-build/" title="“在我机器上是好的”：本地打包与研发的“温室巨婴”幻觉"><div class="thumbnail"><img alt="“在我机器上是好的”：本地打包与研发的“温室巨婴”幻觉" src="/2026/06/23/devops-the-illusion-of-done-in-local-build/cover.png"></div><div class="content"><span class="title" href="/2026/06/23/devops-the-illusion-of-done-in-local-build/" title="“在我机器上是好的”：本地打包与研发的“温室巨婴”幻觉">“在我机器上是好的”：本地打包与研发的“温室巨婴”幻觉</span><span class="article-recent_post_categories" href="/2026/06/23/devops-the-illusion-of-done-in-local-build/">管理手记</span></div></a></div></div></div></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2026 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src="/img/pwa/favicon.png">夫礼者</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude" alt="Theme">Theme</a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=2.1.13"></script><script src="/js/main.js?v=2.1.13"></script><script src="/js/third_party/waterfall.min.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="https://fastly.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js"></script><script src="/js/tw_cn.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="js-pjax"><script>mermaid.run();</script></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude fa-solid fa-xmark"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=2.1.13"></script><!-- Tianli-Talk--><!-- music--></body></html>
+        <script>
+            const posts = ["2026/07/01/devops-top-down-reform-and-multiplicative-quality-model/","2026/06/30/think-ai-making-us-shallow/","2026/06/28/ai-agency-filtering-in-ai-era/","2026/06/24/devops-solving-problems-as-close-to-the-source-as-possible/","2026/06/23/devops-the-illusion-of-done-in-local-build/","2026/06/22/devops-how-to-implement-p1-test-gates-in-multi-language-teams/","2026/06/22/think-the-fragility-of-success-and-upward-management/","2026/06/21/devops-how-to-survive-in-a-highly-mediocre-organization/","2026/06/21/devops-how-to-deal-with-incompetent-teams-at-work/","2026/06/19/devops-performance-tuning-as-a-guessing-game/","2026/06/19/ai-jevons-paradox-in-ai-era/","2026/06/17/devops-instant-karma-of-high-frequency-testing/","2026/06/17/think-why-we-still-have-jobs-in-ai-era/","2026/06/17/devops-responsibility-diffusion-in-cross-team-dev/","2026/06/16/think-feedback-loop-and-monopoly-of-interpretation/","2026/06/15/think-workplace-attribution-bias/","2026/06/14/ai-ai-mirror-and-cognitive-laziness/","2026/06/12/devops-the-auditor-role-in-software-architecture/","2026/06/11/think-illusion-of-persuasion/","2026/06/11/devops-technical-bureaucracy-and-benefactor-illusion/","2026/06/11/devops-shift-left-testing-and-quality-gates/","2026/06/11/devops-strategic-patience-in-refactoring/","2026/06/11/think-constraints-and-creativity/","2026/06/10/devops-fake-automation-and-human-api/","2026/06/10/devops-knowledge-sink-vs-individual-blackbox/","2026/06/10/devops-reform-without-firing-and-malicious-compliance/","2026/06/10/devops-yak-shaving-and-pseudo-extensibility/","2026/06/09/devops-illusion-of-hard-work-in-management/","2026/06/09/devops-solve-the-person-who-raised-the-problem/","2026/06/08/devops-reject-technical-giant-baby/","2026/06/07/devops-product-vs-project-mindset/","2026/06/07/devops-breaking-developer-arrogance/","2026/06/07/devops-software-engineering-and-shit-mountain/","2026/06/06/think-reading-as-an-anchor/","2026/06/06/think-career-antifragility/","2026/06/03/devops-illusion-of-tech-moat-and-non-management/","2026/05/27/ai-driven-dev-and-code-devaluation/","2026/05/23/ruankao-xtjls/","2026/05/21/ai-evolution-in-ai-era/","2026/05/13/devops-hidden-costs-of-kpi-driven/","2026/05/11/devops-the-illusion-of-tech-management/","2026/05/11/think-defy-the-destiny/","2026/05/08/devops-trust-and-glue-work-in-management/","2026/05/08/think-money-has-clear-criteria2/","2026/05/04/think-mastering-the-right-of-interpretation/","2026/05/01/devops-Criteria-for-technical-decision-making/","2026/04/29/devops-cognitive-load-and-feedback-loops/","2026/04/29/devops-reject-works-on-my-machine/","2026/04/28/devops-from-heroism-to-system-observability/","2026/04/27/think-redundancy-design-in-daily-life/","2026/04/27/devops-optimization-startup/","2026/04/25/think-from-0-to-1-residual-advantage/","2026/04/23/devops-refactor-process/","2026/04/23/ai-efficiency-and-survival-strategy/","2026/03/26/devops-skywalking-local/","2026/03/24/devops-observability-is-efficiency/","2026/03/10/think-openclaw-i-see/","2026/03/06/think-ai-The-end-of-apprenticeship/","2026/03/03/think-why-procrastination/","2026/02/02/think-money-has-clear-criteria/","2026/01/18/book-why-donot-student-like-school/","2026/01/07/devops-bottom-up-recognize-reality-2/","2026/01/07/devops-continuous-bleeding/","2025/11/10/ruankao-xtfxs2/","2025/10/01/think-the-essence-of-implement-ultimate-idea/","2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/","2025/08/17/35-grap-the-initiative-of-life/","2025/08/15/devops-promote-the-progress-of-docker/","2025/08/09/devops-impove-development-process-team-reform/","2025/08/04/think-why-still-working-hard/","2025/08/04/think-how-to-find-your-career/","2025/07/31/devops-why-we-need-focusing-on-observability/","2025/06/22/book-ting-habits/","2025/06/20/think-value-anchor-point/","2025/06/04/devops-observability/","2025/06/03/devops-operation-upgrade/","2025/06/01/book-nexus/","2025/05/31/devops-bottom-up-recognize-reality/","2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/","2025/05/27/ruankao-xtfxs/","2025/03/21/35-why-do-i-firmly-believe-i-will-succeed/","2025/03/14/Technical-team-face-to-Technical-Debt/","2025/03/05/35-basic/","2025/03/03/tsitt-The-Road-to-Breaking-through-Operations-and-Maintenance/","2025/03/02/ai-the-benefit-of-meta-knowledge/","2025/02/27/how-to-break-in-the-era-of-ai-for-company/","2025/02/24/35-I-was-too-extreme/","2025/02/22/35-how-to-check-if-someone-is-worth-following/","2025/02/21/tip-cursor-refill-for-free/","2025/02/12/ai-The-double-edged-sword-of-creative-equality/","2025/02/12/ai-human-win/","2025/02/07/what-mean-when-we-say-ai-assisted-process-transformation/","2025/02/04/deepseek-r1-i-observe-to/","2025/01/17/social-experiment-by-ai/","2025/01/12/think-in-ai-era/","2025/01/09/the-skill-need-to-pratice-in-ai-era-as-programmer/","2025/01/07/cursor-i-think-to/","2025/01/05/2024-year-end-summary/","2024/12/12/《一本小小的红色写作书》读后感/","2024/12/12/《自学是门手艺》读后感/","2024/12/12/典型小散的投资生涯总结2018-2024/","2024/11/10/hello-world/","2024/03/20/self_past_twentyYears/"];
+            function toRandomPost() {
+                const randomPost = posts[Math.floor(Math.random() * posts.length)];
+                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
+            }
+        </script>
