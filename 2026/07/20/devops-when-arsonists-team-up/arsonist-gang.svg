@@ -1,0 +1,44 @@
+<svg viewBox="0 0 680 360" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>纵火团伙运作机制</title>
+<desc>展示中间层全是纵火消防员时，形成集体背书闭环（内部互相掩护，外人无法攻破），利用中间位置双向甩锅，单次证据无效，需要pattern级证据链。</desc>
+<defs>
+  <marker id="arrC" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#993C1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arrR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#A32D2D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<text x="340" y="24" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="500" fill="#2C2C2A">纵火团伙 ——「全是」改变了游戏</text>
+<text x="340" y="44" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#888780">不是个人，是组织级防御；单次证据无效</text>
+
+<g>
+  <rect x="200" y="64" width="280" height="52" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+  <text x="340" y="84" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#633806">上层后端 —— 烟囱口</text>
+  <text x="340" y="102" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" fill="#854F0B">接住所有往上冒的烟</text>
+</g>
+
+<text x="340" y="132" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="500" fill="#791F1F">中间层纵火团伙 —— 全是这种货色</text>
+
+<rect x="170" y="140" width="340" height="130" rx="10" fill="#FCEBEB" stroke="#E24B4A" stroke-width="1" stroke-dasharray="5 3"/>
+
+<path d="M 350 178 A 16 16 0 1 1 334 194" fill="none" stroke="#A32D2D" stroke-width="2" marker-end="url(#arrR)"/>
+<text x="340" y="215" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="500" fill="#791F1F">全员互相背书</text>
+<text x="340" y="234" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#A32D2D">集体话术：「我们团队都认为这是上游问题」</text>
+<text x="340" y="252" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#A32D2D">外人无法从内部攻破 —— 没有人会出卖自己人</text>
+
+<g>
+  <rect x="200" y="300" width="280" height="42" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+  <text x="340" y="321" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#444441">底层（C/C++）</text>
+</g>
+
+<line x1="340" y1="140" x2="340" y2="120" stroke="#993C1D" stroke-width="1.5" marker-end="url(#arrC)"/>
+<text x="350" y="132" font-family="sans-serif" font-size="11" fill="#993C1D">甩上游：「接口正常」</text>
+
+<line x1="340" y1="270" x2="340" y2="298" stroke="#993C1D" stroke-width="1.5" marker-end="url(#arrC)"/>
+<text x="350" y="288" font-family="sans-serif" font-size="11" fill="#993C1D">甩下游：「数据源问题」</text>
+
+<text x="340" y="348" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5F5E5A">全是 = 组织级防御 ｜ 单次证据戳不穿集体话术 → 需要 pattern 级证据链</text>
+
+</svg>

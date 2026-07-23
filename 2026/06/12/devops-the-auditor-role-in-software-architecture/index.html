@@ -1,0 +1,332 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>劳动密集型 Serverless：架构里的“审查岗”与伪定制的 KPI 骗局 | 夫礼者Home</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=2.1.13"><!-- inject head--><link rel="canonical" href="http://example.com/2026/06/12/devops-the-auditor-role-in-software-architecture/"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"><!-- Open Graph--><meta name="description" content="背景：一场令人啼笑皆非的云原生架构评审在今天晚上下班前的部门技术讨论会上，我极其罕见地见识到了什么叫“用最前沿的技术，打最落后的算盘”。 会议的主题是评审一个基于 Knative 打造的 GIS Serverless（无服务器架构）平台。在这个本应充满“弹性伸缩、按需拉起、高度解耦”等先进理念的系统"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="夫礼者Home"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(' %c Solitude %c ' + '2.1.13' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script src="https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSE7WE78H9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZSE7WE78H9');
+</script>    
+<script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+          },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":false,"path":"/search.xml"},
+    runtime: '2023-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。","loading":"搜索中..."}},
+    aside: {
+        sayhello: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        sayhello2: [],
+        sayhello3: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><!-- background img--><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img nolazyload" src="/images/sicp_cover_english.jpg" alt="loading image"></div></div><script>const preloader = {
+    isLoaded: false,
+    endLoading: () => {
+        if (!preloader.isLoaded) {
+            document.getElementById('loading-box').classList.add('loaded');
+            preloader.isLoaded = true;
+            preloader.togglePaceDone();
+        }
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+        preloader.isLoaded = false;
+        preloader.togglePaceDone();
+    },
+    togglePaceDone: () => {
+        document.getElementById('body').className = preloader.isLoaded ? 'pace-done' : '';
+    }
+}
+
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});
+
+setTimeout(() => {
+    preloader.endLoading();
+}, 5000);</script><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">115</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">28</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">118</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fa-solid fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/%E5%8F%8D%E6%80%9D/">反思<sup>6</sup></a><a href="/tags/thirty-five/">thirty-five<sup>5</sup></a><a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结<sup>1</sup></a><a href="/tags/2024/">2024<sup>1</sup></a><a href="/tags/AI%E6%B6%A6%E8%89%B2/">AI润色<sup>4</sup></a><a href="/tags/Technical-team/">Technical team<sup>5</sup></a><a href="/tags/devops/">devops<sup>13</sup></a><a href="/tags/AI%E6%97%B6%E4%BB%A3/">AI时代<sup>2</sup></a><a href="/tags/%E4%B8%BB%E8%A7%82%E8%83%BD%E5%8A%A8%E6%80%A7/">主观能动性<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E8%A7%82%E5%AF%9F/">职场观察<sup>9</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/">个人成长<sup>5</sup></a><a href="/tags/AI/">AI<sup>11</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%80%A0%E6%83%B0/">认知怠惰<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%B9%B3%E6%9D%83/">技术平权<sup>1</sup></a><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程<sup>10</sup></a><a href="/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/">行业观察<sup>3</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%B1%82%E7%94%9F/">职场求生<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%80%9D%E8%80%83/">职场思考<sup>2</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E8%A7%89%E9%86%92/">认知觉醒<sup>5</sup></a><a href="/tags/Jenkins/">Jenkins<sup>1</sup></a><a href="/tags/%E5%A4%8D%E7%9B%98/">复盘<sup>1</sup></a><a href="/tags/CI-CD/">CI/CD<sup>4</sup></a><a href="/tags/%E7%BC%96%E7%A0%81%E5%8A%A9%E6%89%8B/">编码助手<sup>1</sup></a><a href="/tags/Grok/">Grok<sup>1</sup></a><a href="/tags/Cursor/">Cursor<sup>3</sup></a><a href="/tags/%E9%98%85%E8%AF%BB/">阅读<sup>4</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86/">团队管理<sup>18</sup></a><a href="/tags/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD/">研发效能<sup>24</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E5%AD%A6/">组织行为学<sup>17</sup></a><a href="/tags/%E5%BC%80%E5%8F%91%E8%80%85%E4%BD%93%E9%AA%8C-DevEx/">开发者体验 (DevEx)<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E8%B4%9F%E8%8D%B7/">认知负荷<sup>2</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E6%80%9D%E8%80%83/">系统思考<sup>1</sup></a><a href="/tags/%E7%A0%94%E5%8F%91%E7%AE%A1%E7%90%86/">研发管理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%96%87%E5%8C%96/">工程师文化<sup>1</sup></a><a href="/tags/%E6%95%88%E8%83%BD%E4%BC%98%E5%8C%96/">效能优化<sup>1</sup></a><a href="/tags/DevOps/">DevOps<sup>5</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E6%B2%BB%E7%90%86/">团队治理<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%83%B0%E6%80%A7/">认知惰性<sup>1</sup></a><a href="/tags/%E8%BE%BE%E5%85%8B%E6%95%88%E5%BA%94/">达克效应<sup>1</sup></a><a href="/tags/%E5%BD%BC%E5%BE%97%E5%8E%9F%E7%90%86/">彼得原理<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E7%97%85%E7%90%86%E5%AD%A6/">组织病理学<sup>2</sup></a><a href="/tags/%E6%95%91%E4%B8%96%E4%B8%BB%E6%83%85%E8%8A%82/">救世主情节<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%96%AD%E5%A5%B6/">认知断奶<sup>1</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E9%9A%94%E7%A6%BB/">系统隔离<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E5%BF%83%E7%90%86/">职场心理<sup>2</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E6%9E%B6%E6%9E%84/">组织架构<sup>1</sup></a><a href="/tags/%E5%90%90%E6%A7%BD/">吐槽<sup>1</sup></a><a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/">敏捷开发<sup>1</sup></a><a href="/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/">知识管理<sup>1</sup></a><a href="/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/">可观测性<sup>1</sup></a><a href="/tags/%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98/">性能调优<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84%E6%80%9D%E8%80%83/">架构思考<sup>2</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%80%BA/">技术债<sup>2</sup></a><a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理<sup>1</sup></a><a href="/tags/%E6%B5%81%E7%A8%8B%E9%87%8D%E6%9E%84/">流程重构<sup>1</sup></a><a href="/tags/%E8%B7%A8%E9%83%A8%E9%97%A8%E5%8D%8F%E4%BD%9C/">跨部门协作<sup>3</sup></a><a href="/tags/%E5%90%91%E4%B8%8A%E7%AE%A1%E7%90%86/">向上管理<sup>4</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E7%A0%B4%E5%B1%80/">职场破局<sup>1</sup></a><a href="/tags/%E5%8F%98%E9%9D%A9%E7%AE%A1%E7%90%86/">变革管理<sup>3</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E6%96%87%E5%8C%96/">工程文化<sup>1</sup></a><a href="/tags/%E4%BB%B7%E5%80%BC%E4%BA%A4%E4%BB%98/">价值交付<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%80%9D%E7%BB%B4/">工程师思维<sup>1</sup></a><a href="/tags/%E6%B5%8B%E8%AF%95%E5%B7%A6%E7%A7%BB/">测试左移<sup>2</sup></a><a href="/tags/observability/">observability<sup>1</sup></a><a href="/tags/skywalking/">skywalking<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔<sup>4</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">架构设计<sup>3</sup></a><a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/">技术管理<sup>2</sup></a><a href="/tags/%E4%BC%81%E4%B8%9A%E6%96%87%E5%8C%96/">企业文化<sup>1</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E6%95%88%E8%83%BD/">团队效能<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%8D%E6%80%9D/">个人反思<sup>5</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E5%8F%8D%E6%80%9D/">职场反思<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学<sup>3</sup></a><a href="/tags/Hexo/">Hexo<sup>1</sup></a><a href="/tags/%E8%80%83%E8%AF%95/">考试<sup>3</sup></a><a href="/tags/%E5%86%B7%E5%90%AF%E5%8A%A8/">冷启动<sup>1</sup></a><a href="/tags/%E5%BF%83%E7%90%86%E4%BB%A3%E5%81%BF/">心理代偿<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%95%88%E8%83%BD/">个人效能<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E9%87%8D%E6%9E%84/">认知重构<sup>1</sup></a><a href="/tags/%E5%AD%98%E5%9C%A8%E4%B8%BB%E4%B9%89/">存在主义<sup>1</sup></a><a href="/tags/%E6%8A%80%E8%83%BD/">技能<sup>1</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/">深度思考<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E5%8D%87%E7%BA%A7/">认知升级<sup>2</sup></a><a href="/tags/%E5%A4%8D%E5%88%A9/">复利<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5/">认知<sup>1</sup></a><a href="/tags/%E9%95%BF%E6%9C%9F%E4%B8%BB%E4%B9%89/">长期主义<sup>1</sup></a><a href="/tags/%E5%88%9B%E9%80%A0%E5%8A%9B/">创造力<sup>1</sup></a><a href="/tags/%E7%A0%B4%E5%B1%80%E6%80%9D%E7%BB%B4/">破局思维<sup>1</sup></a><a href="/tags/%E6%95%99%E8%82%B2%E8%A7%82/">教育观<sup>1</sup></a><a href="/tags/%E5%A4%B1%E8%B4%A5%E6%96%B9%E6%B3%95%E8%AE%BA/">失败方法论<sup>1</sup></a><a href="/tags/%E8%87%AA%E6%88%91%E6%95%99%E8%82%B2/">自我教育<sup>2</sup></a><a href="/tags/AI%E4%B8%8E%E6%9C%AA%E6%9D%A5/">AI与未来<sup>1</sup></a><a href="/tags/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/">职业规划<sup>1</sup></a><a href="/tags/%E6%95%88%E7%8E%87/">效率<sup>2</sup></a><a href="/tags/%E4%B8%93%E6%B3%A8/">专注<sup>2</sup></a><a href="/tags/WLB/">WLB<sup>1</sup></a><a href="/tags/%E4%B9%A0%E6%83%AF/">习惯<sup>2</sup></a><a href="/tags/%E8%87%AA%E6%88%91%E6%88%90%E9%95%BF/">自我成长<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5/">学习策略<sup>1</sup></a><a href="/tags/%E7%BB%8F%E9%AA%8C%E5%A4%8D%E5%88%A9/">经验复利<sup>1</sup></a><a href="/tags/%E5%8D%8A%E9%80%94%E8%80%8C%E5%BA%9F/">半途而废<sup>1</sup></a><a href="/tags/%E9%95%BF%E6%97%B6%E8%AE%B0%E5%BF%86/">长时记忆<sup>1</sup></a><a href="/tags/%E6%80%9D%E8%80%83/">思考<sup>1</sup></a><a href="/tags/think/">think<sup>1</sup></a><a href="/tags/%E8%B4%A2%E5%AF%8C%E9%80%BB%E8%BE%91/">财富逻辑<sup>1</sup></a><a href="/tags/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学<sup>1</sup></a><a href="/tags/%E7%8E%AF%E5%A2%83%E9%87%8D%E5%A1%91/">环境重塑<sup>1</sup></a><a href="/tags/%E7%A8%80%E7%BC%BA%E5%BF%83%E6%80%81/">稀缺心态<sup>1</sup></a><a href="/tags/%E9%98%85%E8%AF%BB%E6%84%8F%E4%B9%89/">阅读意义<sup>1</sup></a><a href="/tags/%E7%8B%AC%E7%AB%8B%E6%8E%A2%E7%B4%A2/">独立探索<sup>1</sup></a><a href="/tags/%E8%A1%8C%E4%B8%BA%E5%BF%83%E7%90%86%E5%AD%A6/">行为心理学<sup>1</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计<sup>1</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB%E5%93%B2%E5%AD%A6/">生活哲学<sup>1</sup></a><a href="/tags/B-MAP/">B=MAP<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94%E4%B8%8E%E6%80%9D%E8%80%83/">随笔与思考<sup>1</sup></a><a href="/tags/%E7%90%86%E8%B4%A2/">理财<sup>1</sup></a></div></div></div></div><!-- keyboard--><!-- righhtside--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon solitude fas fa-bars-progress"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页"><span class="title">夫礼者小屋</span><i class="solitude fa-solid fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">劳动密集型 Serverless：架构里的“审查岗”与伪定制的 KPI 骗局</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude fa-solid fa-magnifying-glass"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fa-solid fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fa-solid fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/2026/06/12/devops-the-auditor-role-in-software-architecture/cover.png" alt="劳动密集型 Serverless：架构里的“审查岗”与伪定制的 KPI 骗局"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E8%A7%82%E5%AF%9F/">技术观察</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>研发效能</span></a><a class="post-meta__tags" href="/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>架构设计</span></a><a class="post-meta__tags" href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>云原生</span></a><a class="post-meta__tags" href="/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>技术管理</span></a></div></div></div></div><h1 class="post-title">劳动密集型 Serverless：架构里的“审查岗”与伪定制的 KPI 骗局</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2026-06-12 23:00:00"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2026-06-12T15:00:00.000Z">2026-06-12T15:00:00.000Z</time></span><span class="post-meta-date" title="最后更新于 2026-07-23 22:23:57"><i class="post-meta-icon solitude fa-solid fa-arrows-rotate"></i><time datetime="2026-07-23T14:23:57.734Z">2026-07-23T14:23:57.734Z</time></span><span class="post-meta-position" title="作者IP归属地为China"><i class="post-meta-icon solitude fas fa-location-dot"></i><span>China</span></span><a class="post-meta-pv" href="/2026/06/12/devops-the-auditor-role-in-software-architecture/" title="文章热度"><i class="post-meta-icon solitude fa-solid fa-fire-flame-curved"></i></a></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><h2 id="背景：一场令人啼笑皆非的云原生架构评审"><a href="#背景：一场令人啼笑皆非的云原生架构评审" class="headerlink" title="背景：一场令人啼笑皆非的云原生架构评审"></a>背景：一场令人啼笑皆非的云原生架构评审</h2><p>在今天晚上下班前的部门技术讨论会上，我极其罕见地见识到了什么叫“<strong>用最前沿的技术，打最落后的算盘</strong>”。</p>
+<p>会议的主题是评审一个基于 Knative 打造的 GIS Serverless（无服务器架构）平台。在这个本应充满“弹性伸缩、按需拉起、高度解耦”等先进理念的系统里，负责人抛出了一个令人窒息的设计：</p>
+<blockquote>
+<p>平台不具备动态识别函数的能力。任何一个自定义镜像想要接入平台，其包含的函数接口都必须人工在平台数据库里进行“注册填报”。</p>
+</blockquote>
+<p>更魔幻的是他的原话：“每次将产品发布给客户时，产品里的数据库我们都是根据客户需求预先装填好的，不需要用户在界面上操作。”</p>
+<p>当领导一针见血地发问：“我去注册 Serverless 函数、选完镜像后，我怎么知道这个镜像里有哪些可用的函数？”时，这位负责人的架构底裤被彻底扒了下来。</p>
+<h2 id="病理切片一：架构里的“官僚主义”与权力设卡"><a href="#病理切片一：架构里的“官僚主义”与权力设卡" class="headerlink" title="病理切片一：架构里的“官僚主义”与权力设卡"></a>病理切片一：架构里的“官僚主义”与权力设卡</h2><p>仔细品味这个设计，你会感到一种荒诞的愤怒：这哪里是 Serverless？这分明是在技术架构里平白无故地生造出一个“<strong>审查岗（Auditor Role）</strong>”。</p>
+<p>在现代微服务或云原生架构中，下游服务提供者应当是<strong>自治</strong>的。但按照他的逻辑，<strong>以后任何镜像提供方，哪怕只是新增或修改了一个微小的接口，都必须跑到平台方这里“登记备案</strong>”。</p>
+<p>在跨部门的协作中，大家本来就是平头老百姓，平时低声下气伺候客户（老爷）也就罢了，现在接入个平台，还得伺候这位<strong>硬生生造出权力寻租空间的“平台大爷”</strong>。这种“<strong>静态强耦合</strong>”不仅扼杀了 Serverless 的敏捷性，更是<strong>将本该属于机器的交互，异化为了人与人之间的拉扯与设卡</strong>。</p>
+<h2 id="病理切片二：刷-KPI-的“伪定制”与劳动密集型作坊"><a href="#病理切片二：刷-KPI-的“伪定制”与劳动密集型作坊" class="headerlink" title="病理切片二：刷 KPI 的“伪定制”与劳动密集型作坊"></a>病理切片二：刷 KPI 的“伪定制”与劳动密集型作坊</h2><p>最让人无法忍受的，是他将“为每个客户预先装填数据库”包装成了一种“无需用户操作的服务体验”。</p>
+<p>在软件工程中，这根本不叫体验好，这叫<strong>倒退回了“劳动密集型作坊”</strong>。</p>
+<p>一个优秀的平台产品（PaaS&#x2F;SaaS），应当提供统一的标准底座，通过动态发现和配置隔离来适配不同租户。而他的做法是：每次接到一个新客户需求，就让人工去梳理接口、跑 SQL 灌入针对性数据、最后再打一个“个性化定制包”。</p>
+<p>这种毫无技术含量的重复性体力劳动，除了能让团队在月底的汇报 PPT 上写满“本月支持了 10 个客户的定制化交付、产出巨大”之外，没有任何工程价值。这是一种极其低劣的、用代码硬编码（Hardcode）和数据灌水来<strong>刷 KPI 的骗局</strong>。</p>
+<h2 id="破局之道：约定优于配置与“自描述系统”"><a href="#破局之道：约定优于配置与“自描述系统”" class="headerlink" title="破局之道：约定优于配置与“自描述系统”"></a>破局之道：约定优于配置与“自描述系统”</h2><p>面对这种糟糕的架构，真正的现代工程学解法是什么？其实业界早有极其成熟的降维打击方案：<strong>自描述系统（Self-Describing System）</strong>与<strong>约定优于配置（Convention over Configuration）</strong>。</p>
+<ol>
+<li><p><strong>内嵌元数据，让镜像“开口说话”：</strong><br>平台方根本不需要维护那个臃肿的“接口登记表”。正确的做法是与镜像提供方达成一个约定：在每个自定义镜像的根目录下，放置一个约定名称的文件（如 <code>manifest.yaml</code> 或 <code>openapi.json</code>）。这个文件描述了该镜像包含哪些函数、出入参是什么。</p>
+</li>
+<li><p><strong>动态服务发现机制：</strong><br>当用户在平台选择该镜像时，平台自动挂载或解析这个文件，将元数据提取出来，在界面上动态渲染成一个可视化的函数列表。</p>
+</li>
+<li><p><strong>交互底线：能选的，绝不让用户填：</strong><br>这不仅是底层架构的解耦，更是最基本的<strong>用户体验（UX）设计原则</strong>。通过解析元数据指导用户进行“选择性暴露”，彻底消灭了易错的手工填报和平台侧的数据装填。</p>
+</li>
+</ol>
+<h2 id="总结与感悟：警惕“新瓶装旧酒”的架构倒退"><a href="#总结与感悟：警惕“新瓶装旧酒”的架构倒退" class="headerlink" title="总结与感悟：警惕“新瓶装旧酒”的架构倒退"></a>总结与感悟：警惕“新瓶装旧酒”的架构倒退</h2><p>一个好的架构底座，应当是“赋能者”，它提供舞台让下游自由发挥；而<strong>坏的架构，是“独裁者”，它通过信息壁垒和人工设卡，将所有下游变成自己的附庸</strong>。</p>
+<p>无论嘴上挂着多么高大上的硅谷热词（Knative, Serverless），只要它的运行逻辑依然依赖于“人工登记”、“硬灌数据”和“针对性打包”，那它本质上就是一辆<strong>披着高铁外壳的绿皮火车</strong>。</p>
+<p>技术人员最大的悲哀，就是<strong>用着 21 世纪最前沿的云计算工具，却在代码库里复辟了 19 世纪的封建衙门</strong>。</p>
+<h2 id="【硬核附录】如何优雅地获取镜像元数据？（无需启动容器）"><a href="#【硬核附录】如何优雅地获取镜像元数据？（无需启动容器）" class="headerlink" title="【硬核附录】如何优雅地获取镜像元数据？（无需启动容器）"></a>【硬核附录】如何优雅地获取镜像元数据？（无需启动容器）</h2><p>在讨论“自描述系统”时，很多技术官僚会抛出一个看似专业的防御性问题：“如果不启动容器（不执行 <code>docker run</code>），平台怎么可能知道镜像里那个约定的文件写了什么内容？”</p>
+<p>如果一个做 Serverless 平台的架构师能问出这种问题，说明他连云原生的底层标准都没摸透。<br><strong>Docker 镜像本质上根本不是什么黑盒，而是符合 OCI（Open Container Initiative）标准的“多层 Tar 压缩包 + JSON 配置文件”。</strong> 平台方完全有三种优雅程度递进的手段，在<strong>不启动任何业务进程、不消耗计算资源</strong>的情况下，瞬间提取元数据：</p>
+<h3 id="方案一：静态文件快照提取（实用派）"><a href="#方案一：静态文件快照提取（实用派）" class="headerlink" title="方案一：静态文件快照提取（实用派）"></a>方案一：静态文件快照提取（实用派）</h3><p>不需要 <code>run</code>，只需要 <code>create</code>。平台可以调用 Docker API 创建一个容器的静态文件系统快照，把约定的 <code>manifest.yaml</code> 文件拷出来，然后直接销毁空壳。全程没有任何业务代码被执行，绝对安全。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 创建静态容器外壳（状态为 Created，不拉起进程）</span></span><br><span class="line">CONTAINER_ID=$(docker create custom-image:v1)</span><br><span class="line"><span class="comment"># 2. 从文件系统中直接提取约定文件</span></span><br><span class="line">docker <span class="built_in">cp</span> <span class="variable">$CONTAINER_ID</span>:/manifest.yaml ./local-manifest.yaml</span><br><span class="line"><span class="comment"># 3. 销毁空壳</span></span><br><span class="line">docker <span class="built_in">rm</span> <span class="variable">$CONTAINER_ID</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="方案二：Registry-API-内存直读（进阶派）"><a href="#方案二：Registry-API-内存直读（进阶派）" class="headerlink" title="方案二：Registry API 内存直读（进阶派）"></a>方案二：Registry API 内存直读（进阶派）</h3><p>既然是做 Serverless 平台，后台必然调度着统一的镜像仓库（Registry）。借助 Google 开源的 go-containerregistry 库（或 crane 工具），平台可以通过 HTTP API 直接向远端仓库发起请求，只把包含该文件的特定镜像层下载并在内存中解压。<br>根本不需要把几百兆的完整镜像 pull 到本地节点，轻量到令人发指。</p>
+<h3 id="方案三：OCI-Labels-元数据注入（终极云原生最佳实践）"><a href="#方案三：OCI-Labels-元数据注入（终极云原生最佳实践）" class="headerlink" title="方案三：OCI Labels 元数据注入（终极云原生最佳实践）"></a>方案三：OCI Labels 元数据注入（终极云原生最佳实践）</h3><p>连“约定文件”都可以省了！最高级的做法是，让镜像提供方在写 Dockerfile 时，直接将暴露的函数列表作为元数据打在 LABEL 上：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Dockerfile 示例</span></span><br><span class="line">FROM alpine:latest</span><br><span class="line"><span class="comment"># 将提供的函数列表作为 OCI 规范的 Label 写入</span></span><br><span class="line">LABEL com.yourcompany.serverless.functions=<span class="string">&quot;[&#x27;get_map&#x27;, &#x27;calculate_area&#x27;]&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>要知道，LABEL 是写在 Image Manifest（镜像清单）的 JSON 里的，它根本不在文件系统的压缩包内。当用户在平台选中该镜像时，平台直接发一个极轻量的 GET 请求获取 JSON，一秒钟就能解析出可用函数列表，直接渲染在前端界面的下拉框里。</p>
+<h3 id="反击总结："><a href="#反击总结：" class="headerlink" title="反击总结："></a>反击总结：</h3><p>用 OCI 标准和基础容器 API 就能全自动解决的元数据发现问题，非要人工建个数据库表去手动填报。这不叫 Serverless（无服务器），这叫“<strong>服务器人工客服</strong>”。</p>
+<h2 id="【硬核附录进阶】自描述系统的深水区：如何优雅承载-OpenAPI-级复杂契约？"><a href="#【硬核附录进阶】自描述系统的深水区：如何优雅承载-OpenAPI-级复杂契约？" class="headerlink" title="【硬核附录进阶】自描述系统的深水区：如何优雅承载 OpenAPI 级复杂契约？"></a>【硬核附录进阶】自描述系统的深水区：如何优雅承载 OpenAPI 级复杂契约？</h2><p>当我们的平台不仅需要知道“有哪些函数名”，还需要获取完整的入参、出参、调用规范（即完整的 <code>openapi.json</code> 或 Swagger 文档）时，架构设计的考验才真正开始。</p>
+<p>面对这种几十 KB 甚至上百 KB 的复杂结构化契约，平台该如何动态获取？以下是架构师视角的“红黑榜”（Dos &amp; Don’ts）。</p>
+<h3 id="❌-坚决反对的反模式（不建议的行为）"><a href="#❌-坚决反对的反模式（不建议的行为）" class="headerlink" title="❌ 坚决反对的反模式（不建议的行为）"></a>❌ 坚决反对的反模式（不建议的行为）</h3><p><strong>1. 坚决反对：启动业务容器来读取文档（<code>docker run</code>）</strong></p>
+<ul>
+<li><strong>做法：</strong> 平台把镜像拉下来，<code>docker run</code> 跑起来，然后通过调用容器内的某个特定 <code>/docs</code> 接口来获取文档。</li>
+<li><strong>致命原因：</strong> 这是极其危险且极其低效的。如果业务侧的启动脚本存在死循环、耗时依赖（如连不上外网数据库导致 Crash），容器根本启动不起来，平台连文档都拿不到。为了读个文档去消耗 CPU&#x2F;内存 资源拉起一个黑盒进程，无异于“为了看说明书而把整台机器拆了”。</li>
+</ul>
+<p><strong>2. 坚决反对：把完整的 <code>openapi.json</code> 暴力塞进 Docker Label 里</strong></p>
+<ul>
+<li><strong>做法：</strong> 在 <code>Dockerfile</code> 中写 <code>LABEL com.api.doc=&quot;&#123;极其漫长的JSON字符串...&#125;&quot;</code>。</li>
+<li><strong>致命原因：</strong><ul>
+<li><strong>转义符地狱（Escaping Hell）：</strong> JSON 中包含无数的双引号和嵌套结构。要在 Dockerfile 里写合法的长文本 Label，研发需要处理极其恶心的换行和反斜杠转义。稍微漏掉一个 <code>\</code>，整个镜像构建直接报错，研发体验极差。</li>
+<li><strong>Manifest 毫无意义的膨胀：</strong> 镜像的 Label 是存在 Image Manifest（镜像核心清单）里的。Kubernetes 调度器或 Docker 节点每次拉取镜像时，都要先下载这个 Manifest。把动辄上百 KB 的业务文档塞进去，会无谓拖慢整个集群的镜像调度与网络握手效率。</li>
+<li><strong>违背单一职责：</strong> Label 的使命是存“元数据（Metadata，如版本、作者、标记）”，而不是存“数据载体（Payload）”。</li>
+</ul>
+</li>
+</ul>
+<h3 id="✅-架构师视角的终极正解（推荐的云原生最佳实践）"><a href="#✅-架构师视角的终极正解（推荐的云原生最佳实践）" class="headerlink" title="✅ 架构师视角的终极正解（推荐的云原生最佳实践）"></a>✅ 架构师视角的终极正解（推荐的云原生最佳实践）</h3><p>真正的云原生解法，是“<strong>文件实体与指针分离</strong>”，并利用 Registry API 实施“<strong>隔空取物</strong>”。</p>
+<h4 id="步骤一：约定文件路径-Label-充当“路标”（业务侧的极简配合）"><a href="#步骤一：约定文件路径-Label-充当“路标”（业务侧的极简配合）" class="headerlink" title="步骤一：约定文件路径 + Label 充当“路标”（业务侧的极简配合）"></a>步骤一：约定文件路径 + Label 充当“路标”（业务侧的极简配合）</h4><p>不给研发增加任何心智负担。业务线只需将 <code>openapi.json</code> 拷贝到镜像根目录，并打上一个极其轻量的 Boolean 类型 Label 作为“路标”告诉平台：“我这有文档，且在这条路上”。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 业务侧的极简 Dockerfile</span></span><br><span class="line"><span class="keyword">FROM</span> ubuntu:latest</span><br><span class="line"><span class="comment"># 1. 正常放进业务代码和 JSON 契约</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> src/ /app/</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> openapi.json /openapi.json</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 用 Label 做个“轻量级指针”</span></span><br><span class="line"><span class="keyword">LABEL</span><span class="language-bash"> com.yourcompany.serverless.has_openapi=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="keyword">LABEL</span><span class="language-bash"> com.yourcompany.serverless.openapi_path=<span class="string">&quot;/openapi.json&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤二：Registry-层的流式读取（平台侧的降维打击）"><a href="#步骤二：Registry-层的流式读取（平台侧的降维打击）" class="headerlink" title="步骤二：Registry 层的流式读取（平台侧的降维打击）"></a>步骤二：Registry 层的流式读取（平台侧的降维打击）</h4><p>当用户在界面选中这个镜像时，平台后台执行以下超轻量动作：</p>
+<ol>
+<li>请求镜像仓库（Registry），瞬间读取 Manifest，看到 has_openapi&#x3D;true。</li>
+<li>平台依然不拉取完整镜像，也不启动容器，而是直接利用开源库（如 go-containerregistry 或 CLI 工具 crane），向镜像仓库发起针对该 JSON 文件的 HTTP Stream（流）请求。</li>
+<li>平台只在内存中下载并解压包含该 JSON 的那一个特定镜像层（Layer），直接提取并丢给前端渲染成精美的表单界面。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># (注：底层原理就如同执行了这行极客命令，全程耗时不到 1 秒：)</span></span><br><span class="line">crane <span class="built_in">export</span> registry.example.com/custom-image:v1 | tar -xO openapi.json</span><br></pre></td></tr></table></figure>
+
+<h3 id="💡-会议终结话术"><a href="#💡-会议终结话术" class="headerlink" title="💡 会议终结话术"></a>💡 会议终结话术</h3><p>下次如果还有人让你写个表单去“人工填报接口”，请直接告诉他：</p>
+<blockquote>
+<p>“真正的平台化，是业务方只需往镜像里 COPY 一个 JSON，剩下的解析、渲染全部由底层自动化完成。如果连一套静态 JSON 的隔空读取机制都做不出来，还要靠人工对着屏幕录入数据，那这就是一辆‘必须靠人工踩脚踏板才能开动’的伪 Serverless 跑车。”</p>
+</blockquote>
+<h2 id="原始素材和基础语料（人工）"><a href="#原始素材和基础语料（人工）" class="headerlink" title="原始素材和基础语料（人工）"></a>原始素材和基础语料（人工）</h2><blockquote>
+<p>今天晚上下班，部门内部技术讨论会议上，有个产品是基于 knative 去做 gis 的 serverless 平台。<br>当负责人介绍方案的时候，我直接就感觉不对劲。在他的设计里，我们提供功能的每个自定义都是需要在它这个平台里面进行注册的。他的原话是：每次将产品发布给客户的时候，产品里的数据库我们都是根据客户需求装填好了的；不用用户界面操作。<br>所以领导提出的：“我去注册你的 serverless 函数的时候，选择完镜像之后，我怎么知道你这个镜像里有哪些可用的函数”；<br>我当时就感觉离谱：你这设计的意思是以后镜像提供者不管出现点啥接口的新增和修改，还都得在你这里登记一下是吧？咱们平头老百姓，低声下气伺候完官老爷，还得伺候你这位爷？这是咋地平白无故多出个审核岗出来？<br>难道不应该是每个自定义镜像的内部放一个约定名字的文件，平台通过读取这个文件来知道这个自定义镜像提供哪些功能，来让用户选择性暴露；<br>能够让用户选的，不要让用户填，这不是基本的用户体验设计原则吗？<br>否则你这种方式，每次接到一次新需求，我还得针对性的灌入数据，再打个个性包，这 KPI 这么好刷的吗？</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.png"></a><div class="post-copyright__author_name">夫礼者Home</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward"><div class="reward-button" title="赞赏作者" onclick="AddRewardMask()"><i class="solitude fa-solid fa-heart"></i>赞赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢您的赞赏</span><ul class="reward-group"><li class="reward-item"><a href="/images/wxpay.jpg"><img class="post-qr-code-img nolazyload" src="/images/wxpay.jpg" alt="微信" style="border-color: var(--efu-green)"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.jpg"><img class="post-qr-code-img nolazyload" src="/images/alipay.jpg" alt="支付宝" style="border-color: var(--efu-blue)"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/"><div class="reward-text">赞赏名单</div><div class="reward-dec">由于您的支持，我才能够实现写作的价值。</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">夫礼者Home</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>研发效能<span class="tagsPageCount">24</span></span></a><a class="post-meta__tags" href="/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>架构设计<span class="tagsPageCount">3</span></span></a><a class="post-meta__tags" href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>云原生<span class="tagsPageCount">1</span></span></a><a class="post-meta__tags" href="/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>技术管理<span class="tagsPageCount">2</span></span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/06/14/ai-ai-mirror-and-cognitive-laziness/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">AI照妖镜与认知怠惰：一场关于“技术平权”的价值觉醒</div></div></a></div><div class="next-post pull-right"><a href="/2026/06/11/think-illusion-of-persuasion/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">沟通的尺度：权力博弈、绝对标尺的缺失与“说服”的伪命题</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-bg-top"><div class="is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div></div><a class="card-info-avatar" href="/about/" title="头像"><div class="avatar-img"><img src="/images/sicp_cover_english.jpg" alt="头像"></div></a><div class="card-info__desc_group"><div class="author-info__name">夫礼者</div><div class="author-info__desc"></div><div class="card-info__data is-center"><a href="/archives/" title="累计文章数:115"><div class="length-num">115</div><div class="headline">文章</div></a><a href="/tags/" title="标签总数:118"><div class="length-num">118</div><div class="headline">标签</div></a><a href="/categories/" title="分类总数:36"><div class="length-num">36</div><div class="headline">分类</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/fulizhe" title="Github"><i class="solitude  fab fa-github"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://gitee.com/lqzkcx3" title="Gitee"><i class="solitude  fab fa-git"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.zhihu.com/people/tao-luo-73" title="Zhihu"><i class="solitude  fab fa-zhihu"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://blog.csdn.net/lqzkcx3" title="CSDN"><i class="solitude  fab fa-bilibili"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.jianshu.com/u/cd3dd432fd00" title="jianshu"><i class="solitude  fab fa-node-js"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://fulizhe.github.io/curriculumVitae" title="aboutMe"><i class="solitude  fas fa-address-card"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fa-solid fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%EF%BC%9A%E4%B8%80%E5%9C%BA%E4%BB%A4%E4%BA%BA%E5%95%BC%E7%AC%91%E7%9A%86%E9%9D%9E%E7%9A%84%E4%BA%91%E5%8E%9F%E7%94%9F%E6%9E%B6%E6%9E%84%E8%AF%84%E5%AE%A1"><span class="toc-text">背景：一场令人啼笑皆非的云原生架构评审</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%97%85%E7%90%86%E5%88%87%E7%89%87%E4%B8%80%EF%BC%9A%E6%9E%B6%E6%9E%84%E9%87%8C%E7%9A%84%E2%80%9C%E5%AE%98%E5%83%9A%E4%B8%BB%E4%B9%89%E2%80%9D%E4%B8%8E%E6%9D%83%E5%8A%9B%E8%AE%BE%E5%8D%A1"><span class="toc-text">病理切片一：架构里的“官僚主义”与权力设卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%97%85%E7%90%86%E5%88%87%E7%89%87%E4%BA%8C%EF%BC%9A%E5%88%B7-KPI-%E7%9A%84%E2%80%9C%E4%BC%AA%E5%AE%9A%E5%88%B6%E2%80%9D%E4%B8%8E%E5%8A%B3%E5%8A%A8%E5%AF%86%E9%9B%86%E5%9E%8B%E4%BD%9C%E5%9D%8A"><span class="toc-text">病理切片二：刷 KPI 的“伪定制”与劳动密集型作坊</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A0%B4%E5%B1%80%E4%B9%8B%E9%81%93%EF%BC%9A%E7%BA%A6%E5%AE%9A%E4%BC%98%E4%BA%8E%E9%85%8D%E7%BD%AE%E4%B8%8E%E2%80%9C%E8%87%AA%E6%8F%8F%E8%BF%B0%E7%B3%BB%E7%BB%9F%E2%80%9D"><span class="toc-text">破局之道：约定优于配置与“自描述系统”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E4%B8%8E%E6%84%9F%E6%82%9F%EF%BC%9A%E8%AD%A6%E6%83%95%E2%80%9C%E6%96%B0%E7%93%B6%E8%A3%85%E6%97%A7%E9%85%92%E2%80%9D%E7%9A%84%E6%9E%B6%E6%9E%84%E5%80%92%E9%80%80"><span class="toc-text">总结与感悟：警惕“新瓶装旧酒”的架构倒退</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E7%A1%AC%E6%A0%B8%E9%99%84%E5%BD%95%E3%80%91%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E8%8E%B7%E5%8F%96%E9%95%9C%E5%83%8F%E5%85%83%E6%95%B0%E6%8D%AE%EF%BC%9F%EF%BC%88%E6%97%A0%E9%9C%80%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8%EF%BC%89"><span class="toc-text">【硬核附录】如何优雅地获取镜像元数据？（无需启动容器）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80%EF%BC%9A%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6%E5%BF%AB%E7%85%A7%E6%8F%90%E5%8F%96%EF%BC%88%E5%AE%9E%E7%94%A8%E6%B4%BE%EF%BC%89"><span class="toc-text">方案一：静态文件快照提取（实用派）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C%EF%BC%9ARegistry-API-%E5%86%85%E5%AD%98%E7%9B%B4%E8%AF%BB%EF%BC%88%E8%BF%9B%E9%98%B6%E6%B4%BE%EF%BC%89"><span class="toc-text">方案二：Registry API 内存直读（进阶派）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%89%EF%BC%9AOCI-Labels-%E5%85%83%E6%95%B0%E6%8D%AE%E6%B3%A8%E5%85%A5%EF%BC%88%E7%BB%88%E6%9E%81%E4%BA%91%E5%8E%9F%E7%94%9F%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%89"><span class="toc-text">方案三：OCI Labels 元数据注入（终极云原生最佳实践）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%87%BB%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-text">反击总结：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E7%A1%AC%E6%A0%B8%E9%99%84%E5%BD%95%E8%BF%9B%E9%98%B6%E3%80%91%E8%87%AA%E6%8F%8F%E8%BF%B0%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%B7%B1%E6%B0%B4%E5%8C%BA%EF%BC%9A%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E6%89%BF%E8%BD%BD-OpenAPI-%E7%BA%A7%E5%A4%8D%E6%9D%82%E5%A5%91%E7%BA%A6%EF%BC%9F"><span class="toc-text">【硬核附录进阶】自描述系统的深水区：如何优雅承载 OpenAPI 级复杂契约？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E5%9D%9A%E5%86%B3%E5%8F%8D%E5%AF%B9%E7%9A%84%E5%8F%8D%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%8D%E5%BB%BA%E8%AE%AE%E7%9A%84%E8%A1%8C%E4%B8%BA%EF%BC%89"><span class="toc-text">❌ 坚决反对的反模式（不建议的行为）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E6%9E%B6%E6%9E%84%E5%B8%88%E8%A7%86%E8%A7%92%E7%9A%84%E7%BB%88%E6%9E%81%E6%AD%A3%E8%A7%A3%EF%BC%88%E6%8E%A8%E8%8D%90%E7%9A%84%E4%BA%91%E5%8E%9F%E7%94%9F%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%89"><span class="toc-text">✅ 架构师视角的终极正解（推荐的云原生最佳实践）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%B8%80%EF%BC%9A%E7%BA%A6%E5%AE%9A%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84-Label-%E5%85%85%E5%BD%93%E2%80%9C%E8%B7%AF%E6%A0%87%E2%80%9D%EF%BC%88%E4%B8%9A%E5%8A%A1%E4%BE%A7%E7%9A%84%E6%9E%81%E7%AE%80%E9%85%8D%E5%90%88%EF%BC%89"><span class="toc-text">步骤一：约定文件路径 + Label 充当“路标”（业务侧的极简配合）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E4%BA%8C%EF%BC%9ARegistry-%E5%B1%82%E7%9A%84%E6%B5%81%E5%BC%8F%E8%AF%BB%E5%8F%96%EF%BC%88%E5%B9%B3%E5%8F%B0%E4%BE%A7%E7%9A%84%E9%99%8D%E7%BB%B4%E6%89%93%E5%87%BB%EF%BC%89"><span class="toc-text">步骤二：Registry 层的流式读取（平台侧的降维打击）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%92%A1-%E4%BC%9A%E8%AE%AE%E7%BB%88%E7%BB%93%E8%AF%9D%E6%9C%AF"><span class="toc-text">💡 会议终结话术</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E7%B4%A0%E6%9D%90%E5%92%8C%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%96%99%EF%BC%88%E4%BA%BA%E5%B7%A5%EF%BC%89"><span class="toc-text">原始素材和基础语料（人工）</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fa-solid fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/2026/07/23/devops-tyranny-of-one-sixth/" title="1/6的暴政：编码门槛如何扭曲了整条软件交付链路"><div class="thumbnail"><img alt="1/6的暴政：编码门槛如何扭曲了整条软件交付链路" src="/2026/07/23/devops-tyranny-of-one-sixth/cover.png"></div><div class="content"><span class="title" href="/2026/07/23/devops-tyranny-of-one-sixth/" title="1/6的暴政：编码门槛如何扭曲了整条软件交付链路">1/6的暴政：编码门槛如何扭曲了整条软件交付链路</span><span class="article-recent_post_categories" href="/2026/07/23/devops-tyranny-of-one-sixth/">深度思考</span></div></a><a class="aside-list-item" href="/2026/07/20/devops-when-arsonists-team-up/" title="纵火犯抱团之后：切香肠、烟囱口与产品底线的流失"><div class="thumbnail"><img alt="纵火犯抱团之后：切香肠、烟囱口与产品底线的流失" src="/2026/07/20/devops-when-arsonists-team-up/cover.png"></div><div class="content"><span class="title" href="/2026/07/20/devops-when-arsonists-team-up/" title="纵火犯抱团之后：切香肠、烟囱口与产品底线的流失">纵火犯抱团之后：切香肠、烟囱口与产品底线的流失</span><span class="article-recent_post_categories" href="/2026/07/20/devops-when-arsonists-team-up/">管理手记</span></div></a><a class="aside-list-item" href="/2026/07/19/think-forty-self-rescue/" title="四十岁的自救"><div class="thumbnail"><img alt="四十岁的自救" src="/2026/07/19/think-forty-self-rescue/cover.png"></div><div class="content"><span class="title" href="/2026/07/19/think-forty-self-rescue/" title="四十岁的自救">四十岁的自救</span><span class="article-recent_post_categories" href="/2026/07/19/think-forty-self-rescue/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/07/18/think-forty-downclock/" title="四十岁的降频"><div class="thumbnail"><img alt="四十岁的降频" src="/2026/07/18/think-forty-downclock/cover.png"></div><div class="content"><span class="title" href="/2026/07/18/think-forty-downclock/" title="四十岁的降频">四十岁的降频</span><span class="article-recent_post_categories" href="/2026/07/18/think-forty-downclock/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/07/15/ai-grok45-fast-cursor-traps/" title="Grok 4.5 fast 踩坑实录：挤牙膏、念经与七次翻车"><div class="thumbnail"><img alt="Grok 4.5 fast 踩坑实录：挤牙膏、念经与七次翻车" src="/2026/07/15/ai-grok45-fast-cursor-traps/cover.png"></div><div class="content"><span class="title" href="/2026/07/15/ai-grok45-fast-cursor-traps/" title="Grok 4.5 fast 踩坑实录：挤牙膏、念经与七次翻车">Grok 4.5 fast 踩坑实录：挤牙膏、念经与七次翻车</span><span class="article-recent_post_categories" href="/2026/07/15/ai-grok45-fast-cursor-traps/">随笔与思考</span></div></a></div></div></div></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2026 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src="/img/pwa/favicon.png">夫礼者</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude" alt="Theme">Theme</a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=2.1.13"></script><script src="/js/main.js?v=2.1.13"></script><script src="/js/third_party/waterfall.min.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="https://fastly.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js"></script><script src="/js/tw_cn.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="js-pjax"><script>mermaid.run();</script></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude fa-solid fa-xmark"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=2.1.13"></script><!-- Tianli-Talk--><!-- music--></body></html>
+        <script>
+            const posts = ["2026/07/23/devops-tyranny-of-one-sixth/","2026/07/20/devops-when-arsonists-team-up/","2026/07/19/think-forty-self-rescue/","2026/07/18/think-forty-downclock/","2026/07/15/ai-grok45-fast-cursor-traps/","2026/07/14/ai-jenkins_retro_report/","2026/07/13/think-value-in-future-not-past/","2026/07/09/devops-the-thought-closed-loop-of-overtime-martyrs/","2026/07/05/think-cognitive-compound-interest/","2026/07/04/think-experience-breeds-composure/","2026/07/02/devops-the-label-of-public-enemy/","2026/07/01/devops-top-down-reform-and-multiplicative-quality-model/","2026/06/30/think-ai-making-us-shallow/","2026/06/28/ai-agency-filtering-in-ai-era/","2026/06/24/devops-solving-problems-as-close-to-the-source-as-possible/","2026/06/23/devops-the-illusion-of-done-in-local-build/","2026/06/22/devops-how-to-implement-p1-test-gates-in-multi-language-teams/","2026/06/22/think-the-fragility-of-success-and-upward-management/","2026/06/21/devops-how-to-survive-in-a-highly-mediocre-organization/","2026/06/21/devops-how-to-deal-with-incompetent-teams-at-work/","2026/06/19/devops-performance-tuning-as-a-guessing-game/","2026/06/19/ai-jevons-paradox-in-ai-era/","2026/06/17/devops-instant-karma-of-high-frequency-testing/","2026/06/17/think-why-we-still-have-jobs-in-ai-era/","2026/06/17/devops-responsibility-diffusion-in-cross-team-dev/","2026/06/16/think-feedback-loop-and-monopoly-of-interpretation/","2026/06/15/think-workplace-attribution-bias/","2026/06/14/ai-ai-mirror-and-cognitive-laziness/","2026/06/12/devops-the-auditor-role-in-software-architecture/","2026/06/11/think-illusion-of-persuasion/","2026/06/11/devops-technical-bureaucracy-and-benefactor-illusion/","2026/06/11/devops-shift-left-testing-and-quality-gates/","2026/06/11/devops-strategic-patience-in-refactoring/","2026/06/11/think-constraints-and-creativity/","2026/06/10/devops-fake-automation-and-human-api/","2026/06/10/devops-knowledge-sink-vs-individual-blackbox/","2026/06/10/devops-reform-without-firing-and-malicious-compliance/","2026/06/10/devops-yak-shaving-and-pseudo-extensibility/","2026/06/09/devops-illusion-of-hard-work-in-management/","2026/06/09/devops-solve-the-person-who-raised-the-problem/","2026/06/08/devops-reject-technical-giant-baby/","2026/06/07/devops-product-vs-project-mindset/","2026/06/07/devops-breaking-developer-arrogance/","2026/06/07/devops-software-engineering-and-shit-mountain/","2026/06/06/think-reading-as-an-anchor/","2026/06/06/think-career-antifragility/","2026/06/03/devops-illusion-of-tech-moat-and-non-management/","2026/05/27/ai-driven-dev-and-code-devaluation/","2026/05/23/ruankao-xtjls/","2026/05/21/ai-evolution-in-ai-era/","2026/05/13/devops-hidden-costs-of-kpi-driven/","2026/05/11/devops-the-illusion-of-tech-management/","2026/05/11/think-defy-the-destiny/","2026/05/08/devops-trust-and-glue-work-in-management/","2026/05/08/think-money-has-clear-criteria2/","2026/05/04/think-mastering-the-right-of-interpretation/","2026/05/01/devops-Criteria-for-technical-decision-making/","2026/04/29/devops-cognitive-load-and-feedback-loops/","2026/04/29/devops-reject-works-on-my-machine/","2026/04/28/devops-from-heroism-to-system-observability/","2026/04/27/think-redundancy-design-in-daily-life/","2026/04/27/devops-optimization-startup/","2026/04/25/think-from-0-to-1-residual-advantage/","2026/04/23/devops-refactor-process/","2026/04/23/ai-efficiency-and-survival-strategy/","2026/03/26/devops-skywalking-local/","2026/03/24/devops-observability-is-efficiency/","2026/03/10/think-openclaw-i-see/","2026/03/06/think-ai-The-end-of-apprenticeship/","2026/03/03/think-why-procrastination/","2026/02/02/think-money-has-clear-criteria/","2026/01/18/book-why-donot-student-like-school/","2026/01/07/devops-bottom-up-recognize-reality-2/","2026/01/07/devops-continuous-bleeding/","2025/11/10/ruankao-xtfxs2/","2025/10/01/think-the-essence-of-implement-ultimate-idea/","2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/","2025/08/17/35-grap-the-initiative-of-life/","2025/08/15/devops-promote-the-progress-of-docker/","2025/08/09/devops-impove-development-process-team-reform/","2025/08/04/think-why-still-working-hard/","2025/08/04/think-how-to-find-your-career/","2025/07/31/devops-why-we-need-focusing-on-observability/","2025/06/22/book-ting-habits/","2025/06/20/think-value-anchor-point/","2025/06/04/devops-observability/","2025/06/03/devops-operation-upgrade/","2025/06/01/book-nexus/","2025/05/31/devops-bottom-up-recognize-reality/","2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/","2025/05/27/ruankao-xtfxs/","2025/03/21/35-why-do-i-firmly-believe-i-will-succeed/","2025/03/14/Technical-team-face-to-Technical-Debt/","2025/03/05/35-basic/","2025/03/03/tsitt-The-Road-to-Breaking-through-Operations-and-Maintenance/","2025/03/02/ai-the-benefit-of-meta-knowledge/","2025/02/27/how-to-break-in-the-era-of-ai-for-company/","2025/02/24/35-I-was-too-extreme/","2025/02/22/35-how-to-check-if-someone-is-worth-following/","2025/02/21/tip-cursor-refill-for-free/","2025/02/12/ai-The-double-edged-sword-of-creative-equality/","2025/02/12/ai-human-win/","2025/02/07/what-mean-when-we-say-ai-assisted-process-transformation/","2025/02/04/deepseek-r1-i-observe-to/","2025/01/17/social-experiment-by-ai/","2025/01/12/think-in-ai-era/","2025/01/09/the-skill-need-to-pratice-in-ai-era-as-programmer/","2025/01/07/cursor-i-think-to/","2025/01/05/2024-year-end-summary/","2024/12/12/《一本小小的红色写作书》读后感/","2024/12/12/《自学是门手艺》读后感/","2024/12/12/典型小散的投资生涯总结2018-2024/","2024/03/20/self_past_twentyYears/","2024/03/11/hexo-tip-tags/","2024/03/10/hello-world/"];
+            function toRandomPost() {
+                const randomPost = posts[Math.floor(Math.random() * posts.length)];
+                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
+            }
+        </script>

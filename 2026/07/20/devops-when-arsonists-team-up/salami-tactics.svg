@@ -1,0 +1,57 @@
+<svg viewBox="0 0 680 288" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>产品团队底线在切香肠战术中被侵蚀的链条</title>
+<desc>展示纵火消防员式上游通过切香肠战术，一片一片切掉产品团队底线的过程：从帮一次忙到沦为小工，底线水位从75%降到接近0。</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<text x="340" y="26" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="500" fill="#2C2C2A">产品团队底线如何在「切香肠」中被侵蚀</text>
+<text x="340" y="46" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#888780">每让一片，既定事实就深一层，回不去</text>
+
+<g>
+  <rect x="20" y="72" width="130" height="64" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+  <text x="85" y="96" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#085041">「就帮这一次」</text>
+  <text x="85" y="116" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" fill="#0F6E56">既定事实形成</text>
+</g>
+
+<g>
+  <rect x="190" y="72" width="130" height="64" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+  <text x="255" y="96" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#633806">「上次也你们弄」</text>
+  <text x="255" y="116" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" fill="#854F0B">边界开始模糊</text>
+</g>
+
+<g>
+  <rect x="360" y="72" width="130" height="64" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+  <text x="425" y="96" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#712B13">「不配合=能力差」</text>
+  <text x="425" y="116" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" fill="#993C1D">话语权转移</text>
+</g>
+
+<g>
+  <rect x="530" y="72" width="130" height="64" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+  <text x="595" y="96" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#791F1F">沦为小工</text>
+  <text x="595" y="116" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" fill="#A32D2D">风险全揽，功劳归人</text>
+</g>
+
+<line x1="152" y1="104" x2="186" y2="104" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="322" y1="104" x2="356" y2="104" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="492" y1="104" x2="526" y2="104" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<text x="340" y="158" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#888780">底线水位</text>
+
+<rect x="70" y="170" width="30" height="60" fill="#5DCAA5" rx="2"/>
+<text x="85" y="244" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#085041">75%</text>
+
+<rect x="240" y="190" width="30" height="40" fill="#FAC775" rx="2"/>
+<text x="255" y="244" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#633806">50%</text>
+
+<rect x="410" y="210" width="30" height="20" fill="#F0997B" rx="2"/>
+<text x="425" y="244" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#712B13">25%</text>
+
+<rect x="580" y="224" width="30" height="6" fill="#E24B4A" rx="2"/>
+<text x="595" y="244" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#791F1F">≈0</text>
+
+<text x="340" y="272" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5F5E5A">而纵火消防员在外邀功 —— 救火显性，防患隐形</text>
+
+</svg>
