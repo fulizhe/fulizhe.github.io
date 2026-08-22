@@ -1,0 +1,491 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>四十岁的微习惯 | 夫礼者Home</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=2.1.13"><!-- inject head--><link rel="canonical" href="https://fulizhe.github.io/2026/08/14/think-forty-mini-habits/"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"><!-- Open Graph--><meta name="description" content="MindMapflowchart LR A[&amp;quot;四十岁的微习惯&amp;quot;] --&amp;gt; B[&amp;quot;行为设计&amp;quot;] A --&amp;gt; C[&amp;quot;福格模型&amp;quot;] A --&amp;gt; D[&amp;quot;微习惯&amp;quot;] A --&amp;amp;gt"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="夫礼者Home"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(' %c Solitude %c ' + '2.1.13' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script src="https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSE7WE78H9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZSE7WE78H9');
+</script>    
+<script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+          },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":false,"path":"/search.xml"},
+    runtime: '2023-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。","loading":"搜索中..."}},
+    aside: {
+        sayhello: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        sayhello2: [],
+        sayhello3: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><!-- background img--><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img nolazyload" src="/images/sicp_cover_english.jpg" alt="loading image"></div></div><script>const preloader = {
+    isLoaded: false,
+    endLoading: () => {
+        if (!preloader.isLoaded) {
+            document.getElementById('loading-box').classList.add('loaded');
+            preloader.isLoaded = true;
+            preloader.togglePaceDone();
+        }
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+        preloader.isLoaded = false;
+        preloader.togglePaceDone();
+    },
+    togglePaceDone: () => {
+        document.getElementById('body').className = preloader.isLoaded ? 'pace-done' : '';
+    }
+}
+
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});
+
+setTimeout(() => {
+    preloader.endLoading();
+}, 5000);</script><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">131</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">28</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">137</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fa-solid fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结<sup>1</sup></a><a href="/tags/2024/">2024<sup>1</sup></a><a href="/tags/%E5%8F%8D%E6%80%9D/">反思<sup>7</sup></a><a href="/tags/thirty-five/">thirty-five<sup>5</sup></a><a href="/tags/AI%E6%B6%A6%E8%89%B2/">AI润色<sup>4</sup></a><a href="/tags/Technical-team/">Technical team<sup>5</sup></a><a href="/tags/devops/">devops<sup>15</sup></a><a href="/tags/AI%E6%97%B6%E4%BB%A3/">AI时代<sup>2</sup></a><a href="/tags/%E4%B8%BB%E8%A7%82%E8%83%BD%E5%8A%A8%E6%80%A7/">主观能动性<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E8%A7%82%E5%AF%9F/">职场观察<sup>10</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/">个人成长<sup>5</sup></a><a href="/tags/AI/">AI<sup>13</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%80%A0%E6%83%B0/">认知怠惰<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%B9%B3%E6%9D%83/">技术平权<sup>1</sup></a><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程<sup>12</sup></a><a href="/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/">行业观察<sup>3</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%B1%82%E7%94%9F/">职场求生<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%80%9D%E8%80%83/">职场思考<sup>3</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E8%A7%89%E9%86%92/">认知觉醒<sup>5</sup></a><a href="/tags/%E7%BC%96%E7%A0%81%E5%8A%A9%E6%89%8B/">编码助手<sup>1</sup></a><a href="/tags/Grok/">Grok<sup>1</sup></a><a href="/tags/Cursor/">Cursor<sup>3</sup></a><a href="/tags/Jenkins/">Jenkins<sup>1</sup></a><a href="/tags/%E5%A4%8D%E7%9B%98/">复盘<sup>2</sup></a><a href="/tags/CI-CD/">CI/CD<sup>5</sup></a><a href="/tags/%E9%98%85%E8%AF%BB/">阅读<sup>4</sup></a><a href="/tags/SDD/">SDD<sup>1</sup></a><a href="/tags/%E8%AF%BB%E4%B9%A6%E6%84%9F%E6%82%9F/">读书感悟<sup>1</sup></a><a href="/tags/%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/">规范驱动开发<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E5%8F%8D%E6%80%9D/">职场反思<sup>3</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA/">组织行为<sup>2</sup></a><a href="/tags/%E6%95%88%E7%8E%87%E9%99%B7%E9%98%B1/">效率陷阱<sup>1</sup></a><a href="/tags/%E9%80%86%E5%90%91%E6%B7%98%E6%B1%B0/">逆向淘汰<sup>2</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E6%80%9D%E8%80%83/">系统思考<sup>3</sup></a><a href="/tags/%E7%A0%94%E5%8F%91%E7%AE%A1%E7%90%86/">研发管理<sup>2</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%96%87%E5%8C%96/">工程师文化<sup>2</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86/">团队管理<sup>22</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E5%AD%A6/">组织行为学<sup>19</sup></a><a href="/tags/%E8%BE%B9%E7%95%8C%E6%84%8F%E8%AF%86/">边界意识<sup>1</sup></a><a href="/tags/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD/">研发效能<sup>25</sup></a><a href="/tags/%E5%BC%80%E5%8F%91%E8%80%85%E4%BD%93%E9%AA%8C-DevEx/">开发者体验 (DevEx)<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E8%B4%9F%E8%8D%B7/">认知负荷<sup>2</sup></a><a href="/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/">可观测性<sup>4</sup></a><a href="/tags/%E4%BB%B7%E5%80%BC%E4%BA%A4%E4%BB%98/">价值交付<sup>2</sup></a><a href="/tags/think/">think<sup>2</sup></a><a href="/tags/%E4%BD%93%E5%88%B6/">体制<sup>1</sup></a><a href="/tags/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/">基础设施<sup>1</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F/">团队<sup>2</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E7%B4%A0%E5%85%BB/">工程素养<sup>2</sup></a><a href="/tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/">职业发展<sup>2</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%8D%E6%80%9D/">个人反思<sup>9</sup></a><a href="/tags/%E6%95%88%E8%83%BD%E4%BC%98%E5%8C%96/">效能优化<sup>1</sup></a><a href="/tags/%E6%95%91%E4%B8%96%E4%B8%BB%E6%83%85%E8%8A%82/">救世主情节<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E7%97%85%E7%90%86%E5%AD%A6/">组织病理学<sup>2</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%96%AD%E5%A5%B6/">认知断奶<sup>1</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E9%9A%94%E7%A6%BB/">系统隔离<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E5%BF%83%E7%90%86/">职场心理<sup>2</sup></a><a href="/tags/DevOps/">DevOps<sup>7</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E6%B2%BB%E7%90%86/">团队治理<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%83%B0%E6%80%A7/">认知惰性<sup>1</sup></a><a href="/tags/%E8%BE%BE%E5%85%8B%E6%95%88%E5%BA%94/">达克效应<sup>1</sup></a><a href="/tags/%E5%BD%BC%E5%BE%97%E5%8E%9F%E7%90%86/">彼得原理<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E6%9E%B6%E6%9E%84/">组织架构<sup>1</sup></a><a href="/tags/%E5%90%90%E6%A7%BD/">吐槽<sup>1</sup></a><a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/">敏捷开发<sup>1</sup></a><a href="/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/">知识管理<sup>1</sup></a><a href="/tags/%E5%8F%98%E9%9D%A9%E7%AE%A1%E7%90%86/">变革管理<sup>4</sup></a><a href="/tags/%E5%90%91%E4%B8%8A%E7%AE%A1%E7%90%86/">向上管理<sup>5</sup></a><a href="/tags/%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98/">性能调优<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84%E6%80%9D%E8%80%83/">架构思考<sup>2</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%80%BA/">技术债<sup>2</sup></a><a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理<sup>1</sup></a><a href="/tags/%E6%B5%81%E7%A8%8B%E9%87%8D%E6%9E%84/">流程重构<sup>1</sup></a><a href="/tags/%E8%B7%A8%E9%83%A8%E9%97%A8%E5%8D%8F%E4%BD%9C/">跨部门协作<sup>3</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E7%A0%B4%E5%B1%80/">职场破局<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83/">技术思考<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/">组织管理<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔<sup>5</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E6%96%87%E5%8C%96/">工程文化<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%80%9D%E7%BB%B4/">工程师思维<sup>1</sup></a><a href="/tags/%E6%B5%8B%E8%AF%95%E5%B7%A6%E7%A7%BB/">测试左移<sup>3</sup></a><a href="/tags/%E8%B4%A8%E9%87%8F%E9%97%A8%E7%A6%81/">质量门禁<sup>1</sup></a><a href="/tags/%E7%83%9F%E5%9B%B1%E5%8F%A3/">烟囱口<sup>1</sup></a><a href="/tags/observability/">observability<sup>1</sup></a><a href="/tags/skywalking/">skywalking<sup>1</sup></a><a href="/tags/%E4%BC%81%E4%B8%9A%E6%96%87%E5%8C%96/">企业文化<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">架构设计<sup>3</sup></a><a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/">技术管理<sup>2</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E6%95%88%E8%83%BD/">团队效能<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学<sup>3</sup></a><a href="/tags/Hexo/">Hexo<sup>1</sup></a><a href="/tags/%E8%80%83%E8%AF%95/">考试<sup>3</sup></a><a href="/tags/%E5%86%B7%E5%90%AF%E5%8A%A8/">冷启动<sup>1</sup></a><a href="/tags/%E5%BF%83%E7%90%86%E4%BB%A3%E5%81%BF/">心理代偿<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%95%88%E8%83%BD/">个人效能<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E9%87%8D%E6%9E%84/">认知重构<sup>1</sup></a><a href="/tags/%E5%AD%98%E5%9C%A8%E4%B8%BB%E4%B9%89/">存在主义<sup>1</sup></a><a href="/tags/%E6%8A%80%E8%83%BD/">技能<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA/">职场<sup>2</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/">深度思考<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E5%8D%87%E7%BA%A7/">认知升级<sup>2</sup></a><a href="/tags/%E5%A4%8D%E5%88%A9/">复利<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5/">认知<sup>1</sup></a><a href="/tags/%E9%95%BF%E6%9C%9F%E4%B8%BB%E4%B9%89/">长期主义<sup>1</sup></a><a href="/tags/%E5%88%9B%E9%80%A0%E5%8A%9B/">创造力<sup>1</sup></a><a href="/tags/%E7%A0%B4%E5%B1%80%E6%80%9D%E7%BB%B4/">破局思维<sup>1</sup></a><a href="/tags/%E6%95%99%E8%82%B2%E8%A7%82/">教育观<sup>1</sup></a><a href="/tags/%E5%A4%B1%E8%B4%A5%E6%96%B9%E6%B3%95%E8%AE%BA/">失败方法论<sup>1</sup></a><a href="/tags/%E8%87%AA%E6%88%91%E6%95%99%E8%82%B2/">自我教育<sup>2</sup></a><a href="/tags/AI%E4%B8%8E%E6%9C%AA%E6%9D%A5/">AI与未来<sup>1</sup></a><a href="/tags/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/">职业规划<sup>1</sup></a><a href="/tags/%E6%95%88%E7%8E%87/">效率<sup>4</sup></a><a href="/tags/%E4%B8%93%E6%B3%A8/">专注<sup>2</sup></a><a href="/tags/WLB/">WLB<sup>2</sup></a><a href="/tags/%E4%B9%A0%E6%83%AF/">习惯<sup>4</sup></a><a href="/tags/%E8%A1%8C%E4%B8%BA%E8%AE%BE%E8%AE%A1/">行为设计<sup>1</sup></a><a href="/tags/%E8%87%AA%E6%88%91%E6%88%90%E9%95%BF/">自我成长<sup>2</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5/">学习策略<sup>1</sup></a><a href="/tags/%E7%BB%8F%E9%AA%8C%E5%A4%8D%E5%88%A9/">经验复利<sup>1</sup></a><a href="/tags/%E5%8D%8A%E9%80%94%E8%80%8C%E5%BA%9F/">半途而废<sup>1</sup></a><a href="/tags/%E9%95%BF%E6%97%B6%E8%AE%B0%E5%BF%86/">长时记忆<sup>1</sup></a><a href="/tags/%E6%80%9D%E8%80%83/">思考<sup>1</sup></a><a href="/tags/%E8%B4%A2%E5%AF%8C%E9%80%BB%E8%BE%91/">财富逻辑<sup>1</sup></a><a href="/tags/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学<sup>1</sup></a><a href="/tags/%E7%8E%AF%E5%A2%83%E9%87%8D%E5%A1%91/">环境重塑<sup>1</sup></a><a href="/tags/%E7%A8%80%E7%BC%BA%E5%BF%83%E6%80%81/">稀缺心态<sup>1</sup></a><a href="/tags/%E9%98%85%E8%AF%BB%E6%84%8F%E4%B9%89/">阅读意义<sup>1</sup></a><a href="/tags/%E7%8B%AC%E7%AB%8B%E6%8E%A2%E7%B4%A2/">独立探索<sup>1</sup></a><a href="/tags/%E8%A1%8C%E4%B8%BA%E5%BF%83%E7%90%86%E5%AD%A6/">行为心理学<sup>1</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计<sup>1</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB%E5%93%B2%E5%AD%A6/">生活哲学<sup>1</sup></a><a href="/tags/B-MAP/">B=MAP<sup>1</sup></a><a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94%E4%B8%8E%E6%80%9D%E8%80%83/">随笔与思考<sup>1</sup></a><a href="/tags/%E7%90%86%E8%B4%A2/">理财<sup>1</sup></a></div></div></div></div><!-- keyboard--><!-- righhtside--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon solitude fas fa-bars-progress"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页"><span class="title">夫礼者小屋</span><i class="solitude fa-solid fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">四十岁的微习惯</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude fa-solid fa-magnifying-glass"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fa-solid fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fa-solid fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/2026/08/14/think-forty-mini-habits/cover.png" alt="四十岁的微习惯"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/%E9%9A%8F%E7%AC%94%E4%B8%8E%E6%80%9D%E8%80%83/">随笔与思考</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%8D%E6%80%9D/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>个人反思</span></a><a class="post-meta__tags" href="/tags/%E6%95%88%E7%8E%87/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>效率</span></a><a class="post-meta__tags" href="/tags/WLB/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>WLB</span></a><a class="post-meta__tags" href="/tags/%E4%B9%A0%E6%83%AF/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>习惯</span></a><a class="post-meta__tags" href="/tags/%E8%A1%8C%E4%B8%BA%E8%AE%BE%E8%AE%A1/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>行为设计</span></a></div></div></div></div><h1 class="post-title">四十岁的微习惯</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2026-08-14 22:30:00"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2026-08-14T14:30:00.000Z">2026-08-14T14:30:00.000Z</time></span><span class="post-meta-date" title="最后更新于 2026-08-22 17:14:27"><i class="post-meta-icon solitude fa-solid fa-arrows-rotate"></i><time datetime="2026-08-22T09:14:27.967Z">2026-08-22T09:14:27.967Z</time></span><span class="post-meta-position" title="作者IP归属地为China"><i class="post-meta-icon solitude fas fa-location-dot"></i><span>China</span></span><a class="post-meta-pv" href="/2026/08/14/think-forty-mini-habits/" title="文章热度"><i class="post-meta-icon solitude fa-solid fa-fire-flame-curved"></i></a></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><h2 id="MindMap"><a href="#MindMap" class="headerlink" title="MindMap"></a>MindMap</h2><div class="mermaid">flowchart LR
+    A[&quot;四十岁的微习惯&quot;] --&gt; B[&quot;行为设计&quot;]
+    A --&gt; C[&quot;福格模型&quot;]
+    A --&gt; D[&quot;微习惯&quot;]
+    A --&gt; E[&quot;单点突破&quot;]
+    A --&gt; F[&quot;睡眠门禁&quot;]
+    A --&gt; G[&quot;十点半的理直气壮&quot;]
+    A --&gt; H[&quot;两个月尝试&quot;]
+    A --&gt; I[&quot;帮助与自救&quot;]
+
+    B --&gt; B1[&quot;顺应人性&quot;]
+    B --&gt; B2[&quot;积极情绪&quot;]
+    B --&gt; B3[&quot;多巴胺回路&quot;]
+
+    C --&gt; C1[&quot;B&#x3D;MAP&quot;]
+    C --&gt; C2[&quot;动机 能力 提示&quot;]
+
+    D --&gt; D1[&quot;小到不可能失败&quot;]
+    D --&gt; D2[&quot;无限倒退：五分钟也行&quot;]
+    D --&gt; D3[&quot;引体向上：去掉趴下这一步&quot;]
+    D --&gt; D4[&quot;挂住→辅助带→反手→正手&quot;]
+    D --&gt; D5[&quot;半途而废的遗产：余热成关键&quot;]
+
+    E --&gt; E1[&quot;休息是唯一城门&quot;]
+    E --&gt; E2[&quot;先守住睡眠&quot;]
+
+    F --&gt; F1[&quot;切断屏幕&quot;]
+    F --&gt; F2[&quot;轻娱乐放松精神&quot;]
+    F --&gt; F3[&quot;降噪沙盒&quot;]
+
+    G --&gt; G1[&quot;心安理得&quot;]
+    G --&gt; G2[&quot;愧疚感从12点退到10点半&quot;]
+    G --&gt; G3[&quot;放松窗口逐步缩短&quot;]
+
+    H --&gt; H1[&quot;白人饭模式&quot;]
+    H --&gt; H2[&quot;番茄时钟：不玩手机就行&quot;]
+    H --&gt; H2a[&quot;手机放置：工作间非手边&quot;]
+    H --&gt; H3[&quot;极简学习&quot;]
+
+    I --&gt; I1[&quot;自救者值得帮&quot;]
+    I --&gt; I2[&quot;行为改变行为&quot;]</div>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>距离《四十岁的自救》又过去一段时间。那时我把根挖出来，把诚实立起来，告诉自己接下来唯一重要的事是习惯养成。</p>
+<p>道理讲完，真正动手时才发现：<strong>知道要养成习惯，和知道怎么养成习惯，是两件事。</strong></p>
+<p>我过去二十年不是不想改，是改法错了。总是一上来就制定宏伟计划，把自己逼到墙角，靠意志力硬扛，然后三五天崩盘，再进入新一轮自我怀疑。这次我换了一套底层算法——<strong>行为设计</strong>。</p>
+<hr>
+<h2 id="1-行为设计：不是对抗人性，而是顺应人性"><a href="#1-行为设计：不是对抗人性，而是顺应人性" class="headerlink" title="1. 行为设计：不是对抗人性，而是顺应人性"></a>1. 行为设计：不是对抗人性，而是顺应人性</h2><p>所有的习惯养成失败，本质上都是一场对人性的误判。</p>
+<p>我们总以为养成习惯靠意志、靠自律、靠咬牙坚持。但意志力的真相是：它是有限资源，是应急电池，不是主力电源。把习惯建立在意志力上，就像把核电站建在一个随时会漏气的气球上——不是不能运转，是迟早要炸。</p>
+<p>行为设计的核心洞见是反直觉的：<strong>好习惯不是逼出来的，是设计出来的</strong>。</p>
+<p>你要做的不是对抗自己的惰性、冲动、贪图即时满足的本能，而是顺应它们，把它们纳入一个设计好的轨道。让好习惯容易开始、容易重复、容易获得即时反馈；让坏习惯难以触发、成本变高、反馈延迟。人性不变，但环境可以变，路径可以变，触发器可以变。</p>
+<blockquote>
+<p><strong>尊重人性，顺应人性，不是躺平的借口，是工程化的前提。</strong> 只有承认人就是这个德行，你才能设计出针对这个德行有效的系统。</p>
+</blockquote>
+<p>这个转向对我很关键。过去我一直把自己当成一个”应该更自律”的人去要求，每次失败都在人格上审判自己。现在我把视角切换成产品经理：我面前这个用户（就是我自己）又懒又贪舒服又容易分心，我该怎么设计产品，让他自然而然地做出我想要的行为？</p>
+<p>这个视角一换，很多问题豁然开朗。</p>
+<hr>
+<h2 id="2-福格模型：被产品经理封神的那个公式"><a href="#2-福格模型：被产品经理封神的那个公式" class="headerlink" title="2. 福格模型：被产品经理封神的那个公式"></a>2. 福格模型：被产品经理封神的那个公式</h2><p>说到产品设计，就绕不开<strong>福格行为模型</strong>（Fogg Behavior Model）。</p>
+<p>B.J. Fogg 给出一个极简公式：<strong>B &#x3D; MAP</strong>。一个行为（Behavior）要发生，需要动机（Motivation）、能力（Ability）、提示（Prompt）同时到位。三者缺一不可，乘积为零，行为就不会发生。</p>
+<p>动机是你想不想做，能力是你能不能轻易做到，提示是你什么时候想起来做。</p>
+<p>很多人失败在只强调动机。新年决心、发誓要改变、看完励志书热血沸腾——这些都是动机。但动机是波动的，早上八点最高，晚上十点最低。光靠动机，撑不过三天。</p>
+<p>真正靠谱的设计，是<strong>把能力门槛降到极低，把提示做得极其明确</strong>。</p>
+<p>你不是跟自己说”我要每天学习两小时”，而是”每天打开那本书看五分钟”。你不是”我要健康饮食”，而是”每天早餐先喝一杯水”。小到不可能失败，小到不好意思不开始。动机不需要很高，能力门槛够低，行为就能启动。</p>
+<p>但福格模型还有一个更狠的洞察，也是我之前所有尝试都忽略的关键：<strong>行为完成后，必须立即产生积极情绪</strong>。</p>
+<p>不是事后复盘时的自我肯定，是完成那一瞬间的身体级满足。一个微笑、一句”漂亮”、一次握拳——这些看似傻气的”庆祝”，会激活大脑的奖励回路，释放多巴胺。大脑记住了：这个行为让我爽，我要重复它。</p>
+<blockquote>
+<p><strong>多巴胺不是奖励本身，而是对奖励的预期和记忆。</strong> 你通过庆祝，把行为和愉悦绑定在一起，习惯才算真正闭环。</p>
+</blockquote>
+<p>没有庆祝的微习惯，只是任务清单；有了庆祝，它才开始自我繁殖。</p>
+<img src="/2026/08/14/think-forty-mini-habits/illust-01-fogg-model.png" class="" title="福格模型 B&#x3D;MAP 与多巴胺闭环">
+
+<hr>
+<h2 id="3-微习惯：小到不可能失败的启动器"><a href="#3-微习惯：小到不可能失败的启动器" class="headerlink" title="3. 微习惯：小到不可能失败的启动器"></a>3. 微习惯：小到不可能失败的启动器</h2><p>微习惯（Mini Habits）就是这个思路的极端化。</p>
+<p>它的逻辑很朴素：<strong>如果你想养成一个习惯，先把它缩小到无论如何都能完成的版本</strong>。想健身？每天做一个俯卧撑。想写作？每天写五十个字。想阅读？每天读一页。不是”尽量”，是”必须小到不可能失败”。</p>
+<p>这个策略的天才之处在于，它绕开了意志力的战场。</p>
+<p>你跟自己说”今天要做一百个俯卧撑”，大脑会立刻计算成本：累、出汗、花时间、不一定做得完——启动阻力巨大。但如果你说”只做一个”，大脑反而不好意思拒绝：”一个？这都不做也太丢脸了。”</p>
+<p>而一旦你开始做了一个，往往不会真的只做一个。你做了一个俯卧撑，顺势做了十个；写了一行字，顺势写了一页。但重点是：<strong>即使你真的只做了一个，你也是成功的</strong>。你今天完成了微习惯，你可以庆祝，多巴胺会记下这笔账。</p>
+<blockquote>
+<p><strong>微习惯的目标不是单次产出，是建立”我每天都能做到”的神经记忆。</strong> 当”做到”本身变成常态，扩展产量就是水到渠成。</p>
+</blockquote>
+<p>这次我做得更绝，给自己发明了一个词叫<strong>无限倒退</strong>。</p>
+<p>过去看书，我给自己定的规矩是”至少坚持30分钟以上”。听起来不算苛刻，可一旦某天时间来不及——比如十点半快到了，或者早上起晚了——30分钟这个门槛就变成了放弃的理由：”来不及了，今天算了。”门槛越高，放弃越容易。</p>
+<p>无限倒退的逻辑是反着来：<strong>30分钟来不及？10分钟。10分钟来不及？5分钟也行。5分钟都来不及？翻开书看一页。一页都来不及？摸一下书封面。</strong> 总之，绝不因为”时间不够”而跳过——因为跳过一次，大脑就会记住”这个习惯可以跳过”，跳过两次，习惯就死了。</p>
+<blockquote>
+<p><strong>习惯的敌人不是做不到，是”今天算了”。无限倒退就是把门槛降到”算了”都说不出口的程度。</strong></p>
+</blockquote>
+<p>健身也是。我现在的选择是引体向上，不是俯卧撑。为什么？因为俯卧撑要先趴下去——趴下这个动作本身就是一步额外的启动成本。引体向上不用趴，杆子就在那里，手一搭上去就开始了。<strong>我把”趴下”这一步也省掉了。</strong> 这听起来像是在钻牛角尖，但行为设计的精髓就在这里：<strong>每减少一个步骤，习惯的存活率就涨一截。</strong> 已经养成习惯之后慢慢优化，不奢望一步成神。</p>
+<p>而且优化真的在发生。完整链条是这样的：</p>
+<p>一开始，别说拉了，<strong>挂都挂不住</strong>。那就从挂开始——双手搭上杆子，人悬在那里，能挂几秒挂几秒。挂不住？下一步买辅助带，弹力带兜脚，借它的力拉上去。辅助带拉了一阵，摘掉，试反手——反手借的是二头肌，比正手省力，又退了一级门槛。反手能拉了。再过一阵，有一天试了一下正手——<strong>居然拉了一个。</strong></p>
+<blockquote>
+<p>挂住 → 辅助带 → 反手 → 正手。每一级都是”先退到能做到，做到稳了再收紧一步”。</p>
+</blockquote>
+<p>从挂不住到正手拉一个，中间没有制定过任何”进阶计划”。没有表格，没有里程碑，没有”第几周第几组第几个”的课表。只是每天搭手、拉、庆祝。<strong>门槛先降到不可能失败，习惯跑稳了，身体自己会往前走一步。</strong> 这和看书从”五分钟”到”自然延长”是同一个逻辑：<strong>你不用逼自己升级，你只需要先做到，做到够了，升级会自己来找你。</strong></p>
+<p>这里还有一层我之前没想透的意思：<strong>半途而废，未必是浪费。</strong> 我此前在 <a href="/2026/04/25/think-from-0-to-1-residual-advantage/" title="半途而废的认知红利：从0到1的突破、长时记忆与经验复利">半途而废的认知红利：从0到1的突破、长时记忆与经验复利</a> 中就写过：适度的、策略性的半途而废是一种理性的长期认知投资，”不必因为害怕无法坚持到底而拒绝启程”，做事完全可以分多步达到。那篇文章里”一个货架”的例子，和这根引体向上杆是同一个道理——半途留下的资产，把未来的启动成本降到了极低。引体向上杆就是个例子：三年前我装上它，没两天就荒了，算半途而废。可那次放弃留下的”遗产”没有消失——杆还钉在门框上。等到最近做四十岁作息调整，绕了一圈才发现它最顺手：爬楼前置操作太多，俯卧撑还得趴下，而杆在视野和身高之上，谈不上什么”提示”，纯粹是便利性——手一抬就够到，零前置，双手一搭就算开始。</p>
+<blockquote>
+<p><strong>多尝试，因为放弃留下的遗产并非失败，它们会在未来发挥余热，甚至像现在这样，成为转折点。</strong></p>
+</blockquote>
+<p>而且这次进阶完全无痛。一开始只能挂几秒，辅助带借力，退到后手引体，最后正手——现在也就拉一两个，但比起最开始反手都拉不起来一个，进步不小。最妙的是没有”开始健身”的痛感：没有某天立誓，没有从零逼自己，只是三年前那次没坚持的尝试，留下的一根杆，今天接上了线。习惯，就这么被改写了。</p>
+<p>我这次没有再给自己列一堆宏大目标。我只设计了两个极简系统：<strong>极简饮食系统</strong>和<strong>极简学习计划</strong>。饮食系统管晚上不乱吃、不影响睡眠；学习计划管每天有一个固定的小块输入。都不复杂，都不需要太多意志力，但都在向同一个方向投票。</p>
+<img src="/2026/08/14/think-forty-mini-habits/illust-02-infinite-retreat.png" class="" title="无限倒退：门槛降到不可能放弃">
+
+<hr>
+<h2 id="4-单点突破：睡眠门禁是唯一的城门"><a href="#4-单点突破：睡眠门禁是唯一的城门" class="headerlink" title="4. 单点突破：睡眠门禁是唯一的城门"></a>4. 单点突破：睡眠门禁是唯一的城门</h2><p>两个月试下来，我越来越确定一件事：这个庞大的人生重构工程，不能全面开花，必须<strong>单点突破</strong>。</p>
+<p>而那个单点，就是<strong>每天晚上按时睡觉</strong>。</p>
+<p>听起来很小，但它是所有改变的城门。睡眠守不住，第二天精力崩、注意力崩、情绪崩，什么微习惯、什么专注、什么效率，全部变成空话。睡眠守住了，第二天才有基本盘，才有余地去跑其他好习惯。</p>
+<p>《下班后一小时，拯救人生》这本书给我一个关键启发：人之所以会报复性晚睡，不是因为不困，而是因为白天被剥夺太多。躺到床上时，大脑觉得”这一天还没为自己活过”，于是抓起手机疯狂补偿。你越不让自己休息，夜晚越要夺回主权。</p>
+<p>报复性晚睡这个观点，其实我在其它地方也看到过。但真正点醒我的，是这本书给出的那个明确结论——<strong>十点半结束，然后通过轻娱乐放松精神</strong>。这正是这本书对我的价值所在：别的地方只解释了”为什么会报复性晚睡”，只有这本书明确告诉我该怎么做。</p>
+<p>过去我理解的”休息”只有两种：要么继续学习（假休息），要么刷手机到凌晨（真报复）。从来没想过中间还有一条路：<strong>十点半之后，用轻娱乐把精神松下来</strong>。不是放纵，不是报复，是主动的、有计划的、低刺激的放松——让大脑觉得”今天我已经为自己活过了”，于是不需要在深夜去夺回什么。</p>
+<p>我之前几十年，一直在重复这个死循环：白天压榨自己，晚上用刷手机补偿，凌晨两三点才睡，第二天疲惫不堪，再压榨自己，再报复性熬夜。</p>
+<p>所以我的单点突破不是”多学习一小时”，而是<strong>十点半之后，理直气壮地休息</strong>。</p>
+<blockquote>
+<p><strong>睡眠门禁不是剥夺，是授权。它授权你在固定时间之后，彻底停止为效率服务，心安理得地进入待机状态。</strong></p>
+</blockquote>
+<p>我把这个城门守住了，其他一切才有根。</p>
+<img src="/2026/08/14/think-forty-mini-habits/illust-03-sleep-gate.png" class="" title="睡眠门禁：十点半的城门">
+
+<hr>
+<h2 id="5-十点半之后的理直气壮"><a href="#5-十点半之后的理直气壮" class="headerlink" title="5. 十点半之后的理直气壮"></a>5. 十点半之后的理直气壮</h2><p>这是这两个月最大的收获，也是我过去四十年从来没有过的东西：<strong>十点半之后，我可以心安理得地放松，而且理直气壮</strong>。</p>
+<p>过去不是这样的。过去的每一个晚上，我都处在一种分裂状态：身体想休息，脑子在审判。”是不是在浪费时间？””是不是应该再学点什么？””为什么别人还在努力，你却在刷手机？”于是边学边玩，学没学进去，玩也没玩痛快，<strong>愧疚感一直折磨自己到凌晨十二点</strong>。既没有真正放松，也没有真正学习，只是焦虑地滑向凌晨。</p>
+<p>现在？<strong>十点半，爱咋咋地。</strong></p>
+<p>现在不一样了。因为有理论支撑（行为设计、福格模型、微习惯），因为有成功案例（自己的极简系统开始跑通），十点半之后的休息不是堕落，是系统的一部分。它不是对抗目标的放纵，是被目标明确授权的行为。</p>
+<p>这个转变的心理价值怎么强调都不为过。</p>
+<blockquote>
+<p><strong>当休息被写进系统，它就不再是罪恶；当停止被明确规定，它就不再是失败。</strong></p>
+</blockquote>
+<p>你不需要在每一次躺下的时候重新说服自己，因为规则已经替你做完了决定。你不是”控制不住去刷手机”，你是”到了系统规定的降噪时间”。这个叙事一变，整个人从自责模式切换到了执行模式。</p>
+<p>而最重要的是，第二天早上醒来，没有懊悔，没有”又熬夜了”的自我厌恶。你守住了城门，你对自己的信任就多了一分。这种信任，是比任何励志话都更硬的燃料。</p>
+<p>但这里有一个正在进行中的优化。十点半结束，到真正躺下睡觉之间，我留了一个半小时的放松窗口——从十点半到十二点。这个窗口在起步阶段是必要的：它足够长，让大脑觉得”这一天为自己活过了”，不会在躺下后报复性刷手机。它的作用和微习惯里的”五分钟也行”一样——<strong>先保证门槛建立，先保证自己能做到</strong>。</p>
+<p>但系统跑稳之后，新的问题浮出来了：十二点才睡，严格来说不算早睡。放松窗口完成了它的历史使命（消除报复性熬夜），但它本身又成了新的瓶颈。所以我现在开始有意识地逐步缩短这个窗口——不是一刀切砍掉（那会重蹈”极限压榨”的覆辙），而是每周往前提十五分钟，让身体自己适应。</p>
+<p>这就是”无限倒退”的反面：<strong>先退到不可能失败的门槛，把习惯跑通；再在习惯稳定之后，一寸一寸地收紧。</strong> 退是为了进，但退完之后必须进，否则你永远停在退的那个位置上。</p>
+<blockquote>
+<p><strong>微习惯不是终点，是起点。它的任务不是让你永远只做五分钟，是让你先做到五分钟，然后有一天自然地做到十分钟。</strong></p>
+</blockquote>
+<img src="/2026/08/14/think-forty-mini-habits/illust-04-guilt-timeline.png" class="" title="愧疚感时间线：从12点退到10点半">
+
+<hr>
+<h2 id="6-两个月的极简尝试：饮食与学习"><a href="#6-两个月的极简尝试：饮食与学习" class="headerlink" title="6. 两个月的极简尝试：饮食与学习"></a>6. 两个月的极简尝试：饮食与学习</h2><p>具体落地上，我设计了两套极简系统。</p>
+<p><strong>第一套是极简饮食系统——我管它叫”白人饭模式”。</strong></p>
+<p>人到中年，身体不再年轻，晚餐吃什么、吃多少，直接影响睡眠质量。过去我晚饭要么不吃，要么乱吃，要么吃到太晚，要么边吃边看屏幕。结果肠胃加班，大脑也加班，躺下后根本静不下来。</p>
+<p>但真正难改的不是吃的内容，是吃的方式背后那套思维。<strong>这么多年，家里人灌输给我的一直是”炒菜做饭”的那套逻辑</strong>——一顿饭要有荤有素、要热锅热灶、要花时间备菜做饭洗碗。这套逻辑本身没错，但它不适合我现在的生活节奏。为了做一顿像样的晚饭，我得花掉至少一个小时——这一个小时，恰恰是从睡眠里偷的。</p>
+<p>所以我彻底抛下了它，直接采取白人饭模式：冷餐、简单、不用开火、五分钟搞定。面包、鸡蛋、蔬菜、坚果，组合固定，决策成本为零。</p>
+<blockquote>
+<p>这一步对我来说不只是饮食选择，是一次身份确认：<strong>我早和你们不一样了，只是为了合群，过往我才那么表现。</strong> 那些年在”应该怎么吃饭”上浪费的时间，够我多睡多少个好觉了。</p>
+</blockquote>
+<p>极简饮食系统的核心不是减肥，不是养生，是<strong>不给睡眠添乱</strong>。固定晚餐时间、固定食材清单、固定睡前不再进食。让身体知道：到点了，该关机了。</p>
+<p><strong>第二套是极简学习计划——配一把落了灰的番茄钟。</strong></p>
+<p>之前我说过”接下来是习惯养成，其它都不重要”，但这个”其它”里其实包含着我真正的焦虑——我怕自己被时代抛下，所以总想多学一点、再学一点。结果越焦虑越学不进去，越学不进去越焦虑。</p>
+<p>极简学习计划给我划了一条底线：每天有一块固定的小时间，只看一个主题，只做一个输入动作。不追热点，不贪多，不列长长的待学清单。目标小到不可能失败，完成立刻庆祝。</p>
+<p>但最有意思的不是计划本身，是那把番茄钟。<strong>我买了好多年，一直没用上</strong>。这次终于翻出来，拧上。但我的规则和标准番茄钟不一样——<strong>番茄钟期间，只要不玩手机，干啥都行</strong>。</p>
+<p>看书可以，发呆可以，站起来走走可以，甚至什么都不做盯着墙也可以。唯一的不行是碰手机。</p>
+<p>这条规则看起来松得离谱，但它是经过观察自己之后做出的第一步”后退”。过去我总想用番茄钟逼自己”25分钟纯专注”，结果每一次走神都变成自我惩罚，番茄钟变成了刑具。现在我承认了：<strong>人就是会走神，与其禁止走神，不如只禁最致命的那一个——手机。</strong> 只要手机不亮，走神也走不远，拉回来就是了。</p>
+<p>这是顺应人性的第一步：<strong>不跟自己的注意力较劲，只切断注意力的头号敌人。</strong></p>
+<p>手机放哪，是这条规则的物理落地。我的做法是：手机可以放在工作间，但别放在手边——别让自己毫无阻碍、顺手就能拿到。这比起”放进另一个独立房间”的主张，更容易起步。那些告诉你要”独立放置、养成固定时间统一回复”的人，绝大多数已经成功了；他们有那个地位和筹码，让其他人等他。而起步阶段的咱们，很可能正处在”被指派”的位置上，消息不回可能就是代价。所以取折中——把手机留在视线可达、手却够不到的地方，既不断联，又抬高了”顺手一刷”的触发成本。这正好对应行为设计里”提高坏习惯成本”的那一手：不靠意志力死撑，靠环境把路堵窄。</p>
+<p>这两套系统看起来和学习效率没有直接关系，但它们的共同作用是<strong>降低整个系统的噪音</strong>。饮食稳定了睡眠，学习稳定了节奏，睡眠又反过来支撑饮食和学习。它们不是三个独立目标，是同一个飞轮的不同齿。</p>
+<img src="/2026/08/14/think-forty-mini-habits/illust-05-system-flywheel.png" class="" title="三系统飞轮：饮食·学习·睡眠">
+
+<hr>
+<h2 id="7-帮助与自救：一个讽刺的筛选"><a href="#7-帮助与自救：一个讽刺的筛选" class="headerlink" title="7. 帮助与自救：一个讽刺的筛选"></a>7. 帮助与自救：一个讽刺的筛选</h2><p>最后想多说一句那个讽刺。</p>
+<p>我以前总想帮助别人，尤其是那些看起来迷茫、需要方向的人。但现在我越来越发现，真正值得帮的，恰恰是那些不太需要帮助的人——有思考、有行动、积极上进的人。他们不需要你推，你只需要在关键处递一把锤子。</p>
+<p>而那些看起来最需要帮助的人，你推不动。不是因为他们的问题太难，是因为他们还没有开始自救。救一个不自救的人，就像往漏水的桶里倒水，你累得要死，水位不见涨。</p>
+<blockquote>
+<p><strong>能救你的只有你自己。外力只是顺风，自救才是帆。</strong></p>
+</blockquote>
+<p>这个认知让我把目光收回到自己身上。与其想着怎么去帮别人，不如先把自己这套系统跑通。等我真正跑通了，我的存在本身就是示范，而不是说教。</p>
+<p>这也回到了行为设计的核心：<strong>不是理解改变行为，是行为改变行为</strong>。你看了再多书、听了再多道理，如果不落到具体动作上，都只是颅内装修。</p>
+<p>我现在每天做的那些极小的事——按时吃饭、站着读几页书、十点半放下手机——才是真正在改写我的人生系统。</p>
+<hr>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>写到这里，已经过了十点半。</p>
+<p>放在两个月前，我可能会陷入纠结：是不是该把这篇再完善一下？是不是应该再查点资料？但现在我知道，到点了，该停了。明天再继续，比今晚硬撑有价值得多。</p>
+<p>小改动之所以将改变一切，不是因为单个动作有多强大，是因为它撬动了整个系统的齿轮。</p>
+<p>守住睡眠，就是守住一切的开始。</p>
+<p>不急，不停。</p>
+<hr>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><ul>
+<li>书名引用：《下班后一小时，拯救人生》，关于报复性晚睡与睡前心理补偿机制的启发。其中”十点半结束→轻娱乐放松精神”是该书明确提出的核心观点，也是本书对作者产生关键价值的原因。</li>
+<li>福格行为模型核心：B &#x3D; MAP（Motivation + Ability + Prompt），行为完成后需立即庆祝以激活奖励回路。</li>
+<li>“无限倒退”为作者自创概念：门槛随时间余量动态下调，底线是”绝不因为来不及而跳过”。</li>
+<li>白人饭模式：冷餐、简单、不开火，核心不是饮食取向，是砍掉”炒菜做饭”这一整套时间消耗密集的家务思维。</li>
+<li>番茄钟规则”只要不玩手机，干啥都行”：承认人会走神，只切断注意力的头号敌人，是顺应人性而非对抗人性的第一步。</li>
+<li>手机放置策略（本轮补充）：手机放工作间、但不放手边，视线可达而手够不到。相较”独立房间”主张更易起步；”独立放置+固定时间回复”多属已成者，因其有筹码让别人等他，而起步阶段者常处”被指派”位、不回消息有代价。折中方案既不断联，又抬高”顺手一刷”的触发成本，正是行为设计”提高坏习惯成本”的一手。</li>
+<li>持续优化：十点半到十二点的放松窗口在起步阶段是必要的（消除报复性熬夜），但系统跑稳后逐步缩短（每周前提十五分钟），否则十二点才睡不算早睡。这是”无限倒退”的反面——先退到门槛建立习惯，再在习惯稳定后逐步收紧。</li>
+<li>引体向上进阶完整链条：挂住（静力悬垂）→ 辅助带（弹力带借力）→ 反手（二头肌省力）→ 正手拉一个。每一级都是”先退到能做到，做到稳了再收紧一步”。没有进阶计划，只是每天搭手、拉、庆祝。与看书从”五分钟”到”自然延长”同一逻辑。</li>
+<li>本节新增”半途而废的遗产”视角（本轮补充，呼应《半途而废的认知红利：从0到1的突破、长时记忆与经验复利》）：引体向上杆三年前装上、没两天就荒了，属半途而废；但它留下的”资产”未消失，待四十岁作息调整时成了无痛启动锻炼的关键点。论点：多尝试，放弃留下的遗产并非失败，未来能发挥余热甚至成为转折点，与微习惯”降低启动门槛”互补。修正：杆在视野与身高之上，起作用的是便利性（零前置、手一抬够到）而非视觉提示。</li>
+<li>极简饮食系统与极简学习计划目前处于实验阶段，预计跑 4-6 周后给出更完整的反馈。</li>
+<li>本文是”四十系列”第三篇，建议与前两篇连读。</li>
+</ul>
+<hr>
+<h2 id="封面解读"><a href="#封面解读" class="headerlink" title="封面解读"></a>封面解读</h2><p>这张封面用一组由小到大、依次咬合的齿轮，把”微习惯”的视觉隐喻压缩到了极致。</p>
+<img src="/2026/08/14/think-forty-mini-habits/cover.png" class="" title="封面：微习惯，小改动将改变一切">
+
+<p><strong>最小的齿轮 &#x3D; 微习惯本身。</strong> 它不起眼、不费力、看起来没什么力量，但却是整个系统的启动点。就像文中说的”5分钟也行””翻开书看一页”——小到不可能失败的启动动作。</p>
+<p><strong>齿轮由小到大渐次展开 &#x3D; 小改动撬动大改变。</strong> 一个齿轮转动，带动下一个更大的齿轮；小习惯的复利效应，最终会撬动整个人的作息、精力和心态。这不是”一步成神”的幻觉，是机械式的、可预测的连锁反应。</p>
+<p><strong>暖橙到粉的渐变色调 &#x3D; 积极情绪与多巴胺奖励回路。</strong> 机械通常是冷硬的，但这组齿轮用了温暖的色调，暗示习惯不是靠意志力强压出来的，而是靠”庆祝”和即时满足喂出来的。颜色越往右越暖，像是奖励回路被逐步点亮。</p>
+<p><strong>齿轮咬合 &#x3D; 系统之间的联动。</strong> 饮食、学习、睡眠不是三个孤立目标，而是同一套飞轮的不同齿。守住睡眠这个城门，其他齿轮才会跟着转起来。</p>
+<p><strong>留白背景 &#x3D; 降噪与极简。</strong> 画面没有多余的元素，只有齿轮本身。这对应文中反复提到的”降低系统噪音”——白人饭、番茄钟、十点半后的理直气壮，本质上都是在给人生减负。</p>
+<blockquote>
+<p>一句话总结：<strong>封面上的不是一张机械图，而是一份关于”小如何变大”的工程学说明书。</strong></p>
+</blockquote>
+<hr>
+<h2 id="原始素材和基础语料（人工）"><a href="#原始素材和基础语料（人工）" class="headerlink" title="原始素材和基础语料（人工）"></a>原始素材和基础语料（人工）</h2><blockquote>
+<p>正是这些你体会到的积极情绪，瞬间激活你大脑的奖励回路，大脑释放出大量的多巴胺，让你情不自禁地寻找机会一遍遍重复这些行为，很快就养成了习惯。</p>
+<p>充分尊重人性，顺应人性。。。</p>
+<p>掌控自己的人生。</p>
+<p>封面标题是微习惯，小改动将改变一切。</p>
+<p>被产品经理奉为XX的福格行为模型。</p>
+<p>真的很讽刺，就是现在我现在就是不想帮助那些人，我更希望帮助那些有思考有行动，积极上进之人，但是这些人他们一般情况下不需要帮助。</p>
+<p>最近看的那本《下班后一小时，拯救人生》算是一个契机，提醒我该解决这个问题了。</p>
+<p>我现在甚至无限倒退，比如之前看书就是要坚持30分钟以上，现在10点半前，或者早起之后如果发现时间来不及了，五分钟也行，绝对不进行极限的压榨时间操作，减小坚持的阻力，已经养成习惯之后慢慢优化，不奢望一步成神；我甚至为了避免趴下这个多一步的操作，现阶段采取的是引体向上这个方向，算是把自己研究到了极致。</p>
+<p>极简饮食是彻底抛下过去这么多年家里人灌输自己的炒菜做饭这种思维，直接采取白人饭模式，也算是坚定了我早和你们不一样了，只是为了合群过往我才这么表现，浪费了太多时间。</p>
+<p>休息方面为了真正的实现工作生活学习分离，涌上来了过往买了好多年，但没用上的番茄时钟，而且规定只要期间不玩手机，干啥都行，这也是观察自己，再次后退顺应人性的第一步计划，而且过往边学习边玩，愧疚感一直折磨自己到12点，现在就10点半，爱咋咋地。</p>
+<p>《下班后一小时，拯救人生》这本书给我一个关键启发：人之所以会报复性晚睡，不是因为不困，而是因为白天被剥夺太多。躺到床上时，大脑觉得”这一天还没为自己活过”，于是抓起手机疯狂补偿。你越不让自己休息，夜晚越要夺回主权。这个观点其实我在其它地方看到过，它对我的启发是应该10点半结束，然后通过轻娱乐放松自己的精神，这一句是过往那些书籍里没有显式告诉我的。</p>
+<p>“十点半结束→轻娱乐放松”这就是书中的表达的观点，这也是为啥我承认这本书对于我的价值。</p>
+<p>【续补】本文在原始素材基础上补充&#x2F;明确的内容：</p>
+<ul>
+<li>行为设计的工程化视角：把自我管理系统当作给”又懒又贪舒服”的用户做产品。</li>
+<li>福格模型庆祝&#x2F;多巴胺闭环：强调积极情绪必须是行为完成”那一瞬间”的身体级满足。</li>
+<li>身份确认与合群成本：白人饭模式不仅是饮食选择，更是对”我早和你们不一样”的自我承认。</li>
+<li>封面解读小节：将齿轮视觉元素逐一映射到文章核心论点。</li>
+<li>正文配图 5 张（sketch-notes 风格）：福格模型闭环、无限倒退阶梯、睡眠门禁城门、愧疚感时间线对比、三系统飞轮。</li>
+<li>持续优化：十点半到十二点的放松窗口在起步阶段是必要的（消除报复性熬夜），但系统跑稳后开始逐步缩短（每周前提十五分钟），否则十二点才睡不算早睡。这是”无限倒退”的反面——先退到不可能失败的门槛建立习惯，再在习惯稳定后一寸一寸收紧。</li>
+<li>引体向上进阶完整链条：挂住（静力悬垂）→ 辅助带（弹力带借力）→ 反手（二头肌省力）→ 正手拉一个。每一级都是”先退到能做到，做到稳了再收紧一步”。没有进阶计划，只是每天搭手、拉、庆祝。</li>
+<li>本轮补充（用户原话语料）：”不是你想好了要去做才开始准备，很多时候是你准备好了这些苗头，然后慢慢你自己凑过去想办法适应；典型就是我这引体向上，被我安装三年多了，直到最近开始进行四十岁的作息调整……最后发现这引体向上最好，双手一搭就算开始了……一开始只能挂几秒，然后是辅助带拉，之后就是后手引体，最后是正手引体，虽然现在还是只能拉一两个，但相较于最开始进步那是不小的，最开始反手引体都拉不起来一个。感觉这次完全无痛，习惯就这么被改变了。”</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><ul>
+<li><a href="/2026/07/18/think-forty-downclock/" title="四十岁的降频">四十岁的降频</a> — 姊妹篇：从暴力超频到无损降频，硬件层面的重构</li>
+<li><a href="/2026/07/19/think-forty-self-rescue/" title="四十岁的自救">四十岁的自救</a> — 姊妹篇：为什么二十年没动手，习惯养成的根因分析</li>
+<li><a href="/2025/03/21/35-why-do-i-firmly-believe-i-will-succeed/" title="为什么我笃定自己会成功?">为什么我笃定自己会成功?</a> — 自我反思与信念的底色</li>
+<li><a href="/2026/06/19/ai-jevons-paradox-in-ai-era/" title="AI时代的杰文斯悖论：零阶成本试错如何反噬了深度思考？">AI时代的杰文斯悖论：零阶成本试错如何反噬了深度思考？</a> — 效率提升未必带来解放</li>
+<li><a href="/2025/06/22/book-ting-habits/" title="《福格行为模型》读后感">《福格行为模型》读后感</a> — 用最小的努力，最大的可能性，改变自己</li>
+<li><a href="/2026/04/25/think-from-0-to-1-residual-advantage/" title="半途而废的认知红利：从0到1的突破、长时记忆与经验复利">半途而废的认知红利：从0到1的突破、长时记忆与经验复利</a> — 理论源头：半途而废的认知红利，本文"放弃的遗产"视角即由此引申</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.png"></a><div class="post-copyright__author_name">夫礼者Home</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward"><div class="reward-button" title="赞赏作者" onclick="AddRewardMask()"><i class="solitude fa-solid fa-heart"></i>赞赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢您的赞赏</span><ul class="reward-group"><li class="reward-item"><a href="/images/wxpay.jpg"><img class="post-qr-code-img nolazyload" src="/images/wxpay.jpg" alt="微信" style="border-color: var(--efu-green)"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.jpg"><img class="post-qr-code-img nolazyload" src="/images/alipay.jpg" alt="支付宝" style="border-color: var(--efu-blue)"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/"><div class="reward-text">赞赏名单</div><div class="reward-dec">由于您的支持，我才能够实现写作的价值。</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">夫礼者Home</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%8D%E6%80%9D/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>个人反思<span class="tagsPageCount">9</span></span></a><a class="post-meta__tags" href="/tags/%E6%95%88%E7%8E%87/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>效率<span class="tagsPageCount">4</span></span></a><a class="post-meta__tags" href="/tags/WLB/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>WLB<span class="tagsPageCount">2</span></span></a><a class="post-meta__tags" href="/tags/%E4%B9%A0%E6%83%AF/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>习惯<span class="tagsPageCount">4</span></span></a><a class="post-meta__tags" href="/tags/%E8%A1%8C%E4%B8%BA%E8%AE%BE%E8%AE%A1/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>行为设计<span class="tagsPageCount">1</span></span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/08/17/devops-fragility-as-armor/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">脆弱即铠甲：当能力不足长成了不可替代</div></div></a></div><div class="next-post pull-right"><a href="/2026/08/10/devops-demo-is-the-only-standard/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">重业务轻技术的原罪：当&quot;演示不出问题&quot;成了唯一标准</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-bg-top"><div class="is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div></div><a class="card-info-avatar" href="/about/" title="头像"><div class="avatar-img"><img src="/images/sicp_cover_english.jpg" alt="头像"></div></a><div class="card-info__desc_group"><div class="author-info__name">夫礼者</div><div class="author-info__desc"></div><div class="card-info__data is-center"><a href="/archives/" title="累计文章数:131"><div class="length-num">131</div><div class="headline">文章</div></a><a href="/tags/" title="标签总数:137"><div class="length-num">137</div><div class="headline">标签</div></a><a href="/categories/" title="分类总数:37"><div class="length-num">37</div><div class="headline">分类</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/fulizhe" title="Github"><i class="solitude  fab fa-github"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://gitee.com/lqzkcx3" title="Gitee"><i class="solitude  fab fa-git"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.zhihu.com/people/tao-luo-73" title="Zhihu"><i class="solitude  fab fa-zhihu"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://blog.csdn.net/lqzkcx3" title="CSDN"><i class="solitude  fab fa-bilibili"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.jianshu.com/u/cd3dd432fd00" title="jianshu"><i class="solitude  fab fa-node-js"></i></a><a class="social-icon" href="https://fulizhe.github.io/curriculumVitae" title="aboutMe"><i class="solitude  fas fa-address-card"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fa-solid fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MindMap"><span class="toc-text">MindMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%A1%8C%E4%B8%BA%E8%AE%BE%E8%AE%A1%EF%BC%9A%E4%B8%8D%E6%98%AF%E5%AF%B9%E6%8A%97%E4%BA%BA%E6%80%A7%EF%BC%8C%E8%80%8C%E6%98%AF%E9%A1%BA%E5%BA%94%E4%BA%BA%E6%80%A7"><span class="toc-text">1. 行为设计：不是对抗人性，而是顺应人性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%A6%8F%E6%A0%BC%E6%A8%A1%E5%9E%8B%EF%BC%9A%E8%A2%AB%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E5%B0%81%E7%A5%9E%E7%9A%84%E9%82%A3%E4%B8%AA%E5%85%AC%E5%BC%8F"><span class="toc-text">2. 福格模型：被产品经理封神的那个公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%BE%AE%E4%B9%A0%E6%83%AF%EF%BC%9A%E5%B0%8F%E5%88%B0%E4%B8%8D%E5%8F%AF%E8%83%BD%E5%A4%B1%E8%B4%A5%E7%9A%84%E5%90%AF%E5%8A%A8%E5%99%A8"><span class="toc-text">3. 微习惯：小到不可能失败的启动器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%8D%95%E7%82%B9%E7%AA%81%E7%A0%B4%EF%BC%9A%E7%9D%A1%E7%9C%A0%E9%97%A8%E7%A6%81%E6%98%AF%E5%94%AF%E4%B8%80%E7%9A%84%E5%9F%8E%E9%97%A8"><span class="toc-text">4. 单点突破：睡眠门禁是唯一的城门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%8D%81%E7%82%B9%E5%8D%8A%E4%B9%8B%E5%90%8E%E7%9A%84%E7%90%86%E7%9B%B4%E6%B0%94%E5%A3%AE"><span class="toc-text">5. 十点半之后的理直气壮</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%B8%A4%E4%B8%AA%E6%9C%88%E7%9A%84%E6%9E%81%E7%AE%80%E5%B0%9D%E8%AF%95%EF%BC%9A%E9%A5%AE%E9%A3%9F%E4%B8%8E%E5%AD%A6%E4%B9%A0"><span class="toc-text">6. 两个月的极简尝试：饮食与学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%B8%AE%E5%8A%A9%E4%B8%8E%E8%87%AA%E6%95%91%EF%BC%9A%E4%B8%80%E4%B8%AA%E8%AE%BD%E5%88%BA%E7%9A%84%E7%AD%9B%E9%80%89"><span class="toc-text">7. 帮助与自救：一个讽刺的筛选</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-text">后记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-text">补充</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E9%9D%A2%E8%A7%A3%E8%AF%BB"><span class="toc-text">封面解读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E7%B4%A0%E6%9D%90%E5%92%8C%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%96%99%EF%BC%88%E4%BA%BA%E5%B7%A5%EF%BC%89"><span class="toc-text">原始素材和基础语料（人工）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3"><span class="toc-text">相关</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fa-solid fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/2026/08/22/think-stay-on-the-right-road-alone/" title="一张不被涂鸦的纸"><div class="thumbnail"><img alt="一张不被涂鸦的纸" src="/2026/08/22/think-stay-on-the-right-road-alone/cover.png"></div><div class="content"><span class="title" href="/2026/08/22/think-stay-on-the-right-road-alone/" title="一张不被涂鸦的纸">一张不被涂鸦的纸</span><span class="article-recent_post_categories" href="/2026/08/22/think-stay-on-the-right-road-alone/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/08/20/devops-attack-surface-reverse-war/" title="被攻击面的反向战争"><div class="thumbnail"><img alt="被攻击面的反向战争" src="/2026/08/20/devops-attack-surface-reverse-war/cover.png"></div><div class="content"><span class="title" href="/2026/08/20/devops-attack-surface-reverse-war/" title="被攻击面的反向战争">被攻击面的反向战争</span><span class="article-recent_post_categories" href="/2026/08/20/devops-attack-surface-reverse-war/">管理手记</span></div></a><a class="aside-list-item" href="/2026/08/19/devops-refuse-to-converge/" title="永不失败的工作——概念对齐的口头死循环"><div class="thumbnail"><img alt="永不失败的工作——概念对齐的口头死循环" src="/2026/08/19/devops-refuse-to-converge/cover.png"></div><div class="content"><span class="title" href="/2026/08/19/devops-refuse-to-converge/" title="永不失败的工作——概念对齐的口头死循环">永不失败的工作——概念对齐的口头死循环</span><span class="article-recent_post_categories" href="/2026/08/19/devops-refuse-to-converge/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/08/18/devops-shift-left-role-reversal/" title="左移的反噬：当烟囱口成了新的小工"><div class="thumbnail"><img alt="左移的反噬：当烟囱口成了新的小工" src="/2026/08/18/devops-shift-left-role-reversal/cover.png"></div><div class="content"><span class="title" href="/2026/08/18/devops-shift-left-role-reversal/" title="左移的反噬：当烟囱口成了新的小工">左移的反噬：当烟囱口成了新的小工</span><span class="article-recent_post_categories" href="/2026/08/18/devops-shift-left-role-reversal/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/08/17/devops-fragility-as-armor/" title="脆弱即铠甲：当能力不足长成了不可替代"><div class="thumbnail"><img alt="脆弱即铠甲：当能力不足长成了不可替代" src="/2026/08/17/devops-fragility-as-armor/cover.png"></div><div class="content"><span class="title" href="/2026/08/17/devops-fragility-as-armor/" title="脆弱即铠甲：当能力不足长成了不可替代">脆弱即铠甲：当能力不足长成了不可替代</span><span class="article-recent_post_categories" href="/2026/08/17/devops-fragility-as-armor/">随笔与思考</span></div></a></div></div></div></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2026 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src="/img/pwa/favicon.png">夫礼者</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude" alt="Theme">Theme</a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=2.1.13"></script><script src="/js/main.js?v=2.1.13"></script><script src="/js/third_party/waterfall.min.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="https://fastly.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js"></script><script src="/js/tw_cn.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="js-pjax"><script>mermaid.run();</script></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude fa-solid fa-xmark"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=2.1.13"></script><!-- Tianli-Talk--><!-- music--></body></html>
+        <script>
+            const posts = ["2026/08/22/think-stay-on-the-right-road-alone/","2026/08/20/devops-attack-surface-reverse-war/","2026/08/19/devops-refuse-to-converge/","2026/08/18/devops-shift-left-role-reversal/","2026/08/17/devops-fragility-as-armor/","2026/08/14/think-forty-mini-habits/","2026/08/10/devops-demo-is-the-only-standard/","2026/08/09/think-their-depth-is-just-entry-level/","2026/08/07/think-ai-is-a-gun-not-an-alibi/","2026/08/06/devops-survive-without-power/","2026/08/03/devops-adverse-selection-platform/","2026/08/02/devops-customer-as-whetstone/","2026/08/02/book-sdd-in-action/","2026/07/29/think-from-consumer-to-investor/","2026/07/25/devops-boundary-erosion-and-managerial-rent-seeking/","2026/07/23/devops-tyranny-of-one-sixth/","2026/07/23/devops-letting-go-of-the-savior-complex-in-devops/","2026/07/20/devops-when-arsonists-team-up/","2026/07/19/think-forty-self-rescue/","2026/07/18/think-forty-downclock/","2026/07/15/ai-grok45-fast-cursor-traps/","2026/07/14/ai-jenkins_retro_report/","2026/07/13/think-value-in-future-not-past/","2026/07/09/devops-the-thought-closed-loop-of-overtime-martyrs/","2026/07/05/think-cognitive-compound-interest/","2026/07/04/think-experience-breeds-composure/","2026/07/02/devops-the-label-of-public-enemy/","2026/07/01/devops-top-down-reform-and-multiplicative-quality-model/","2026/06/30/think-ai-making-us-shallow/","2026/06/28/ai-agency-filtering-in-ai-era/","2026/06/24/devops-solving-problems-as-close-to-the-source-as-possible/","2026/06/23/devops-the-illusion-of-done-in-local-build/","2026/06/22/devops-how-to-implement-p1-test-gates-in-multi-language-teams/","2026/06/22/think-the-fragility-of-success-and-upward-management/","2026/06/21/devops-how-to-survive-in-a-highly-mediocre-organization/","2026/06/21/devops-how-to-deal-with-incompetent-teams-at-work/","2026/06/19/devops-performance-tuning-as-a-guessing-game/","2026/06/19/ai-jevons-paradox-in-ai-era/","2026/06/17/devops-instant-karma-of-high-frequency-testing/","2026/06/17/think-why-we-still-have-jobs-in-ai-era/","2026/06/17/devops-responsibility-diffusion-in-cross-team-dev/","2026/06/16/think-feedback-loop-and-monopoly-of-interpretation/","2026/06/15/think-workplace-attribution-bias/","2026/06/14/ai-ai-mirror-and-cognitive-laziness/","2026/06/12/devops-the-auditor-role-in-software-architecture/","2026/06/11/think-illusion-of-persuasion/","2026/06/11/devops-technical-bureaucracy-and-benefactor-illusion/","2026/06/11/devops-shift-left-testing-and-quality-gates/","2026/06/11/devops-strategic-patience-in-refactoring/","2026/06/11/think-constraints-and-creativity/","2026/06/10/devops-fake-automation-and-human-api/","2026/06/10/devops-knowledge-sink-vs-individual-blackbox/","2026/06/10/devops-reform-without-firing-and-malicious-compliance/","2026/06/10/devops-yak-shaving-and-pseudo-extensibility/","2026/06/09/devops-illusion-of-hard-work-in-management/","2026/06/09/devops-solve-the-person-who-raised-the-problem/","2026/06/08/devops-reject-technical-giant-baby/","2026/06/07/devops-product-vs-project-mindset/","2026/06/07/devops-breaking-developer-arrogance/","2026/06/07/devops-software-engineering-and-shit-mountain/","2026/06/06/think-reading-as-an-anchor/","2026/06/06/think-career-antifragility/","2026/06/03/devops-illusion-of-tech-moat-and-non-management/","2026/05/27/ai-driven-dev-and-code-devaluation/","2026/05/23/ruankao-xtjls/","2026/05/21/ai-evolution-in-ai-era/","2026/05/13/devops-hidden-costs-of-kpi-driven/","2026/05/11/devops-the-illusion-of-tech-management/","2026/05/11/think-defy-the-destiny/","2026/05/08/devops-trust-and-glue-work-in-management/","2026/05/08/think-money-has-clear-criteria2/","2026/05/04/think-mastering-the-right-of-interpretation/","2026/05/01/devops-Criteria-for-technical-decision-making/","2026/04/29/devops-cognitive-load-and-feedback-loops/","2026/04/29/devops-reject-works-on-my-machine/","2026/04/28/devops-from-heroism-to-system-observability/","2026/04/27/think-redundancy-design-in-daily-life/","2026/04/27/devops-optimization-startup/","2026/04/25/think-from-0-to-1-residual-advantage/","2026/04/23/devops-refactor-process/","2026/04/23/ai-efficiency-and-survival-strategy/","2026/03/26/devops-skywalking-local/","2026/03/24/devops-observability-is-efficiency/","2026/03/10/think-openclaw-i-see/","2026/03/06/think-ai-The-end-of-apprenticeship/","2026/03/03/think-why-procrastination/","2026/02/02/think-money-has-clear-criteria/","2026/01/18/book-why-donot-student-like-school/","2026/01/07/devops-bottom-up-recognize-reality-2/","2026/01/07/devops-continuous-bleeding/","2025/11/10/ruankao-xtfxs2/","2025/10/01/think-the-essence-of-implement-ultimate-idea/","2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/","2025/08/17/35-grap-the-initiative-of-life/","2025/08/15/devops-promote-the-progress-of-docker/","2025/08/09/devops-impove-development-process-team-reform/","2025/08/04/think-why-still-working-hard/","2025/08/04/think-how-to-find-your-career/","2025/07/31/devops-why-we-need-focusing-on-observability/","2025/06/22/book-ting-habits/","2025/06/20/think-value-anchor-point/","2025/06/04/devops-observability/","2025/06/03/devops-operation-upgrade/","2025/06/01/book-nexus/","2025/05/31/devops-bottom-up-recognize-reality/","2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/","2025/05/27/ruankao-xtfxs/","2025/03/21/35-why-do-i-firmly-believe-i-will-succeed/","2025/03/14/Technical-team-face-to-Technical-Debt/","2025/03/05/35-basic/","2025/03/03/tsitt-The-Road-to-Breaking-through-Operations-and-Maintenance/","2025/03/02/ai-the-benefit-of-meta-knowledge/","2025/02/27/how-to-break-in-the-era-of-ai-for-company/","2025/02/24/35-I-was-too-extreme/","2025/02/22/35-how-to-check-if-someone-is-worth-following/","2025/02/21/tip-cursor-refill-for-free/","2025/02/12/ai-The-double-edged-sword-of-creative-equality/","2025/02/12/ai-human-win/","2025/02/07/what-mean-when-we-say-ai-assisted-process-transformation/","2025/02/04/deepseek-r1-i-observe-to/","2025/01/17/social-experiment-by-ai/","2025/01/12/think-in-ai-era/","2025/01/09/the-skill-need-to-pratice-in-ai-era-as-programmer/","2025/01/07/cursor-i-think-to/","2025/01/05/2024-year-end-summary/","2024/12/12/《一本小小的红色写作书》读后感/","2024/12/12/《自学是门手艺》读后感/","2024/12/12/典型小散的投资生涯总结2018-2024/","2024/03/20/self_past_twentyYears/","2024/03/11/hexo-tip-tags/","2024/03/10/hello-world/"];
+            function toRandomPost() {
+                const randomPost = posts[Math.floor(Math.random() * posts.length)];
+                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
+            }
+        </script>
