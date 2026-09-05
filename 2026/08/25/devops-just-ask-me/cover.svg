@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#999999"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="640" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="600" y="52" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="28" font-weight="bold" fill="#1e293b">把"反复摩擦"变成"一次投资"</text>
+  <text x="600" y="82" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#64748b">每次"问一下"都在重复付摩擦税；固定化是把税一次缴清</text>
+
+  <!-- Left Column: Friction Sources -->
+  <g filter="url(#shadow)">
+    <!-- Box 1 -->
+    <rect x="60" y="130" width="260" height="100" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="190" y="165" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="bold" fill="#92400e">产品版本包树</text>
+    <text x="190" y="190" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#a16207">版本差异 · 反复问</text>
+
+    <!-- Box 2 -->
+    <rect x="60" y="270" width="260" height="100" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="190" y="305" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="bold" fill="#92400e">Jenkins CICD 流程树</text>
+    <text x="190" y="330" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#a16207">构建发布 · 反复配</text>
+
+    <!-- Box 3 -->
+    <rect x="60" y="410" width="260" height="100" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="190" y="445" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="bold" fill="#92400e">经验 · 踩坑清单</text>
+    <text x="190" y="470" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#a16207">同一问题 · 反复解</text>
+  </g>
+
+  <!-- Arrow 1: left to center -->
+  <line x1="320" y1="180" x2="440" y2="280" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="320" y1="320" x2="440" y2="320" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="320" y1="460" x2="440" y2="360" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Center Column: Solution -->
+  <g filter="url(#shadow)">
+    <rect x="440" y="220" width="280" height="200" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="580" y="265" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="22" font-weight="bold" fill="#065f46">固定化</text>
+    <text x="580" y="295" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="bold" fill="#065f46">结构化</text>
+    <text x="580" y="340" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#047857">树形清单</text>
+    <text x="580" y="370" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#047857">一次投资</text>
+  </g>
+
+  <!-- Arrow 2: center to right -->
+  <line x1="720" y1="320" x2="840" y2="320" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Right Column: Result -->
+  <g filter="url(#shadow)">
+    <rect x="840" y="130" width="300" height="380" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="990" y="175" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="bold" fill="#1e40af">摩擦系数 ↓</text>
+    <line x1="870" y1="195" x2="1110" y2="195" stroke="#bfdbfe" stroke-width="1"/>
+    <text x="990" y="235" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#2563eb">可引用</text>
+    <text x="990" y="290" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#2563eb">可自动化</text>
+    <text x="990" y="345" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#2563eb">可接手</text>
+    <text x="990" y="400" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="16" fill="#2563eb">可复现</text>
+    <text x="990" y="465" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#64748b">①问那个人 → ②查那张图 → ③点那个按钮</text>
+  </g>
+
+  <!-- Bottom caption -->
+  <text x="600" y="590" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" fill="#94a3b8">降摩擦工程：把每次重复支付的"摩擦税"，改成一次性缴清的"固定化投资"</text>
+</svg>
