@@ -1,0 +1,529 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>账本失明：为什么你越做得好，越像没干啥事 | 夫礼者Home</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=2.1.13"><!-- inject head--><link rel="canonical" href="https://fulizhe.github.io/2026/09/13/devops-ledger-blindness/"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"><!-- Open Graph--><meta name="description" content="MindMapflowchart LR A[&amp;quot;账本失明&amp;quot;] --&amp;gt; B[&amp;quot;记账的口径&amp;quot;] A --&amp;gt; C[&amp;quot;主动性的定价&amp;quot;] A --&amp;gt; D[&amp;quot;因果链的三种断法&amp;quot;] A"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="夫礼者Home"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(' %c Solitude %c ' + '2.1.13' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script src="https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSE7WE78H9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZSE7WE78H9');
+</script>    
+<script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+          },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":false,"path":"/search.xml"},
+    runtime: '2023-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。","loading":"搜索中..."}},
+    aside: {
+        sayhello: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        sayhello2: [],
+        sayhello3: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><!-- background img--><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img nolazyload" src="/images/sicp_cover_english.jpg" alt="loading image"></div></div><script>const preloader = {
+    isLoaded: false,
+    endLoading: () => {
+        if (!preloader.isLoaded) {
+            document.getElementById('loading-box').classList.add('loaded');
+            preloader.isLoaded = true;
+            preloader.togglePaceDone();
+        }
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+        preloader.isLoaded = false;
+        preloader.togglePaceDone();
+    },
+    togglePaceDone: () => {
+        document.getElementById('body').className = preloader.isLoaded ? 'pace-done' : '';
+    }
+}
+
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});
+
+setTimeout(() => {
+    preloader.endLoading();
+}, 5000);</script><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">149</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">28</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">154</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fa-solid fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结<sup>1</sup></a><a href="/tags/2024/">2024<sup>1</sup></a><a href="/tags/%E5%8F%8D%E6%80%9D/">反思<sup>7</sup></a><a href="/tags/thirty-five/">thirty-five<sup>5</sup></a><a href="/tags/AI%E6%B6%A6%E8%89%B2/">AI润色<sup>4</sup></a><a href="/tags/Technical-team/">Technical team<sup>5</sup></a><a href="/tags/devops/">devops<sup>15</sup></a><a href="/tags/AI%E6%97%B6%E4%BB%A3/">AI时代<sup>2</sup></a><a href="/tags/%E4%B8%BB%E8%A7%82%E8%83%BD%E5%8A%A8%E6%80%A7/">主观能动性<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E8%A7%82%E5%AF%9F/">职场观察<sup>11</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/">个人成长<sup>5</sup></a><a href="/tags/AI/">AI<sup>15</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%80%A0%E6%83%B0/">认知怠惰<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%B9%B3%E6%9D%83/">技术平权<sup>1</sup></a><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程<sup>12</sup></a><a href="/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/">行业观察<sup>3</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%B1%82%E7%94%9F/">职场求生<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%80%9D%E8%80%83/">职场思考<sup>3</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E8%A7%89%E9%86%92/">认知觉醒<sup>5</sup></a><a href="/tags/%E7%BC%96%E7%A0%81%E5%8A%A9%E6%89%8B/">编码助手<sup>1</sup></a><a href="/tags/Grok/">Grok<sup>1</sup></a><a href="/tags/Cursor/">Cursor<sup>3</sup></a><a href="/tags/Jenkins/">Jenkins<sup>1</sup></a><a href="/tags/%E5%A4%8D%E7%9B%98/">复盘<sup>2</sup></a><a href="/tags/CI-CD/">CI/CD<sup>6</sup></a><a href="/tags/AI%E8%83%BD%E5%8A%9B%E8%BE%B9%E7%95%8C/">AI能力边界<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83/">技术思考<sup>5</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%8D%E6%80%9D/">个人反思<sup>13</sup></a><a href="/tags/%E8%AF%BB%E4%B9%A6%E6%84%9F%E6%82%9F/">读书感悟<sup>2</sup></a><a href="/tags/%E9%87%8D%E6%9E%84/">重构<sup>1</sup></a><a href="/tags/legacy-code/">legacy code<sup>1</sup></a><a href="/tags/%E6%B5%8B%E8%AF%95/">测试<sup>1</sup></a><a href="/tags/%E5%8F%8D%E9%A6%88%E7%8E%AF/">反馈环<sup>1</sup></a><a href="/tags/%E9%98%85%E8%AF%BB/">阅读<sup>4</sup></a><a href="/tags/SDD/">SDD<sup>1</sup></a><a href="/tags/%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/">规范驱动开发<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E5%8F%8D%E6%80%9D/">职场反思<sup>4</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA/">组织行为<sup>3</sup></a><a href="/tags/%E6%95%88%E7%8E%87%E9%99%B7%E9%98%B1/">效率陷阱<sup>1</sup></a><a href="/tags/%E9%80%86%E5%90%91%E6%B7%98%E6%B1%B0/">逆向淘汰<sup>2</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E6%80%9D%E8%80%83/">系统思考<sup>3</sup></a><a href="/tags/%E7%A0%94%E5%8F%91%E7%AE%A1%E7%90%86/">研发管理<sup>2</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%96%87%E5%8C%96/">工程师文化<sup>2</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86/">团队管理<sup>31</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E5%AD%A6/">组织行为学<sup>29</sup></a><a href="/tags/%E5%90%91%E4%B8%8A%E7%AE%A1%E7%90%86/">向上管理<sup>7</sup></a><a href="/tags/%E8%BE%B9%E7%95%8C%E6%84%8F%E8%AF%86/">边界意识<sup>1</sup></a><a href="/tags/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD/">研发效能<sup>31</sup></a><a href="/tags/%E5%BC%80%E5%8F%91%E8%80%85%E4%BD%93%E9%AA%8C-DevEx/">开发者体验 (DevEx)<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E8%B4%9F%E8%8D%B7/">认知负荷<sup>2</sup></a><a href="/tags/DevOps/">DevOps<sup>10</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E6%B2%BB%E7%90%86/">团队治理<sup>3</sup></a><a href="/tags/%E6%B5%8B%E8%AF%95%E5%B7%A6%E7%A7%BB/">测试左移<sup>5</sup></a><a href="/tags/%E7%A6%85%E9%81%93/">禅道<sup>2</sup></a><a href="/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/">可观测性<sup>6</sup></a><a href="/tags/%E4%BB%B7%E5%80%BC%E4%BA%A4%E4%BB%98/">价值交付<sup>2</sup></a><a href="/tags/think/">think<sup>2</sup></a><a href="/tags/%E4%BD%93%E5%88%B6/">体制<sup>1</sup></a><a href="/tags/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/">基础设施<sup>1</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F/">团队<sup>2</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E7%B4%A0%E5%85%BB/">工程素养<sup>2</sup></a><a href="/tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/">职业发展<sup>2</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E9%87%8D%E6%9E%84/">认知重构<sup>2</sup></a><a href="/tags/%E6%95%88%E8%83%BD%E4%BC%98%E5%8C%96/">效能优化<sup>1</sup></a><a href="/tags/%E6%B5%81%E7%A8%8B%E6%B2%BB%E7%90%86/">流程治理<sup>1</sup></a><a href="/tags/%E8%AF%9D%E8%AF%AD%E6%9D%83/">话语权<sup>1</sup></a><a href="/tags/%E6%95%91%E4%B8%96%E4%B8%BB%E6%83%85%E8%8A%82/">救世主情节<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E7%97%85%E7%90%86%E5%AD%A6/">组织病理学<sup>2</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%96%AD%E5%A5%B6/">认知断奶<sup>1</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E9%9A%94%E7%A6%BB/">系统隔离<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E5%BF%83%E7%90%86/">职场心理<sup>4</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%83%B0%E6%80%A7/">认知惰性<sup>1</sup></a><a href="/tags/%E8%BE%BE%E5%85%8B%E6%95%88%E5%BA%94/">达克效应<sup>1</sup></a><a href="/tags/%E5%BD%BC%E5%BE%97%E5%8E%9F%E7%90%86/">彼得原理<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E6%9E%B6%E6%9E%84/">组织架构<sup>1</sup></a><a href="/tags/%E5%90%90%E6%A7%BD/">吐槽<sup>1</sup></a><a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/">敏捷开发<sup>1</sup></a><a href="/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/">知识管理<sup>2</sup></a><a href="/tags/%E4%BF%A1%E6%81%AF%E6%91%A9%E6%93%A6/">信息摩擦<sup>1</sup></a><a href="/tags/%E6%BF%80%E5%8A%B1%E9%94%99%E9%85%8D/">激励错配<sup>1</sup></a><a href="/tags/%E5%85%AC%E5%85%B1%E7%89%A9%E5%93%81/">公共物品<sup>1</sup></a><a href="/tags/%E5%8F%98%E9%9D%A9%E7%AE%A1%E7%90%86/">变革管理<sup>4</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔<sup>7</sup></a><a href="/tags/%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A/">自下而上<sup>2</sup></a><a href="/tags/%E6%97%A0%E6%9D%83%E5%8A%9B%E6%94%B9%E9%80%A0/">无权力改造<sup>1</sup></a><a href="/tags/%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98/">性能调优<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84%E6%80%9D%E8%80%83/">架构思考<sup>2</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%80%BA/">技术债<sup>2</sup></a><a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理<sup>1</sup></a><a href="/tags/%E6%B5%81%E7%A8%8B%E9%87%8D%E6%9E%84/">流程重构<sup>1</sup></a><a href="/tags/%E8%B7%A8%E9%83%A8%E9%97%A8%E5%8D%8F%E4%BD%9C/">跨部门协作<sup>3</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E7%A0%B4%E5%B1%80/">职场破局<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/">组织管理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E6%96%87%E5%8C%96/">工程文化<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%80%9D%E7%BB%B4/">工程师思维<sup>1</sup></a><a href="/tags/%E8%B4%A8%E9%87%8F%E9%97%A8%E7%A6%81/">质量门禁<sup>1</sup></a><a href="/tags/%E7%83%9F%E5%9B%B1%E5%8F%A3/">烟囱口<sup>1</sup></a><a href="/tags/observability/">observability<sup>1</sup></a><a href="/tags/skywalking/">skywalking<sup>1</sup></a><a href="/tags/%E4%BC%81%E4%B8%9A%E6%96%87%E5%8C%96/">企业文化<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">架构设计<sup>3</sup></a><a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/">技术管理<sup>2</sup></a><a href="/tags/%E9%BB%84%E9%A1%B5/">黄页<sup>1</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E6%95%88%E8%83%BD/">团队效能<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学<sup>3</sup></a><a href="/tags/%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/">控制反转<sup>1</sup></a><a href="/tags/Hexo/">Hexo<sup>1</sup></a><a href="/tags/%E8%80%83%E8%AF%95/">考试<sup>3</sup></a><a href="/tags/%E5%86%B7%E5%90%AF%E5%8A%A8/">冷启动<sup>1</sup></a><a href="/tags/%E5%BF%83%E7%90%86%E4%BB%A3%E5%81%BF/">心理代偿<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%95%88%E8%83%BD/">个人效能<sup>1</sup></a><a href="/tags/%E5%AD%98%E5%9C%A8%E4%B8%BB%E4%B9%89/">存在主义<sup>1</sup></a><a href="/tags/%E6%8A%80%E8%83%BD/">技能<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA/">职场<sup>2</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/">深度思考<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E5%8D%87%E7%BA%A7/">认知升级<sup>2</sup></a><a href="/tags/%E5%A4%8D%E5%88%A9/">复利<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5/">认知<sup>1</sup></a><a href="/tags/%E9%95%BF%E6%9C%9F%E4%B8%BB%E4%B9%89/">长期主义<sup>1</sup></a><a href="/tags/%E7%A0%B4%E5%B1%80%E6%80%9D%E7%BB%B4/">破局思维<sup>1</sup></a><a href="/tags/%E6%95%99%E8%82%B2%E8%A7%82/">教育观<sup>1</sup></a><a href="/tags/%E5%A4%B1%E8%B4%A5%E6%96%B9%E6%B3%95%E8%AE%BA/">失败方法论<sup>1</sup></a><a href="/tags/%E8%87%AA%E6%88%91%E6%95%99%E8%82%B2/">自我教育<sup>2</sup></a><a href="/tags/AI%E4%B8%8E%E6%9C%AA%E6%9D%A5/">AI与未来<sup>1</sup></a><a href="/tags/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/">职业规划<sup>1</sup></a><a href="/tags/%E5%88%9B%E9%80%A0%E5%8A%9B/">创造力<sup>1</sup></a><a href="/tags/%E6%95%88%E7%8E%87/">效率<sup>5</sup></a><a href="/tags/%E4%B8%93%E6%B3%A8/">专注<sup>2</sup></a><a href="/tags/WLB/">WLB<sup>2</sup></a><a href="/tags/%E4%B9%A0%E6%83%AF/">习惯<sup>5</sup></a><a href="/tags/%E7%83%AD%E7%88%B1/">热爱<sup>1</sup></a><a href="/tags/%E5%9B%9E%E8%B7%AF/">回路<sup>1</sup></a><a href="/tags/%E8%87%AA%E6%88%91%E6%88%90%E9%95%BF/">自我成长<sup>3</sup></a><a href="/tags/%E8%A1%8C%E4%B8%BA%E8%AE%BE%E8%AE%A1/">行为设计<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5/">学习策略<sup>1</sup></a><a href="/tags/%E7%BB%8F%E9%AA%8C%E5%A4%8D%E5%88%A9/">经验复利<sup>1</sup></a><a href="/tags/%E5%8D%8A%E9%80%94%E8%80%8C%E5%BA%9F/">半途而废<sup>1</sup></a><a href="/tags/%E9%95%BF%E6%97%B6%E8%AE%B0%E5%BF%86/">长时记忆<sup>1</sup></a><a href="/tags/%E6%80%9D%E8%80%83/">思考<sup>1</sup></a><a href="/tags/%E8%B4%A2%E5%AF%8C%E9%80%BB%E8%BE%91/">财富逻辑<sup>1</sup></a><a href="/tags/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学<sup>1</sup></a><a href="/tags/%E7%8E%AF%E5%A2%83%E9%87%8D%E5%A1%91/">环境重塑<sup>1</sup></a><a href="/tags/%E7%A8%80%E7%BC%BA%E5%BF%83%E6%80%81/">稀缺心态<sup>1</sup></a><a href="/tags/%E9%98%85%E8%AF%BB%E6%84%8F%E4%B9%89/">阅读意义<sup>1</sup></a><a href="/tags/%E7%8B%AC%E7%AB%8B%E6%8E%A2%E7%B4%A2/">独立探索<sup>1</sup></a><a href="/tags/%E8%A1%8C%E4%B8%BA%E5%BF%83%E7%90%86%E5%AD%A6/">行为心理学<sup>1</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计<sup>1</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB%E5%93%B2%E5%AD%A6/">生活哲学<sup>1</sup></a><a href="/tags/B-MAP/">B=MAP<sup>1</sup></a><a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94%E4%B8%8E%E6%80%9D%E8%80%83/">随笔与思考<sup>1</sup></a><a href="/tags/%E7%90%86%E8%B4%A2/">理财<sup>1</sup></a></div></div></div></div><!-- keyboard--><!-- righhtside--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon solitude fas fa-bars-progress"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页"><span class="title">夫礼者小屋</span><i class="solitude fa-solid fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">账本失明：为什么你越做得好，越像没干啥事</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude fa-solid fa-magnifying-glass"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fa-solid fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fa-solid fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/2026/09/13/devops-ledger-blindness/cover.png" alt="账本失明：为什么你越做得好，越像没干啥事"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/%E7%AE%A1%E7%90%86%E6%89%8B%E8%AE%B0/">管理手记</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>技术思考</span></a><a class="post-meta__tags" href="/tags/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>团队管理</span></a><a class="post-meta__tags" href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E5%AD%A6/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>组织行为学</span></a><a class="post-meta__tags" href="/tags/%E8%81%8C%E5%9C%BA%E5%BF%83%E7%90%86/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>职场心理</span></a></div></div></div></div><h1 class="post-title">账本失明：为什么你越做得好，越像没干啥事</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2026-09-13 14:12:00"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2026-09-13T06:12:00.000Z">2026-09-13T06:12:00.000Z</time></span><span class="post-meta-date" title="最后更新于 2026-09-25 20:01:55"><i class="post-meta-icon solitude fa-solid fa-arrows-rotate"></i><time datetime="2026-09-25T12:01:55.801Z">2026-09-25T12:01:55.801Z</time></span><span class="post-meta-position" title="作者IP归属地为China"><i class="post-meta-icon solitude fas fa-location-dot"></i><span>China</span></span><a class="post-meta-pv" href="/2026/09/13/devops-ledger-blindness/" title="文章热度"><i class="post-meta-icon solitude fa-solid fa-fire-flame-curved"></i></a></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><h2 id="MindMap"><a href="#MindMap" class="headerlink" title="MindMap"></a>MindMap</h2><div class="mermaid">flowchart LR
+    A[&quot;账本失明&quot;] --&gt; B[&quot;记账的口径&quot;]
+    A --&gt; C[&quot;主动性的定价&quot;]
+    A --&gt; D[&quot;因果链的三种断法&quot;]
+    A --&gt; E[&quot;容错与榜样的失效&quot;]
+    A --&gt; F[&quot;裁判机是四件工件&quot;]
+    A --&gt; I[&quot;结构账：为什么禅道记不出第七次&quot;]
+    A --&gt; G[&quot;勋章先贬值&quot;]
+    A --&gt; H[&quot;账本不能变檄文&quot;]
+
+    B --&gt; B1[&quot;只识别「可见的忙」&quot;]
+    B --&gt; B2[&quot;没有发生的事故无处入账&quot;]
+
+    C --&gt; C1[&quot;活会粘人&quot;]
+    C --&gt; C2[&quot;多做 &#x3D; 承担 + 不认账&quot;]
+
+    D --&gt; D1[&quot;回报断&quot;]
+    D --&gt; D2[&quot;反向惩罚&quot;]
+    D --&gt; D3[&quot;认定断&quot;]
+
+    E --&gt; E1[&quot;分不清探索与伪装&quot;]
+    E --&gt; E2[&quot;榜样即判例&quot;]
+
+    F --&gt; F1[&quot;坐标 &#x2F; 台账 &#x2F; 裁决 &#x2F; 闭环&quot;]
+    F --&gt; F2[&quot;先造容器，再谈裁判&quot;]
+
+    I --&gt; I1[&quot;记的是事，不是工&quot;]
+    I --&gt; I2[&quot;写入不要求任何人的立场&quot;]
+    I --&gt; I3[&quot;允许质疑，可反查&quot;]
+
+    G --&gt; G1[&quot;救火从功劳改记到后果&quot;]
+
+    H --&gt; H1[&quot;不写谁，只写在哪&quot;]</div>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前几天读到一篇知乎回答，讲的是「下属总是推一下动一下」这个老问题（<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/2080911524374261788/answer/2082071962701116320">知乎原文</a>）。理论部分讲得规整——组织行为学的三条件（「他想动，他敢动，动了有用」）、自我决定理论的三要素（「胜任感、自主性、归属感」）、归因顺序（「①环境问题，②能力问题，③态度问题」）要从环境查起。但真正让我停住的，是同一页下面另一篇里的一句话：</p>
+<blockquote>
+<p>你越做得好，越像「没干啥事」；他越搞得烂，越像「鞠躬尽瘁」。</p>
+</blockquote>
+<p>我的第一反应不是认同，是<strong>它不像一句吐槽，像一份账单</strong>。</p>
+<p>吐槽没有结构，账单有。账单上有科目、有口径、有借贷方向。这句话之所以扎人，是因为它描述的是<strong>一套账面规则运行的结果</strong>——而在这套规则下，两个人做的其实是同一件事的两面：一个在减少事故，一个在制造事故。他们的努力程度也许相当，甚至前者更多，但账本把他们的贡献记成了相反的样子。</p>
+<p>所以这篇文章不打算谈「怎么管人」。那部分能谈的，管理书上已经谈完了，而且我自己也做得了。我想往前追一层，只问一个问题：</p>
+<p><strong>这本账，是怎么记错的？</strong></p>
+<h2 id="1-记账的口径：系统只识别「可见的忙」"><a href="#1-记账的口径：系统只识别「可见的忙」" class="headerlink" title="1. 记账的口径：系统只识别「可见的忙」"></a>1. 记账的口径：系统只识别「可见的忙」</h2><p>先把两边的账摊开。</p>
+<ol>
+<li><p>守底线的人，产出是一堆<strong>没有发生的事故</strong>。他把烂货拦在门外，系统稳得像死水——于是从账面上看，什么都没发生。而「什么都没发生」在会计科目里是<strong>无处入账</strong>的。他越成功，账本越安静。</p>
+</li>
+<li><p><strong>纵火消防员</strong>（这个概念出自 <a href="/2026/07/20/devops-when-arsonists-team-up/" title="纵火犯抱团之后：切香肠、烟囱口与产品底线的流失">纵火犯抱团之后：切香肠、烟囱口与产品底线的流失</a>）正好相反。他造了个最烂的轮子，轮子烧起来，他去救火；救完顺手再放一把，下次接着救。加班、通宵、抢险，全在明面上：朋友圈可晒、年终可报、述职可写。<strong>他越搞得烂，账本越热闹。</strong></p>
+</li>
+</ol>
+<blockquote>
+<p>你越做得好，越像「<strong>没干啥事</strong>」；他越搞得烂，越像「<strong>鞠躬尽瘁</strong>」。</p>
+</blockquote>
+<p>差别不在努力，甚至不在能力，而在<strong>记账口径</strong>：</p>
+<blockquote>
+<p><strong>系统只识别「可见的忙」。</strong></p>
+</blockquote>
+<p>这一对的另一面，我在另一篇里写过（<a href="/2026/08/25/devops-just-ask-me/" title="显性支出来自个人，隐性收益归公：降摩擦工程为什么总输给&quot;问一下就完了&quot;">显性支出来自个人，隐性收益归公：降摩擦工程为什么总输给&quot;问一下就完了&quot;</a>）：成本可见、即时、可归因；收益隐形、延迟、不可归因。当时我用它解释「为什么知识沉淀总由个人买单」。现在发现，同一个口径还在记另一本账——<strong>它记的是功劳</strong>。结论也一样：显性的那一侧被记账，隐性的那一侧被摊进大锅饭。</p>
+<p>所以问题不是「领导眼睛瞎」。眼睛不瞎，<strong>是账簿上没有那个科目</strong>。你再努力，也入不了账。</p>
+<img src="/2026/09/13/devops-ledger-blindness/illust-01-visible-busyness.png" class="" title="左页一笔没写，右页写满了对勾">
+
+<h2 id="2-定价：主动性在这套账里的价格是负的"><a href="#2-定价：主动性在这套账里的价格是负的" class="headerlink" title="2. 定价：主动性在这套账里的价格是负的"></a>2. 定价：主动性在这套账里的价格是负的</h2><p>记账口径决定价格。口径一歪，价格就离谱。</p>
+<p>那篇答文里有一个例子，比它的理论部分狠得多：</p>
+<blockquote>
+<p>几个部门口径不一，你主动做了个模板&#x2F;规范，省得大家反复核对。</p>
+<p>领导很满意：「以后这事就归你了。」</p>
+<p>接下来，别人不会填，找你；数据对不上，找你；出了问题，规范没写清楚嘛。</p>
+<p>你原来负责的工作一点儿没减，到了月底考核，额外粘上你的那些活，可一点儿助攻都加不上。</p>
+</blockquote>
+<p>它的总结只有一句，但把整件事说完了：</p>
+<blockquote>
+<p><strong>领导省下的事，转移成了下属的事。</strong></p>
+</blockquote>
+<p>于是主动性的定价公式就出来了：</p>
+<blockquote>
+<p><strong>多做 &#x3D; 承担 + 不认账。</strong></p>
+</blockquote>
+<p>承担是即时的、可见的、落在自己身上的；认账是延后的、隐形的、被摊进大锅饭的。这个价格<strong>不是零，是负的</strong>。</p>
+<p>我之所以要把它写成公式，是因为它是很多「激励方案」失效的真正原因。当一份额外工作在账面上的<strong>净收益是负的</strong>，你喊多少句「要主动」「要担当」，都是在跟账簿的算术较劲。人不是不听，是<strong>算得比你快</strong>。</p>
+<img src="/2026/09/13/devops-ledger-blindness/illust-02-negative-price.png" class="" title="左盘堆着活，右盘只有一张纸">
+
+<h2 id="3-断链：主动性长在哪，就断在哪"><a href="#3-断链：主动性长在哪，就断在哪" class="headerlink" title="3. 断链：主动性长在哪，就断在哪"></a>3. 断链：主动性长在哪，就断在哪</h2><p>到这里可以下一个判断：</p>
+<blockquote>
+<p><strong>主动性只长在一条链闭合的地方：我动了 → 结果变了 → 这个变化算我头上。</strong></p>
+</blockquote>
+<p>链上任何一环断掉，人就会退回等待指令。而断裂的方式，其实只有三种。</p>
+<p><strong>第一，结果不算你的（回报断）。</strong> 干了也轮不到好处，干多干少一个样。这时候「主动」是一笔净支出。</p>
+<p><strong>第二，主动本身带来风险（反向惩罚）。</strong> 主动优化流程，被问一句「谁让你动的？」；改前先请示，又被说「这点事还要问我？」。这是那篇答文里最狠的一句——「<strong>事情要你办，主意不能你拿</strong>」。主动被批，不主动也被批。那么下一个回合，没有明确指令，人是不会动手的。</p>
+<p><strong>第三，没有裁判，说了不算（认定断）。</strong> 这一种最隐蔽，也最难破。当一个团队每拿一次事故去对线，对方的接法都是「偶发」「个例」，集体背书一稀释，那次指控就降格成一次<strong>看法</strong>——而看法不是账目。这时候不是没人愿意主动，是<strong>主动了也无处落账</strong>。</p>
+<p>我想在这里纠正一个流行的说法。通常我们会说：一个人长期看不到行为与结果之间的因果，就会<strong>产生</strong>习得性无助。这话只对了一半。</p>
+<p>真实的先后是反的：<strong>人先算对了，然后才放弃的。</strong> 他不是因为无助所以算不清，是因为算得太清——那笔账就是负的。所以「习得性无助」在组织里的准确写法，不是一种心理状态，是<strong>一份正确计算结果</strong>。</p>
+<p>把这三种断裂放在一起，能解释我过去看到的一件怪事：一个团队里最清楚问题在哪的人，往往最沉默。不是他不想说，是他早就把说出去的账算过了——说了没人认，还可能多领一份活。</p>
+<img src="/2026/09/13/devops-ledger-blindness/illust-03-broken-chain.png" class="" title="第三环断了，掉落的一截还在地上">
+
+<h2 id="4-为什么「建立容错」和「树榜样」都治不好"><a href="#4-为什么「建立容错」和「树榜样」都治不好" class="headerlink" title="4. 为什么「建立容错」和「树榜样」都治不好"></a>4. 为什么「建立容错」和「树榜样」都治不好</h2><p>顺着链条往下看，很多听上去很对的管理建议会当场失效。</p>
+<p><strong>先说容错。</strong> 建议说：要有容错空间，探索性错误要保护，失职性错误才追责。方向没错，但它漏了一个前提——<strong>这两类错误，靠什么区分？</strong> 在我待过的环境里，这个区分的答案是「没有」。所以「偶发」「已恢复」就成了万能盾牌，失职可以稳定地伪装成探索。这时候你给出的容错空间，最后容的不是探索，<strong>是伪装</strong>。容错的前提不是文化，是<strong>账本</strong>；没有账本，容错只是给寄生者加了一层保护色。</p>
+<p><strong>再说榜样。</strong> 建议说：让员工看到动起来的好处，有了榜样，其他人自然会动。这句话在我这儿是反着的——<strong>榜样通常就是那个刚刚吃了亏的人</strong>。那篇答文写得很克制，也很残忍：把主动做模板的后果一件件摆完，最后只落一句——</p>
+<blockquote>
+<p>下一次，再看见 BUG，你不急着伸手了。</p>
+</blockquote>
+<p>一个榜样的故事如果以这句话结尾，那它就不是榜样，是<strong>判例</strong>。而判例指向的方向，恰好和倡导的方向相反。</p>
+<p><strong>最后说归因顺序。</strong> 「先找环境、后找能力、再找态度」是对的。但它只能治「我怎么看这个员工」，治不了「这个员工面对的是什么」。而且在动手之前还差一步——<strong>分诊</strong>。</p>
+<p>同一个「不动」，至少有三到四种病因：<strong>不为</strong>（有能力、有资源，但选择不做）、<strong>不能</strong>（缺资源、缺工具）、<strong>不知</strong>（从来没有人要求过他想），以及前面说的<strong>激励错配</strong>（做了也白做）。它们的杠杆彼此相反：不为要靠约束，不能要靠补资源，不知要靠点破。</p>
+<ol>
+<li>把「不知」当成「不为」来治，是拿约束去治一个认知缺口——员工会觉得莫名其妙；</li>
+<li>反过来把「不为」当成「不知」来治，是拿点破去治有意的拒绝——你会被当成傻子耍。</li>
+</ol>
+<p><strong>认错病因，比不归因更糟。</strong></p>
+<p>所以我现在的动作顺序是：<strong>先分诊，再定序。</strong> 而分诊完之后你很快会发现，真正把你按住的那一类，不在员工身上，在账本上。</p>
+<img src="/2026/09/13/devops-ledger-blindness/illust-04-tolerance-umbrella.png" class="" title="一把伞把两种错误照进了同一片影子">
+
+<h2 id="5-裁判机不是岗位，是四件工件"><a href="#5-裁判机不是岗位，是四件工件" class="headerlink" title="5. 裁判机不是岗位，是四件工件"></a>5. 裁判机不是岗位，是四件工件</h2><p>现在可以说解法了。但它不是「建立一个裁判机制」这么一句话。</p>
+<p>因为我待的这种组织里，行政上的上下级约束很弱——协作靠的是响应力与技术信誉，不是命令。这意味着「裁判」这个<strong>岗位</strong>你拿不到：没人有资格授权，授了也未必有人服。</p>
+<p>所以路只剩一条：</p>
+<blockquote>
+<p><strong>在权力缺席的地方，判据必须外置为工件。</strong></p>
+</blockquote>
+<p>裁判机不必长成一个部门。它由四件东西组成：</p>
+<ul>
+<li><strong>坐标</strong>：模块级的白盒契约、版本化的清单树。作用是把「那个模块」从一个形容词，变成一个<strong>可指认的实体</strong>。</li>
+<li><strong>台账</strong>：故障的 pattern 容器。作用是把「偶发」变成「<strong>第 7 次</strong>」。</li>
+<li><strong>裁决</strong>：根因归属的确认程序。作用是让「我们不是这么设计的」这句话<strong>失去退路</strong>。</li>
+<li><strong>闭环</strong>：改进项的跨团队追踪。作用是把「已恢复」变成「<strong>到期未改</strong>」。</li>
+</ul>
+<p>四件里，前两件不需要任何人批准——你此刻就能造。后两件必须等权力到场。</p>
+<p>但这里有个顺序问题，我认为它比四件工件本身更重要：</p>
+<p><strong>你不是缺裁判，你是缺证据的容器。</strong></p>
+<p>一次事故在证据学上只是「看法」；同构的 N 次才是「结构」。而 N 次需要<strong>容器</strong>才攒得起来——否则每一次指控都活在那五秒的上下文里，攒不出证据链，也沉淀不出 pattern。摩擦的第三个特征「<strong>不可积累</strong>」，我在另一处专门写过（<a href="/2026/08/25/devops-just-ask-me/" title="显性支出来自个人，隐性收益归公：降摩擦工程为什么总输给&quot;问一下就完了&quot;">显性支出来自个人，隐性收益归公：降摩擦工程为什么总输给&quot;问一下就完了&quot;</a>）。</p>
+<p>于是最关键的那句话就出来了。有了容器，你才第一次拥有这个句式：</p>
+<blockquote>
+<p>「不是我说，是台账上<strong>第七次</strong>。」</p>
+</blockquote>
+<p>这句话<strong>不需要任何授权</strong>，只需要一份流水。反过来更值得警惕：<strong>没有容器，就算明天有人把裁判权塞给你，他手里能用的判据也只是「谁嗓门小」。</strong> 权力填不满一个没有容器的坑——而「按闹分配」，本来就是容器缺位时的默认结果。</p>
+<p>容器还有一个反直觉的要求：<strong>它得是流水，不能是法庭。</strong> 流水只记事实、时间和归口，不做定性。「偶发」「已恢复」「大家互相帮一手」全是定性；<strong>定性打定性，永远打成口水仗，而流水打定性，是一边倒</strong>。</p>
+<img src="/2026/09/13/devops-ledger-blindness/illust-05-four-artifacts.png" class="" title="前两件已经填满，后两件还是虚线">
+
+<h2 id="6-结构账：为什么禅道记不出「第七次」"><a href="#6-结构账：为什么禅道记不出「第七次」" class="headerlink" title="6. 结构账：为什么禅道记不出「第七次」"></a>6. 结构账：为什么禅道记不出「第七次」</h2><p>上一节说了那台机器由哪四件零件组成。但那只是<strong>结构</strong>，不是<strong>资格</strong>——零件拼得出来，不代表拼出来的东西有人信。</p>
+<p>先看一个反例。它每天都在我们眼前。</p>
+<p><strong>禅道。</strong></p>
+<p>禅道什么都有：模块、版本、状态、指派人、工时、截止日。可以按项目筛，可以按人筛，可以跨月检索。从形式上看，它完全够格当那个「容器」。</p>
+<p>但它记不出「第七次」。</p>
+<p>因为它记的是<strong>工时账</strong>——谁在什么时候，把什么推进到了哪一步。而我要的是<strong>结构账</strong>——同一个现象，在同一个位置，出现了几次。这两本账的差别，一句话就说完：</p>
+<blockquote>
+<p><strong>禅道能让你证明「我干过这件事」，不能让你证明「这件事发生过七次」。</strong></p>
+</blockquote>
+<p>为什么工时账变不成结构账？因为它的每一格里都在问「谁」。</p>
+<p>状态机（激活 &#x2F; 已解决 &#x2F; 已关闭）、指派人、工时、截止日——<strong>这四项里，每一项都是定性和归责的入口</strong>。所以它天然长成一座<strong>法庭</strong>，而不是一条<strong>流水</strong>。法庭的单据是终审的：「已解决」就是终点——它和「已恢复」是同一个词的两个版本，一个写在禅道里，一个说在群里。</p>
+<p>于是就有了三个条件。</p>
+<ol>
+<li><strong>第一，记的是「事」，不是「工」。</strong></li>
+</ol>
+<p>这条可以在字段上直接验出来：<strong>只要它还留着「指派人」那一栏，它记的就是工时。</strong></p>
+<ol start="2">
+<li><strong>第二，写入不要求任何人的立场。</strong></li>
+</ol>
+<p>这是三条里最硬的一条，也是我拿来判断一切「留痕方案」的尺子：</p>
+<blockquote>
+<p><strong>容器的可信度，取决于写入的人是否需要为「写入」付出立场。</strong></p>
+</blockquote>
+<p>回到禅道。建一张单要做什么？指派人、定级别、跟对方确认。也就是说，<strong>写单这件事本身就是一次对抗</strong>。人对对抗性动作的本能反应只有一个字：省。少写、晚写、写糊——这不是态度问题，是定价问题。</p>
+<p>所以真正的容器不该新造动作，它该<strong>寄生在已经发生的动作上</strong>。落到我这里就是：禅道已经在被用了（用得多糙是另一回事）。我不改它，我只是<strong>在既有的单子上，打一层自己的标签</strong>。</p>
+<p>打一个标签一秒：不建单、不填工时、不改状态、不指派人。而且——<strong>打标签的人是我自己</strong>。不需要征得任何人同意，不需要谁承认任何事。</p>
+<p>还有一个好处：<strong>标签长什么样，不用一次定对。</strong> 第一版一定不准，会太粗、会错分、会互相覆盖。但只要它允许被改，它自己会收敛。真正需要一次设计对的不是标签，是「<strong>标签可以被改</strong>」这件事。</p>
+<p>分类不是设计出来的，是<strong>长出来的</strong>。</p>
+<ol start="3">
+<li><strong>第三，它必须允许被质疑、能被反查。</strong></li>
+</ol>
+<p>这条最反直觉，但它是这一节的落点。</p>
+<p>一本账的力量，不来自它有多准，来自<strong>它可以被反驳</strong>。</p>
+<p>所以我记的每一条后面都要留出处：哪张单、哪次告警、几月几号几点。谁不服，去查。查出来是我记错了，我改。</p>
+<p>这条规矩看着像是在给自己找麻烦。但它恰恰是这本账能被人接受的原因——<strong>被引用的时候，对方不会觉得被指控</strong>。你不是在指着他说「你又出问题了」，你只是把出处摆在了桌上。</p>
+<blockquote>
+<p><strong>允许被推翻的，才叫台账；不允许被推翻的，就是檄文。</strong></p>
+</blockquote>
+<p>三条合起来：</p>
+<ul>
+<li>记「事」定内容，</li>
+<li>不要求立场定成本，</li>
+<li>可反查定正当性。</li>
+</ul>
+<p>缺一条，这本账都立不住。</p>
+<img src="/2026/09/13/devops-ledger-blindness/illust-06-structural-ledger.png" class="" title="同一个现象，第七次，可反查">
+
+<h2 id="7-账本一开，勋章先贬值"><a href="#7-账本一开，勋章先贬值" class="headerlink" title="7. 账本一开，勋章先贬值"></a>7. 账本一开，勋章先贬值</h2><p>还有一句方向要提醒，免得走歪。</p>
+<p>裁判机的产品不是「公正」，更不是「审判谁」。它真正的产出只有一件事：</p>
+<blockquote>
+<p><strong>让「火是谁放的」第一次变成可记账项。</strong></p>
+</blockquote>
+<p>一旦这件事成立，前面那句话就自动翻面了：</p>
+<blockquote>
+<p>你越做得好，越像「<strong>没干啥事</strong>」；他越搞得烂，越像「<strong>鞠躬尽瘁</strong>」。</p>
+</blockquote>
+<p>前半句是守底线者的处境，后半句是<strong>账本失明的产物</strong>。那枚勋章不是他挣来的，是账本没记出来。</p>
+<p>所以在裁判机开机之后，第一个被贬值的不是人，是<strong>勋章的市值</strong>。他的加班还是加班，他的通宵还是通宵——只是「救火」这个科目，从「功劳」自动改记到了「后果」。</p>
+<img src="/2026/09/13/devops-ledger-blindness/illust-07-medal-devalued.png" class="" title="救火从功劳改记到后果">
+
+<h2 id="8-一条自警：账本不能变成檄文"><a href="#8-一条自警：账本不能变成檄文" class="headerlink" title="8. 一条自警：账本不能变成檄文"></a>8. 一条自警：账本不能变成檄文</h2><p>这套东西有一个很容易翻车的地方，我得先写在这儿。</p>
+<p>四件工件里第三件（裁决）如果只落成「我单方面发布的判据」，那它就不是裁判，是<strong>檄文</strong>。檄文的特征是它有主语——有「我」、有「他们」，于是任何人只要回一句「你这是在针对我」，整件事就退回人际恩怨，判据当场作废。</p>
+<p>判据要能被第三方引用，前提是<strong>它先把自己摘干净</strong>：只写结构，不写人名；只写归口，不写态度。</p>
+<p>形态可以参照这样一句：</p>
+<blockquote>
+<p>按 V8.5-portal 的子模块归口，这个问题在第 3 层目录就能定位。</p>
+</blockquote>
+<p><strong>不写谁，只写在哪。</strong> 这句话没有主语，所以谁都没法用「你针对我」来接它——而正是这份「没有主语」，才让它能被引用。能被引用，它才是判据；不能，它就只是抱怨的加强版。</p>
+<img src="/2026/09/13/devops-ledger-blindness/illust-08-manifesto.png" class="" title="有主语的叫檄文，只有坐标的才叫判据">
+
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>动笔之前，我以为这是个管理问题。写着写着发现，它更像个<strong>会计问题</strong>。</p>
+<p>管理问题问的是「人为什么不主动」；会计问题问的是「账为什么记错」。前者永远要落到某个人头上，后者才回到规则本身——而规则是可以被改的，人不行。</p>
+<p>我最初是被一句话勾住的，「你越做得好，越像没干啥事」。写完才发现，它其实是半句话。完整的它应该是：</p>
+<blockquote>
+<p><strong>一个组织怎么记账，就会长出什么样的员工。</strong></p>
+<p>它给「可见的忙」记账，就长出纵火消防员；<br>它给「避掉的事故」记账，才会长出守底线的人。</p>
+</blockquote>
+<p>至于我手里这本账什么时候能改过来——我不知道。我只知道，改它的第一步不是喊口号，是先有一份<strong>流水</strong>。</p>
+<h2 id="封面解读"><a href="#封面解读" class="headerlink" title="封面解读"></a>封面解读</h2><img src="/2026/09/13/devops-ledger-blindness/cover.png" class="" title="左页在高热，右页在冷却">
+
+<p>这张封面是一则冷调的视觉隐喻，把全文的核心命题压进了一本摊开的账里。</p>
+<p><strong>摊开的厚账本 &#x3D; 一本正在被写的账。</strong> 它被翻开、被居中、被打了至少一半的光——说明这个组织并不是「不记账」，它记，而且记得很认真。问题从来不是有没有账本，而是<strong>账本记的是哪一栏</strong>。</p>
+<p><strong>左页：密到发黑的墨迹 + 从纸里升起的暖光 &#x3D; 「可见的忙」。</strong> 那些墨团、短划、刻痕没有任何可读内容——它们不重要，重要的是<strong>它们发光</strong>。这就是「可见的忙」的本质：它不需要有意义，它只需要能被看见。而画面里唯一的光源就在这里，意味着组织的目光会自动被这一侧吸走。<strong>忙本身在发热，所以它最好看。</strong></p>
+<p><strong>右页：整齐的横格线，一笔墨都没有 &#x3D; 「没有发生的事故」。</strong> 这是整张图的焦点，也是最容易被误读的一处——右页不是「没干活」，是<strong>干得太好，好到没有留痕</strong>。横格线整整齐齐、干干净净，是一种完成度极高的安静。它冷，是因为它没有东西可以发热；它空，是因为它的产出全在「没有发生」里。</p>
+<p><strong>横压在书脊上的钢尺 &#x3D; 判据。</strong> 一把冷硬、精确、横跨两侧的量具。它同时压在发光的左页和沉默的右页上——<strong>度量标准是同一把，只是账本选了只对一侧计数</strong>。这把尺子也正是第 5 节那套「外置工件」的视觉先行者：判据要在场，而且要和发热的一侧保持距离。</p>
+<p><strong>冷蓝灰顶光 vs 唯一暖光在左页 &#x3D; 记账口径的物理化。</strong> 整个环境是冷的、理性的、秩序井然的；唯独左页在冒热气。表面秩序与内部失明的撕裂，就长在这两种光的落差里。</p>
+<blockquote>
+<p>一句话总结：<strong>封面用「左页发热、右页空白、一把尺子压在中间」三个元素说完了全文——账本没有说谎，它只是从来没有为「什么都没发生」设过科目。</strong></p>
+</blockquote>
+<h2 id="原始素材和基础语料（人工）"><a href="#原始素材和基础语料（人工）" class="headerlink" title="原始素材和基础语料（人工）"></a>原始素材和基础语料（人工）</h2><blockquote>
+<p>起点是一篇知乎回答（<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/2080911524374261788/answer/2082071962701116320">链接</a>）。它的框架是：组织行为学认为主动性需要「他想动、他敢动、动了有用」三条件同时成立；归因的正确顺序是「环境 → 能力 → 态度」；自我决定理论的三要素是胜任感、自主性、归属感；人都是理性动物，会做利益衡量；高绩效团队报告的错误更多，是因为他们敢说；行为与结果长期无因果，就会产生习得性无助。最后给了五条实操建议：学会归因（三问）、行为颗粒度要细、要有容错空间并区分探索性错误与失职性错误、让员工看到动起来的好处（榜样带动）、新员工给明确指令而老员工逐步减少介入。</p>
+</blockquote>
+<blockquote>
+<p>真正被记住的是同一页下面另一篇里的这句话：「你越做得好，越像「没干啥事」；他越搞得烂，越像「鞠躬尽瘁」。」——我明确表示喜欢这句。</p>
+</blockquote>
+<blockquote>
+<p>那篇的机制层还讲了另一件更毒的事：主动做了模板&#x2F;规范之后，领导一句「以后这事就归你了」，于是活会粘人——原来的活一点没减，无偿兼职多一份责任，月底考核却一分助攻都加不上。它的收束句是「<strong>领导省下的事，转移成了下属的事。</strong>」同一篇里还有一段 Anthropic 的对照：那边的员工有 passion，是因为「即使离开公司，手上的股票还会继续增值」。</p>
+</blockquote>
+<blockquote>
+<p>我对以下三个判断都确认过：「那三篇共享一个组织里有裁判的前提」——确实；「主动性只长在『我动了 → 结果变了 → 这个变化算我头上』这条链闭合的地方」——确实；「一个组织怎么记账，就会长出什么样的员工」——确实。</p>
+</blockquote>
+<blockquote>
+<p>靶子的裁定：本文写的是<strong>后者</strong>（整个后端那台「裁判机」，组织工程层面），而不是前者（我自己团队的管理动作优化）。前者我能够掌握，本次不讨论。</p>
+</blockquote>
+<blockquote>
+<p>主题裁定：「这本账是怎么记错的」。</p>
+</blockquote>
+<p><strong>续补记录（成文过程中新增或改写的观点，供事后回溯）：</strong></p>
+<blockquote>
+<p>1、「习得性无助」的先后被反转——原说法是「行为与结果无因果，累积到量就<strong>产生</strong>习得性无助」，本文改写为「<strong>人先算对了，然后才放弃</strong>，它是一份正确计算结果而非心理状态」。成文时新增，经用户确认保留。</p>
+<p>2、「容错的前提不是文化，是账本」为成文时新增；配套判断「你给出的容错空间，最后容的不是探索，是伪装」。经用户确认保留。</p>
+<p>3、「榜样就是那个刚刚吃了亏的人——那是判例，不是榜样」为成文时新增。经用户确认保留。</p>
+<p>4、第 7 节「账本不能变成檄文」整节为成文时新增，含「不写谁，只写在哪」这一判据形态。经用户确认保留。</p>
+<p>5、「裁判机不是岗位，是四件工件」（坐标 &#x2F; 台账 &#x2F; 裁决 &#x2F; 闭环）与「你不是缺裁判，是缺证据的容器」，为讨论阶段产出、成文时收敛为明文。</p>
+<p>6、「主动性只长在……这条链闭合的地方」与「一个组织怎么记账，就会长出什么样的员工」两句，原文为用户口语表述，成文时保留原意并提炼为引用块金句。</p>
+<p>7、第 4 节的「分诊」（不为 &#x2F; 不能 &#x2F; 不知 &#x2F; 激励错配）与既有文章《不作为的三种病因》为同一框架，本文只以三句带过，未展开。</p>
+<p>8、封面与 6 张正文配图为成文后新设计，不来自原始讨论。配图风格为手绘 sketch-notes，图上标注<strong>仅用英文与数字</strong>，未使用任何中文字形。封面为电子绘制的「摊开账本」隐喻；其中第 2 张（<code>illust-02</code>）与第 5 张（<code>illust-05</code>）因首版渲染瑕疵各重出一次：前者是 <code>PRICE &lt; 0</code> 的小于号被渲染成了 <code>€</code>，后者漏画了 <code>N = 7</code>。</p>
+<p>9、按 2026-09-13 用户指令，正文中的引用一律附访问地址：知乎原文、<code>devops-just-ask-me</code>（两处）、<code>devops-when-arsonists-team-up</code>（术语「纵火消防员」首次出现处）。该规则已同步写入 <code>hexo-blog-writer</code> 的 SKILL.md（Step 1 第 6 条 + Step 10 勾选项）。</p>
+</blockquote>
+<p><strong>第二次修订记录（2026-09-13 下午，用户裁定「把设想的方向和方案落进文章里」）：</strong></p>
+<blockquote>
+<p>10、新增第 6 节「结构账：为什么禅道记不出「第七次」」，原第 6、7 节顺延为第 7、8 节。新节内容是讨论阶段的产出：<strong>工时账 &#x2F; 结构账</strong>的区分（「禅道能让你证明『我干过这件事』，不能让你证明『这件事发生过七次』」），以及一本账的<strong>三条立身条件</strong>——记「事」不记「工」、写入不要求任何人的立场、允许质疑且可反查。其中「容器的可信度取决于写入的人是否需要为『写入』付出立场」「允许被推翻的才叫台账，不允许被推翻的就是檄文」两句，为讨论时收敛出的判据。</p>
+<p>11、新节里「禅道打标」这条路径由用户在讨论中提出，它是「寄生于已经发生的动作」的一个实例。用户原话是「具体标记有哪些可以慢慢迭代，写入之后事后统计时候允许质疑反查」——成文时前者提炼为「分类不是设计出来的，是长出来的」，后者独立成第三条条件。</p>
+<p>12、插图相应调整：原 <code>illust-06-medal-devalued.png</code> 因插入新节顺延，改名为 <code>illust-07-medal-devalued.png</code>；本次新出两张——<code>illust-06-structural-ledger.png</code>（时间线上同一现象七次，末点挂放大镜，标注 <code>SAME EVENT</code> &#x2F; <code>CHECK SOURCE</code> &#x2F; <code>N = 7</code>）与 <code>illust-08-manifesto.png</code>（有主语 vs 只有坐标，标注 <code>HAS A SUBJECT</code> &#x2F; <code>NO SUBJECT</code>）。两图标注<strong>仅用英文与数字</strong>，未使用中文字形；第 8 节此前缺图，本次补齐，全文 §1–§8 每节各一张。</p>
+<p>13、顺带修正全文引号：ASCII 直引号全部替换为全角「」。原因是 <code>hexo-renderer-marked</code> 内置的 <code>smartypants</code> 在中文语境下会把<strong>开引号也渲染成右引号</strong>（<code>”</code>），全角引号不受其影响。此问题为站级既有缺陷，非本文引入。</p>
+<p>14、按用户 2026-09-13 17:37 指令，<strong>正文内引用自己既往博文一律改用 post_link 标签，不再使用 <code>[标题](url)</code> 的 Markdown 写法</strong>（与文末「相关」小节一致）。本次据此改写三处：第 1 节的「纵火消防员」出处、第 1 节的「显性支出归个人」出处、第 5 节的「不可积累」出处。因该标签会自动插入被引文章的<strong>完整标题</strong>（本博客标题普遍较长），三处句式同步调整为「在另一篇里写过（标签）」的括号式，避免标题插入后语句不通。</p>
+<p>15、撰写说明：本记录段内不写出 post_link 标签的字面形态（含 <code>%</code> 花括号），因为 Hexo 的 tag 插件对源码全文扫描、不识别代码块，写在记录里会被当成真标签解析。此处以「post_link 标签」指代。</p>
+</blockquote>
+<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><ul>
+<li><a href="/2026/08/25/devops-just-ask-me/" title="显性支出来自个人，隐性收益归公：降摩擦工程为什么总输给&quot;问一下就完了&quot;">显性支出来自个人，隐性收益归公：降摩擦工程为什么总输给&quot;问一下就完了&quot;</a> — 本文的直接前身：「显性支出归个人、隐性收益归公」就是这本账的记账口径</li>
+<li><a href="/2026/07/20/devops-when-arsonists-team-up/" title="纵火犯抱团之后：切香肠、烟囱口与产品底线的流失">纵火犯抱团之后：切香肠、烟囱口与产品底线的流失</a> — 「纵火消防员」「切香肠」「没有跨团队复盘」的原始论述，本文第 5 节是它的解法续篇</li>
+<li><a href="/2026/09/11/devops-three-causes-of-inaction/" title="不作为的三种病因：不为、不能与不知">不作为的三种病因：不为、不能与不知</a> — 不为 / 不能 / 不知 三分诊，本文第 4 节的「分诊」是它的压缩引用</li>
+<li><a href="/2026/05/08/devops-trust-and-glue-work-in-management/" title="关于管理流程中的差异化对待">关于管理流程中的差异化对待</a> — 缝隙工作、按闹分配与「响应力即权力」，解释了为什么判据必须外置为工件</li>
+<li><a href="/2026/06/17/devops-responsibility-diffusion-in-cross-team-dev/" title="大锅饭下的质量盲区：为什么“只管整体”是跨团队研发的灾难？">大锅饭下的质量盲区：为什么“只管整体”是跨团队研发的灾难？</a> — 大锅饭下的鸵鸟心态与模块级白盒契约，对应本文的「坐标」这件工件</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.png"></a><div class="post-copyright__author_name">夫礼者Home</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward"><div class="reward-button" title="赞赏作者" onclick="AddRewardMask()"><i class="solitude fa-solid fa-heart"></i>赞赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢您的赞赏</span><ul class="reward-group"><li class="reward-item"><a href="/images/wxpay.jpg"><img class="post-qr-code-img nolazyload" src="/images/wxpay.jpg" alt="微信" style="border-color: var(--efu-green)"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.jpg"><img class="post-qr-code-img nolazyload" src="/images/alipay.jpg" alt="支付宝" style="border-color: var(--efu-blue)"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/"><div class="reward-text">赞赏名单</div><div class="reward-dec">由于您的支持，我才能够实现写作的价值。</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">夫礼者Home</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>技术思考<span class="tagsPageCount">5</span></span></a><a class="post-meta__tags" href="/tags/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>团队管理<span class="tagsPageCount">31</span></span></a><a class="post-meta__tags" href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E5%AD%A6/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>组织行为学<span class="tagsPageCount">29</span></span></a><a class="post-meta__tags" href="/tags/%E8%81%8C%E5%9C%BA%E5%BF%83%E7%90%86/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>职场心理<span class="tagsPageCount">4</span></span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/09/16/ai-three-questions-before-new-domain/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">新领域动手前，先问三句话</div></div></a></div><div class="next-post pull-right"><a href="/2026/09/11/devops-three-causes-of-inaction/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">不作为的三种病因：不为、不能与不知</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-bg-top"><div class="is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div></div><a class="card-info-avatar" href="/about/" title="头像"><div class="avatar-img"><img src="/images/sicp_cover_english.jpg" alt="头像"></div></a><div class="card-info__desc_group"><div class="author-info__name">夫礼者</div><div class="author-info__desc"></div><div class="card-info__data is-center"><a href="/archives/" title="累计文章数:149"><div class="length-num">149</div><div class="headline">文章</div></a><a href="/tags/" title="标签总数:154"><div class="length-num">154</div><div class="headline">标签</div></a><a href="/categories/" title="分类总数:37"><div class="length-num">37</div><div class="headline">分类</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/fulizhe" title="Github"><i class="solitude  fab fa-github"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://gitee.com/lqzkcx3" title="Gitee"><i class="solitude  fab fa-git"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.zhihu.com/people/tao-luo-73" title="Zhihu"><i class="solitude  fab fa-zhihu"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://blog.csdn.net/lqzkcx3" title="CSDN"><i class="solitude  fab fa-bilibili"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.jianshu.com/u/cd3dd432fd00" title="jianshu"><i class="solitude  fab fa-node-js"></i></a><a class="social-icon" href="https://fulizhe.github.io/curriculumVitae" title="aboutMe"><i class="solitude  fas fa-address-card"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fa-solid fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MindMap"><span class="toc-text">MindMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%AE%B0%E8%B4%A6%E7%9A%84%E5%8F%A3%E5%BE%84%EF%BC%9A%E7%B3%BB%E7%BB%9F%E5%8F%AA%E8%AF%86%E5%88%AB%E3%80%8C%E5%8F%AF%E8%A7%81%E7%9A%84%E5%BF%99%E3%80%8D"><span class="toc-text">1. 记账的口径：系统只识别「可见的忙」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9A%E4%BB%B7%EF%BC%9A%E4%B8%BB%E5%8A%A8%E6%80%A7%E5%9C%A8%E8%BF%99%E5%A5%97%E8%B4%A6%E9%87%8C%E7%9A%84%E4%BB%B7%E6%A0%BC%E6%98%AF%E8%B4%9F%E7%9A%84"><span class="toc-text">2. 定价：主动性在这套账里的价格是负的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%96%AD%E9%93%BE%EF%BC%9A%E4%B8%BB%E5%8A%A8%E6%80%A7%E9%95%BF%E5%9C%A8%E5%93%AA%EF%BC%8C%E5%B0%B1%E6%96%AD%E5%9C%A8%E5%93%AA"><span class="toc-text">3. 断链：主动性长在哪，就断在哪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8C%E5%BB%BA%E7%AB%8B%E5%AE%B9%E9%94%99%E3%80%8D%E5%92%8C%E3%80%8C%E6%A0%91%E6%A6%9C%E6%A0%B7%E3%80%8D%E9%83%BD%E6%B2%BB%E4%B8%8D%E5%A5%BD"><span class="toc-text">4. 为什么「建立容错」和「树榜样」都治不好</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%A3%81%E5%88%A4%E6%9C%BA%E4%B8%8D%E6%98%AF%E5%B2%97%E4%BD%8D%EF%BC%8C%E6%98%AF%E5%9B%9B%E4%BB%B6%E5%B7%A5%E4%BB%B6"><span class="toc-text">5. 裁判机不是岗位，是四件工件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%BB%93%E6%9E%84%E8%B4%A6%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A6%85%E9%81%93%E8%AE%B0%E4%B8%8D%E5%87%BA%E3%80%8C%E7%AC%AC%E4%B8%83%E6%AC%A1%E3%80%8D"><span class="toc-text">6. 结构账：为什么禅道记不出「第七次」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E8%B4%A6%E6%9C%AC%E4%B8%80%E5%BC%80%EF%BC%8C%E5%8B%8B%E7%AB%A0%E5%85%88%E8%B4%AC%E5%80%BC"><span class="toc-text">7. 账本一开，勋章先贬值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E4%B8%80%E6%9D%A1%E8%87%AA%E8%AD%A6%EF%BC%9A%E8%B4%A6%E6%9C%AC%E4%B8%8D%E8%83%BD%E5%8F%98%E6%88%90%E6%AA%84%E6%96%87"><span class="toc-text">8. 一条自警：账本不能变成檄文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-text">后记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E9%9D%A2%E8%A7%A3%E8%AF%BB"><span class="toc-text">封面解读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E7%B4%A0%E6%9D%90%E5%92%8C%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%96%99%EF%BC%88%E4%BA%BA%E5%B7%A5%EF%BC%89"><span class="toc-text">原始素材和基础语料（人工）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3"><span class="toc-text">相关</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fa-solid fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/2026/09/25/devops-honing-veto-into-design/" title="把否决权磨成设计权：系统不是被设计出来的，是被反对意见长出来的"><div class="thumbnail"><img alt="把否决权磨成设计权：系统不是被设计出来的，是被反对意见长出来的" src="/2026/09/25/devops-honing-veto-into-design/cover.png"></div><div class="content"><span class="title" href="/2026/09/25/devops-honing-veto-into-design/" title="把否决权磨成设计权：系统不是被设计出来的，是被反对意见长出来的">把否决权磨成设计权：系统不是被设计出来的，是被反对意见长出来的</span><span class="article-recent_post_categories" href="/2026/09/25/devops-honing-veto-into-design/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/09/23/devops-negative-return-of-fire-prevention/" title="防火的收益是负数：为什么理性人不做长远优化"><div class="thumbnail"><img alt="防火的收益是负数：为什么理性人不做长远优化" src="/2026/09/23/devops-negative-return-of-fire-prevention/cover.png"></div><div class="content"><span class="title" href="/2026/09/23/devops-negative-return-of-fire-prevention/" title="防火的收益是负数：为什么理性人不做长远优化">防火的收益是负数：为什么理性人不做长远优化</span><span class="article-recent_post_categories" href="/2026/09/23/devops-negative-return-of-fire-prevention/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/09/22/devops-the-cut-that-needs-no-approval/" title="批准很贵，默许很便宜：一个 nginx 页面穿过组织的三年"><div class="thumbnail"><img alt="批准很贵，默许很便宜：一个 nginx 页面穿过组织的三年" src="/2026/09/22/devops-the-cut-that-needs-no-approval/cover.png"></div><div class="content"><span class="title" href="/2026/09/22/devops-the-cut-that-needs-no-approval/" title="批准很贵，默许很便宜：一个 nginx 页面穿过组织的三年">批准很贵，默许很便宜：一个 nginx 页面穿过组织的三年</span><span class="article-recent_post_categories" href="/2026/09/22/devops-the-cut-that-needs-no-approval/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/09/22/devops-who-owns-the-trigger/" title="打包权的三年租约：从有动机的一端，到有信息的一端"><div class="thumbnail"><img alt="打包权的三年租约：从有动机的一端，到有信息的一端" src="/2026/09/22/devops-who-owns-the-trigger/cover.png"></div><div class="content"><span class="title" href="/2026/09/22/devops-who-owns-the-trigger/" title="打包权的三年租约：从有动机的一端，到有信息的一端">打包权的三年租约：从有动机的一端，到有信息的一端</span><span class="article-recent_post_categories" href="/2026/09/22/devops-who-owns-the-trigger/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/09/22/devops-mttc-response-speed-over-change/" title="问题不是变，是反应慢"><div class="thumbnail"><img alt="问题不是变，是反应慢" src="/2026/09/22/devops-mttc-response-speed-over-change/cover.png"></div><div class="content"><span class="title" href="/2026/09/22/devops-mttc-response-speed-over-change/" title="问题不是变，是反应慢">问题不是变，是反应慢</span><span class="article-recent_post_categories" href="/2026/09/22/devops-mttc-response-speed-over-change/">随笔与思考</span></div></a></div></div></div></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2026 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src="/img/pwa/favicon.png">夫礼者</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude" alt="Theme">Theme</a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=2.1.13"></script><script src="/js/main.js?v=2.1.13"></script><script src="/js/third_party/waterfall.min.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="https://fastly.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js"></script><script src="/js/tw_cn.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="js-pjax"><script>mermaid.run();</script></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude fa-solid fa-xmark"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=2.1.13"></script><!-- Tianli-Talk--><!-- music--></body></html>
+        <script>
+            const posts = ["2026/09/25/devops-honing-veto-into-design/","2026/09/23/devops-negative-return-of-fire-prevention/","2026/09/22/devops-the-cut-that-needs-no-approval/","2026/09/22/devops-who-owns-the-trigger/","2026/09/22/devops-mttc-response-speed-over-change/","2026/09/20/devops-borrow-upward-leverage/","2026/09/18/devops-requirement-before-language/","2026/09/18/devops-from-armor-to-qualification-line/","2026/09/16/ai-three-questions-before-new-domain/","2026/09/13/devops-ledger-blindness/","2026/09/11/devops-three-causes-of-inaction/","2026/09/10/devops-three-writes-one-truth/","2026/09/02/devops-compressing-gray-space-with-data/","2026/09/01/book-legacy-code-second-life/","2026/08/30/think-forty-loops/","2026/08/28/think-laziness-conservation-law/","2026/08/27/devops-i18n-requirement-exposes-boundary-vacuum/","2026/08/25/devops-just-ask-me/","2026/08/22/think-stay-on-the-right-road-alone/","2026/08/20/devops-attack-surface-reverse-war/","2026/08/19/devops-refuse-to-converge/","2026/08/18/devops-shift-left-role-reversal/","2026/08/17/devops-fragility-as-armor/","2026/08/14/think-forty-mini-habits/","2026/08/10/devops-demo-is-the-only-standard/","2026/08/09/think-their-depth-is-just-entry-level/","2026/08/07/think-ai-is-a-gun-not-an-alibi/","2026/08/06/devops-survive-without-power/","2026/08/03/devops-adverse-selection-platform/","2026/08/02/devops-customer-as-whetstone/","2026/08/02/book-sdd-in-action/","2026/07/29/think-from-consumer-to-investor/","2026/07/25/devops-boundary-erosion-and-managerial-rent-seeking/","2026/07/23/devops-tyranny-of-one-sixth/","2026/07/23/devops-letting-go-of-the-savior-complex-in-devops/","2026/07/20/devops-when-arsonists-team-up/","2026/07/19/think-forty-self-rescue/","2026/07/18/think-forty-downclock/","2026/07/15/ai-grok45-fast-cursor-traps/","2026/07/14/ai-jenkins_retro_report/","2026/07/13/think-value-in-future-not-past/","2026/07/09/devops-the-thought-closed-loop-of-overtime-martyrs/","2026/07/05/think-cognitive-compound-interest/","2026/07/04/think-experience-breeds-composure/","2026/07/02/devops-the-label-of-public-enemy/","2026/07/01/devops-top-down-reform-and-multiplicative-quality-model/","2026/06/30/think-ai-making-us-shallow/","2026/06/28/ai-agency-filtering-in-ai-era/","2026/06/24/devops-solving-problems-as-close-to-the-source-as-possible/","2026/06/23/devops-the-illusion-of-done-in-local-build/","2026/06/22/devops-how-to-implement-p1-test-gates-in-multi-language-teams/","2026/06/22/think-the-fragility-of-success-and-upward-management/","2026/06/21/devops-how-to-survive-in-a-highly-mediocre-organization/","2026/06/21/devops-how-to-deal-with-incompetent-teams-at-work/","2026/06/19/devops-performance-tuning-as-a-guessing-game/","2026/06/19/ai-jevons-paradox-in-ai-era/","2026/06/17/devops-instant-karma-of-high-frequency-testing/","2026/06/17/think-why-we-still-have-jobs-in-ai-era/","2026/06/17/devops-responsibility-diffusion-in-cross-team-dev/","2026/06/16/think-feedback-loop-and-monopoly-of-interpretation/","2026/06/15/think-workplace-attribution-bias/","2026/06/14/ai-ai-mirror-and-cognitive-laziness/","2026/06/12/devops-the-auditor-role-in-software-architecture/","2026/06/11/think-illusion-of-persuasion/","2026/06/11/devops-technical-bureaucracy-and-benefactor-illusion/","2026/06/11/devops-shift-left-testing-and-quality-gates/","2026/06/11/devops-strategic-patience-in-refactoring/","2026/06/11/think-constraints-and-creativity/","2026/06/10/devops-fake-automation-and-human-api/","2026/06/10/devops-knowledge-sink-vs-individual-blackbox/","2026/06/10/devops-reform-without-firing-and-malicious-compliance/","2026/06/10/devops-yak-shaving-and-pseudo-extensibility/","2026/06/09/devops-illusion-of-hard-work-in-management/","2026/06/09/devops-solve-the-person-who-raised-the-problem/","2026/06/08/devops-reject-technical-giant-baby/","2026/06/07/devops-product-vs-project-mindset/","2026/06/07/devops-breaking-developer-arrogance/","2026/06/07/devops-software-engineering-and-shit-mountain/","2026/06/06/think-reading-as-an-anchor/","2026/06/06/think-career-antifragility/","2026/06/03/devops-illusion-of-tech-moat-and-non-management/","2026/05/27/ai-driven-dev-and-code-devaluation/","2026/05/23/ruankao-xtjls/","2026/05/21/ai-evolution-in-ai-era/","2026/05/13/devops-hidden-costs-of-kpi-driven/","2026/05/11/devops-the-illusion-of-tech-management/","2026/05/11/think-defy-the-destiny/","2026/05/08/devops-trust-and-glue-work-in-management/","2026/05/08/think-money-has-clear-criteria2/","2026/05/04/think-mastering-the-right-of-interpretation/","2026/05/01/devops-Criteria-for-technical-decision-making/","2026/04/29/devops-cognitive-load-and-feedback-loops/","2026/04/29/devops-reject-works-on-my-machine/","2026/04/28/devops-from-heroism-to-system-observability/","2026/04/27/think-redundancy-design-in-daily-life/","2026/04/27/devops-optimization-startup/","2026/04/25/think-from-0-to-1-residual-advantage/","2026/04/23/devops-refactor-process/","2026/04/23/ai-efficiency-and-survival-strategy/","2026/03/26/devops-skywalking-local/","2026/03/24/devops-observability-is-efficiency/","2026/03/10/think-openclaw-i-see/","2026/03/06/think-ai-The-end-of-apprenticeship/","2026/03/03/think-why-procrastination/","2026/02/02/think-money-has-clear-criteria/","2026/01/18/book-why-donot-student-like-school/","2026/01/07/devops-bottom-up-recognize-reality-2/","2026/01/07/devops-continuous-bleeding/","2025/11/10/ruankao-xtfxs2/","2025/10/01/think-the-essence-of-implement-ultimate-idea/","2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/","2025/08/17/35-grap-the-initiative-of-life/","2025/08/15/devops-promote-the-progress-of-docker/","2025/08/09/devops-impove-development-process-team-reform/","2025/08/04/think-why-still-working-hard/","2025/08/04/think-how-to-find-your-career/","2025/07/31/devops-why-we-need-focusing-on-observability/","2025/06/22/book-ting-habits/","2025/06/20/think-value-anchor-point/","2025/06/04/devops-observability/","2025/06/03/devops-operation-upgrade/","2025/06/01/book-nexus/","2025/05/31/devops-bottom-up-recognize-reality/","2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/","2025/05/27/ruankao-xtfxs/","2025/03/21/35-why-do-i-firmly-believe-i-will-succeed/","2025/03/14/Technical-team-face-to-Technical-Debt/","2025/03/05/35-basic/","2025/03/03/tsitt-The-Road-to-Breaking-through-Operations-and-Maintenance/","2025/03/02/ai-the-benefit-of-meta-knowledge/","2025/02/27/how-to-break-in-the-era-of-ai-for-company/","2025/02/24/35-I-was-too-extreme/","2025/02/22/35-how-to-check-if-someone-is-worth-following/","2025/02/21/tip-cursor-refill-for-free/","2025/02/12/ai-The-double-edged-sword-of-creative-equality/","2025/02/12/ai-human-win/","2025/02/07/what-mean-when-we-say-ai-assisted-process-transformation/","2025/02/04/deepseek-r1-i-observe-to/","2025/01/17/social-experiment-by-ai/","2025/01/12/think-in-ai-era/","2025/01/09/the-skill-need-to-pratice-in-ai-era-as-programmer/","2025/01/07/cursor-i-think-to/","2025/01/05/2024-year-end-summary/","2024/12/12/《一本小小的红色写作书》读后感/","2024/12/12/《自学是门手艺》读后感/","2024/12/12/典型小散的投资生涯总结2018-2024/","2024/03/20/self_past_twentyYears/","2024/03/11/hexo-tip-tags/","2024/03/10/hello-world/"];
+            function toRandomPost() {
+                const randomPost = posts[Math.floor(Math.random() * posts.length)];
+                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
+            }
+        </script>

@@ -1,0 +1,526 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>批准很贵，默许很便宜：一个 nginx 页面穿过组织的三年 | 夫礼者Home</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=2.1.13"><!-- inject head--><link rel="canonical" href="https://fulizhe.github.io/2026/09/22/devops-the-cut-that-needs-no-approval/"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"><!-- Open Graph--><meta name="description" content="MindMapflowchart LR A[&amp;quot;批准很贵，默许很便宜&amp;quot;] --&amp;gt; B[&amp;quot;三条借力通道&amp;quot;] A --&amp;gt; C[&amp;quot;阻力的武器是审批权&amp;quot;] A --&amp;gt; D[&amp;quot;用五条去量黄页&amp;amp;quot"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="夫礼者Home"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(' %c Solitude %c ' + '2.1.13' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script src="https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSE7WE78H9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZSE7WE78H9');
+</script>    
+<script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+          },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":false,"path":"/search.xml"},
+    runtime: '2023-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。","loading":"搜索中..."}},
+    aside: {
+        sayhello: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        sayhello2: [],
+        sayhello3: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><!-- background img--><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img nolazyload" src="/images/sicp_cover_english.jpg" alt="loading image"></div></div><script>const preloader = {
+    isLoaded: false,
+    endLoading: () => {
+        if (!preloader.isLoaded) {
+            document.getElementById('loading-box').classList.add('loaded');
+            preloader.isLoaded = true;
+            preloader.togglePaceDone();
+        }
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+        preloader.isLoaded = false;
+        preloader.togglePaceDone();
+    },
+    togglePaceDone: () => {
+        document.getElementById('body').className = preloader.isLoaded ? 'pace-done' : '';
+    }
+}
+
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});
+
+setTimeout(() => {
+    preloader.endLoading();
+}, 5000);</script><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">149</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">28</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">154</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fa-solid fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结<sup>1</sup></a><a href="/tags/2024/">2024<sup>1</sup></a><a href="/tags/%E5%8F%8D%E6%80%9D/">反思<sup>7</sup></a><a href="/tags/thirty-five/">thirty-five<sup>5</sup></a><a href="/tags/AI%E6%B6%A6%E8%89%B2/">AI润色<sup>4</sup></a><a href="/tags/Technical-team/">Technical team<sup>5</sup></a><a href="/tags/devops/">devops<sup>15</sup></a><a href="/tags/AI%E6%97%B6%E4%BB%A3/">AI时代<sup>2</sup></a><a href="/tags/%E4%B8%BB%E8%A7%82%E8%83%BD%E5%8A%A8%E6%80%A7/">主观能动性<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E8%A7%82%E5%AF%9F/">职场观察<sup>11</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/">个人成长<sup>5</sup></a><a href="/tags/AI/">AI<sup>15</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%80%A0%E6%83%B0/">认知怠惰<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%B9%B3%E6%9D%83/">技术平权<sup>1</sup></a><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程<sup>12</sup></a><a href="/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/">行业观察<sup>3</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%B1%82%E7%94%9F/">职场求生<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%80%9D%E8%80%83/">职场思考<sup>3</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E8%A7%89%E9%86%92/">认知觉醒<sup>5</sup></a><a href="/tags/%E7%BC%96%E7%A0%81%E5%8A%A9%E6%89%8B/">编码助手<sup>1</sup></a><a href="/tags/Grok/">Grok<sup>1</sup></a><a href="/tags/Cursor/">Cursor<sup>3</sup></a><a href="/tags/Jenkins/">Jenkins<sup>1</sup></a><a href="/tags/%E5%A4%8D%E7%9B%98/">复盘<sup>2</sup></a><a href="/tags/CI-CD/">CI/CD<sup>6</sup></a><a href="/tags/AI%E8%83%BD%E5%8A%9B%E8%BE%B9%E7%95%8C/">AI能力边界<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83/">技术思考<sup>5</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%8D%E6%80%9D/">个人反思<sup>13</sup></a><a href="/tags/%E8%AF%BB%E4%B9%A6%E6%84%9F%E6%82%9F/">读书感悟<sup>2</sup></a><a href="/tags/%E9%87%8D%E6%9E%84/">重构<sup>1</sup></a><a href="/tags/legacy-code/">legacy code<sup>1</sup></a><a href="/tags/%E6%B5%8B%E8%AF%95/">测试<sup>1</sup></a><a href="/tags/%E5%8F%8D%E9%A6%88%E7%8E%AF/">反馈环<sup>1</sup></a><a href="/tags/%E9%98%85%E8%AF%BB/">阅读<sup>4</sup></a><a href="/tags/SDD/">SDD<sup>1</sup></a><a href="/tags/%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/">规范驱动开发<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E5%8F%8D%E6%80%9D/">职场反思<sup>4</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA/">组织行为<sup>3</sup></a><a href="/tags/%E6%95%88%E7%8E%87%E9%99%B7%E9%98%B1/">效率陷阱<sup>1</sup></a><a href="/tags/%E9%80%86%E5%90%91%E6%B7%98%E6%B1%B0/">逆向淘汰<sup>2</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E6%80%9D%E8%80%83/">系统思考<sup>3</sup></a><a href="/tags/%E7%A0%94%E5%8F%91%E7%AE%A1%E7%90%86/">研发管理<sup>2</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%96%87%E5%8C%96/">工程师文化<sup>2</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86/">团队管理<sup>31</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E5%AD%A6/">组织行为学<sup>29</sup></a><a href="/tags/%E5%90%91%E4%B8%8A%E7%AE%A1%E7%90%86/">向上管理<sup>7</sup></a><a href="/tags/%E8%BE%B9%E7%95%8C%E6%84%8F%E8%AF%86/">边界意识<sup>1</sup></a><a href="/tags/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD/">研发效能<sup>31</sup></a><a href="/tags/%E5%BC%80%E5%8F%91%E8%80%85%E4%BD%93%E9%AA%8C-DevEx/">开发者体验 (DevEx)<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E8%B4%9F%E8%8D%B7/">认知负荷<sup>2</sup></a><a href="/tags/DevOps/">DevOps<sup>10</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E6%B2%BB%E7%90%86/">团队治理<sup>3</sup></a><a href="/tags/%E6%B5%8B%E8%AF%95%E5%B7%A6%E7%A7%BB/">测试左移<sup>5</sup></a><a href="/tags/%E7%A6%85%E9%81%93/">禅道<sup>2</sup></a><a href="/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/">可观测性<sup>6</sup></a><a href="/tags/%E4%BB%B7%E5%80%BC%E4%BA%A4%E4%BB%98/">价值交付<sup>2</sup></a><a href="/tags/think/">think<sup>2</sup></a><a href="/tags/%E4%BD%93%E5%88%B6/">体制<sup>1</sup></a><a href="/tags/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/">基础设施<sup>1</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F/">团队<sup>2</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E7%B4%A0%E5%85%BB/">工程素养<sup>2</sup></a><a href="/tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/">职业发展<sup>2</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E9%87%8D%E6%9E%84/">认知重构<sup>2</sup></a><a href="/tags/%E6%95%88%E8%83%BD%E4%BC%98%E5%8C%96/">效能优化<sup>1</sup></a><a href="/tags/%E6%B5%81%E7%A8%8B%E6%B2%BB%E7%90%86/">流程治理<sup>1</sup></a><a href="/tags/%E8%AF%9D%E8%AF%AD%E6%9D%83/">话语权<sup>1</sup></a><a href="/tags/%E6%95%91%E4%B8%96%E4%B8%BB%E6%83%85%E8%8A%82/">救世主情节<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E7%97%85%E7%90%86%E5%AD%A6/">组织病理学<sup>2</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%96%AD%E5%A5%B6/">认知断奶<sup>1</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E9%9A%94%E7%A6%BB/">系统隔离<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E5%BF%83%E7%90%86/">职场心理<sup>4</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%83%B0%E6%80%A7/">认知惰性<sup>1</sup></a><a href="/tags/%E8%BE%BE%E5%85%8B%E6%95%88%E5%BA%94/">达克效应<sup>1</sup></a><a href="/tags/%E5%BD%BC%E5%BE%97%E5%8E%9F%E7%90%86/">彼得原理<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E6%9E%B6%E6%9E%84/">组织架构<sup>1</sup></a><a href="/tags/%E5%90%90%E6%A7%BD/">吐槽<sup>1</sup></a><a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/">敏捷开发<sup>1</sup></a><a href="/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/">知识管理<sup>2</sup></a><a href="/tags/%E4%BF%A1%E6%81%AF%E6%91%A9%E6%93%A6/">信息摩擦<sup>1</sup></a><a href="/tags/%E6%BF%80%E5%8A%B1%E9%94%99%E9%85%8D/">激励错配<sup>1</sup></a><a href="/tags/%E5%85%AC%E5%85%B1%E7%89%A9%E5%93%81/">公共物品<sup>1</sup></a><a href="/tags/%E5%8F%98%E9%9D%A9%E7%AE%A1%E7%90%86/">变革管理<sup>4</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔<sup>7</sup></a><a href="/tags/%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A/">自下而上<sup>2</sup></a><a href="/tags/%E6%97%A0%E6%9D%83%E5%8A%9B%E6%94%B9%E9%80%A0/">无权力改造<sup>1</sup></a><a href="/tags/%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98/">性能调优<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84%E6%80%9D%E8%80%83/">架构思考<sup>2</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%80%BA/">技术债<sup>2</sup></a><a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理<sup>1</sup></a><a href="/tags/%E6%B5%81%E7%A8%8B%E9%87%8D%E6%9E%84/">流程重构<sup>1</sup></a><a href="/tags/%E8%B7%A8%E9%83%A8%E9%97%A8%E5%8D%8F%E4%BD%9C/">跨部门协作<sup>3</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E7%A0%B4%E5%B1%80/">职场破局<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/">组织管理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E6%96%87%E5%8C%96/">工程文化<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%80%9D%E7%BB%B4/">工程师思维<sup>1</sup></a><a href="/tags/%E8%B4%A8%E9%87%8F%E9%97%A8%E7%A6%81/">质量门禁<sup>1</sup></a><a href="/tags/%E7%83%9F%E5%9B%B1%E5%8F%A3/">烟囱口<sup>1</sup></a><a href="/tags/observability/">observability<sup>1</sup></a><a href="/tags/skywalking/">skywalking<sup>1</sup></a><a href="/tags/%E4%BC%81%E4%B8%9A%E6%96%87%E5%8C%96/">企业文化<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">架构设计<sup>3</sup></a><a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/">技术管理<sup>2</sup></a><a href="/tags/%E9%BB%84%E9%A1%B5/">黄页<sup>1</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E6%95%88%E8%83%BD/">团队效能<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学<sup>3</sup></a><a href="/tags/%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/">控制反转<sup>1</sup></a><a href="/tags/Hexo/">Hexo<sup>1</sup></a><a href="/tags/%E8%80%83%E8%AF%95/">考试<sup>3</sup></a><a href="/tags/%E5%86%B7%E5%90%AF%E5%8A%A8/">冷启动<sup>1</sup></a><a href="/tags/%E5%BF%83%E7%90%86%E4%BB%A3%E5%81%BF/">心理代偿<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%95%88%E8%83%BD/">个人效能<sup>1</sup></a><a href="/tags/%E5%AD%98%E5%9C%A8%E4%B8%BB%E4%B9%89/">存在主义<sup>1</sup></a><a href="/tags/%E6%8A%80%E8%83%BD/">技能<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA/">职场<sup>2</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/">深度思考<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E5%8D%87%E7%BA%A7/">认知升级<sup>2</sup></a><a href="/tags/%E5%A4%8D%E5%88%A9/">复利<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5/">认知<sup>1</sup></a><a href="/tags/%E9%95%BF%E6%9C%9F%E4%B8%BB%E4%B9%89/">长期主义<sup>1</sup></a><a href="/tags/%E7%A0%B4%E5%B1%80%E6%80%9D%E7%BB%B4/">破局思维<sup>1</sup></a><a href="/tags/%E6%95%99%E8%82%B2%E8%A7%82/">教育观<sup>1</sup></a><a href="/tags/%E5%A4%B1%E8%B4%A5%E6%96%B9%E6%B3%95%E8%AE%BA/">失败方法论<sup>1</sup></a><a href="/tags/%E8%87%AA%E6%88%91%E6%95%99%E8%82%B2/">自我教育<sup>2</sup></a><a href="/tags/AI%E4%B8%8E%E6%9C%AA%E6%9D%A5/">AI与未来<sup>1</sup></a><a href="/tags/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/">职业规划<sup>1</sup></a><a href="/tags/%E5%88%9B%E9%80%A0%E5%8A%9B/">创造力<sup>1</sup></a><a href="/tags/%E6%95%88%E7%8E%87/">效率<sup>5</sup></a><a href="/tags/%E4%B8%93%E6%B3%A8/">专注<sup>2</sup></a><a href="/tags/WLB/">WLB<sup>2</sup></a><a href="/tags/%E4%B9%A0%E6%83%AF/">习惯<sup>5</sup></a><a href="/tags/%E7%83%AD%E7%88%B1/">热爱<sup>1</sup></a><a href="/tags/%E5%9B%9E%E8%B7%AF/">回路<sup>1</sup></a><a href="/tags/%E8%87%AA%E6%88%91%E6%88%90%E9%95%BF/">自我成长<sup>3</sup></a><a href="/tags/%E8%A1%8C%E4%B8%BA%E8%AE%BE%E8%AE%A1/">行为设计<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5/">学习策略<sup>1</sup></a><a href="/tags/%E7%BB%8F%E9%AA%8C%E5%A4%8D%E5%88%A9/">经验复利<sup>1</sup></a><a href="/tags/%E5%8D%8A%E9%80%94%E8%80%8C%E5%BA%9F/">半途而废<sup>1</sup></a><a href="/tags/%E9%95%BF%E6%97%B6%E8%AE%B0%E5%BF%86/">长时记忆<sup>1</sup></a><a href="/tags/%E6%80%9D%E8%80%83/">思考<sup>1</sup></a><a href="/tags/%E8%B4%A2%E5%AF%8C%E9%80%BB%E8%BE%91/">财富逻辑<sup>1</sup></a><a href="/tags/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学<sup>1</sup></a><a href="/tags/%E7%8E%AF%E5%A2%83%E9%87%8D%E5%A1%91/">环境重塑<sup>1</sup></a><a href="/tags/%E7%A8%80%E7%BC%BA%E5%BF%83%E6%80%81/">稀缺心态<sup>1</sup></a><a href="/tags/%E9%98%85%E8%AF%BB%E6%84%8F%E4%B9%89/">阅读意义<sup>1</sup></a><a href="/tags/%E7%8B%AC%E7%AB%8B%E6%8E%A2%E7%B4%A2/">独立探索<sup>1</sup></a><a href="/tags/%E8%A1%8C%E4%B8%BA%E5%BF%83%E7%90%86%E5%AD%A6/">行为心理学<sup>1</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计<sup>1</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB%E5%93%B2%E5%AD%A6/">生活哲学<sup>1</sup></a><a href="/tags/B-MAP/">B=MAP<sup>1</sup></a><a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94%E4%B8%8E%E6%80%9D%E8%80%83/">随笔与思考<sup>1</sup></a><a href="/tags/%E7%90%86%E8%B4%A2/">理财<sup>1</sup></a></div></div></div></div><!-- keyboard--><!-- righhtside--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon solitude fas fa-bars-progress"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页"><span class="title">夫礼者小屋</span><i class="solitude fa-solid fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">批准很贵，默许很便宜：一个 nginx 页面穿过组织的三年</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude fa-solid fa-magnifying-glass"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fa-solid fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fa-solid fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/2026/09/22/devops-the-cut-that-needs-no-approval/cover.png" alt="批准很贵，默许很便宜：一个 nginx 页面穿过组织的三年"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/%E9%9A%8F%E7%AC%94%E4%B8%8E%E6%80%9D%E8%80%83/">随笔与思考</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>团队管理</span></a><a class="post-meta__tags" href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E5%AD%A6/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>组织行为学</span></a><a class="post-meta__tags" href="/tags/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>研发效能</span></a><a class="post-meta__tags" href="/tags/%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>自下而上</span></a><a class="post-meta__tags" href="/tags/%E9%BB%84%E9%A1%B5/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>黄页</span></a></div></div></div></div><h1 class="post-title">批准很贵，默许很便宜：一个 nginx 页面穿过组织的三年</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2026-09-22 23:10:00"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2026-09-22T15:10:00.000Z">2026-09-22T15:10:00.000Z</time></span><span class="post-meta-date" title="最后更新于 2026-09-25 20:01:55"><i class="post-meta-icon solitude fa-solid fa-arrows-rotate"></i><time datetime="2026-09-25T12:01:55.931Z">2026-09-25T12:01:55.931Z</time></span><span class="post-meta-position" title="作者IP归属地为China"><i class="post-meta-icon solitude fas fa-location-dot"></i><span>China</span></span><a class="post-meta-pv" href="/2026/09/22/devops-the-cut-that-needs-no-approval/" title="文章热度"><i class="post-meta-icon solitude fa-solid fa-fire-flame-curved"></i></a></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><h2 id="MindMap"><a href="#MindMap" class="headerlink" title="MindMap"></a>MindMap</h2><div class="mermaid">flowchart LR
+    A[&quot;批准很贵，默许很便宜&quot;] --&gt; B[&quot;三条借力通道&quot;]
+    A --&gt; C[&quot;阻力的武器是审批权&quot;]
+    A --&gt; D[&quot;用五条去量黄页&quot;]
+    A --&gt; E[&quot;拉盟友&quot;]
+    A --&gt; F[&quot;不是白拿的代价&quot;]
+    A --&gt; G[&quot;复利三来源&quot;]
+    A --&gt; H[&quot;真正的边界&quot;]
+    A --&gt; I[&quot;AI 那一刀&quot;]
+
+    B --&gt; B1[&quot;借上、借直、借侧&quot;]
+    B --&gt; B2[&quot;离你最近的一层是第一现场&quot;]
+
+    C --&gt; C1[&quot;反对很贵，审批很便宜&quot;]
+    C --&gt; C2[&quot;审批权不需要理由就能生效&quot;]
+
+    D --&gt; D1[&quot;前四条：没人拦你&quot;]
+    D --&gt; D2[&quot;第五条：有人帮你&quot;]
+
+    E --&gt; E1[&quot;维护不是自驱，是自利&quot;]
+    E --&gt; E2[&quot;冷启动极难，之后是传染&quot;]
+
+    F --&gt; F1[&quot;收益公共，成本私人&quot;]
+    F --&gt; F2[&quot;用归因换存在&quot;]
+
+    G --&gt; G1[&quot;入口默认性&quot;]
+    G --&gt; G2[&quot;内容增量&quot;]
+    G --&gt; G3[&quot;先例效应：两张脸&quot;]
+
+    H --&gt; H1[&quot;过期是假边界&quot;]
+    H --&gt; H2[&quot;真正的敌人是长大&quot;]
+
+    I --&gt; I1[&quot;只砍到内容增量那条腿&quot;]
+    I --&gt; I2[&quot;资产入口加自动燃料加人工插槽&quot;]</div>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一个 nginx 加一个单 html，我准备为它写第三篇了。</p>
+<p>前两篇都在说它的好：一篇说它为什么值得做——把反复支付的摩擦换成一次性投资（详见 <a href="/2026/08/25/devops-just-ask-me/" title="显性支出来自个人，隐性收益归公：降摩擦工程为什么总输给&quot;问一下就完了&quot;">显性支出来自个人，隐性收益归公：降摩擦工程为什么总输给&quot;问一下就完了&quot;</a>）；一篇说它换掉了什么——入口从人身上挪到了地址上（详见 <a href="/2026/09/22/devops-who-owns-the-trigger/" title="打包权的三年租约：从有动机的一端，到有信息的一端">打包权的三年租约：从有动机的一端，到有信息的一端</a>）。</p>
+<p>但这两篇都没有回答一个更基础的问题：<strong>为什么在这么多年、这么多方案里，最后是它站住了？</strong></p>
+<p>我做过比它复杂得多的东西。有平台、有看板、有自动化流水线、有带权限的审批流。它们有的上线过，有的连上线都没做到。而那个简陋到近乎可笑的静态页，是唯一一个从三年前活到今天、而且还在被继续用的东西。</p>
+<p>我一开始把原因归到”便宜”。后来发现不对——便宜的东西多了，都没活下来。</p>
+<p>真正的原因在另一个维度上：<strong>它不需要任何人批准。</strong></p>
+<hr>
+<h2 id="1-我面对的局面：上不借力，直不为友"><a href="#1-我面对的局面：上不借力，直不为友" class="headerlink" title="1. 我面对的局面：上不借力，直不为友"></a>1. 我面对的局面：上不借力，直不为友</h2><p>先把处境摆清楚，否则后面所有判断都悬空。</p>
+<p>这几年我一直在一个没有行政权力的位置上推改变。写过一篇关于这套处境的东西，当时的结论是”不换人、自下而上”（那个系列的原点见 <a href="/2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/" title="自下而上实现不换人式的团队改进【史诗巨制】">自下而上实现不换人式的团队改进【史诗巨制】</a>）。但”自下而上”只是一句方向，具体怎么走，得看你能从哪儿借到力。</p>
+<p>改造这件事，借力的通道只有三条：</p>
+<ol>
+<li><strong>借上</strong>：上层给资源、给授权、给一句”这事你放手干”。</li>
+<li><strong>借直</strong>：你的直接领导替你挡掉阻力，或者在关键时刻说一句”是我让他做的”。</li>
+<li><strong>借侧</strong>：绕过任何需要批准的环节，自己找一条缝钻进去。</li>
+</ol>
+<p>这三条里，我只有第三条还通。</p>
+<p><strong>上这一条断得很干净：不给资源。</strong> 预算没有，人力没有，工具没有。但预期是有的——出了结果，成果是要收的。</p>
+<p><strong>直这一条断得更微妙，而且断在哪里，通常没人会明说。</strong></p>
+<p>我的判断是：<strong>离你最近的那一层，通常是阻力的第一现场。</strong> 这不是猜测——你现在看到的团队状态是一个<strong>结果</strong>，结果必有原因，而按概率，这个原因最大的落点就在离你最近的那一层。</p>
+<p>机制也不难懂：不是因为他反对”改变”这个方向，而是因为任何未经他发起的改变，都在削弱他的位置。一个下属搞出一套新流程并且有效，第一件被质疑的不会是流程，而是”你为什么不先报我”。所以对他最舒服的状态，是这一切都不要发生。</p>
+<p>（被夹在两个方向之间的那种不适感，相关论述见 <a href="/2026/07/02/devops-the-label-of-public-enemy/" title="被冠以&quot;公敌&quot;：当压力重新流动，谁会首先感到不适？">被冠以&quot;公敌&quot;：当压力重新流动，谁会首先感到不适？</a>。）</p>
+<p>于是只剩借侧。而借侧有一个苛刻的前置条件：<strong>你挑的那些切口，必须是阻力无法行使否决权的。</strong></p>
+<img src="/2026/09/22/devops-the-cut-that-needs-no-approval/illust-01-three-paths.png" class="" title="三条借力通道：两条封死，一条绕行">
+
+<hr>
+<h2 id="2-阻力的武器是审批权"><a href="#2-阻力的武器是审批权" class="headerlink" title="2. 阻力的武器是审批权"></a>2. 阻力的武器是审批权</h2><p>这是本文我最想说清楚的一句：</p>
+<blockquote>
+<p><strong>阻力的武器从来不是”反对”，是审批权和资源分配权。</strong></p>
+</blockquote>
+<p>把这两件事的差别想清楚。一个人公开站出来说”我反对你这么做”，是很贵的——他要给理由，要承担判断错误的风险，要在事后被追责。所以正常情况下，没人会公开反对一个方案。</p>
+<p>他真正会用、也真正好用的手段是另一套：</p>
+<ul>
+<li>“这个东西要立项吗？”</li>
+<li>“预算从哪出？”</li>
+<li>“涉及线上环境，走个评审吧。”</li>
+<li>“先别急着上，等下次排期。”</li>
+</ul>
+<p>这些话没有任何攻击性，每一句都合理得无可辩驳。但它们的效果是一样的——<strong>把一件本来今天下午能做完的事，变成一个需要三个月才能启动的流程。</strong> 而流程一启动，你就进了对方的主场：审批、评审、排期、资源协调，每一步都有正当理由把你往后拖。</p>
+<p><strong>审批权的可怕之处在于，它不需要理由就能生效；而你要推翻它，必须给出比它更充分的理由。</strong></p>
+<p>所以自下而上改造的第一性原理是：<strong>找那些阻力无法行使否决权的切口。</strong></p>
+<p>但原理不能直接用，得有一份清单。这份清单有两条线——<strong>前四条决定它能不能进去，第五条决定它进去之后能不能自己长。</strong> 而第五条是我踩了很久才补上的，因为前四条只回答了一半的问题：它们能保证”没人拦你”，保证不了”有人帮你”。一件没人拦、也没人帮的事，还是得靠你一个人死推。</p>
+<p>下一节我用这五条去量黄页。而黄页，是我见过的极少数把两条线都占住的东西。</p>
+<hr>
+<h2 id="3-用五条去量黄页"><a href="#3-用五条去量黄页" class="headerlink" title="3. 用五条去量黄页"></a>3. 用五条去量黄页</h2><p><strong>第一条：它不申请任何东西。</strong> 不要预算、不要人力、不要排期、不要立项。黄页是这条的极端样本——一个 nginx，一个单 html 文件，挂在内部任意一台能访问的机器上，零成本或者接近零。<strong>没有预算就没有资源分配环节；没有资源分配环节，就没有人在这个环节上有话事权。</strong></p>
+<p><strong>第二条：它的成本由推动者自己承担。</strong> 手敲那半天，是我自己的时间。这一点在账面回报上很难看（第 4 节再算），但在阻力这个维度上是决定性的：<strong>一个不花别人钱、不占别人人的方案，别人连反对的立场都找不到。</strong></p>
+<p><strong>第三条：它不产生显性的受害者。</strong> 这一条黄页占了个便宜——它的表面形态是一个”查询页”，没有人会觉得一个查询页取代了自己，它长得太不像威胁了。但它的实际效果，是把”只有我知道”这件事的价值削掉一块。<strong>形态是无害的，效果是钝的</strong>，这两者之间的时差，就是它的生存空间。（被削掉的那部分价值，本质是”知道东西在哪”型的不可替代性，相关论述见 <a href="/2026/06/10/devops-knowledge-sink-vs-individual-blackbox/" title="黑盒之殇：知识囚笼与职场&quot;守门人&quot;的虚假不可替代性">黑盒之殇：知识囚笼与职场&quot;守门人&quot;的虚假不可替代性</a>。）</p>
+<p><strong>第四条：它不动任何人的考核。</strong> 不写进 KPI，不改报工口径，不进任何人的评价体系。它在系统里是”额外的东西”，不是”替换的东西”。<strong>额外的东西不会触发防御，替换的东西才会。</strong></p>
+<p>前四条对照完，能看出一个共同点：</p>
+<blockquote>
+<p><strong>黄页不向任何人申请任何东西。而审批权只对”申请”生效。</strong></p>
+</blockquote>
+<p>你没法审批一个不需要批准的东西，没法否决一个没有提案的提案。<strong>阻力的全部武器，在这个东西面前是空的。</strong></p>
+<p>所以这一节的小结是：</p>
+<blockquote>
+<p><strong>批准很贵，默许很便宜。黄页是少数”只需要默许，不需要批准”的改造形态。</strong></p>
+</blockquote>
+<p>需要的不是有人支持你，是没有人有理由拦你。这两句听起来接近，实际差着整个数量级。</p>
+<p>而第五条——它确实产生了受益者，而且受益者会倒过来养它。这值得单独一节。</p>
+<hr>
+<h2 id="4-拉盟友：受益者就是维护者"><a href="#4-拉盟友：受益者就是维护者" class="headerlink" title="4. 拉盟友：受益者就是维护者"></a>4. 拉盟友：受益者就是维护者</h2><p>黄页不是一次性建成的，是<strong>由少到多</strong>长起来的。</p>
+<p>最早只有一两个人在用。后来有人试了一下，发现真的省事，就开始自己来；再后来，他们会主动把最新的信息给你，会提醒你哪里写错了，会告诉你”这个产品下个月要改名，你到时候改一下”。</p>
+<p>这一层我一开始没看懂，以为是自己推广做得好。后来想明白了：<strong>我从来没有指望过他们的自驱力。</strong></p>
+<p>我也不需要。</p>
+<p>我指望的是另一件事：<strong>页面上的信息错了，耽误的是他自己的活。</strong> 他来找我更新，不是在帮我的忙，是在护他自己。</p>
+<blockquote>
+<p><strong>维护这件事不是自驱，是自利。</strong></p>
+</blockquote>
+<p>这句话是这个组织里最要紧的一条判断。在一个自驱力从来没有出现过的团队里，<strong>所有靠觉悟维护的资产最后都死了；靠自利的资产能活。</strong></p>
+<p>你不需要他们热爱这件事，你只需要他们的活依赖这件事。这就是”拉盟友”的全部内容——不是去感动谁，是去让<strong>他的利益和你的资产绑在一起</strong>。</p>
+<p>而且盟友的贡献不止于维护。左移那篇我写过一句话（相关论述见 <a href="/2026/08/18/devops-shift-left-role-reversal/" title="左移的反噬：当烟囱口成了新的小工">左移的反噬：当烟囱口成了新的小工</a>）：”<strong>盟友的嘴替我说的，比我自己说重十倍。</strong>“ 黄页也一样——<strong>推广它的从来不是我，是受益者。</strong> 我只需要把第一个用起来，剩下的每一批受益者，都在替我拉下一批。</p>
+<p>所以我原来那句”推广极难”要修正：</p>
+<blockquote>
+<p><strong>冷启动极难，之后是传染。</strong> 第一个用户得你自己去找；第二个到第 N 个，是他们自己长出来的。</p>
+</blockquote>
+<p>这一点也顺手回答了”过期”。我原本把它当成黄页的致命边界，是我判断错了——它<strong>会自愈</strong>。因为这个页面用得越广，主动来纠错的人就越多，而他们的动力不来自责任心，来自自己的活。</p>
+<p><strong>我不需要建任何维护制度，我只需要让受益者足够多。</strong></p>
+<img src="/2026/09/22/devops-the-cut-that-needs-no-approval/illust-02-user-is-maintainer.png" class="" title="使用者就是维护者：取出来用，同时放回去">
+
+<hr>
+<h2 id="5-但这是一笔交易，不是白拿"><a href="#5-但这是一笔交易，不是白拿" class="headerlink" title="5. 但这是一笔交易，不是白拿"></a>5. 但这是一笔交易，不是白拿</h2><p>必须把账摊开，否则这一节就成了自我陶醉。</p>
+<p>黄页有一个致命的对价：<strong>收益是公共的，成本是私人的。</strong> 成本是我自己的业余时间，可见、可归因、可以被评价成”你又在搞那些没用的”；收益是所有使用者的时间节省，不可见、延迟兑现、被所有人分摊。这套账我在前作里算过（同源分析见 <a href="/2026/08/25/devops-just-ask-me/" title="显性支出来自个人，隐性收益归公：降摩擦工程为什么总输给&quot;问一下就完了&quot;">显性支出来自个人，隐性收益归公：降摩擦工程为什么总输给&quot;问一下就完了&quot;</a>），结论是：<strong>它对推动者的个人回报，账面上是负的。</strong></p>
+<p>而在我的具体处境里，这笔负账还要再叠一层：<strong>高层不给资源，但等着收割成果。</strong> 你不给资源，我做出来了，它变成”平台在流程规范化上的成绩”——而归因往往落在这个位置上最适合出声的那个人身上，通常就是当初最不愿意这事发生的人。</p>
+<p>那还做不做？</p>
+<p>做。但要把这笔交易看清，而不是自欺。</p>
+<p><strong>资源他不出，但默许他给了。</strong> 而在他的位置上，默许是有价格的——他只需要一句”这个先放一放”，我就得多花半年。他没说，这就是我拿到的对价。</p>
+<p>更重要的交换是：<strong>我用”归因”换了”存在”。</strong> 我不需要这东西被记在我名下，我需要它<strong>在那里</strong>——只要它在，后面所有的改动就都有了落脚点：新的流程有地方挂，新的规范有先例，新的工具能接在同一个入口上。</p>
+<p>说得更直白一点：<strong>这类改造的推动者，要放弃署名权，只保留落地权。</strong> 想要署名的东西都得走审批，而需要审批的东西，阻力第一批就能拦住。</p>
+<hr>
+<h2 id="6-它复利的是什么"><a href="#6-它复利的是什么" class="headerlink" title="6. 它复利的是什么"></a>6. 它复利的是什么</h2><p>黄页的价值不能用”它省了多少时间”来算。它是三件事在同步复利，而且复利率差别很大。</p>
+<p><strong>第一条：入口的默认性。</strong> 页面本身是死的——今天放十个链接，一年后还是十个。真正在长的是”<strong>这里是我们共同入口</strong>“这份默认性。它靠两件事攒：<strong>先占</strong>（谁先建起来）+ <strong>使用</strong>（有多少人靠它干活）。用得越多，取消它的成本越高——因为取消意味着所有人重新回到”去问人”，而那个摩擦是每个人每天都要付的。</p>
+<p><strong>第二条：内容的增量。</strong> 这一条就是第 4 节说的盟友在贡献。补一句机制上的话：<strong>它的增长速度跟”这地方变动有多快”是正相关的。</strong> 变得越快，大家越需要一个能查的地方，受益者就越多，主动纠错的人也就越多。</p>
+<blockquote>
+<p><strong>它不是被制度治好的，是被使用治好的。</strong></p>
+</blockquote>
+<p>（反过来说：这个团队当下变动不快，而它之所以不快，恰恰是因为这里的压力不够——真压力上来了，这个团队不会是现在这个样子。所以黄页在这个环境里有一份别的环境没有的运气：<strong>它的寿命，是这个组织惰性的直接函数。</strong> 这份运气是借来的——但真有那么一天，受益者也会更多、纠错也更快，它自带平衡。）</p>
+<p><strong>第三条，也是最容易被忽略的一条：先例效应。它有两张脸，一张朝上，一张朝下。</strong></p>
+<p><strong>朝上的那张，对着权力方：黄页证明了一件在这个组织里从没被证明过的事——绕过审批的改造是可以落地的。</strong> 这比它自己改了多少重要得多。因为阻力最强的武器是”你必须经过我”，而黄页让这个武器失效了一次。<strong>一次失效之后，它就不再是绝对的了。</strong> 后面再推第二个、第三个切口时，我手里多了一句话：”上次那个页面，也没走审批，现在大家都在用。”</p>
+<p><strong>朝下的那张，对着执行层——这是第 4 节那批盟友的第二重身份。我认为这一张比朝上的那张更值钱。</strong></p>
+<p>这个团队对”新东西”的默认态度是”又是搞那些没用的”。但这默认态度不是偏见，是经验——过去被推过的方案，绝大多数以”给你加了活”告终。所以真正让你推不动的，从来不是有人反对，是<strong>没有人愿意先试</strong>。方案不死于叫好的人太少，死于<strong>没有人先按下去</strong>。</p>
+<p>而黄页是他们第一次遇到”公司里搞的东西，真的让我省事了”。</p>
+<blockquote>
+<p><strong>一次真实的省事体验，比一百次宣讲有效。</strong></p>
+</blockquote>
+<p>所以我要推下一个方案时，手里拿的不是一份论证，是一张<strong>信用记录</strong>。我可以指着那个页面说：上次那个，你也在用，它没给你加活。他们不会因此就支持我——<strong>但最低限度，他们不会再默认我是来添麻烦的。</strong></p>
+<p>这就够了。因为在这个环境里，最稀缺的从来不是”支持”，是”<strong>愿意先试一下</strong>“的人。把一个人从怀疑推向”愿意试”，比把他从”无所谓”推向”叫好”重要得多。</p>
+<p><strong>前两条复利让黄页活得下去；第三条里朝上的那张，让后面的东西有地方生根；朝下的那张，让后面的人有理由先迈一步。</strong></p>
+<p>顺带做个对比。在没有权力的位置推改变，通常还有一条路：<strong>借势。</strong> 趁线上故障、月度测评这种所有人手忙脚乱的时刻，把方案当救命药喂进去（这套打法我在复盘里写过，见 <a href="/2026/08/06/devops-survive-without-power/" title="没有权力的逆淘汰组织里，怎么把自己捞出来">没有权力的逆淘汰组织里，怎么把自己捞出来</a>）。借势被验证过有效，但它有一个我越来越受不了的缺点：<strong>它在等一场事故。</strong></p>
+<p>而黄页这种切口不用等——它没有窗口期，因为它不需要任何人开门。</p>
+<img src="/2026/09/22/devops-the-cut-that-needs-no-approval/illust-03-two-faces-of-precedent.png" class="" title="先例效应的两张脸：朝上开锁，朝下带人">
+
+<hr>
+<h2 id="7-真正的边界：一个假的，两个真的"><a href="#7-真正的边界：一个假的，两个真的" class="headerlink" title="7. 真正的边界：一个假的，两个真的"></a>7. 真正的边界：一个假的，两个真的</h2><p>我原本列了三个边界，把排第一的那个排错了。</p>
+<p><strong>过期，这个边界是假的。</strong> 理由在第 4 节：维护的动力来自受益者的自利，页面用得越广，主动纠错的人越多。它不需要被治理，它是个自愈的东西。</p>
+<p>所以真正剩下的只有两个。</p>
+<p><strong>第一个：规模。</strong> 条目少的时候它是导航页；条目多到某个量级，它就在页面内部重新长出查找问题——“我记得有，但记不住在哪一栏”。它解决的是页面之间的入口问题，解决不了页面内部的入口问题。</p>
+<p>这一条比过期难办得多，因为它没有自愈机制：盟友能帮你改错，但没人会帮你重构信息架构。<strong>规模问题只能靠你去动结构，而一动结构，就又要开始解释、开始说服。</strong></p>
+<p><strong>第二个：它只治一半。</strong> 黄页能解决”东西在哪里”，解决不了”东西行不行”。”这个改动会不会引入问题””这版能不能发”——这些对应的是判断，不是记录。<strong>它抹平的是记录型知识的门槛，抹不平判断型能力的门槛。</strong> 这一半永远不在它的射程里，别指望它，否则它会在第一次遇到判断类问题时被当成万能解药，然后背锅。</p>
+<p>把假的那个划掉之后，结论反而更清楚了：</p>
+<blockquote>
+<p><strong>黄页真正的风险不是过期，是长大。它最大的敌人是它自己长成当初要解决的那个问题的反面。</strong></p>
+</blockquote>
+<img src="/2026/09/22/devops-the-cut-that-needs-no-approval/illust-04-growing-into-its-opposite.png" class="" title="黄页长大成它自己的反面">
+
+<hr>
+<h2 id="8-AI-那一刀：只砍到了一条腿"><a href="#8-AI-那一刀：只砍到了一条腿" class="headerlink" title="8. AI 那一刀：只砍到了一条腿"></a>8. AI 那一刀：只砍到了一条腿</h2><p>过去的建造流程是：知道有哪些产品 → 手动查链接 → 手敲 HTML → 自己排版 → 自己找地方发布。半天打底。现在是：说清楚要什么 → 生成 → 发布。十分钟。</p>
+<p>如果只看”效率提升了几十倍”，那就白看了。真正的变化是：<strong>当重建成本趋零，那笔维护债就不存在了。</strong></p>
+<p>过去的黄页是一件<strong>固定资产</strong>——不是因为它珍贵，是因为建造贵。而贵会带出三条约束：不能推倒重来（建一次太贵）、必须版本化（有人会引用旧信息）、必须有人负责（坏了得有人修）。这三条约束的前提，全部是”重建太贵”。AI 把三条前提一次性抽掉了，剩下的运营模式变成一句话：<strong>过期不修，直接重生成。</strong></p>
+<p>这就是我说的耗材化。同一件事我五月在代码上写过（同源判断见 <a href="/2026/05/27/ai-driven-dev-and-code-devaluation/" title="AI主导研发前夕的局内人观察：代码资产大贬值与工程范式重构">AI主导研发前夕的局内人观察：代码资产大贬值与工程范式重构</a>）：代码从”需要层层流程小心呵护的黄金资产”，变成”用完即弃的工业模具”。当时那篇的结论是纯乐观的——不审、不改，直接重生成。</p>
+<p>但同一把刀架在信息基建上，<strong>只砍到了第 6 节三条复利里的一条。</strong></p>
+<table>
+<thead>
+<tr>
+<th>复利来源</th>
+<th>耗材化的影响</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>入口默认性</td>
+<td><strong>不受影响</strong>——只要地址不变、位置不变，内容怎么重生成都不影响共识</td>
+</tr>
+<tr>
+<td>内容增量</td>
+<td><strong>直接受威胁</strong>——盟友不会往一个会被覆盖的地方补内容</td>
+</tr>
+<tr>
+<td>先例效应</td>
+<td><strong>不受影响</strong>——先例是既成事实，跟内容新旧无关</td>
+</tr>
+</tbody></table>
+<p>注意第二条的措辞：威胁它的不是”人工维护太贵”，而是<strong>盟友的积极性</strong>。人补内容的前提是他相信这东西会留下来。<strong>如果他知道下一版会被冲掉，他就不补了。</strong></p>
+<p>所以耗材化的净效应仍然是正的（它顺手废掉了固定资产那三条约束），但代价落在一条具体的腿上了。而那条腿不能白砍，因为黄页的内容其实<strong>不是一种，是两种</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>内容类型</th>
+<th>例子</th>
+<th>唯一来源</th>
+<th>耗材化对它</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>机器可导出的事实</td>
+<td>制品清单、构建链接、版本号、流程步骤</td>
+<td>仓库、CI、制品库</td>
+<td><strong>完美用户</strong>——抓一遍重生成，永远最新</td>
+</tr>
+<tr>
+<td>人脑里的隐性知识</td>
+<td>踩坑经验、为什么这么设计、这块归谁</td>
+<td>人的脑子，没有第二个副本</td>
+<td><strong>毒药</strong>——它唯一的来源被掐断了</td>
+</tr>
+</tbody></table>
+<p><strong>而黄页最初打动我的那部分价值——把藏在个人脑子里的东西翻出来——恰恰主要落在第二行上。</strong></p>
+<p>所以结论不是”耗材化有风险”，而是更精确的一句：<strong>你不能拿同一把刀切两种肉。</strong></p>
+<p>解法是把它拆成三层，每层配不同的生命周期：</p>
+<ul>
+<li><strong>入口</strong>：必须是资产。地址永不变、位置永占——<strong>换了地址，之前攒的所有默认性一次归零。</strong></li>
+<li><strong>机器可导出的内容</strong>（制品清单、构建链接、版本号、流程步骤）：交给耗材，定时或触发式重生成，<strong>不许人工维护</strong>。</li>
+<li><strong>人脑里的内容</strong>（踩坑经验、为什么这么设计、这块归谁）：留插槽，划出明确标记的只读区，不许被重生成覆盖——<strong>这一层就是盟友的地盘，动它就等于把盟友赶走。</strong></li>
+</ul>
+<p>合起来：<strong>资产的入口 + 自动的燃料 + 人工的插槽。</strong></p>
+<p>判断标准很朴素：<strong>能从某个机器事实推导出来的，交给机器；只能从某个人脑子里取出来的，手写，并且被保护。</strong></p>
+<p>还有一条准入门槛，任何自动重生成方案上线之前都得先回答：</p>
+<blockquote>
+<p><strong>如果重生成会把人的增量冲掉，那你不是在维护黄页，你是在定期销毁它。</strong></p>
+</blockquote>
+<img src="/2026/09/22/devops-the-cut-that-needs-no-approval/illust-05-three-layers.png" class="" title="三层生命周期：资产的入口 + 自动的燃料 + 人工的插槽">
+
+<hr>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>写到这里，我大概明白自己为什么给这个页面写了三篇。</p>
+<p>它长得实在太不像一个”方案”了——没有立项、没有预算、没有评审、没有汇报、没有一句”谁批准的”。它连个正经产品名都没有，大家就叫它那个页面。</p>
+<p>但它是我这些年里<strong>唯一一个完整走通了全流程的东西</strong>：从想到、到做出来、到被用起来、到形成依赖、到今天还在长。而那些看起来很正式的方案，绝大多数死在了”等审批”这一步。</p>
+<p>所以第三篇的落点，不是”这个工具多好”，而是我在这件事上学到的那个更冷的判断：</p>
+<p><strong>在没有权力的位置上推改变，你要找的不是支持，是”没有人有理由拦你”的那个位置。</strong></p>
+<p>凡是需要批准的，都会卡在提出申请的那一刻。凡是需要预算的，都会死在资源分配上。凡是”显得重要”的，都会有别人来认领，然后你就失去了对它方向的控制。</p>
+<p>而只有那些<strong>便宜到没人愿意认领、简单到没人觉得值得反对、但一旦生效就退不回去</strong>的东西，才真的能自己走完那条路。</p>
+<p>而且这类东西的收益不止于它自己。<strong>它每成功一次，就给后面所有的事留下一张信用记录。</strong> 因为下一个方案能不能启动，靠的从来不是我的论证，而是上一个方案在别人心里留下的那点”试了确实有用”。</p>
+<p><strong>没有先例的改变，每一次都得从零开始说服；有过一次的改变，只需要问一句”上次那个你用着还行吧”。</strong></p>
+<p>这一类东西还有一个共同的长相，可以拿来当筛子用：<strong>建造几乎不要钱，冷启动极难之后靠受益者传染，靠默认性复利，真正的敌人是长大而不是过期。</strong> 一个 crontab、一个共享目录、一个 README、一个内部查询页，都是这个长相。黄页是这一类东西里，我手上最好的一个样本。</p>
+<p>AI 把它们的生产成本抹平之后，剩下的全部问题就只剩两个：</p>
+<p><strong>位置问题</strong>——你占住了那个默认入口没有。</p>
+<p><strong>来源问题</strong>——喂给它的东西，是从机器来的，还是从人脑子里来的，还是从你假装它存在的地方来的。</p>
+<h2 id="封面解读"><a href="#封面解读" class="headerlink" title="封面解读"></a>封面解读</h2><img src="/2026/09/22/devops-the-cut-that-needs-no-approval/cover.png" class="" title="批准很贵，默许很便宜：一个 nginx 页面穿过组织的三年">
+
+<p>这张封面是一则<strong>工业物件式的概念压缩</strong>——用一面墙的构造，把”审批权”和”切口”这两件事说清楚。画面里没有任何人，这本身就是全文的第一个论点：<strong>这件事不是靠人办的。</strong></p>
+<p><strong>整面厚钢板墙 &#x3D; 组织本身。</strong> 墙体由一层层钢板叠成，四分之三视角拍出了它的厚度——这是”壁垒”的物理化。要注意的是：墙不是敌人，墙只是墙。它挡你不是因为恨你，是因为它就是那样长着的。</p>
+<p><strong>左侧那道闸门，以及横闩在它上面的四根重型钢条 &#x3D; 审批权的四个具象。</strong> 四根闩全部落死，闸门四周没有一丝缝隙。这四根闩，对应正文里那四句无可辩驳的话——“这个东西要立项吗””预算从哪出””涉及线上环境，走个评审吧””先别急着上，等下次排期”。它们每一句都合理，合在一起就是一扇你打不开的门。</p>
+<p><strong>门右侧那道细如发丝的竖向裂缝 &#x3D; 切口。</strong> 它不在门上，在门旁边的<strong>墙</strong>上。这是全图最重要的一处位置关系：<strong>你绕开的不是门，是”门”这个概念本身。</strong> 审批权只对”申请”生效——而裂缝不需要任何人批准它存在。</p>
+<p><strong>插在缝里的那张白纸 &#x3D; 黄页。</strong> 它是全画面唯一明亮、干净、人造的东西。它的形态是纸，不是机器；它被推进缝里的方式是<strong>楔子</strong>，不是钥匙——楔子不要求锁打开，它只要求有一道缝。缝被它撑开了一丝，这就够了。</p>
+<p><strong>从缝里漏出来的那点暖光 &#x3D; 已经被改变的那部分。</strong> 冷青色的轮廓光从画面外打进来，照亮钢板和横闩，却不产生任何温度；唯一的热源在墙的另一侧，只能从这道缝里渗出来一点点。<strong>你不是造出了光，你只是找到了那道能透光的缝。</strong></p>
+<p><strong>左上的大面积留白 &#x3D; 墙之外的空间。</strong> 那张图故意没有画完——墙后面是什么、有多少人因此少绕了路，封面不回答。那些留在正文里。</p>
+<blockquote>
+<p>一句话总结：<strong>封面用”四闩封死的门 + 门旁边一道细缝 + 卡在缝里的纸楔”三件事，把全文压缩成一幅画——你要找的不是开门的钥匙，是一道不需要任何人批准的缝；而缝里漏进来的光，就是你唯一能拿到的燃料。</strong></p>
+</blockquote>
+<h2 id="原始素材和基础语料（人工）"><a href="#原始素材和基础语料（人工）" class="headerlink" title="原始素材和基础语料（人工）"></a>原始素材和基础语料（人工）</h2><blockquote>
+<p>接下来我要和你讨论下关于这里提到的黄页，它确实在我这么多摸索中不断对其有了更高评价的工具，实现简单，一个 nginx + 一个 Html 静态页面，当初没有 AI 的时候，我都可以凭借自己手工敲出简陋的页面，现在有了 AI 更是不得了；可以说近乎零成本，但随着持续潜移默化的推广，它会不断复利，将藏在底下的所谓信息黑洞暴露出来，干掉不少所谓的”不可替代性”；可以说是这么多年来我独自摸索解决方案里，少数几个一再证明其地位的方法，低成本高收益的典型，我想要给它单独开一篇博文。</p>
+<p>这个不是主要意图，确实 AI 让它变成耗材，但自下而上的改变里，直接领导是阻力，高层领导不给任何资源支持，只等着出结果了收割果实，这种情况下黄页是少数在不引起反对情况下的切入口。</p>
+<p>过期这个比较容易，一个受限于推进速度，以及团队规模，不会变动太快，因为如果太快，那这个团队在这样的压力下不会是这样，之所以他们这样，就是因为压力不够，大部分人就是有压力才有动力，自驱力从来没出现过；二来黄页形成时由少到多的，随着相关人员感受到好处，他们有动力参与进来，至少会给你提供最新的信息，提醒你。这就是所谓的拉盟友。</p>
+<p>受益者会成为下一个推进方案的潜在支持者，至少愿意尝试，最低也是中立者。</p>
+<p>“离你最近的那一层通常是阻力的第一现场”，因为团队当前状态是结果，而这个结果肯定是有原因，最大概率是直接领导。</p>
+</blockquote>
+<blockquote>
+<p>续补（本轮扩写新增，与原素材一一对应）：<br>一、结构新增——把”自下而上”落成<strong>三条借力通道（借上 &#x2F; 借直 &#x2F; 借侧）</strong>，并判定只剩借侧，对应第 1 节；<br>二、原理新增——“<strong>阻力的武器从来不是反对，是审批权和资源分配权</strong>“（含”公开反对很贵，所以没人反对；真手段是立项、预算、评审、排期”这四句），对应第 2 节；<br>三、方法论新增——<strong>五条切口判据</strong>（不申请任何东西 &#x2F; 成本自己承担 &#x2F; 不产生显性受害者 &#x2F; 不动任何人的考核 &#x2F; <strong>产生显性受益者</strong>）；前四条&#x3D;准入资格，第五条&#x3D;放大器，对应第 2、3 节；<br>四、机制新增——“<strong>维护不是自驱，是自利</strong>“（用户”自驱力从来没出现过”与”受益者会主动提醒你”两句的焊接点）；”<strong>冷启动极难，之后是传染</strong>“（修正原稿”推广极难”的说法），对应第 4 节；<br>五、交易章新增——“<strong>资源他不出，但默许他给了</strong>“、”<strong>用归因换存在</strong>“、”<strong>放弃署名权，只保留落地权</strong>“，对应第 5 节；<br>六、复利重构——把”复利”拆成<strong>三来源（入口默认性 &#x2F; 内容增量 &#x2F; 先例效应）</strong>，其中先例效应有<strong>两张脸</strong>（朝上对权力方：审批权失效一次；朝下对执行层：信用记录，最低也是中立者），并新增”<strong>方案不死于叫好的人太少，死于没有人先按下去</strong>“，对应第 6 节；<br>七、边界重排——“<strong>过期是假边界</strong>“（用户指出其会自愈，且团队变动慢是惰性所致），真正的边界只剩规模与”只治一半”，落点为”<strong>真正的风险不是过期，是长大</strong>“，对应第 7 节；<br>八、耗材化降级——AI 那一刀只砍到三条复利里的”内容增量”一条；两类内容（机器可导出 &#x2F; 人脑隐性）二分；解法<strong>三层生命周期（资产的入口 + 自动的燃料 + 人工的插槽）</strong>，对应第 8 节；<br>九、视觉新增——5 张正文插图（<code>illust-01</code> ~ <code>illust-05</code>）+ 封面 <code>cover.png</code>（暗调工业，四闩封死的门 + 墙上一道细缝 + 纸楔），封面解读小节为本文新增。</p>
+</blockquote>
+<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><ul>
+<li><a href="/2026/08/25/devops-just-ask-me/" title="显性支出来自个人，隐性收益归公：降摩擦工程为什么总输给&quot;问一下就完了&quot;">显性支出来自个人，隐性收益归公：降摩擦工程为什么总输给&quot;问一下就完了&quot;</a> — 黄页系列第一篇：降摩擦工程的理论基础，"问一下就完了"背后的公共物品与激励错配</li>
+<li><a href="/2026/09/22/devops-who-owns-the-trigger/" title="打包权的三年租约：从有动机的一端，到有信息的一端">打包权的三年租约：从有动机的一端，到有信息的一端</a> — 黄页系列第二篇：入口从人身上挪到地址上，触发的本质是声明不是操作</li>
+<li><a href="/2026/08/06/devops-survive-without-power/" title="没有权力的逆淘汰组织里，怎么把自己捞出来">没有权力的逆淘汰组织里，怎么把自己捞出来</a> — 无权力改造的另一条手法：危机借势；本文做切口，那篇等窗口</li>
+<li><a href="/2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/" title="自下而上实现不换人式的团队改进【史诗巨制】">自下而上实现不换人式的团队改进【史诗巨制】</a> — 这套"不换人、自下而上"打法的原点</li>
+<li><a href="/2026/06/10/devops-knowledge-sink-vs-individual-blackbox/" title="黑盒之殇：知识囚笼与职场&quot;守门人&quot;的虚假不可替代性">黑盒之殇：知识囚笼与职场&quot;守门人&quot;的虚假不可替代性</a> — 被黄页削掉的那部分价值到底是什么："知道东西在哪"型的不可替代性</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.png"></a><div class="post-copyright__author_name">夫礼者Home</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward"><div class="reward-button" title="赞赏作者" onclick="AddRewardMask()"><i class="solitude fa-solid fa-heart"></i>赞赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢您的赞赏</span><ul class="reward-group"><li class="reward-item"><a href="/images/wxpay.jpg"><img class="post-qr-code-img nolazyload" src="/images/wxpay.jpg" alt="微信" style="border-color: var(--efu-green)"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.jpg"><img class="post-qr-code-img nolazyload" src="/images/alipay.jpg" alt="支付宝" style="border-color: var(--efu-blue)"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/"><div class="reward-text">赞赏名单</div><div class="reward-dec">由于您的支持，我才能够实现写作的价值。</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">夫礼者Home</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>团队管理<span class="tagsPageCount">31</span></span></a><a class="post-meta__tags" href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E5%AD%A6/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>组织行为学<span class="tagsPageCount">29</span></span></a><a class="post-meta__tags" href="/tags/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>研发效能<span class="tagsPageCount">31</span></span></a><a class="post-meta__tags" href="/tags/%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>自下而上<span class="tagsPageCount">2</span></span></a><a class="post-meta__tags" href="/tags/%E9%BB%84%E9%A1%B5/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>黄页<span class="tagsPageCount">1</span></span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/09/23/devops-negative-return-of-fire-prevention/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">防火的收益是负数：为什么理性人不做长远优化</div></div></a></div><div class="next-post pull-right"><a href="/2026/09/22/devops-who-owns-the-trigger/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">打包权的三年租约：从有动机的一端，到有信息的一端</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-bg-top"><div class="is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div></div><a class="card-info-avatar" href="/about/" title="头像"><div class="avatar-img"><img src="/images/sicp_cover_english.jpg" alt="头像"></div></a><div class="card-info__desc_group"><div class="author-info__name">夫礼者</div><div class="author-info__desc"></div><div class="card-info__data is-center"><a href="/archives/" title="累计文章数:149"><div class="length-num">149</div><div class="headline">文章</div></a><a href="/tags/" title="标签总数:154"><div class="length-num">154</div><div class="headline">标签</div></a><a href="/categories/" title="分类总数:37"><div class="length-num">37</div><div class="headline">分类</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/fulizhe" title="Github"><i class="solitude  fab fa-github"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://gitee.com/lqzkcx3" title="Gitee"><i class="solitude  fab fa-git"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.zhihu.com/people/tao-luo-73" title="Zhihu"><i class="solitude  fab fa-zhihu"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://blog.csdn.net/lqzkcx3" title="CSDN"><i class="solitude  fab fa-bilibili"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.jianshu.com/u/cd3dd432fd00" title="jianshu"><i class="solitude  fab fa-node-js"></i></a><a class="social-icon" href="https://fulizhe.github.io/curriculumVitae" title="aboutMe"><i class="solitude  fas fa-address-card"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fa-solid fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MindMap"><span class="toc-text">MindMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%88%91%E9%9D%A2%E5%AF%B9%E7%9A%84%E5%B1%80%E9%9D%A2%EF%BC%9A%E4%B8%8A%E4%B8%8D%E5%80%9F%E5%8A%9B%EF%BC%8C%E7%9B%B4%E4%B8%8D%E4%B8%BA%E5%8F%8B"><span class="toc-text">1. 我面对的局面：上不借力，直不为友</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%98%BB%E5%8A%9B%E7%9A%84%E6%AD%A6%E5%99%A8%E6%98%AF%E5%AE%A1%E6%89%B9%E6%9D%83"><span class="toc-text">2. 阻力的武器是审批权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%94%A8%E4%BA%94%E6%9D%A1%E5%8E%BB%E9%87%8F%E9%BB%84%E9%A1%B5"><span class="toc-text">3. 用五条去量黄页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%8B%89%E7%9B%9F%E5%8F%8B%EF%BC%9A%E5%8F%97%E7%9B%8A%E8%80%85%E5%B0%B1%E6%98%AF%E7%BB%B4%E6%8A%A4%E8%80%85"><span class="toc-text">4. 拉盟友：受益者就是维护者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%BD%86%E8%BF%99%E6%98%AF%E4%B8%80%E7%AC%94%E4%BA%A4%E6%98%93%EF%BC%8C%E4%B8%8D%E6%98%AF%E7%99%BD%E6%8B%BF"><span class="toc-text">5. 但这是一笔交易，不是白拿</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%AE%83%E5%A4%8D%E5%88%A9%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">6. 它复利的是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%9C%9F%E6%AD%A3%E7%9A%84%E8%BE%B9%E7%95%8C%EF%BC%9A%E4%B8%80%E4%B8%AA%E5%81%87%E7%9A%84%EF%BC%8C%E4%B8%A4%E4%B8%AA%E7%9C%9F%E7%9A%84"><span class="toc-text">7. 真正的边界：一个假的，两个真的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-AI-%E9%82%A3%E4%B8%80%E5%88%80%EF%BC%9A%E5%8F%AA%E7%A0%8D%E5%88%B0%E4%BA%86%E4%B8%80%E6%9D%A1%E8%85%BF"><span class="toc-text">8. AI 那一刀：只砍到了一条腿</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-text">后记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E9%9D%A2%E8%A7%A3%E8%AF%BB"><span class="toc-text">封面解读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E7%B4%A0%E6%9D%90%E5%92%8C%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%96%99%EF%BC%88%E4%BA%BA%E5%B7%A5%EF%BC%89"><span class="toc-text">原始素材和基础语料（人工）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3"><span class="toc-text">相关</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fa-solid fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/2026/09/25/devops-honing-veto-into-design/" title="把否决权磨成设计权：系统不是被设计出来的，是被反对意见长出来的"><div class="thumbnail"><img alt="把否决权磨成设计权：系统不是被设计出来的，是被反对意见长出来的" src="/2026/09/25/devops-honing-veto-into-design/cover.png"></div><div class="content"><span class="title" href="/2026/09/25/devops-honing-veto-into-design/" title="把否决权磨成设计权：系统不是被设计出来的，是被反对意见长出来的">把否决权磨成设计权：系统不是被设计出来的，是被反对意见长出来的</span><span class="article-recent_post_categories" href="/2026/09/25/devops-honing-veto-into-design/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/09/23/devops-negative-return-of-fire-prevention/" title="防火的收益是负数：为什么理性人不做长远优化"><div class="thumbnail"><img alt="防火的收益是负数：为什么理性人不做长远优化" src="/2026/09/23/devops-negative-return-of-fire-prevention/cover.png"></div><div class="content"><span class="title" href="/2026/09/23/devops-negative-return-of-fire-prevention/" title="防火的收益是负数：为什么理性人不做长远优化">防火的收益是负数：为什么理性人不做长远优化</span><span class="article-recent_post_categories" href="/2026/09/23/devops-negative-return-of-fire-prevention/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/09/22/devops-the-cut-that-needs-no-approval/" title="批准很贵，默许很便宜：一个 nginx 页面穿过组织的三年"><div class="thumbnail"><img alt="批准很贵，默许很便宜：一个 nginx 页面穿过组织的三年" src="/2026/09/22/devops-the-cut-that-needs-no-approval/cover.png"></div><div class="content"><span class="title" href="/2026/09/22/devops-the-cut-that-needs-no-approval/" title="批准很贵，默许很便宜：一个 nginx 页面穿过组织的三年">批准很贵，默许很便宜：一个 nginx 页面穿过组织的三年</span><span class="article-recent_post_categories" href="/2026/09/22/devops-the-cut-that-needs-no-approval/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/09/22/devops-who-owns-the-trigger/" title="打包权的三年租约：从有动机的一端，到有信息的一端"><div class="thumbnail"><img alt="打包权的三年租约：从有动机的一端，到有信息的一端" src="/2026/09/22/devops-who-owns-the-trigger/cover.png"></div><div class="content"><span class="title" href="/2026/09/22/devops-who-owns-the-trigger/" title="打包权的三年租约：从有动机的一端，到有信息的一端">打包权的三年租约：从有动机的一端，到有信息的一端</span><span class="article-recent_post_categories" href="/2026/09/22/devops-who-owns-the-trigger/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/09/22/devops-mttc-response-speed-over-change/" title="问题不是变，是反应慢"><div class="thumbnail"><img alt="问题不是变，是反应慢" src="/2026/09/22/devops-mttc-response-speed-over-change/cover.png"></div><div class="content"><span class="title" href="/2026/09/22/devops-mttc-response-speed-over-change/" title="问题不是变，是反应慢">问题不是变，是反应慢</span><span class="article-recent_post_categories" href="/2026/09/22/devops-mttc-response-speed-over-change/">随笔与思考</span></div></a></div></div></div></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2026 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src="/img/pwa/favicon.png">夫礼者</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude" alt="Theme">Theme</a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=2.1.13"></script><script src="/js/main.js?v=2.1.13"></script><script src="/js/third_party/waterfall.min.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="https://fastly.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js"></script><script src="/js/tw_cn.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="js-pjax"><script>mermaid.run();</script></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude fa-solid fa-xmark"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=2.1.13"></script><!-- Tianli-Talk--><!-- music--></body></html>
+        <script>
+            const posts = ["2026/09/25/devops-honing-veto-into-design/","2026/09/23/devops-negative-return-of-fire-prevention/","2026/09/22/devops-the-cut-that-needs-no-approval/","2026/09/22/devops-who-owns-the-trigger/","2026/09/22/devops-mttc-response-speed-over-change/","2026/09/20/devops-borrow-upward-leverage/","2026/09/18/devops-requirement-before-language/","2026/09/18/devops-from-armor-to-qualification-line/","2026/09/16/ai-three-questions-before-new-domain/","2026/09/13/devops-ledger-blindness/","2026/09/11/devops-three-causes-of-inaction/","2026/09/10/devops-three-writes-one-truth/","2026/09/02/devops-compressing-gray-space-with-data/","2026/09/01/book-legacy-code-second-life/","2026/08/30/think-forty-loops/","2026/08/28/think-laziness-conservation-law/","2026/08/27/devops-i18n-requirement-exposes-boundary-vacuum/","2026/08/25/devops-just-ask-me/","2026/08/22/think-stay-on-the-right-road-alone/","2026/08/20/devops-attack-surface-reverse-war/","2026/08/19/devops-refuse-to-converge/","2026/08/18/devops-shift-left-role-reversal/","2026/08/17/devops-fragility-as-armor/","2026/08/14/think-forty-mini-habits/","2026/08/10/devops-demo-is-the-only-standard/","2026/08/09/think-their-depth-is-just-entry-level/","2026/08/07/think-ai-is-a-gun-not-an-alibi/","2026/08/06/devops-survive-without-power/","2026/08/03/devops-adverse-selection-platform/","2026/08/02/devops-customer-as-whetstone/","2026/08/02/book-sdd-in-action/","2026/07/29/think-from-consumer-to-investor/","2026/07/25/devops-boundary-erosion-and-managerial-rent-seeking/","2026/07/23/devops-tyranny-of-one-sixth/","2026/07/23/devops-letting-go-of-the-savior-complex-in-devops/","2026/07/20/devops-when-arsonists-team-up/","2026/07/19/think-forty-self-rescue/","2026/07/18/think-forty-downclock/","2026/07/15/ai-grok45-fast-cursor-traps/","2026/07/14/ai-jenkins_retro_report/","2026/07/13/think-value-in-future-not-past/","2026/07/09/devops-the-thought-closed-loop-of-overtime-martyrs/","2026/07/05/think-cognitive-compound-interest/","2026/07/04/think-experience-breeds-composure/","2026/07/02/devops-the-label-of-public-enemy/","2026/07/01/devops-top-down-reform-and-multiplicative-quality-model/","2026/06/30/think-ai-making-us-shallow/","2026/06/28/ai-agency-filtering-in-ai-era/","2026/06/24/devops-solving-problems-as-close-to-the-source-as-possible/","2026/06/23/devops-the-illusion-of-done-in-local-build/","2026/06/22/devops-how-to-implement-p1-test-gates-in-multi-language-teams/","2026/06/22/think-the-fragility-of-success-and-upward-management/","2026/06/21/devops-how-to-survive-in-a-highly-mediocre-organization/","2026/06/21/devops-how-to-deal-with-incompetent-teams-at-work/","2026/06/19/devops-performance-tuning-as-a-guessing-game/","2026/06/19/ai-jevons-paradox-in-ai-era/","2026/06/17/devops-instant-karma-of-high-frequency-testing/","2026/06/17/think-why-we-still-have-jobs-in-ai-era/","2026/06/17/devops-responsibility-diffusion-in-cross-team-dev/","2026/06/16/think-feedback-loop-and-monopoly-of-interpretation/","2026/06/15/think-workplace-attribution-bias/","2026/06/14/ai-ai-mirror-and-cognitive-laziness/","2026/06/12/devops-the-auditor-role-in-software-architecture/","2026/06/11/think-illusion-of-persuasion/","2026/06/11/devops-technical-bureaucracy-and-benefactor-illusion/","2026/06/11/devops-shift-left-testing-and-quality-gates/","2026/06/11/devops-strategic-patience-in-refactoring/","2026/06/11/think-constraints-and-creativity/","2026/06/10/devops-fake-automation-and-human-api/","2026/06/10/devops-knowledge-sink-vs-individual-blackbox/","2026/06/10/devops-reform-without-firing-and-malicious-compliance/","2026/06/10/devops-yak-shaving-and-pseudo-extensibility/","2026/06/09/devops-illusion-of-hard-work-in-management/","2026/06/09/devops-solve-the-person-who-raised-the-problem/","2026/06/08/devops-reject-technical-giant-baby/","2026/06/07/devops-product-vs-project-mindset/","2026/06/07/devops-breaking-developer-arrogance/","2026/06/07/devops-software-engineering-and-shit-mountain/","2026/06/06/think-reading-as-an-anchor/","2026/06/06/think-career-antifragility/","2026/06/03/devops-illusion-of-tech-moat-and-non-management/","2026/05/27/ai-driven-dev-and-code-devaluation/","2026/05/23/ruankao-xtjls/","2026/05/21/ai-evolution-in-ai-era/","2026/05/13/devops-hidden-costs-of-kpi-driven/","2026/05/11/devops-the-illusion-of-tech-management/","2026/05/11/think-defy-the-destiny/","2026/05/08/devops-trust-and-glue-work-in-management/","2026/05/08/think-money-has-clear-criteria2/","2026/05/04/think-mastering-the-right-of-interpretation/","2026/05/01/devops-Criteria-for-technical-decision-making/","2026/04/29/devops-cognitive-load-and-feedback-loops/","2026/04/29/devops-reject-works-on-my-machine/","2026/04/28/devops-from-heroism-to-system-observability/","2026/04/27/think-redundancy-design-in-daily-life/","2026/04/27/devops-optimization-startup/","2026/04/25/think-from-0-to-1-residual-advantage/","2026/04/23/devops-refactor-process/","2026/04/23/ai-efficiency-and-survival-strategy/","2026/03/26/devops-skywalking-local/","2026/03/24/devops-observability-is-efficiency/","2026/03/10/think-openclaw-i-see/","2026/03/06/think-ai-The-end-of-apprenticeship/","2026/03/03/think-why-procrastination/","2026/02/02/think-money-has-clear-criteria/","2026/01/18/book-why-donot-student-like-school/","2026/01/07/devops-bottom-up-recognize-reality-2/","2026/01/07/devops-continuous-bleeding/","2025/11/10/ruankao-xtfxs2/","2025/10/01/think-the-essence-of-implement-ultimate-idea/","2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/","2025/08/17/35-grap-the-initiative-of-life/","2025/08/15/devops-promote-the-progress-of-docker/","2025/08/09/devops-impove-development-process-team-reform/","2025/08/04/think-why-still-working-hard/","2025/08/04/think-how-to-find-your-career/","2025/07/31/devops-why-we-need-focusing-on-observability/","2025/06/22/book-ting-habits/","2025/06/20/think-value-anchor-point/","2025/06/04/devops-observability/","2025/06/03/devops-operation-upgrade/","2025/06/01/book-nexus/","2025/05/31/devops-bottom-up-recognize-reality/","2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/","2025/05/27/ruankao-xtfxs/","2025/03/21/35-why-do-i-firmly-believe-i-will-succeed/","2025/03/14/Technical-team-face-to-Technical-Debt/","2025/03/05/35-basic/","2025/03/03/tsitt-The-Road-to-Breaking-through-Operations-and-Maintenance/","2025/03/02/ai-the-benefit-of-meta-knowledge/","2025/02/27/how-to-break-in-the-era-of-ai-for-company/","2025/02/24/35-I-was-too-extreme/","2025/02/22/35-how-to-check-if-someone-is-worth-following/","2025/02/21/tip-cursor-refill-for-free/","2025/02/12/ai-The-double-edged-sword-of-creative-equality/","2025/02/12/ai-human-win/","2025/02/07/what-mean-when-we-say-ai-assisted-process-transformation/","2025/02/04/deepseek-r1-i-observe-to/","2025/01/17/social-experiment-by-ai/","2025/01/12/think-in-ai-era/","2025/01/09/the-skill-need-to-pratice-in-ai-era-as-programmer/","2025/01/07/cursor-i-think-to/","2025/01/05/2024-year-end-summary/","2024/12/12/《一本小小的红色写作书》读后感/","2024/12/12/《自学是门手艺》读后感/","2024/12/12/典型小散的投资生涯总结2018-2024/","2024/03/20/self_past_twentyYears/","2024/03/11/hexo-tip-tags/","2024/03/10/hello-world/"];
+            function toRandomPost() {
+                const randomPost = posts[Math.floor(Math.random() * posts.length)];
+                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
+            }
+        </script>
