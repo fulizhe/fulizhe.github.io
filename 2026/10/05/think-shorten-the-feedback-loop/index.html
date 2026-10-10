@@ -1,0 +1,704 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>先把反馈变快 | 夫礼者Home</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=2.1.13"><!-- inject head--><link rel="canonical" href="https://fulizhe.github.io/2026/10/05/think-shorten-the-feedback-loop/"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"><!-- Open Graph--><meta name="description" content="MindMapflowchart LR A[&amp;quot;先把反馈变快&amp;quot;] --&amp;gt; B[&amp;quot;反馈环的长度&amp;quot;] A --&amp;gt; C[&amp;quot;草稿里那张图纸&amp;quot;] A --&amp;gt; D[&amp;quot;适应性而非预设性&amp;quot;]"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="夫礼者Home"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(' %c Solitude %c ' + '2.1.13' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script src="https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSE7WE78H9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZSE7WE78H9');
+</script>    
+<script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+          },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: {"preload":false,"path":"/search.xml"},
+    runtime: '2023-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"day":" 天","f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可","search":{"empty":"找不到你查询的内容：${query}","hit":"找到 ${hits} 条结果，用时 ${time} 毫秒","placeholder":"输入关键词快速查找","count":"共 <b>${count}</b> 条结果。","loading":"搜索中..."}},
+    aside: {
+        sayhello: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        sayhello2: [],
+        sayhello3: {
+            prefix: '好久不见，',
+            back: '欢迎再次回来，',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><!-- background img--><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img nolazyload" src="/images/sicp_cover_english.jpg" alt="loading image"></div></div><script>const preloader = {
+    isLoaded: false,
+    endLoading: () => {
+        if (!preloader.isLoaded) {
+            document.getElementById('loading-box').classList.add('loaded');
+            preloader.isLoaded = true;
+            preloader.togglePaceDone();
+        }
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+        preloader.isLoaded = false;
+        preloader.togglePaceDone();
+    },
+    togglePaceDone: () => {
+        document.getElementById('body').className = preloader.isLoaded ? 'pace-done' : '';
+    }
+}
+
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});
+
+setTimeout(() => {
+    preloader.endLoading();
+}, 5000);</script><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">156</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">28</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">163</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fa-solid fa-circle-half-stroke"></i><span>显示模式</span></span></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结<sup>1</sup></a><a href="/tags/2024/">2024<sup>1</sup></a><a href="/tags/%E5%8F%8D%E6%80%9D/">反思<sup>7</sup></a><a href="/tags/thirty-five/">thirty-five<sup>5</sup></a><a href="/tags/AI%E6%B6%A6%E8%89%B2/">AI润色<sup>4</sup></a><a href="/tags/Technical-team/">Technical team<sup>5</sup></a><a href="/tags/devops/">devops<sup>15</sup></a><a href="/tags/AI%E6%97%B6%E4%BB%A3/">AI时代<sup>2</sup></a><a href="/tags/%E4%B8%BB%E8%A7%82%E8%83%BD%E5%8A%A8%E6%80%A7/">主观能动性<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E8%A7%82%E5%AF%9F/">职场观察<sup>11</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/">个人成长<sup>5</sup></a><a href="/tags/AI/">AI<sup>15</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%80%A0%E6%83%B0/">认知怠惰<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%B9%B3%E6%9D%83/">技术平权<sup>1</sup></a><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能<sup>1</sup></a><a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程<sup>13</sup></a><a href="/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/">行业观察<sup>3</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%B1%82%E7%94%9F/">职场求生<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E6%80%9D%E8%80%83/">职场思考<sup>3</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E8%A7%89%E9%86%92/">认知觉醒<sup>5</sup></a><a href="/tags/%E7%BC%96%E7%A0%81%E5%8A%A9%E6%89%8B/">编码助手<sup>1</sup></a><a href="/tags/Grok/">Grok<sup>1</sup></a><a href="/tags/Cursor/">Cursor<sup>3</sup></a><a href="/tags/Jenkins/">Jenkins<sup>1</sup></a><a href="/tags/%E5%A4%8D%E7%9B%98/">复盘<sup>2</sup></a><a href="/tags/CI-CD/">CI/CD<sup>6</sup></a><a href="/tags/AI%E8%83%BD%E5%8A%9B%E8%BE%B9%E7%95%8C/">AI能力边界<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83/">技术思考<sup>5</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%8D%E6%80%9D/">个人反思<sup>14</sup></a><a href="/tags/%E8%AF%BB%E4%B9%A6%E6%84%9F%E6%82%9F/">读书感悟<sup>2</sup></a><a href="/tags/%E9%87%8D%E6%9E%84/">重构<sup>1</sup></a><a href="/tags/legacy-code/">legacy code<sup>1</sup></a><a href="/tags/%E6%B5%8B%E8%AF%95/">测试<sup>1</sup></a><a href="/tags/%E5%8F%8D%E9%A6%88%E7%8E%AF/">反馈环<sup>1</sup></a><a href="/tags/%E9%98%85%E8%AF%BB/">阅读<sup>4</sup></a><a href="/tags/SDD/">SDD<sup>1</sup></a><a href="/tags/%E8%A7%84%E8%8C%83%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/">规范驱动开发<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E5%8F%8D%E6%80%9D/">职场反思<sup>6</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA/">组织行为<sup>6</sup></a><a href="/tags/%E6%95%88%E7%8E%87%E9%99%B7%E9%98%B1/">效率陷阱<sup>1</sup></a><a href="/tags/%E9%80%86%E5%90%91%E6%B7%98%E6%B1%B0/">逆向淘汰<sup>2</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E6%80%9D%E8%80%83/">系统思考<sup>3</sup></a><a href="/tags/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD/">研发效能<sup>33</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86/">团队管理<sup>32</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E5%AD%A6/">组织行为学<sup>31</sup></a><a href="/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/">可观测性<sup>11</sup></a><a href="/tags/%E7%A0%94%E5%8F%91%E7%AE%A1%E7%90%86/">研发管理<sup>2</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%96%87%E5%8C%96/">工程师文化<sup>2</sup></a><a href="/tags/%E5%90%91%E4%B8%8A%E7%AE%A1%E7%90%86/">向上管理<sup>7</sup></a><a href="/tags/%E8%BE%B9%E7%95%8C%E6%84%8F%E8%AF%86/">边界意识<sup>3</sup></a><a href="/tags/%E5%BC%80%E5%8F%91%E8%80%85%E4%BD%93%E9%AA%8C-DevEx/">开发者体验 (DevEx)<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E8%B4%9F%E8%8D%B7/">认知负荷<sup>2</sup></a><a href="/tags/%E4%BB%B7%E5%80%BC%E4%BA%A4%E4%BB%98/">价值交付<sup>2</sup></a><a href="/tags/think/">think<sup>2</sup></a><a href="/tags/%E4%BD%93%E5%88%B6/">体制<sup>1</sup></a><a href="/tags/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/">基础设施<sup>1</sup></a><a href="/tags/DevOps/">DevOps<sup>10</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E6%B2%BB%E7%90%86/">团队治理<sup>3</sup></a><a href="/tags/%E6%B5%8B%E8%AF%95%E5%B7%A6%E7%A7%BB/">测试左移<sup>5</sup></a><a href="/tags/%E7%A6%85%E9%81%93/">禅道<sup>2</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E9%87%8D%E6%9E%84/">认知重构<sup>5</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F/">团队<sup>2</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E7%B4%A0%E5%85%BB/">工程素养<sup>2</sup></a><a href="/tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/">职业发展<sup>2</sup></a><a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论<sup>4</sup></a><a href="/tags/%E5%8F%8D%E9%A6%88%E5%9B%9E%E8%B7%AF/">反馈回路<sup>2</sup></a><a href="/tags/%E6%95%88%E8%83%BD%E4%BC%98%E5%8C%96/">效能优化<sup>1</sup></a><a href="/tags/%E6%B5%81%E7%A8%8B%E6%B2%BB%E7%90%86/">流程治理<sup>2</sup></a><a href="/tags/%E8%AF%9D%E8%AF%AD%E6%9D%83/">话语权<sup>1</sup></a><a href="/tags/%E6%95%91%E4%B8%96%E4%B8%BB%E6%83%85%E8%8A%82/">救世主情节<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E7%97%85%E7%90%86%E5%AD%A6/">组织病理学<sup>2</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%96%AD%E5%A5%B6/">认知断奶<sup>1</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E9%9A%94%E7%A6%BB/">系统隔离<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E5%BF%83%E7%90%86/">职场心理<sup>4</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E6%83%B0%E6%80%A7/">认知惰性<sup>1</sup></a><a href="/tags/%E8%BE%BE%E5%85%8B%E6%95%88%E5%BA%94/">达克效应<sup>1</sup></a><a href="/tags/%E5%BD%BC%E5%BE%97%E5%8E%9F%E7%90%86/">彼得原理<sup>1</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E6%9E%B6%E6%9E%84/">组织架构<sup>1</sup></a><a href="/tags/%E5%90%90%E6%A7%BD/">吐槽<sup>1</sup></a><a href="/tags/%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/">敏捷开发<sup>1</sup></a><a href="/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/">知识管理<sup>2</sup></a><a href="/tags/%E4%BF%A1%E6%81%AF%E6%91%A9%E6%93%A6/">信息摩擦<sup>1</sup></a><a href="/tags/%E6%BF%80%E5%8A%B1%E9%94%99%E9%85%8D/">激励错配<sup>1</sup></a><a href="/tags/%E5%85%AC%E5%85%B1%E7%89%A9%E5%93%81/">公共物品<sup>1</sup></a><a href="/tags/%E7%9B%91%E6%8E%A7/">监控<sup>1</sup></a><a href="/tags/%E5%8D%95%E4%BD%93%E5%BA%94%E7%94%A8/">单体应用<sup>1</sup></a><a href="/tags/%E6%95%88%E7%8E%87/">效率<sup>6</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔<sup>7</sup></a><a href="/tags/%E5%8F%98%E9%9D%A9%E7%AE%A1%E7%90%86/">变革管理<sup>4</sup></a><a href="/tags/%E4%BF%A1%E6%81%AF%E7%BB%93%E6%9E%84/">信息结构<sup>1</sup></a><a href="/tags/%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A/">自下而上<sup>2</sup></a><a href="/tags/%E6%97%A0%E6%9D%83%E5%8A%9B%E6%94%B9%E9%80%A0/">无权力改造<sup>1</sup></a><a href="/tags/%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98/">性能调优<sup>1</sup></a><a href="/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理<sup>1</sup></a><a href="/tags/%E6%B5%81%E7%A8%8B%E9%87%8D%E6%9E%84/">流程重构<sup>1</sup></a><a href="/tags/%E8%B7%A8%E9%83%A8%E9%97%A8%E5%8D%8F%E4%BD%9C/">跨部门协作<sup>3</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA%E7%A0%B4%E5%B1%80/">职场破局<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84%E6%80%9D%E8%80%83/">架构思考<sup>2</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%80%BA/">技术债<sup>3</sup></a><a href="/tags/%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/">组织管理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E6%96%87%E5%8C%96/">工程文化<sup>1</sup></a><a href="/tags/%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%80%9D%E7%BB%B4/">工程师思维<sup>1</sup></a><a href="/tags/observability/">observability<sup>1</sup></a><a href="/tags/skywalking/">skywalking<sup>1</sup></a><a href="/tags/%E8%B4%A8%E9%87%8F%E9%97%A8%E7%A6%81/">质量门禁<sup>1</sup></a><a href="/tags/%E7%83%9F%E5%9B%B1%E5%8F%A3/">烟囱口<sup>1</sup></a><a href="/tags/%E4%BC%81%E4%B8%9A%E6%96%87%E5%8C%96/">企业文化<sup>1</sup></a><a href="/tags/%E9%BB%84%E9%A1%B5/">黄页<sup>1</sup></a><a href="/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">架构设计<sup>3</sup></a><a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生<sup>1</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/">技术管理<sup>2</sup></a><a href="/tags/%E5%9B%A2%E9%98%9F%E6%95%88%E8%83%BD/">团队效能<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学<sup>3</sup></a><a href="/tags/%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/">代码质量<sup>1</sup></a><a href="/tags/%E6%8B%92%E7%BB%9D%E6%94%B6%E6%95%9B/">拒绝收敛<sup>1</sup></a><a href="/tags/Spring/">Spring<sup>1</sup></a><a href="/tags/%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC/">控制反转<sup>1</sup></a><a href="/tags/Hexo/">Hexo<sup>2</sup></a><a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建<sup>1</sup></a><a href="/tags/%E8%80%83%E8%AF%95/">考试<sup>3</sup></a><a href="/tags/%E5%86%B7%E5%90%AF%E5%8A%A8/">冷启动<sup>1</sup></a><a href="/tags/%E5%BF%83%E7%90%86%E4%BB%A3%E5%81%BF/">心理代偿<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E6%95%88%E8%83%BD/">个人效能<sup>1</sup></a><a href="/tags/%E5%AD%98%E5%9C%A8%E4%B8%BB%E4%B9%89/">存在主义<sup>1</sup></a><a href="/tags/%E6%8A%80%E8%83%BD/">技能<sup>1</sup></a><a href="/tags/%E8%81%8C%E5%9C%BA/">职场<sup>2</sup></a><a href="/tags/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/">深度思考<sup>1</sup></a><a href="/tags/%E5%A4%8D%E5%88%A9/">复利<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5/">认知<sup>1</sup></a><a href="/tags/%E9%95%BF%E6%9C%9F%E4%B8%BB%E4%B9%89/">长期主义<sup>1</sup></a><a href="/tags/%E5%88%9B%E9%80%A0%E5%8A%9B/">创造力<sup>1</sup></a><a href="/tags/%E8%AE%A4%E7%9F%A5%E5%8D%87%E7%BA%A7/">认知升级<sup>2</sup></a><a href="/tags/%E7%A0%B4%E5%B1%80%E6%80%9D%E7%BB%B4/">破局思维<sup>1</sup></a><a href="/tags/%E6%95%99%E8%82%B2%E8%A7%82/">教育观<sup>1</sup></a><a href="/tags/%E5%A4%B1%E8%B4%A5%E6%96%B9%E6%B3%95%E8%AE%BA/">失败方法论<sup>1</sup></a><a href="/tags/%E8%87%AA%E6%88%91%E6%95%99%E8%82%B2/">自我教育<sup>2</sup></a><a href="/tags/%E4%B8%93%E6%B3%A8/">专注<sup>2</sup></a><a href="/tags/WLB/">WLB<sup>2</sup></a><a href="/tags/%E4%B9%A0%E6%83%AF/">习惯<sup>6</sup></a><a href="/tags/%E7%83%AD%E7%88%B1/">热爱<sup>1</sup></a><a href="/tags/%E5%9B%9E%E8%B7%AF/">回路<sup>1</sup></a><a href="/tags/%E8%87%AA%E6%88%91%E6%88%90%E9%95%BF/">自我成长<sup>3</sup></a><a href="/tags/AI%E4%B8%8E%E6%9C%AA%E6%9D%A5/">AI与未来<sup>1</sup></a><a href="/tags/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/">职业规划<sup>1</sup></a><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AD%96%E7%95%A5/">学习策略<sup>1</sup></a><a href="/tags/%E7%BB%8F%E9%AA%8C%E5%A4%8D%E5%88%A9/">经验复利<sup>1</sup></a><a href="/tags/%E5%8D%8A%E9%80%94%E8%80%8C%E5%BA%9F/">半途而废<sup>1</sup></a><a href="/tags/%E9%95%BF%E6%97%B6%E8%AE%B0%E5%BF%86/">长时记忆<sup>1</sup></a><a href="/tags/%E8%A1%8C%E4%B8%BA%E8%AE%BE%E8%AE%A1/">行为设计<sup>1</sup></a><a href="/tags/%E6%80%9D%E8%80%83/">思考<sup>1</sup></a><a href="/tags/%E9%98%85%E8%AF%BB%E6%84%8F%E4%B9%89/">阅读意义<sup>1</sup></a><a href="/tags/%E7%8B%AC%E7%AB%8B%E6%8E%A2%E7%B4%A2/">独立探索<sup>1</sup></a><a href="/tags/%E8%B4%A2%E5%AF%8C%E9%80%BB%E8%BE%91/">财富逻辑<sup>1</sup></a><a href="/tags/%E5%BF%83%E7%90%86%E5%AD%A6/">心理学<sup>1</sup></a><a href="/tags/%E7%8E%AF%E5%A2%83%E9%87%8D%E5%A1%91/">环境重塑<sup>1</sup></a><a href="/tags/%E7%A8%80%E7%BC%BA%E5%BF%83%E6%80%81/">稀缺心态<sup>1</sup></a><a href="/tags/%E8%A1%8C%E4%B8%BA%E5%BF%83%E7%90%86%E5%AD%A6/">行为心理学<sup>1</sup></a><a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计<sup>1</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB%E5%93%B2%E5%AD%A6/">生活哲学<sup>1</sup></a><a href="/tags/B-MAP/">B=MAP<sup>1</sup></a><a href="/tags/%E5%8F%8D%E8%84%86%E5%BC%B1/">反脆弱<sup>1</sup></a><a href="/tags/%E9%9A%8F%E7%AC%94%E4%B8%8E%E6%80%9D%E8%80%83/">随笔与思考<sup>1</sup></a><a href="/tags/%E7%90%86%E8%B4%A2/">理财<sup>1</sup></a></div></div></div></div><!-- keyboard--><!-- righhtside--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon solitude fas fa-bars-progress"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">project</div><div class="back-menu-list"><a class="back-menu-item" href="/curriculumVitae" title="个人简历"><img class="nolazyload back-menu-item-icon" src="/images/sicp_cover_english.jpg" alt="个人简历"><span class="back-menu-item-text">个人简历</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页"><span class="title">夫礼者小屋</span><i class="solitude fa-solid fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">先把反馈变快</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索"><i class="solitude fa-solid fa-magnifying-glass"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fa-solid fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fa-solid fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/2026/10/05/think-shorten-the-feedback-loop/cover.png" alt="先把反馈变快"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/%E9%9A%8F%E7%AC%94%E4%B8%8E%E6%80%9D%E8%80%83/">随笔与思考</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%8D%E6%80%9D/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>个人反思</span></a><a class="post-meta__tags" href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>方法论</span></a><a class="post-meta__tags" href="/tags/%E5%8F%8D%E9%A6%88%E5%9B%9E%E8%B7%AF/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>反馈回路</span></a><a class="post-meta__tags" href="/tags/%E4%B9%A0%E6%83%AF/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>习惯</span></a><a class="post-meta__tags" href="/tags/%E5%8F%8D%E8%84%86%E5%BC%B1/"><span class="tags-name tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>反脆弱</span></a></div></div></div></div><h1 class="post-title">先把反馈变快</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="发布于 2026-10-05 22:41:11"><i class="post-meta-icon solitude fas fa-calendar-days"></i><time datetime="2026-10-05T14:41:11.000Z">2026-10-05T14:41:11.000Z</time></span><span class="post-meta-date" title="最后更新于 2026-10-10 22:39:32"><i class="post-meta-icon solitude fa-solid fa-arrows-rotate"></i><time datetime="2026-10-10T14:39:32.270Z">2026-10-10T14:39:32.270Z</time></span><span class="post-meta-position" title="作者IP归属地为China"><i class="post-meta-icon solitude fas fa-location-dot"></i><span>China</span></span><a class="post-meta-pv" href="/2026/10/05/think-shorten-the-feedback-loop/" title="文章热度"><i class="post-meta-icon solitude fa-solid fa-fire-flame-curved"></i></a></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><h2 id="MindMap"><a href="#MindMap" class="headerlink" title="MindMap"></a>MindMap</h2><div class="mermaid">flowchart LR
+    A[&quot;先把反馈变快&quot;] --&gt; B[&quot;反馈环的长度&quot;]
+    A --&gt; C[&quot;草稿里那张图纸&quot;]
+    A --&gt; D[&quot;适应性而非预设性&quot;]
+    A --&gt; E[&quot;把这一套搬进生活&quot;]
+    A --&gt; F[&quot;但快会骗你&quot;]
+    A --&gt; G[&quot;有效的另一半：硬度&quot;]
+    A --&gt; H[&quot;硬度不在自己手里&quot;]
+    A --&gt; I[&quot;两个电压&quot;]
+
+    B --&gt; B1[&quot;越重要的事环越长&quot;]
+    B --&gt; B2[&quot;微反馈环：反馈有颗粒度&quot;]
+    B --&gt; B3[&quot;真题是当天能结算的副本&quot;]
+    B --&gt; B4[&quot;心流就是反馈密集&quot;]
+
+    C --&gt; C1[&quot;快 + 有效&quot;]
+    C --&gt; C2[&quot;持续集成：别攒，攒就是欠债&quot;]
+    C --&gt; C3[&quot;敏捷是反馈周期方案&quot;]
+    C --&gt; C4[&quot;频繁交付等于更早纠偏&quot;]
+
+    D --&gt; D1[&quot;预设性是脆弱&quot;]
+    D --&gt; D2[&quot;适应性是反脆弱&quot;]
+    D --&gt; D3[&quot;把押注拆成试错&quot;]
+
+    E --&gt; E1[&quot;造副本&quot;]
+    E --&gt; E2[&quot;缩颗粒&quot;]
+    E --&gt; E3[&quot;熟悉度自己加码&quot;]
+    E --&gt; E4[&quot;挪到真实交付&quot;]
+
+    F --&gt; F1[&quot;五种自欺形态&quot;]
+    F --&gt; F2[&quot;滑向最软的插座&quot;]
+    F --&gt; F3[&quot;快是必要非充分&quot;]
+
+    G --&gt; G1[&quot;能否被自己伪造&quot;]
+    G --&gt; G2[&quot;回声不是回路&quot;]
+    G --&gt; G3[&quot;速度给续航，硬度给方向&quot;]
+    G --&gt; G4[&quot;硬度不是入场券&quot;]
+
+    H --&gt; H1[&quot;组织里的硬度是免费的&quot;]
+    H --&gt; H2[&quot;发票是自己开的&quot;]
+    H --&gt; H3[&quot;把结算权交出去&quot;]
+
+    I --&gt; I1[&quot;组织治理是个人回路的产物&quot;]
+    I --&gt; I2[&quot;高压与低压：电费归谁&quot;]
+    I --&gt; I3[&quot;不责于己，善假于物&quot;]</div>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>草稿箱里躺着一份文件，日期是 2025 年 10 月 2 日，正文五行。</p>
+<p>标题写着”快速反馈的重要性”，内容是清一色的程序员词汇：<strong>微反馈环</strong>、持续集成、瀑布模型与敏捷模型、频繁交付。中间插了一句心流，末尾挂着一个例子——备考做真题。</p>
+<p>写完”频繁交付产品”这一行，它就断了。这一年里我打开过它几次，每次都补不上第六行。</p>
+<p>上个月我把这件事写完了，但写完的是另一篇，落在组织治理上（<a href="/2026/10/05/devops-fast-feedback-has-two-axes/" title="快，只是反馈的一半">快，只是反馈的一半</a>）。可写完之后，我反倒看清了这份草稿当初为什么断在那里。</p>
+<p><strong>因为我认错了题目。</strong> 我把它当成一个工程问题在写——工具、流程、交付频率。它其实是一个生活问题。而且它问的方式非常朴素，朴素到我当时根本没把它当回事：</p>
+<blockquote>
+<p><strong>一件事，你得多久才能知道自己做得对不对？</strong></p>
+</blockquote>
+<p>但认错题目不等于那些笔记白写了。恰恰相反——这一年里我反复回看这五行，发现<strong>每一条都是真的</strong>，只是当时都用错了地方。</p>
+<p>所以这一篇的做法很老实：把草稿里那几条一条一条拿出来，看它在生活里到底是什么意思。不急着下结论，一层一层来。</p>
+<hr>
+<h2 id="1-一件事能不能坚持，取决于你多久能知道结果"><a href="#1-一件事能不能坚持，取决于你多久能知道结果" class="headerlink" title="1. 一件事能不能坚持，取决于你多久能知道结果"></a>1. 一件事能不能坚持，取决于你多久能知道结果</h2><p>草稿的第一条，是我当时的断言：</p>
+<blockquote>
+<p>“快速反馈环境的重要性……怎么强调都不过分，不论学习新知识，还是排查问题，除了了解上下文之外，接下来要做的就是构建这么一个环境，这个反馈越快越好，而且是随着问题的复杂程度，缩短这个反馈环时间的性价比越高。”</p>
+</blockquote>
+<p>现在我要把最后半句反过来读，因为反过来才是真相：</p>
+<blockquote>
+<p><strong>越重要的事，反馈环越长，所以越容易死。</strong></p>
+</blockquote>
+<p>游戏为什么让人上头？因为你每几秒就能知道自己做得好不好——分数、血量、金币、暴击数字。学习为什么让人犯困？因为你得等一个<strong>学期</strong>。健身，等<strong>一个月</strong>才看得见一点。写作，等<strong>一年</strong>也不一定有人读。戒烟，得等<strong>一辈子</strong>才知道成功。</p>
+<p>游戏和学习之间，差的不是难度，是反馈的疏密。<strong>绝大多数时候，一个人能不能坚持一件事，不取决于他的意志力，取决于他多久能知道自己做得对不对。</strong> 健康、写作、技术深耕、一段关系，没有一件是当天见效的——人生里真正要紧的那些事，天然全落在最不利的那一档。所以”我坚持不下来”从来不是性格缺陷，是<strong>结构问题</strong>：你把一件以年计的事，交给了一个以秒计的大脑，然后怪自己不够自律。</p>
+<h3 id="微反馈环"><a href="#微反馈环" class="headerlink" title="微反馈环"></a>微反馈环</h3><p>草稿里我记了一个词：<strong>微反馈环</strong>（我是在<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/NL7Tz4oyZdXXSU7u1BQRjA">一篇讲微反馈环的文章</a>里看到这个说法的）。当时它只是我一个收藏夹里的术语，现在才明白它说的是什么——</p>
+<p><strong>反馈是可以有颗粒度的。</strong> 一次编译、一次提交、一次对答案，都是环；而环越小，你越早知道自己站在哪儿。”快速反馈”不是一种态度，它是一个<strong>尺度问题</strong>：你愿不愿意把反馈的单位，从”年”一路缩到”分钟”。</p>
+<h3 id="真题与模拟考"><a href="#真题与模拟考" class="headerlink" title="真题与模拟考"></a>真题与模拟考</h3><p>草稿里还挂着两个例子，是我自己的：</p>
+<blockquote>
+<p>“备考，只是听别人讲，反正我是每次都睡着了的。”</p>
+<p>“备考过程中的做真题也算一种；学生考试时的各类模拟考试。”</p>
+</blockquote>
+<p>这两句轻描淡写，但它们是全篇的钥匙。</p>
+<p>期末考试的反馈环是整整一个学期，长到没法指导任何一次具体的行动——等你拿到分数，学期已经过完了，你连是哪一章的锅都懒得追。而真题和模拟考把这根长环切成以<strong>小时</strong>计的短环：做一套，对答案，立刻知道自己哪儿不会。<strong>它造了一个当天就能拿到结果的副本。</strong></p>
+<p>同一套知识、同一个学生、同样的时间，反馈环一短，效果就变了样。人没法”直接活到年底”，但可以今天做一套卷子。</p>
+<p>至于”听别人讲会睡着”——那不是我不用功，是<strong>听讲没有反馈</strong>。信息进来了，但你没有任何一个时刻知道自己到底会不会。没有反馈，就没有驱动，只有困。</p>
+<h3 id="心流"><a href="#心流" class="headerlink" title="心流"></a>心流</h3><p>草稿里还留了一句：</p>
+<blockquote>
+<p>“作为程序员，我们太了解连续操作的重要性了。这就像打游戏时，我们感觉不到时间流逝一般，有人把这种状态称之为’心流’。”</p>
+</blockquote>
+<p>这句话我写的时候只当是感慨，现在看它是<strong>因果说反了</strong>。</p>
+<p>不是”心流让人忘记时间”，而是<strong>反馈足够密集，人才会进入心流</strong>。心流理论里，”<strong>即时反馈</strong>“本来就是它的构成要件之一——清晰的目标、即时的反馈、难度与能力匹配，是米哈里·契克森米哈赖在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BF%83%E6%B5%81%E7%90%86%E8%AB%96">心流理论</a>里给出的框架。所谓”连续操作”，其实就是每一步都有人（或系统）立刻回你一声。</p>
+<p>所以”快速反馈”这四个字，其实不是我从业界学来的。它的原产地是心理学，软件工程只是最会用它的人——<strong>租客比房东出名</strong>。</p>
+<img src="/2026/10/05/think-shorten-the-feedback-loop/illust-01-loop-lengths.png" class="" title="四个依次变大的闭合环：秒 &#x2F; 学期 &#x2F; 月 &#x2F; 年">
+
+<hr>
+<h2 id="2-草稿里那句话，其实是一张图纸"><a href="#2-草稿里那句话，其实是一张图纸" class="headerlink" title="2. 草稿里那句话，其实是一张图纸"></a>2. 草稿里那句话，其实是一张图纸</h2><p>草稿的第二条，是我当时随手写下的一句拆解：</p>
+<blockquote>
+<p>“快速反馈，这句分成两个部分，快速和反馈，这也就引出了持续集成的两个重要目标：怎样快速地得到反馈，以及什么样的反馈是有效的。”</p>
+</blockquote>
+<p>我盯着这句看了很久。因为它不是一条笔记，它是一张<strong>图纸</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>快速反馈 &#x3D;</th>
+<th>快</th>
+<th>+</th>
+<th>有效</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>问的是</td>
+<td>你多久能拿到结果</td>
+<td></td>
+<td>这个结果算不算数</td>
+</tr>
+</tbody></table>
+<p><strong>快，和有效，是两件事。</strong> 我当时写下去了，但没意识到自己写的是整篇文章的骨架——“怎样快速地得到反馈”是前面那半句，”什么样的反馈是有效的”是后面那半句，而后者要难得多。</p>
+<p>草稿剩下的三条，其实都是这张图纸在工程界的施工记录。</p>
+<h3 id="持续集成"><a href="#持续集成" class="headerlink" title="持续集成"></a>持续集成</h3><p>草稿里”持续集成”四个字被我写成了名词，其实它是一个动词短语：<strong>持续地集成</strong>。</p>
+<p>在我从业的年代，集成是几个月一次的仪式——大家各自写各自的分支，等到某个时刻合到一起，然后花两周修冲突，修完谁也不知道问题出在谁那一次提交上。<strong>那是一个以月计的反馈环，堆在一个以小时计的错误上。</strong></p>
+<p>持续集成干的事情非常朴素：把提交的颗粒度调小，让每一次提交都立刻被验证。”怎样快速地得到反馈”这一问，工程界的答案是——<strong>别攒，攒就是欠债。</strong></p>
+<h3 id="瀑布模型-VS-敏捷模型"><a href="#瀑布模型-VS-敏捷模型" class="headerlink" title="瀑布模型 VS 敏捷模型"></a>瀑布模型 VS 敏捷模型</h3><p>草稿里这一行只有六个字。但这两个词的区别，从来不是”快慢”。</p>
+<p>瀑布把<strong>验收</strong>放在最后：需求定死、设计定死、编码、测试、交付，中间每一环都没有反馈，唯一一次结算是最后那次。敏捷改的是这件事——它把一次大验收，切成了很多次小验收。<strong>敏捷不是一个速度方案，是一个反馈周期方案。</strong></p>
+<h3 id="频繁交付产品"><a href="#频繁交付产品" class="headerlink" title="频繁交付产品"></a>频繁交付产品</h3><p>最后一行是”频繁交付产品”。</p>
+<p>频繁交付的收益，常常被误解成”产出更多”。不是。它真正的收益是：<strong>你更早知道自己做错了。</strong> 一个东西憋一年再交付，等于把一年的错误攒在一起结算；每周交付，等于每周有一次纠偏。</p>
+<p>但它还有一个更隐蔽的收益，当时我没看出来——<strong>交付，是把东西交到别人手里。</strong> 一旦交出去，评价它的就不是你了。这一条后面会变成整篇文章的落点。</p>
+<img src="/2026/10/05/think-shorten-the-feedback-loop/illust-02-waterfall-vs-agile.png" class="" title="等长的两条时间轴：末端一枚大印章 vs 沿线五枚小印章">
+
+<hr>
+<h2 id="3-“适应性”，而不是”预设性”"><a href="#3-“适应性”，而不是”预设性”" class="headerlink" title="3. “适应性”，而不是”预设性”"></a>3. “适应性”，而不是”预设性”</h2><p>草稿里这一句写得最短，也最重：</p>
+<blockquote>
+<p>“敏捷中：’适应性’ 而非 ‘预设性’。不是要求初期需求必须明确”</p>
+</blockquote>
+<p>二十来个字。可把它从软件里拿出来，它立刻就不再是工程问题了。</p>
+<p><strong>预设性，就是要求你一开始就把路想清楚。</strong> 它需要一种你在自己身上根本拿不到的能力——你得先知道自己在哪、要去哪、每一步怎么走，然后才允许出发。</p>
+<p>我们从小被教的就是这一套，把人生当项目：先做需求分析（”你想成为什么人”），再定设计（”你该走什么路线”），然后执行、验收。做不下去的时候，我们怪自己规划得不够好。</p>
+<p><strong>其实不是规划得不好，是这条路线本身就选错了。</strong></p>
+<p>而”适应性”说的是另一件事：<strong>你不需要一开始就想清楚，你只需要一个能快速告诉你对不对的机制，然后一边走一边改。</strong></p>
+<p>后来我在<a target="_blank" rel="noopener" href="https://book.douban.com/subject/25782902/">《反脆弱》</a>里找到了这条的靠山。塔勒布把事物分成三种：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>对波动的态度</th>
+<th>长什么样</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>脆弱</strong></td>
+<td>要求世界别动</td>
+<td>预设性——需求一次定死，世界一变就崩</td>
+</tr>
+<tr>
+<td><strong>强韧</strong></td>
+<td>扛住波动</td>
+<td>硬撑——需求变了但不改，靠加班顶上</td>
+</tr>
+<tr>
+<td><strong>反脆弱</strong></td>
+<td><strong>从波动里获益</strong></td>
+<td>适应性——不预设，只保证反馈环够短，每次扰动都能捡到东西</td>
+</tr>
+</tbody></table>
+<p>所以他其实在说：<strong>敏捷改的从来不是”快慢”，是把一次押注，拆成一串试错。</strong></p>
+<p>而这一节的落点，是它把前面所有东西都指向了同一处——</p>
+<blockquote>
+<p><strong>所谓”适应”，不是一种性格，是一个反馈环的长度问题。反馈环越短，你越敢不预设。</strong></p>
+</blockquote>
+<p>这也正是我要把它从工程里拽到生活里的原因：<strong>人生是这世上最不预设的一件事，可我们一直拿瀑布的办法在活。</strong></p>
+<p>草稿到这里就断了。现在我知道它为什么断：<strong>这些笔记是把工程界三十年的经验抄了一遍，而它们真正该回答的，是一个人在生活里怎么活。</strong></p>
+<img src="/2026/10/05/think-shorten-the-feedback-loop/illust-03-fragile-antifragile.png" class="" title="脆弱碎掉、强韧不动、反脆弱被压之后反而长高">
+
+<hr>
+<h2 id="4-把这一套搬进生活"><a href="#4-把这一套搬进生活" class="headerlink" title="4. 把这一套搬进生活"></a>4. 把这一套搬进生活</h2><p>工程界的答案很清楚，也很成熟。但把它搬进生活，第一件事就卡住了。</p>
+<p><strong>生活里没有流水线。</strong> 没有人替你在每次提交后跑一遍测试，你今天做的好不好，没有任何系统会回你一声。</p>
+<p>所以只能自己造。而这一年我试下来，真正有用的办法还是那几条，只是要换个说法——它们的共同点都是同一件事：</p>
+<blockquote>
+<p><strong>缩短从你动手，到你知道自己做得对不对，中间的那段距离。</strong></p>
+</blockquote>
+<p><strong>第一条：造副本。</strong> 不改变目标，只造一个能当天出结果的副本。真题之于期末考就是如此——你不去改”期末考试”这件事，你只是给自己造了一个今天就能兑现的期末考。移植到生活：年度体检太远，就每周固定一天、固定时长跑同一段路，看秒表。<strong>副本的价值不在于准确，在于它今天就能说话。</strong></p>
+<p><strong>第二条：缩颗粒。</strong> 把”变强”这种以年计的词，换成今天就能数出来的数。”变强”没有任何一天可以结算，”今天这一组能不能多做两个”以分钟计。写作也是，”写出好文章”等一年，”今天写完这一节”等一小时。<strong>颗粒越细，你越早知道自己行不行。</strong></p>
+<p>这里还有一层，是我原来完全没想到的：<strong>你不用一开始就把标准定高，因为量会自己长出来。</strong></p>
+<p>先只做一个俯卧撑。不要定”每天一百个”——那是个长环，而且是个预设。就一个，小到你没有任何理由拒绝。做过几天，你会遇到一件很怪的事：垫子都铺好了，人趴都趴下了，<strong>那就顺手再多做两个吧。</strong></p>
+<p>这不是意志力突然上来了，是<strong>边际成本被摊薄了</strong>。铺垫子、换衣服、走到楼下，这几步才是真正的成本；多做两个的额外成本几乎为零。前面那一步已经付过账，后面这一步就是白送的。</p>
+<p><strong>熟悉会自己抬高你的标准。</strong> 它比任何自我要求都管用，因为它不需要你跟自己搏斗。</p>
+<p>反过来说，一上来就定”每天一百个”，恰好杀掉这个机制：你把它从”做”改成了”达标”，而达标是可以失败的——一旦失败，防御就起来了，回路就断了。</p>
+<p>这里有一条容易走歪的边界，第 5 节会专门讲：<strong>缩小颗粒是为了让反馈早点到达，不是为了让自己好过。</strong> 这两件事长得很像，方向完全相反。</p>
+<p><strong>第三条：挪到真实交付。</strong> 练的东西必须交出去，不能只在脑子里练。我二十年在技术上没怎么动过手，不是因为懒，是因为我练的东西<strong>没人用</strong>——所以我不知道自己练得对不对，也不知道值不值得继续。真正让我动起来的，是我把做出来的东西塞进了真实项目：它跑在生产环境上，被人用，出问题就得修。从那一刻起，反馈不用我等，它自己来找我。</p>
+<p>这三条合起来，其实还是草稿里那句话的换皮版：</p>
+<blockquote>
+<p><strong>快速反馈的全部意义，是把一件你熬不过去的长环的事，改造成一件你能一遍遍跑完的短环的事。</strong></p>
+</blockquote>
+<p>注意”一遍遍”这三个字。目标从来不该是”这个月暴瘦十斤”，那还是一个长环，只是换了个更烈的说法。目标是<strong>短到你明天还愿意再来一次</strong>。</p>
+<img src="/2026/10/05/think-shorten-the-feedback-loop/illust-04-familiarity-adds.png" class="" title="一个哑铃到一小堆再到一大簇：量是自己长出来的">
+
+<hr>
+<h2 id="5-但快，会骗你"><a href="#5-但快，会骗你" class="headerlink" title="5. 但快，会骗你"></a>5. 但快，会骗你</h2><p>快确实做到了。然后新的问题冒出来，而且比原来那个更扎人：</p>
+<p><strong>你怎么知道它是真的？</strong></p>
+<p>我给自己定过”每天写点东西”。一个月后回看，全是没写完的碎片。反馈快得很——我每天都在”完成”——但它没有告诉我任何东西。这就是快速反馈最阴的地方：它给你的是”<strong>我在动</strong>“的确定感，而不是”<strong>我动对了</strong>“的证据。</p>
+<p>你越熟练地缩短反馈环，就越容易掉进下面这些坑。它们全都有一个共同特征：都很快。</p>
+<table>
+<thead>
+<tr>
+<th>形态</th>
+<th>长什么样</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>打卡式反馈</strong></td>
+<td>只问”有没有发生”，不问”有没有改变”。跑鞋穿上了，今天就算跑过了</td>
+</tr>
+<tr>
+<td><strong>提前兑现</strong></td>
+<td>装备买齐的那一刻，健身在心理上已经结清了</td>
+</tr>
+<tr>
+<td><strong>降低标准</strong></td>
+<td>把”跑五公里”改成”穿上跑鞋”。反馈是提前到了，但它同时也变软了</td>
+</tr>
+<tr>
+<td><strong>过程置换</strong></td>
+<td>“我今天很充实。”可”充实”这两个字，是可以用无产出的忙碌伪造的（这笔账我在<a href="/2026/08/30/think-forty-loops/" title="四十岁的回路">四十岁的回路</a>里算过）</td>
+</tr>
+<tr>
+<td><strong>目标偷换</strong></td>
+<td>从”变强”偷换成”别断”。打卡一百天，能力原地不动</td>
+</tr>
+</tbody></table>
+<p>最后一条最隐蔽。因为<strong>反馈环会自动滑向最容易闭合的那个位置</strong>。</p>
+<p>没人摁着你的时候，你不会去做那件难而慢的正经事，你会滑向最快、最软、最不需要代价的地方——刷手机是毫秒级反馈，它给你全部的”我在获取信息”的即时感，一分钱都不收。你以为自己在利用碎片时间，其实你只是给自己的反馈换了一个更软的对象。</p>
+<p>把这张表看完，会得到一个不太舒服的结论：</p>
+<blockquote>
+<p><strong>你想缩短反馈环的每一个动作，都在同时削弱这条反馈的真度。</strong></p>
+</blockquote>
+<p>到这里我才回头去读草稿里那句话的第二半——“<strong>什么样的反馈是有效的</strong>“。前半句我做到了，后半句我压根没管。</p>
+<p><strong>快，是必要条件，不是充分条件。</strong></p>
+<hr>
+<h2 id="6-有效的另一半：硬度"><a href="#6-有效的另一半：硬度" class="headerlink" title="6. 有效的另一半：硬度"></a>6. 有效的另一半：硬度</h2><p>先说一句，免得这一节被读歪：<strong>这里的”硬度”，不是让你一开始就把标准定高。</strong></p>
+<p>硬度管的是”<strong>算不算数</strong>“，不是”要求高不高”。每天只做一个俯卧撑，只要”做了”这件事是真的、赖不掉的，它就又快又硬；反过来，”我决心每天做一百个”这种话门槛高得很，反馈却全由你自己说了算——它是纯预设，脆得很。</p>
+<p>所以顺序不能反：<strong>先靠低门槛把自己留在场上，让熟悉度把量自己抬上去；硬度是你站稳之后才要面对的问题，不是入场券。</strong> 一上来就要求硬度，等于拿第 3 节的”预设性”去指挥第 1 节的”快”，大概率把人逼退。</p>
+<p>那”有效”到底指什么？回头看那篇组织向的文章里有一个式子：</p>
+<blockquote>
+<p><strong>反馈的效力 &#x3D; 硬度 × 速度。</strong></p>
+</blockquote>
+<p>速度是”你多久能知道结果”，硬度是”你拿到的结果，经不经得起否认”。</p>
+<p>我原来觉得硬度是组织里的东西——权力、责任、证据链，跟我一个人过日子没关系。后来发现不是。硬度在个人身上同样成立，只是换了一个问法：</p>
+<blockquote>
+<p><strong>这条反馈，能不能被我自己伪造？</strong></p>
+</blockquote>
+<p>能伪造的，叫回声；不能伪造的，才算真反馈。</p>
+<p>回声是你自己发出的声音弹回来。你给自己定了个目标，自己评了个”完成”，自己高兴了一下——整条链上没有任何一环是外部的。它闭环了，但环上全是你的手。</p>
+<p>按”能否被自己伪造”这条线排下来，个人拿得到的反馈源大致是这样的：</p>
+<table>
+<thead>
+<tr>
+<th>可自欺区</th>
+<th>分界</th>
+<th>不可自欺区</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>自我评价 · 想象读者 · 自己看的数字</td>
+<td>｜</td>
+<td>别人花掉的时间 · 必须交出去的东西 · 真金白银</td>
+</tr>
+</tbody></table>
+<p>左边那一档不是没用，它只是插在最弱的插座上。我写博客写了八年，物质收益为零，读者主要是我自己——它能坚持下来靠的是纪律，不是反馈。它能让我”不死”，但它没法让我”活”。</p>
+<p>而这两半的分工其实很清楚：</p>
+<ul>
+<li><strong>速度</strong>决定你愿不愿意继续——它让你今天有动力再来一次。</li>
+<li><strong>硬度</strong>决定你继续的东西是不是真的——它让你不至于在一条假路上跑三年。</li>
+</ul>
+<p>到这里我以为问题解决了。有快的，有硬的，凑齐就行。</p>
+<p>还没有。因为紧接着的一个问题是：<strong>硬度到底从哪来？</strong> 在生活里，它凭什么会出现？</p>
+<img src="/2026/10/05/think-shorten-the-feedback-loop/illust-05-echo-vs-loop.png" class="" title="虚线自闭合的 ECHO，与有外部箭头进入的 LOOP">
+
+<hr>
+<h2 id="7-硬度不在自己手里"><a href="#7-硬度不在自己手里" class="headerlink" title="7. 硬度不在自己手里"></a>7. 硬度不在自己手里</h2><p>这个问题我卡了很久，直到想明白一件事：<strong>组织里的硬度是免费的，生活里的不是。</strong></p>
+<p>组织里为什么到处都是硬信号？因为<strong>结算不是你做的</strong>。你说”改完了”，流水线不同意；你说”不是我这层的问题”，链路数据不同意；你说”我在查了”，工时不同意。<strong>你没有资格给自己开发票。</strong></p>
+<p>这一条其实比”硬度”两个字更重要。职场能逼人成长，真实原因不是职场更有道德，是<strong>职场里那个结算器不在你手上</strong>。而在生活里，这个结算器不存在。</p>
+<p>生活天然缺少”不可逃避的约束”。你今天不跑步，没有任何人、任何系统会记你一笔。世界对”你什么都没做”的反应是——<strong>没有反应</strong>。所以只能自己造一个。而自己造的死穴，一句话就能说完：</p>
+<blockquote>
+<p><strong>发票是自己开的。</strong></p>
+</blockquote>
+<p>这不是道德问题，是结构问题。凡是你能自己判定成败的事，你都会判自己赢——不是你想骗人，是你<strong>确实判不出来</strong>。你既是运动员，又是裁判，还是记分员，而且没有人来查。</p>
+<p>所以真正的动作，不是”提高自控力”（那是消耗品，拿消耗品去供电，结局必然是断电），而是<strong>把结算权交出去</strong>——交给一个不接受你贿赂的对象。</p>
+<p>具体有三种形态。它们看起来是三个技巧，其实是同一件事的三个投影：</p>
+<table>
+<thead>
+<tr>
+<th>形态</th>
+<th>结算的是什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>公开承诺</strong></td>
+<td>反悔的社会成本——话说了，就得做</td>
+</tr>
+<tr>
+<td><strong>别人的依赖</strong></td>
+<td>“有人在等”——你不做，会有人受影响</td>
+</tr>
+<tr>
+<td><strong>周期性真实检验</strong></td>
+<td>必须交出去的东西——不是”我觉得有进步”，是每个周期有个东西必须交货</td>
+</tr>
+</tbody></table>
+<p>三条的共同点：<strong>把一件事从”我可以不做”，变成”我不做，会有人受影响”。</strong> 而它们背后真正的机制只有一个——<strong>结算器离开了你的手。</strong></p>
+<p>我自己做过最正确的一件事，不是那个开源项目做得好，而是<strong>我把它接进了公司的生产环境</strong>。那一手的价值不在于”做出了一个好东西”，在于我主动把结算权交了出去——交给了一个我不认识、不归我管、也不会体谅我的东西。生产环境不发绩效，但它从不撒谎。</p>
+<p>同样的道理，也解释了创作者为什么必须要有<strong>读者</strong>，而不是”想象读者”。想象读者是你自己开的发票，你想让他鼓掌他就鼓掌；真实读者不归你管，他随时可以用脚投票。</p>
+<p>回头看，草稿最后那一行”频繁交付产品”，说的其实就是这件事——<strong>交付出去，结算权就出去了。</strong> 我当时以为那是在讲产出效率。</p>
+<img src="/2026/10/05/think-shorten-the-feedback-loop/illust-06-hand-over-the-stamp.png" class="" title="一枚印章从 MINE 移向 NOT MINE，然后不许拿回来">
+
+<hr>
+<h2 id="8-两篇不是两件事，是同一台机器的两个电压"><a href="#8-两篇不是两件事，是同一台机器的两个电压" class="headerlink" title="8. 两篇不是两件事，是同一台机器的两个电压"></a>8. 两篇不是两件事，是同一台机器的两个电压</h2><p>写到这里，我原来一个判断要改。</p>
+<p>我本来以为，组织向那篇讲的是”另一个领域”——一个是管别人，一个是管自己。不对。<strong>它是同一件事的已验证样本。</strong></p>
+<p>反过来看更扎心：我在公司里能建起那套机制，前提不是”我懂管理”，而是<strong>我个人身上早就有一条真正闭合的反馈回路</strong>——受不了，所以做了个工具；工具被用进了生产环境；有人真的在用；然后它活了下来。这套东西外化出去，才长成了报表、工单、流水线。</p>
+<blockquote>
+<p><strong>组织治理是个人回路的产物，不是前提。</strong></p>
+</blockquote>
+<p>一个自己身上没有闭合回路的人，推不动任何机制。因为他推机制的时候，也是在给自己开票——“我已经推了””我尽力了””环境不允许”，每一句都可以自己签发，而且没人查。</p>
+<p>所以这两篇的关系，不是”工作”和”生活”两个抽屉，是<strong>同一台机器上的两个电压</strong>：</p>
+<ul>
+<li><strong>工作里那条，是高压。</strong> 外部结算器现成、免费、还带惩罚，所以人人都在被动成长。</li>
+<li><strong>生活里那条，是低压。</strong> 外部结算器不存在，得自己建，建完还得忍住不去动它。</li>
+</ul>
+<p>要付的代价也得说清楚：<strong>工作里的回路，电费是别人掏的。</strong> 场景是公司给的，用户是公司给的，生产环境也是公司给的。搬回生活，这些电费全部要你自己出。</p>
+<p>这就是生活里更难的原因，也是真正做到的人这么少的原因。</p>
+<p>最后，把这一路的推法收一下。《荀子·劝学》里有一句：</p>
+<blockquote>
+<p>“假舆马者，非利足也，而致千里；假舟楫者，非能水也，而绝江河。<strong>君子生非异也，善假于物也。</strong>“</p>
+</blockquote>
+<p>以前我读这句，读到的都是”要善于利用工具”。现在我觉得它说的是另一件事：<strong>你的本性跟别人没什么不同，你不用去改本性，你只要善于借助外物。</strong></p>
+<p>而那篇组织向的文章，收尾引的是《孙子兵法·兵势》——“<strong>求之于势，不责于人</strong>“。</p>
+<p>两句话放在一起，正好把这件事说到底：</p>
+<blockquote>
+<p><strong>不责于人，靠的是势；不责于己，靠的是物。</strong></p>
+</blockquote>
+<p>组织向那篇的收口是：<strong>治理 &#x3D; 缩短从动作到结算的时间。</strong></p>
+<p>这一篇的收口，句式一样，主语换了：</p>
+<blockquote>
+<p><strong>自治 &#x3D; 把结算权移交出去。</strong></p>
+</blockquote>
+<p>移交之后，剩下的动作只有一个，而且不太好做到——<strong>闭嘴</strong>。不要再回去调那个结算器的参数。你一旦开始给自己找理由，就等于把裁判权又抢了回来。</p>
+<hr>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>那份草稿为什么断在第五行。</p>
+<p>它不是写不出来，是<strong>当时只抄了一半的答案</strong>。工程界怎么把反馈做快，那五条笔记答得清清楚楚；但一个具体的人，在自己的生活里怎么让反馈算数——那半张图纸当时是空白的。</p>
+<p>一年后我才把它补上：<strong>快，是把长环拆成短环；算数，是把结算权交出去。</strong></p>
+<p>至于它断在第五行这件事，现在我倒觉得断得挺对。那时候我确实不知道该往下写什么，因为我连”反馈快不快”和”反馈真不真”都还没分开。</p>
+<p>现在分开了。</p>
+<hr>
+<h2 id="补充-快速反馈不是越快越好"><a href="#补充-快速反馈不是越快越好" class="headerlink" title="补充 - 快速反馈不是越快越好"></a>补充 - 快速反馈不是越快越好</h2><p>前面一路把反馈环往短里压，压到”以分钟计”。但还有半句话，是我最后才补上的——<strong>缩短反馈环，不是无条件的好。</strong></p>
+<p>塔勒布在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%9A%8F%E6%9C%BA%E6%BC%AB%E6%AD%A5%E7%9A%84%E5%82%BB%E7%93%9C%20%3A%20%E5%8F%91%E7%8E%B0%E5%B8%82%E5%9C%BA%E5%92%8C%E4%BA%BA%E7%94%9F%E4%B8%AD%E7%9A%84%E9%9A%90%E8%97%8F%E6%9C%BA%E9%81%87/13542166">《随机漫步的傻瓜》</a>里算过一笔账，我读过一次就再没忘：拿同一个投资组合，<strong>每年看一次</strong>，你会看到大约 93% 的年份是赚钱的；<strong>每分钟看一次</strong>，你会看到差不多一半时间在亏——而且那些噪声会逼着你在最坏的时候做傻事。</p>
+<p>同一份结果，只是<strong>观察的频率</strong>变了，人的感受和行为就全反了。</p>
+<p>所以”越快越好”有一个前提，是我前面没讲清的：</p>
+<blockquote>
+<p><strong>缩短反馈环之前，先问一句：这个结果，我能不能归因到自己的动作上？</strong></p>
+</blockquote>
+<ul>
+<li><strong>能归因</strong>——做完题对答案，错在哪一道清清楚楚——那就往短里压，越短越好。</li>
+<li><strong>不能归因</strong>——今天股价涨跌，跟你今天做了什么基本无关——那就别压，反而要拉长观察周期。否则你学到的不是能力，是情绪。</li>
+</ul>
+<p>考试、健身、写代码，都是高可归因的领域，<strong>快速反馈在那里是解药</strong>。而投资、健康、职业选择这一类事，短期结果里噪声的占比太高，<strong>快速反馈在那里是砒霜</strong>：它给你海量的”反馈”，但那些反馈里没有一个字是关于你的。</p>
+<p>这也解释了一件我原来想不通的事：为什么有些人在自己的专业里把反馈环压得极短、做得极好，一进股市就变成随机漫步的傻瓜。不是能力退化了，是<strong>把适合高可归因领域的方法，搬到了一个不可归因的领域</strong>。</p>
+<p>于是”快速反馈”这条判据，完整的说法是三个条件，缺一个都会走歪：</p>
+<table>
+<thead>
+<tr>
+<th>条件</th>
+<th>问的是</th>
+<th>缺了会怎样</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>快</strong></td>
+<td>你多久能知道结果</td>
+<td>熬不过去，半途而废</td>
+</tr>
+<tr>
+<td><strong>硬</strong></td>
+<td>这个结果能不能被自己伪造</td>
+<td>跑得很欢，方向是假的</td>
+</tr>
+<tr>
+<td><strong>可归因</strong></td>
+<td>结果能不能算到自己头上</td>
+<td>越反馈越糟，把噪声当水平</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="补充-“小到不可能失败”为什么在生活里反而危险"><a href="#补充-“小到不可能失败”为什么在生活里反而危险" class="headerlink" title="补充 - “小到不可能失败”为什么在生活里反而危险"></a>补充 - “小到不可能失败”为什么在生活里反而危险</h2><p>福格行为模型给的是 B &#x3D; MAP：行为 &#x3D; 动机 × 能力 × 提示。这两套东西我都写过（<a href="/2025/06/22/book-ting-habits/" title="《福格行为模型》读后感">《福格行为模型》读后感</a>、<a href="/2026/08/14/think-forty-mini-habits/" title="四十岁的微习惯">四十岁的微习惯</a>）。微习惯的整套精华，是把 <strong>A（能力）</strong> 这一项推到极致——“小到不可能失败”，每天一个俯卧撑，或者干脆”去掉趴下这一步”。</p>
+<p>但这里有一个我当时没看出来的缺口：<strong>它降的是行动门槛，不是反馈的真度。</strong></p>
+<p>微习惯从来不负责”算数”。而生活里真正杀死一件事的，恰恰不是开始不了，是<strong>你做了却算不得数</strong>。它把第 4 节那条”缩颗粒”推到了极致，却没管第 6 节那条”能不能被自己伪造”。</p>
+<p>所以微习惯在生活里最典型的失败形态是<strong>打卡式完成</strong>：目标从”改变”悄悄偷换成”别断”，断一天比做得少更让人难受。这时候它已经从反馈退化成了回声——你在跟昨天的自己击掌，而那个自己也是你。</p>
+<p>但我不认为微习惯错了。</p>
+<p>在<strong>还没有任何反馈</strong>的阶段，它是唯一能让你动起来的东西。而且它给的还不止”开始”——只要不去逼它，低门槛甚至会把量自己抬上来（第 4 节那笔账）。它唯一给不了的，是”<strong>算不算数</strong>“的那个答案。</p>
+<p>正确的位置应该是这样：<strong>微习惯负责把你留在场上，反馈的另一端负责告诉你有没有走对。</strong> 那一端必须站着一个人，或者一个你糊弄不了的东西。</p>
+<hr>
+<h2 id="封面解读"><a href="#封面解读" class="headerlink" title="封面解读"></a>封面解读</h2><img src="/2026/10/05/think-shorten-the-feedback-loop/cover.png" class="" title="封面：同一条钢线，两种环长">
+
+<p>这张封面把全文压缩成了一个物理事实：<strong>画面里只有一样材料——一根细钢线；而它被绕成了两种完全不同的东西。</strong></p>
+<p><strong>左侧是一个巨大的、松垮的长环。</strong> 它绕得那么宽，以至于环的另一头直接跑出了画面——你看不见它的闭合点。环身是暗的，没有光。这就是第 1 节说的”以年计的反馈环”：健身、写作、技术深耕，它们不是不重要，而是<strong>它们太长</strong>，长到你根本感觉不到自己在环上。上面只有一颗几乎静止的琥珀色光点，代表你发出去的那一次信号——它走了很久，还没绕回来。</p>
+<p><strong>右侧是一簇紧密、绷紧的小环。</strong> 同样的钢线，同样粗细，只是每一环都很短。而每一个小环上都有一颗明亮的琥珀色光点在飞速绕圈——不是一颗，是很多颗，同时在响。这就是”把长环拆成短环”之后的样子：同一件事，同一个你，反馈却在每一小圈里真实地发生着。第 4 节那三条（造副本、缩颗粒、挪到真实交付）全部落在这里。</p>
+<p><strong>两种环之间是一条笔直的、裸露的线。</strong> 它不是断裂，是<strong>同一件东西的两种状态之间那段最朴素的过渡</strong>——从左到右，你要做的动作其实只有一件事：把线绕短一点。</p>
+<p><strong>全画面只有一个暖色，就是那些琥珀色的光点。</strong> 冷灰蓝的布景、暗色的长环、绷紧的短环，全部是低温和沉默的；唯一的热量来自”拿到结果”的那一瞬间——那颗光点既是你想要的回报，也是这一整篇里唯一不需要意志力出面就能拿到的东西。</p>
+<p><strong>画面里没有人。</strong> 没有疲惫的人、没有手表、没有日历。因为这不是一个关于谁不够自律的问题——<strong>它只关于环的长度</strong>。</p>
+<blockquote>
+<p>一句话总结：<strong>同一根线，绕长了你根本走不完一圈，绕短了它一直在响——封面问的不是”你有没有毅力”，而是”你把它绕成了多长”。</strong></p>
+</blockquote>
+<hr>
+<h2 id="原始素材和基础语料（人工）"><a href="#原始素材和基础语料（人工）" class="headerlink" title="原始素材和基础语料（人工）"></a>原始素材和基础语料（人工）</h2><blockquote>
+<p><strong>用户 2025-10-02 手写草稿原文</strong>（<code>source/_drafts/think-the-Importance-of-quick-feedback.md</code>，全文五行）：</p>
+<p>“《快速反馈环境的重要性。。。怎么强调都不过分，不论学习新知识，还是排查问题，除了了解上下文之外，接下来要做的就是构建这么一个环境，这个反馈越快越好，而且是随着问题的复杂程度，缩短这个反馈环时间的性价比越高》”</p>
+<p><strong>微反馈环</strong> - <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/NL7Tz4oyZdXXSU7u1BQRjA">https://mp.weixin.qq.com/s/NL7Tz4oyZdXXSU7u1BQRjA</a></p>
+<p>“快速反馈，这句分成两个部分，快速和反馈，这也就引出了持续集成的两个重要目标：怎样快速地得到反馈，以及什么样的反馈是有效的。”</p>
+<p>“作为程序员，我们太了解连续操作的重要性了。这就像打游戏时，我们感觉不到时间流逝一般，有人把这种状态称之为’心流’。 比如备考，只是听别人讲，反正我是每次都睡着了的。”</p>
+<p>“备考过程中的做真题也算一种; 学生考试时的各类模拟考试.”</p>
+<p>“瀑布模型 VS 敏捷模型”</p>
+<p>“敏捷中：’适应性’ 而非 ‘预设性’。 不是要求初期需求必须明确”</p>
+<p>“频繁交付产品”</p>
+</blockquote>
+<blockquote>
+<p><strong>本次会话用户指令（2026-10-05）</strong>：</p>
+<ol>
+<li>写一篇个人向的「快速反馈」，与已上线的公司向《快，只是反馈的一半》配对；<strong>生活为主，工作为辅</strong>，两者不冲突，可以相互借鉴。</li>
+<li>“本文的重点不是结算，是快速反馈，我要强调的是后者，先有后者，再去慢慢认清前者，一步步来。”</li>
+<li>“我现有这些都要保留，分别进行衍生，这可是我之前手写的。”（→ 草稿每一条以引用块原话保留，并各自衍生一条线）</li>
+<li>由「适应性，而非预设性」联想到《反脆弱》→ 接入塔勒布三态结构与「观察频率」反例。</li>
+<li>“关于 5. 有效的另一半：硬度，我更看重的是坚持下去，因为只要坚持下去，人性会在熟悉之后慢慢加需求，例如先只做一个俯卧撑，然后慢慢你自己就觉得既然都准备了，那不如再多练几个，而不是一上来就要求所谓硬度，把自己逼退。”</li>
+</ol>
+</blockquote>
+<blockquote>
+<p><strong>续补记录（与正文改动一一对应）</strong>：</p>
+<ul>
+<li>草稿五条素材（核心论断 &#x2F; 微反馈环 &#x2F; 两分法+持续集成 &#x2F; 备考与真题 &#x2F; 心流 &#x2F; 瀑布 vs 敏捷 &#x2F; 适应性 &#x2F; 频繁交付）全部以引用块原话保留，各自扩展为独立小节——依据用户指令 3。</li>
+<li>新增 <code>## 3. &quot;适应性&quot;，而不是&quot;预设性&quot;</code> 独立成节（含《反脆弱》三态表）——依据用户指令 4。</li>
+<li><code>## 4</code>「缩颗粒」后新增「先小、熟悉度自己加码」整段（边际成本摊薄）——依据用户指令 5。</li>
+<li><code>## 6</code> 开头新增定位段「硬度管的是’算不算数’，不是’要求高不高’；硬度不是入场券」——依据用户指令 5。</li>
+<li>新增 <code>## 补充 - 快速反馈不是越快越好</code>（观察频率 + 可归因判据，判据补全为”快 &#x2F; 硬 &#x2F; 可归因”三条）——依据用户指令 4。</li>
+<li><code>## 补充 -&quot;小到不可能失败&quot;…</code> 同步改写（改为”微习惯负责把你留在场上，反馈的另一端负责告诉你有没有走对”），消除与 <code>## 4</code> 的自相矛盾——依据用户指令 5。</li>
+<li>6 张正文配图（illust-01…06）+ 封面 1 张，均为 sketch-notes 风格、纯英文标注、几何裁切去水印。</li>
+<li>加粗与引号混排一律写作 <code>&quot;**词**&quot;</code>（<code>**</code> 在引号内部）。</li>
+</ul>
+</blockquote>
+<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><ul>
+<li><a href="/2026/10/05/devops-fast-feedback-has-two-axes/" title="快，只是反馈的一半">快，只是反馈的一半</a> — 本文的正面：同一套乘法（硬度 × 速度）的组织版，本文是它的背面</li>
+<li><a href="/2026/08/30/think-forty-loops/" title="四十岁的回路">四十岁的回路</a> — 「回声不是回路」与「痕迹判据」的出处，本文第 5、6 节的直接前作</li>
+<li><a href="/2026/08/14/think-forty-mini-habits/" title="四十岁的微习惯">四十岁的微习惯</a> — 「缩颗粒」与「先小」的前作，本文在 `## 补充` 里对它补了一个缺口</li>
+<li><a href="/2026/03/03/think-why-procrastination/" title="【反思】为何会有如此严重的拖延症">【反思】为何会有如此严重的拖延症</a> — 拖延的另一面：结算周期越长，越容易停在原地</li>
+<li><a href="/2026/06/16/think-feedback-loop-and-monopoly-of-interpretation/" title="解释权垄断与反馈环：AI 替代浪潮下的职场生存拓扑学">解释权垄断与反馈环：AI 替代浪潮下的职场生存拓扑学</a> — 把「反馈环长短」当作个人被替代性的结构指标</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.png"></a><div class="post-copyright__author_name">夫礼者Home</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward"><div class="reward-button" title="赞赏作者" onclick="AddRewardMask()"><i class="solitude fa-solid fa-heart"></i>赞赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢您的赞赏</span><ul class="reward-group"><li class="reward-item"><a href="/images/wxpay.jpg"><img class="post-qr-code-img nolazyload" src="/images/wxpay.jpg" alt="微信" style="border-color: var(--efu-green)"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.jpg"><img class="post-qr-code-img nolazyload" src="/images/alipay.jpg" alt="支付宝" style="border-color: var(--efu-blue)"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/"><div class="reward-text">赞赏名单</div><div class="reward-dec">由于您的支持，我才能够实现写作的价值。</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">夫礼者Home</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%8D%E6%80%9D/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>个人反思<span class="tagsPageCount">14</span></span></a><a class="post-meta__tags" href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>方法论<span class="tagsPageCount">4</span></span></a><a class="post-meta__tags" href="/tags/%E5%8F%8D%E9%A6%88%E5%9B%9E%E8%B7%AF/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>反馈回路<span class="tagsPageCount">2</span></span></a><a class="post-meta__tags" href="/tags/%E4%B9%A0%E6%83%AF/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>习惯<span class="tagsPageCount">6</span></span></a><a class="post-meta__tags" href="/tags/%E5%8F%8D%E8%84%86%E5%BC%B1/"><span class="tags-punctuation"><i class="solitude fa-solid fa-hashtag"></i>反脆弱<span class="tagsPageCount">1</span></span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/10/09/devops-minimal-monitoring-manifesto/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">单体应用的监控，只服务三件事</div></div></a></div><div class="next-post pull-right"><a href="/2026/10/05/devops-fast-feedback-has-two-axes/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">快，只是反馈的一半</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-bg-top"><div class="is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div></div><a class="card-info-avatar" href="/about/" title="头像"><div class="avatar-img"><img src="/images/sicp_cover_english.jpg" alt="头像"></div></a><div class="card-info__desc_group"><div class="author-info__name">夫礼者</div><div class="author-info__desc"></div><div class="card-info__data is-center"><a href="/archives/" title="累计文章数:156"><div class="length-num">156</div><div class="headline">文章</div></a><a href="/tags/" title="标签总数:163"><div class="length-num">163</div><div class="headline">标签</div></a><a href="/categories/" title="分类总数:37"><div class="length-num">37</div><div class="headline">分类</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/fulizhe" title="Github"><i class="solitude  fab fa-github"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://gitee.com/lqzkcx3" title="Gitee"><i class="solitude  fab fa-git"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.zhihu.com/people/tao-luo-73" title="Zhihu"><i class="solitude  fab fa-zhihu"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://blog.csdn.net/lqzkcx3" title="CSDN"><i class="solitude  fab fa-bilibili"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://www.jianshu.com/u/cd3dd432fd00" title="jianshu"><i class="solitude  fab fa-node-js"></i></a><a class="social-icon" href="https://fulizhe.github.io/curriculumVitae" title="aboutMe"><i class="solitude  fas fa-address-card"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude fa-solid fa-bars"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MindMap"><span class="toc-text">MindMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%80%E4%BB%B6%E4%BA%8B%E8%83%BD%E4%B8%8D%E8%83%BD%E5%9D%9A%E6%8C%81%EF%BC%8C%E5%8F%96%E5%86%B3%E4%BA%8E%E4%BD%A0%E5%A4%9A%E4%B9%85%E8%83%BD%E7%9F%A5%E9%81%93%E7%BB%93%E6%9E%9C"><span class="toc-text">1. 一件事能不能坚持，取决于你多久能知道结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E5%8F%8D%E9%A6%88%E7%8E%AF"><span class="toc-text">微反馈环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%9F%E9%A2%98%E4%B8%8E%E6%A8%A1%E6%8B%9F%E8%80%83"><span class="toc-text">真题与模拟考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%83%E6%B5%81"><span class="toc-text">心流</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%8D%89%E7%A8%BF%E9%87%8C%E9%82%A3%E5%8F%A5%E8%AF%9D%EF%BC%8C%E5%85%B6%E5%AE%9E%E6%98%AF%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%BA%B8"><span class="toc-text">2. 草稿里那句话，其实是一张图纸</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90"><span class="toc-text">持续集成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B-VS-%E6%95%8F%E6%8D%B7%E6%A8%A1%E5%9E%8B"><span class="toc-text">瀑布模型 VS 敏捷模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%91%E7%B9%81%E4%BA%A4%E4%BB%98%E4%BA%A7%E5%93%81"><span class="toc-text">频繁交付产品</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E2%80%9C%E9%80%82%E5%BA%94%E6%80%A7%E2%80%9D%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E2%80%9D%E9%A2%84%E8%AE%BE%E6%80%A7%E2%80%9D"><span class="toc-text">3. “适应性”，而不是”预设性”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%8A%8A%E8%BF%99%E4%B8%80%E5%A5%97%E6%90%AC%E8%BF%9B%E7%94%9F%E6%B4%BB"><span class="toc-text">4. 把这一套搬进生活</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%BD%86%E5%BF%AB%EF%BC%8C%E4%BC%9A%E9%AA%97%E4%BD%A0"><span class="toc-text">5. 但快，会骗你</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%9C%89%E6%95%88%E7%9A%84%E5%8F%A6%E4%B8%80%E5%8D%8A%EF%BC%9A%E7%A1%AC%E5%BA%A6"><span class="toc-text">6. 有效的另一半：硬度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%A1%AC%E5%BA%A6%E4%B8%8D%E5%9C%A8%E8%87%AA%E5%B7%B1%E6%89%8B%E9%87%8C"><span class="toc-text">7. 硬度不在自己手里</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E4%B8%A4%E7%AF%87%E4%B8%8D%E6%98%AF%E4%B8%A4%E4%BB%B6%E4%BA%8B%EF%BC%8C%E6%98%AF%E5%90%8C%E4%B8%80%E5%8F%B0%E6%9C%BA%E5%99%A8%E7%9A%84%E4%B8%A4%E4%B8%AA%E7%94%B5%E5%8E%8B"><span class="toc-text">8. 两篇不是两件事，是同一台机器的两个电压</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-text">后记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85-%E5%BF%AB%E9%80%9F%E5%8F%8D%E9%A6%88%E4%B8%8D%E6%98%AF%E8%B6%8A%E5%BF%AB%E8%B6%8A%E5%A5%BD"><span class="toc-text">补充 - 快速反馈不是越快越好</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85-%E2%80%9C%E5%B0%8F%E5%88%B0%E4%B8%8D%E5%8F%AF%E8%83%BD%E5%A4%B1%E8%B4%A5%E2%80%9D%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9C%A8%E7%94%9F%E6%B4%BB%E9%87%8C%E5%8F%8D%E8%80%8C%E5%8D%B1%E9%99%A9"><span class="toc-text">补充 - “小到不可能失败”为什么在生活里反而危险</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E9%9D%A2%E8%A7%A3%E8%AF%BB"><span class="toc-text">封面解读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E7%B4%A0%E6%9D%90%E5%92%8C%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%96%99%EF%BC%88%E4%BA%BA%E5%B7%A5%EF%BC%89"><span class="toc-text">原始素材和基础语料（人工）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3"><span class="toc-text">相关</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude fa-solid fa-map"></i><span>最近发布</span></div><div class="aside-list"><a class="aside-list-item" href="/2026/10/09/devops-minimal-monitoring-manifesto/" title="单体应用的监控，只服务三件事"><div class="thumbnail"><img alt="单体应用的监控，只服务三件事" src="/2026/10/09/devops-minimal-monitoring-manifesto/cover.png"></div><div class="content"><span class="title" href="/2026/10/09/devops-minimal-monitoring-manifesto/" title="单体应用的监控，只服务三件事">单体应用的监控，只服务三件事</span><span class="article-recent_post_categories" href="/2026/10/09/devops-minimal-monitoring-manifesto/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/10/05/think-shorten-the-feedback-loop/" title="先把反馈变快"><div class="thumbnail"><img alt="先把反馈变快" src="/2026/10/05/think-shorten-the-feedback-loop/cover.png"></div><div class="content"><span class="title" href="/2026/10/05/think-shorten-the-feedback-loop/" title="先把反馈变快">先把反馈变快</span><span class="article-recent_post_categories" href="/2026/10/05/think-shorten-the-feedback-loop/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/10/05/devops-fast-feedback-has-two-axes/" title="快，只是反馈的一半"><div class="thumbnail"><img alt="快，只是反馈的一半" src="/2026/10/05/devops-fast-feedback-has-two-axes/cover.png"></div><div class="content"><span class="title" href="/2026/10/05/devops-fast-feedback-has-two-axes/" title="快，只是反馈的一半">快，只是反馈的一半</span><span class="article-recent_post_categories" href="/2026/10/05/devops-fast-feedback-has-two-axes/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/10/02/devops-friction-reduction-engineering/" title="减摩擦工程：如果重来一次，我按什么顺序动手"><div class="thumbnail"><img alt="减摩擦工程：如果重来一次，我按什么顺序动手" src="/2026/10/02/devops-friction-reduction-engineering/cover.png"></div><div class="content"><span class="title" href="/2026/10/02/devops-friction-reduction-engineering/" title="减摩擦工程：如果重来一次，我按什么顺序动手">减摩擦工程：如果重来一次，我按什么顺序动手</span><span class="article-recent_post_categories" href="/2026/10/02/devops-friction-reduction-engineering/">随笔与思考</span></div></a><a class="aside-list-item" href="/2026/10/02/devops-falsify-not-accuse/" title="从被告席上下来：可观测性只能证伪，不能指认"><div class="thumbnail"><img alt="从被告席上下来：可观测性只能证伪，不能指认" src="/2026/10/02/devops-falsify-not-accuse/cover.png"></div><div class="content"><span class="title" href="/2026/10/02/devops-falsify-not-accuse/" title="从被告席上下来：可观测性只能证伪，不能指认">从被告席上下来：可观测性只能证伪，不能指认</span><span class="article-recent_post_categories" href="/2026/10/02/devops-falsify-not-accuse/">随笔与思考</span></div></a></div></div></div></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2026 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src="/img/pwa/favicon.png">夫礼者</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude" alt="Theme">Theme</a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=2.1.13"></script><script src="/js/main.js?v=2.1.13"></script><script src="/js/third_party/waterfall.min.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="https://fastly.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js"></script><script src="/js/tw_cn.js?v=2.1.13"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="js-pjax"><script>mermaid.run();</script></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="solitude fa-solid fa-xmark"></i></button></nav><div class="search-wrap"><div class="search-box"><input class="search-box-input" id="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="输入关键词快速查找"></div><div id="search-results"><div id="search-hits"></div></div><div id="search-pagination"></div><div id="search-tips"></div></div></div><div id="search-mask"></div></div><script src="/js/search/local.js?v=2.1.13"></script><!-- Tianli-Talk--><!-- music--></body></html>
+        <script>
+            const posts = ["2026/10/09/devops-minimal-monitoring-manifesto/","2026/10/05/think-shorten-the-feedback-loop/","2026/10/05/devops-fast-feedback-has-two-axes/","2026/10/02/devops-friction-reduction-engineering/","2026/10/02/devops-falsify-not-accuse/","2026/09/30/devops-ask-efficiency-he-answers-overtime/","2026/09/29/devops-muddy-space-has-no-shelter/","2026/09/25/devops-honing-veto-into-design/","2026/09/23/devops-negative-return-of-fire-prevention/","2026/09/22/devops-the-cut-that-needs-no-approval/","2026/09/22/devops-who-owns-the-trigger/","2026/09/22/devops-mttc-response-speed-over-change/","2026/09/20/devops-borrow-upward-leverage/","2026/09/18/devops-requirement-before-language/","2026/09/18/devops-from-armor-to-qualification-line/","2026/09/16/ai-three-questions-before-new-domain/","2026/09/13/devops-ledger-blindness/","2026/09/11/devops-three-causes-of-inaction/","2026/09/10/devops-three-writes-one-truth/","2026/09/02/devops-compressing-gray-space-with-data/","2026/09/01/book-legacy-code-second-life/","2026/08/30/think-forty-loops/","2026/08/28/think-laziness-conservation-law/","2026/08/27/devops-i18n-requirement-exposes-boundary-vacuum/","2026/08/25/devops-just-ask-me/","2026/08/22/think-stay-on-the-right-road-alone/","2026/08/20/devops-attack-surface-reverse-war/","2026/08/19/devops-refuse-to-converge/","2026/08/18/devops-shift-left-role-reversal/","2026/08/17/devops-fragility-as-armor/","2026/08/14/think-forty-mini-habits/","2026/08/10/devops-demo-is-the-only-standard/","2026/08/09/think-their-depth-is-just-entry-level/","2026/08/07/think-ai-is-a-gun-not-an-alibi/","2026/08/06/devops-survive-without-power/","2026/08/03/devops-adverse-selection-platform/","2026/08/02/devops-customer-as-whetstone/","2026/08/02/book-sdd-in-action/","2026/07/29/think-from-consumer-to-investor/","2026/07/25/devops-boundary-erosion-and-managerial-rent-seeking/","2026/07/23/devops-tyranny-of-one-sixth/","2026/07/23/devops-letting-go-of-the-savior-complex-in-devops/","2026/07/20/devops-when-arsonists-team-up/","2026/07/19/think-forty-self-rescue/","2026/07/18/think-forty-downclock/","2026/07/15/ai-grok45-fast-cursor-traps/","2026/07/14/ai-jenkins_retro_report/","2026/07/13/think-value-in-future-not-past/","2026/07/09/devops-the-thought-closed-loop-of-overtime-martyrs/","2026/07/05/think-cognitive-compound-interest/","2026/07/04/think-experience-breeds-composure/","2026/07/02/devops-the-label-of-public-enemy/","2026/07/01/devops-top-down-reform-and-multiplicative-quality-model/","2026/06/30/think-ai-making-us-shallow/","2026/06/28/ai-agency-filtering-in-ai-era/","2026/06/24/devops-solving-problems-as-close-to-the-source-as-possible/","2026/06/23/devops-the-illusion-of-done-in-local-build/","2026/06/22/devops-how-to-implement-p1-test-gates-in-multi-language-teams/","2026/06/22/think-the-fragility-of-success-and-upward-management/","2026/06/21/devops-how-to-survive-in-a-highly-mediocre-organization/","2026/06/21/devops-how-to-deal-with-incompetent-teams-at-work/","2026/06/19/devops-performance-tuning-as-a-guessing-game/","2026/06/19/ai-jevons-paradox-in-ai-era/","2026/06/17/devops-instant-karma-of-high-frequency-testing/","2026/06/17/think-why-we-still-have-jobs-in-ai-era/","2026/06/17/devops-responsibility-diffusion-in-cross-team-dev/","2026/06/16/think-feedback-loop-and-monopoly-of-interpretation/","2026/06/15/think-workplace-attribution-bias/","2026/06/14/ai-ai-mirror-and-cognitive-laziness/","2026/06/12/devops-the-auditor-role-in-software-architecture/","2026/06/11/think-illusion-of-persuasion/","2026/06/11/devops-technical-bureaucracy-and-benefactor-illusion/","2026/06/11/devops-shift-left-testing-and-quality-gates/","2026/06/11/devops-strategic-patience-in-refactoring/","2026/06/11/think-constraints-and-creativity/","2026/06/10/devops-fake-automation-and-human-api/","2026/06/10/devops-knowledge-sink-vs-individual-blackbox/","2026/06/10/devops-reform-without-firing-and-malicious-compliance/","2026/06/10/devops-yak-shaving-and-pseudo-extensibility/","2026/06/09/devops-illusion-of-hard-work-in-management/","2026/06/09/devops-solve-the-person-who-raised-the-problem/","2026/06/08/devops-reject-technical-giant-baby/","2026/06/07/devops-product-vs-project-mindset/","2026/06/07/devops-breaking-developer-arrogance/","2026/06/07/devops-software-engineering-and-shit-mountain/","2026/06/06/think-reading-as-an-anchor/","2026/06/06/think-career-antifragility/","2026/06/03/devops-illusion-of-tech-moat-and-non-management/","2026/05/27/ai-driven-dev-and-code-devaluation/","2026/05/23/ruankao-xtjls/","2026/05/21/ai-evolution-in-ai-era/","2026/05/13/devops-hidden-costs-of-kpi-driven/","2026/05/11/devops-the-illusion-of-tech-management/","2026/05/11/think-defy-the-destiny/","2026/05/08/devops-trust-and-glue-work-in-management/","2026/05/08/think-money-has-clear-criteria2/","2026/05/04/think-mastering-the-right-of-interpretation/","2026/05/01/devops-Criteria-for-technical-decision-making/","2026/04/29/devops-cognitive-load-and-feedback-loops/","2026/04/29/devops-reject-works-on-my-machine/","2026/04/28/devops-from-heroism-to-system-observability/","2026/04/27/think-redundancy-design-in-daily-life/","2026/04/27/devops-optimization-startup/","2026/04/25/think-from-0-to-1-residual-advantage/","2026/04/23/devops-refactor-process/","2026/04/23/ai-efficiency-and-survival-strategy/","2026/03/26/devops-skywalking-local/","2026/03/24/devops-observability-is-efficiency/","2026/03/10/think-openclaw-i-see/","2026/03/06/think-ai-The-end-of-apprenticeship/","2026/03/03/think-why-procrastination/","2026/02/02/think-money-has-clear-criteria/","2026/01/18/book-why-donot-student-like-school/","2026/01/07/devops-bottom-up-recognize-reality-2/","2026/01/07/devops-continuous-bleeding/","2025/11/10/ruankao-xtfxs2/","2025/10/01/think-the-essence-of-implement-ultimate-idea/","2025/08/18/AI-The-comprehensive-implementation-in-the-initial-stage-in-company/","2025/08/17/35-grap-the-initiative-of-life/","2025/08/15/devops-promote-the-progress-of-docker/","2025/08/09/devops-impove-development-process-team-reform/","2025/08/04/think-why-still-working-hard/","2025/08/04/think-how-to-find-your-career/","2025/07/31/devops-why-we-need-focusing-on-observability/","2025/06/22/book-ting-habits/","2025/06/20/think-value-anchor-point/","2025/06/04/devops-observability/","2025/06/03/devops-operation-upgrade/","2025/06/01/book-nexus/","2025/05/31/devops-bottom-up-recognize-reality/","2025/05/30/devops-transformation-with-bottom-up-in-a-obstinate-team/","2025/05/27/ruankao-xtfxs/","2025/03/21/35-why-do-i-firmly-believe-i-will-succeed/","2025/03/14/Technical-team-face-to-Technical-Debt/","2025/03/05/35-basic/","2025/03/03/tsitt-The-Road-to-Breaking-through-Operations-and-Maintenance/","2025/03/02/ai-the-benefit-of-meta-knowledge/","2025/02/27/how-to-break-in-the-era-of-ai-for-company/","2025/02/24/35-I-was-too-extreme/","2025/02/22/35-how-to-check-if-someone-is-worth-following/","2025/02/21/tip-cursor-refill-for-free/","2025/02/12/ai-The-double-edged-sword-of-creative-equality/","2025/02/12/ai-human-win/","2025/02/07/what-mean-when-we-say-ai-assisted-process-transformation/","2025/02/04/deepseek-r1-i-observe-to/","2025/01/17/social-experiment-by-ai/","2025/01/12/think-in-ai-era/","2025/01/09/the-skill-need-to-pratice-in-ai-era-as-programmer/","2025/01/07/cursor-i-think-to/","2025/01/05/2024-year-end-summary/","2024/12/12/《一本小小的红色写作书》读后感/","2024/12/12/《自学是门手艺》读后感/","2024/12/12/典型小散的投资生涯总结2018-2024/","2024/03/20/self_past_twentyYears/","2024/03/11/hexo-tip-tags/","2024/03/10/hello-world/"];
+            function toRandomPost() {
+                const randomPost = posts[Math.floor(Math.random() * posts.length)];
+                pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
+            }
+        </script>
