@@ -1,0 +1,47 @@
+<svg viewBox="0 0 680 300" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>事故复盘机制缺失是纵火团伙的温床</title>
+<desc>没有跨团队联合复盘+根因归属机制时，事故在中间层内部消化、对外甩锅，根因永远不会被跨团队确认，pattern证据也无法自然浮出水面，纵火团伙长期存活。</desc>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<text x="340" y="26" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="500" fill="#2C2C2A">没有复盘机制 —— 纵火团伙最需要的缺口</text>
+
+<g>
+  <rect x="40" y="56" width="280" height="48" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+  <text x="180" y="80" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#0C447C">事故发生（烟从上层冒出）</text>
+</g>
+
+<line x1="180" y1="104" x2="180" y2="128" stroke="#888780" stroke-width="1.5" marker-end="url(#arr)"/>
+
+<g>
+  <rect x="40" y="130" width="280" height="48" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+  <text x="180" y="154" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#633806">上层排查定位根因</text>
+</g>
+
+<line x1="180" y1="178" x2="180" y2="202" stroke="#888780" stroke-width="1.5" marker-end="url(#arr)"/>
+
+<g>
+  <rect x="40" y="204" width="280" height="80" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+  <text x="180" y="222" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#791F1F">中间层内部消化</text>
+  <text x="180" y="244" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" fill="#A32D2D">对外：「偶发」「已恢复」</text>
+  <text x="180" y="266" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" fill="#A32D2D">对内：无人跨团队确认根因</text>
+</g>
+
+<g>
+  <rect x="360" y="56" width="280" height="228" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5" stroke-dasharray="4 2"/>
+  <text x="500" y="82" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="13" font-weight="500" fill="#444441">本该有却缺失的环节</text>
+  <text x="500" y="110" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" fill="#5F5E5A">— 跨团队联合复盘 —</text>
+  <text x="500" y="138" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" fill="#5F5E5A">— 根因归属确认 —</text>
+  <text x="500" y="166" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" fill="#5F5E5A">— 故障台账共享 —</text>
+  <text x="500" y="194" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" fill="#5F5E5A">— pattern 数据沉淀 —</text>
+  <text x="500" y="222" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" fill="#5F5E5A">— 改进项跨团队追踪 —</text>
+  <text x="500" y="258" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="12" font-weight="500" fill="#791F1F">全部缺失 = 闭环断了</text>
+  <text x="500" y="276" text-anchor="middle" dominant-baseline="central" font-family="sans-serif" font-size="11" fill="#A32D2D">根因永远不会被跨团队确认</text>
+</g>
+
+<text x="340" y="292" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#5F5E5A">没有复盘 = 没有根因归属确认 = pattern 无法自然浮出 → 只能单方面硬推证据</text>
+
+</svg>
